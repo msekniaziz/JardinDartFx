@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="576.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.AdminController">
+    <children>
+        <StackPane layoutX="256.0" prefHeight="576.0" prefWidth="845.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Pane fx:id="pnlOverview" layoutX="-10.0" layoutY="1.0" prefHeight="583.0" prefWidth="851.0" style="-fx-background-color: #FFFFFF;">
+                            <children>
+                                <TextField fx:id="filterField" layoutX="566.0" layoutY="73.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #EBE8F9; -fx-border-color: #B7C3D7;" />
+                                <Label layoutX="45.0" layoutY="69.0" text="Admin Panel">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="SearchButtonUserClick" fitHeight="17.0" fitWidth="16.0" layoutX="722.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_Search_52px.png" />
+                                    </image>
+                                </ImageView>
+                            <Pagination fx:id="pagination" layoutX="35.0" layoutY="144.0" prefHeight="414.0" prefWidth="781.0" />
+                                <TableView fx:id="tableView" layoutX="35.0" layoutY="144.0" prefHeight="359.0" prefWidth="781.0">
+                                    <columns>
+                                        <TableColumn fx:id="id" prefWidth="100" text="ID" />
+                                        <TableColumn fx:id="name" prefWidth="75.0" text="NOM" />
+                                        <TableColumn fx:id="lname" prefWidth="75.0" text="PRENOM" />
+                                        <TableColumn fx:id="mail" prefWidth="75.0" text="MAIL" />
+                                        <TableColumn fx:id="num_tel" prefWidth="75.0" text="TEL" />
+                                        <TableColumn fx:id="gender" prefWidth="75.0" text="GENDER" />
+                                        <TableColumn fx:id="points" prefWidth="75.0" text="POINTS" />
+                                        <TableColumn fx:id="dn" prefWidth="75.0" text="BIRTHDAY" />
+                                        <TableColumn fx:id="status" prefWidth="75.0" text="STATUS" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+        <VBox alignment="TOP_CENTER" layoutY="-4.0" prefHeight="590.0" prefWidth="256.0" style="-fx-background-color: #EBE8F9;">
+            <children>
+                <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/jimmy-fallon.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="50.0" />
+                    </VBox.margin>
+                </ImageView>
+                <Label fx:id="adminName" textFill="#e7e5e5">
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Users">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Products">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#LogoutAdmin" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Log Out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
