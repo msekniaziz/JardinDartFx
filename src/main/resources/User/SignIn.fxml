@@ -8,22 +8,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.RegisterController">
     <left>
-        <AnchorPane prefHeight="620.0" prefWidth="328.0" style="-fx-background-color: #82b74b;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="620.0" prefWidth="690.0" styleClass="MFXbutton" stylesheets="@style.css" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="WHITE" layoutX="22.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JARDIN D'ART" wrappingWidth="283.51171875">
+                <Text fill="WHITE" layoutX="14.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO JARDIN D'ART" wrappingWidth="560.3117065429688">
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font>
                 </Text>
-            <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="231.0" layoutX="48.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
     </left>
@@ -42,10 +40,11 @@
             <ComboBox fx:id="gender" editable="true" layoutX="120.0" layoutY="280.0" prefWidth="202.0" promptText="Gender" />
                 <PasswordField fx:id="password" layoutX="120.0" layoutY="430.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
                 <PasswordField fx:id="confirmPassword" layoutX="120.0" layoutY="480.0" prefHeight="25.0" prefWidth="202.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-                <Button fx:id="registerButton" layoutX="117.0" layoutY="557.0" mnemonicParsing="false" onAction="#register" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #404040; -fx-background-radius: 0px;" text="Submit" textFill="WHITE">
+                <Button fx:id="registerButton" layoutX="117.0" layoutY="557.0" mnemonicParsing="false" onAction="#register" prefHeight="32.0" prefWidth="90.0" text="Submit" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor></Button>
+                    </cursor>
+            </Button>
                 <Text fill="#404040" layoutX="219.0" layoutY="577.0" onMouseClicked="#showLoginStage" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account? Login" wrappingWidth="205.94558715820312">
                     <cursor>
                         <Cursor fx:constant="HAND" />

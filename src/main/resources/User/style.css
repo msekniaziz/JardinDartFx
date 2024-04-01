@@ -26,7 +26,7 @@
 .MFXbutton {
     -fx-font-family: "Montserrat", sans-serif;
     -fx-font-size: 14px;
-    -fx-background-color: linear-gradient(to right, #da5f46, #FA849B);
+    -fx-background-color: linear-gradient(to right, #46c468, #73f569);
     -fx-text-fill: white;
     -fx-padding: 8px 16px;
     -fx-background-radius: 0;

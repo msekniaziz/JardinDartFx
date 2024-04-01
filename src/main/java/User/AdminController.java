@@ -74,7 +74,7 @@ public class AdminController {
     ObservableList<User> dataList;
     @FXML
     private Pagination pagination;
-    private final int rowsPerPage = 5;
+
     public void DisplayUser() {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -85,22 +85,12 @@ public class AdminController {
         dn.setCellValueFactory(new PropertyValueFactory<>("date_birthday"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         points.setCellValueFactory(new PropertyValueFactory<>("nb_points"));
-
-        // Get data from database
         listM = DataBase.getDatauser();
-
-        // Set up pagination
-        int pageCount = (int) Math.ceil((double) listM.size() / rowsPerPage);
-        pagination.setPageCount(pageCount);
-        pagination.setPageFactory(pageIndex -> {
-            int fromIndex = pageIndex * rowsPerPage;
-            int toIndex = Math.min(fromIndex + rowsPerPage, listM.size());
-            tableView.setItems(FXCollections.observableArrayList(listM.subList(fromIndex, toIndex)));
-            return tableView;
-        });
     }
     public void initialize() throws SQLException {
         String userId = SessionManager.getInstance().getUserId();
+        int id =  SessionManager.getInstance().getUserFront();
+
         adminName.setText(String.valueOf(userId));
         ActivateUserBack();
         InactiveUserBack();

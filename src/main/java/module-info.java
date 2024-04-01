@@ -9,6 +9,7 @@ module User{
     requires com.google.api.client;
     requires twilio;
     requires slf4j.simple;
+    requires jakarta.mail;
     opens User;
 
 }

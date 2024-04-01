@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import User.EmailSender ;
 public class RegisterController implements Initializable {
     private final Connection con;
 
@@ -256,7 +257,7 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
-    public void register(ActionEvent actionEvent) {
+    public void register(ActionEvent actionEvent) throws Exception {
         if (checkIsValidated()) {
             User user = new User();
             window = registerButton.getScene().getWindow();
@@ -275,6 +276,10 @@ public class RegisterController implements Initializable {
                 String hashedConfirmPwd = DigestUtils.sha1Hex(confirmPwd);
                 boolean isUserAdded = user.addUser(nom, prenom, mail, tel, genderValue, hashedPwd, 0, age, dateBirthdayValue, hashedConfirmPwd);
                 if (isUserAdded) {
+                    String subject = "Welcome To Our Website JARDIN'ART";
+                    String messageBody = "Welcome";
+                    String email_to =  email.getText();
+                    EmailSender.sendEmail(email_to,subject, messageBody);
                     clearForm();
                     AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
                             "You have registered successfully.");
