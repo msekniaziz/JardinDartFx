@@ -4,9 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-public class addprouitr extends Application  {
+public class addprouitr extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
@@ -23,6 +24,10 @@ public class addprouitr extends Application  {
 
         // Show the stage
         primaryStage.show();
+
+        // Modify the existing ComboBox
+        ComboBox<String> catrgtroComboBox = (ComboBox<String>) root.lookup("#catrgtro");
+        catrgtroComboBox.getItems().addAll("house", " garden");
     }
 
     public static void main(String[] args) {

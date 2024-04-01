@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="475.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Addproduittr">
    <children>
       <Label layoutX="182.0" layoutY="34.0" prefHeight="40.0" prefWidth="237.0" text="Add a product for exchange">
@@ -23,7 +22,7 @@
       <TextField fx:id="nomidt" layoutX="27.0" layoutY="100.0" promptText="Name of the product" />
       <TextField fx:id="prodrtr" layoutX="415.0" layoutY="100.0" promptText="product in return" />
       <TextArea fx:id="dectro" layoutX="27.0" layoutY="159.0" prefHeight="126.0" prefWidth="270.0" promptText="decription of your product" />
-      <ComboBox fx:id="catrgtro" layoutX="27.0" layoutY="313.0" prefWidth="150.0" promptText="Category">
+      <ComboBox fx:id="catrgtro" layoutX="27.0" layoutY="313.0" prefWidth="150.0" promptText="Category" visibleRowCount="3">
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor>
@@ -40,6 +39,6 @@
             </ColorAdjust>
          </effect>
       </ImageView>
-      <Button fx:id="imagebuttp" layoutX="463.0" layoutY="217.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Add image" />
+      <Button fx:id="imagebuttp" layoutX="463.0" layoutY="217.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" onAction="#addImage" text="Add image" />
    </children>
 </AnchorPane>
