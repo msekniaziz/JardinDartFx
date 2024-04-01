@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -44,6 +45,32 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField mailFieldLogin;
+    @FXML
+    private Label captchaLabel;
+    @FXML
+    private ImageView generateCap;
+    @FXML
+    private TextField tfCaptcha;
+    @FXML
+    private Label checkrecaptcha;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    private void generateCaptcha() {
+        String captcha = generateRandomString(6);
+        captchaLabel.setText(captcha);
+    }
+    private String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder captcha = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            captcha.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return captcha.toString();
+    }
 
     public void login() {
         if (checkIsValidated()) {
@@ -114,6 +141,12 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         checkMailLogin.setVisible(false);
         CheckPasswordLogin.setVisible(false);
+        checkrecaptcha.setVisible(false);
+        generateCaptcha();
+        Image image1 = new Image("file:src/images/RecaptchaLogo.svg.png");
+        generateCap.setImage(image1);
+        Image image2 = new Image("file:src/images/logo_site.png");
+        imageView.setImage(image2);
     }
 
     public boolean CheckPasswordConstraint(String test) {
@@ -168,6 +201,16 @@ public class LoginController implements Initializable {
             verif = false;
         } else {
             CheckPasswordLogin.setVisible(false);
+        }
+        if (!tfCaptcha.getText().equals(captchaLabel.getText()))
+        {
+            checkrecaptcha.setVisible(true);
+            checkrecaptcha.setText("incorrect code , try again");
+            checkrecaptcha.setStyle("-fx-text-fill: red;");
+            verif = false;
+        }
+        else {
+            checkrecaptcha  .setVisible(false);
         }
         return verif;
     }

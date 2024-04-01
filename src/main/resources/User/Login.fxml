@@ -37,7 +37,7 @@
         <AnchorPane prefHeight="620.0" prefWidth="454.0" BorderPane.alignment="CENTER">
                 <TextField fx:id="mailFieldLogin" layoutX="122.0" layoutY="218.0" prefHeight="25.0" prefWidth="202.0" promptText="Mail" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
                 <PasswordField fx:id="passwordFieldLogin" layoutX="122.0" layoutY="270.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-                <Button fx:id="loginButton" layoutX="170.0" layoutY="334.0" mnemonicParsing="false" onAction="#login" prefHeight="43.0" prefWidth="106.0" stylesheets="@style.css" text="Login" textFill="WHITE">
+                <Button fx:id="loginButton" layoutX="169.0" layoutY="420.0" mnemonicParsing="false" onAction="#login" prefHeight="43.0" prefWidth="106.0" stylesheets="@style.css" text="Login" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                     </cursor>
@@ -49,7 +49,7 @@
                <String fx:value="MFXbutton" />
             </styleClass>
                 </Button>
-                <Text fx:id="goToForgotPassword" fill="#404040" fontSmoothingType="LCD" layoutX="93.0" layoutY="409.0" onMouseClicked="#changepassword" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" textAlignment="CENTER" wrappingWidth="261.90264892578125">
+                <Text fx:id="goToForgotPassword" fill="#404040" fontSmoothingType="LCD" layoutX="92.0" layoutY="495.0" onMouseClicked="#changepassword" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" textAlignment="CENTER" wrappingWidth="261.90264892578125">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
@@ -63,6 +63,10 @@
             <image>
                <Image url="@../../../images/logo_site.png" />
             </image></ImageView>
+         <ImageView fx:id="generateCap" fitHeight="47.0" fitWidth="62.0" layoutX="343.0" layoutY="336.0" onMouseClicked="#generateCaptcha" pickOnBounds="true" preserveRatio="true" />
+         <TextField fx:id="tfCaptcha" layoutX="121.0" layoutY="350.0" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+         <Label fx:id="captchaLabel" layoutX="121.0" layoutY="327.0" prefHeight="18.0" prefWidth="190.0" />
+         <Label fx:id="checkrecaptcha" layoutX="121.0" layoutY="383.0" prefHeight="18.0" prefWidth="250.0" text="Label" />
         </AnchorPane>
     </center>
 </BorderPane>

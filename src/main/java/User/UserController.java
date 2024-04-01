@@ -110,6 +110,7 @@ public class UserController implements Initializable {
     @FXML
     private Button resetbutton;
     private String codeFromSMS;
+
     Window window;
     String tel ;
     String mail ;
@@ -466,7 +467,8 @@ public class UserController implements Initializable {
         }
         return PhoneExist;
     }
-
+    @FXML
+    private Button loginButton;
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -474,7 +476,6 @@ public class UserController implements Initializable {
         con = dataBase.getConnect();
         int userId = SessionManager.getInstance().getUserFront();
         String username = SessionManager.getInstance().getUserId();
-        NameUser.setText(username);
         try {
             String query = "SELECT * FROM user WHERE id = ?";
             PreparedStatement statement = con.prepareStatement(query);
@@ -487,6 +488,7 @@ public class UserController implements Initializable {
                 PhoneNumberfield.setText(resultSet.getString("tel"));
                 tel = resultSet.getString("tel");
                 mail = resultSet.getString("mail");
+                NameUser.setText(username);
             }
             resultSet.close();
             statement.close();

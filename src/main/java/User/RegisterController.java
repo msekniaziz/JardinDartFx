@@ -17,13 +17,11 @@ import javafx.stage.Window;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.regex.Pattern;
 import User.EmailSender ;
 public class RegisterController implements Initializable {
@@ -106,7 +104,6 @@ public class RegisterController implements Initializable {
         checkPassword.setVisible(false);
         checkConfirmPassword.setVisible(false);
         Image image1 = new Image("file:src/images/logo_site.png");
-        imageView.setImage(image1);
     }
 
     private boolean checkIsValidated() {
@@ -255,9 +252,16 @@ public class RegisterController implements Initializable {
         stage.setTitle("User Login");
         stage.show();
     }
+    private String generateUniqueToken() {
+        // Generate a random UUID (Universally Unique Identifier)
+        return UUID.randomUUID().toString();
+    }
 
     @FXML
     public void register(ActionEvent actionEvent) throws Exception {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         if (checkIsValidated()) {
             User user = new User();
             window = registerButton.getScene().getWindow();
@@ -270,19 +274,52 @@ public class RegisterController implements Initializable {
             String confirmPwd = confirmPassword.getText();
             String age = agefield.getText();
             LocalDate dateBirthdayValue = dateBirthday.getValue();
+            String token = generateUniqueToken();
 
             if (pwd.equals(confirmPwd)) {
                 String hashedPwd = DigestUtils.sha1Hex(pwd);
                 String hashedConfirmPwd = DigestUtils.sha1Hex(confirmPwd);
                 boolean isUserAdded = user.addUser(nom, prenom, mail, tel, genderValue, hashedPwd, 0, age, dateBirthdayValue, hashedConfirmPwd);
+
                 if (isUserAdded) {
-                    String subject = "Welcome To Our Website JARDIN'ART";
-                    String messageBody = "Welcome";
-                    String email_to =  email.getText();
-                    EmailSender.sendEmail(email_to,subject, messageBody);
-                    clearForm();
-                    AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                            "You have registered successfully.");
+                    String query = "SELECT id FROM user ORDER BY id DESC LIMIT 1";
+                    try {
+                        ps = con.prepareStatement(query);
+                        rs = ps.executeQuery();
+                        if (rs.next()) {
+                            int userID = rs.getInt("id");
+                            System.out.println(userID);
+                            String subject = "Welcome To Our Website JARDIN'ART";
+                            String verificationUrl = "http://www.jardindart.com/verif/email/" + userID + "/" + token;
+                            String messageBody = "Welcome to Jardin d'art!\n\n";
+                            messageBody += "Please click the following link to verify your account:\n";
+                            messageBody += "<a href='" + verificationUrl + "'>Verify Account</a>";
+                            String email_to = email.getText();
+                            EmailSender.sendEmail(email_to, subject, messageBody);
+                            clearForm();
+                            AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+                                    "You have registered successfully.");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                "Failed to retrieve user ID. Please try again later.");
+                    } finally {
+                        if (rs != null) {
+                            try {
+                                rs.close();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (ps != null) {
+                            try {
+                                ps.close();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 } else {
                     AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
                             "Failed to register user. Please try again later.");
@@ -293,7 +330,6 @@ public class RegisterController implements Initializable {
             }
         }
     }
-
 
     private boolean isAlreadyRegisteredWithMail() {
         PreparedStatement ps;
