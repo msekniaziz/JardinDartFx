@@ -5,6 +5,7 @@ module tn.esprit.jardindart {
     exports tn.esprit.gui;
     exports tn.esprit.controllers;
     opens tn.esprit.controllers to javafx.fxml;
+    opens tn.esprit.entities to javafx.base;
 
 
     opens tn.esprit.jardindart to javafx.fxml;

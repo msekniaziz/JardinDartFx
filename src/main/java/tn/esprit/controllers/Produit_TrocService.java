@@ -29,13 +29,13 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
     }
 
 
-    public List<Produittroc> searchByNameAndCategory(String name, String category) throws SQLException {
+    public List<Produittroc> searchByNameAndCategory(String searchTerm) throws SQLException {
         List<Produittroc> productList = new ArrayList<>();
 
-        String req = "SELECT * FROM `produit_troc` WHERE `nom` LIKE ? AND `category` LIKE ?";
+        String req = "SELECT * FROM `produit_troc` WHERE `nom` LIKE ? OR `category` LIKE ?";
         PreparedStatement ps = conx.prepareStatement(req);
-        ps.setString(1, "%" + name + "%");
-        ps.setString(2, "%" + category + "%");
+        ps.setString(1, "%" + searchTerm + "%");
+        ps.setString(2, "%" + searchTerm + "%");
 
         ResultSet rs = ps.executeQuery();
 
@@ -109,14 +109,6 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
         System.out.println("Produit supprimé avec succès");
     }
     @Override
-    public void deletePTall() throws SQLException {
-        String req = "DELETE FROM `produit_troc`";
-        stm = conx.createStatement();
-        stm.executeUpdate(req);
-        System.out.println("Tous les produits ont été supprimés avec succès");
-    }
-
-    @Override
     public List<Produittroc> afficherListPT() throws SQLException {
         // Implement the method to retrieve a list of Produittroc objects
         String req = "SELECT * FROM `produit_troc`";
@@ -140,6 +132,14 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
         }
 
         return produits;
+    }
+
+    @Override
+    public void deletePTall() throws SQLException {
+        String req = "DELETE FROM `produit_troc`";
+        stm = conx.createStatement();
+        stm.executeUpdate(req);
+        System.out.println("Tous les produits ont été supprimés avec succès");
     }
     @Override
     public Produittroc getProduitById(int id) throws SQLException {
@@ -165,7 +165,6 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
             return null;
         }
     }
-
 
 
 
