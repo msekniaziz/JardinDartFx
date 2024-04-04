@@ -1,19 +1,13 @@
-package User;
+package tn.jardindart;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.Objects;
+import tn.jardindart.entites.User;
 
 public class UserManagment extends Application {
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("HomeOFF.fxml"));

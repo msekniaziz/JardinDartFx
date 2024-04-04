@@ -1,4 +1,4 @@
-package User;
+package tn.jardindart.controllers;
 
 public class SessionManager {
     private static SessionManager instance;

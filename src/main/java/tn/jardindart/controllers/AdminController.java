@@ -1,5 +1,7 @@
-package User;
+package tn.jardindart.controllers;
 
+import tn.jardindart.entites.* ;
+import tn.jardindart.utils.DataBase ;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
@@ -11,10 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.Node;
 import javafx.stage.Stage;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Pagination;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,7 +21,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
-import javafx.scene.paint.Color;
 
 public class AdminController {
 
@@ -106,7 +103,7 @@ public class AdminController {
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.close();
             Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             newStage.show();

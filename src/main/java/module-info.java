@@ -1,4 +1,4 @@
-module User{
+module tn.jardindart{
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
@@ -6,10 +6,10 @@ module User{
     requires org.controlsfx.controls;
     requires org.apache.commons.codec;
     requires javafx.web;
-    requires com.google.api.client;
     requires twilio;
     requires slf4j.simple;
     requires jakarta.mail;
-    opens User;
-
+    opens tn.jardindart.controllers;
+    opens tn.jardindart.utils;
+    opens tn.jardindart.entites;
 }

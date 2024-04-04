@@ -1,4 +1,5 @@
-package User ;
+package tn.jardindart.controllers ;
+
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
 import helper.AlertHelper;
@@ -15,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.commons.codec.digest.DigestUtils;
-
+import tn.jardindart.utils.DataBase;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -222,7 +223,7 @@ public class UserController implements Initializable {
                                         "User password updated successfully , Session expired in 10 seconds");
                                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
                                     SessionManager.getInstance().cleanUserSessionFront();
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.jardindart/Login.fxml"));
                                     Parent root = null;
                                     try {
                                         root = loader.load();
@@ -504,7 +505,7 @@ public class UserController implements Initializable {
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.close();
             Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             newStage.show();

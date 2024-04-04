@@ -1,4 +1,5 @@
-package User ;
+package tn.jardindart.controllers ;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -43,7 +44,7 @@ public class HomeON implements Initializable {
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.close();
             Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             newStage.show();
@@ -61,7 +62,7 @@ public class HomeON implements Initializable {
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.close();
             Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProfileUser.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/ProfileUser.fxml")));
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             newStage.setTitle("User Profile");

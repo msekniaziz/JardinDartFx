@@ -1,4 +1,4 @@
-package User;
+package tn.jardindart.controllers;
 
 import com.twilio.rest.supersim.v1.UsageRecord;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-
+import tn.jardindart.utils.DataBase;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import helper.AlertHelper;
@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import org.apache.commons.codec.digest.DigestUtils;
 import javafx.stage.Window;
-import org.w3c.dom.events.MouseEvent;
 
 public class LoginController implements Initializable {
     private final Connection con;
@@ -56,6 +55,10 @@ public class LoginController implements Initializable {
 
     @FXML
     private ImageView imageView;
+
+    @FXML
+    private ImageView imagePassword;
+
 
     @FXML
     private void generateCaptcha() {
@@ -93,7 +96,7 @@ public class LoginController implements Initializable {
                             SessionManager.getInstance().setUserId(fullName);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminPannel.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/AdminPannel.fxml")));
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.setTitle("Admin Panel");
@@ -110,7 +113,7 @@ public class LoginController implements Initializable {
                             SessionManager.getInstance().setUserFront(id);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeON.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/HomeON.fxml")));
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.setTitle("User Panel");
@@ -223,7 +226,7 @@ public class LoginController implements Initializable {
     public void showSignInStage() throws IOException {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SignIn.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/SignIn.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("User SignIn");
@@ -232,7 +235,7 @@ public class LoginController implements Initializable {
     public void changepassword(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         Stage forgotPasswordStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ForgotPassword.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/ForgotPassword.fxml")));
         Scene scene = new Scene(root);
         forgotPasswordStage.setScene(scene);
         forgotPasswordStage.setTitle("Reset Password");

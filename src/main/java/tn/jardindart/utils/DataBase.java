@@ -1,12 +1,11 @@
-    package User;
+package tn.jardindart.utils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.sql.*;
+import java.time.LocalDate;
+import tn.jardindart.entites.User;
 
-    import javafx.collections.FXCollections;
-    import javafx.collections.ObservableList;
-
-    import java.sql.*;
-    import java.time.LocalDate;
-
-    public class DataBase {
+public class DataBase {
         public static Connection connect;
         public static Connection getConnect() {
             String DatabaseName = "pi";

@@ -1,9 +1,10 @@
-package User;
+package tn.jardindart.entites;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate ;
+import java.time.LocalDate;
+import tn.jardindart.utils.DataBase ;
 
 public class User {
 

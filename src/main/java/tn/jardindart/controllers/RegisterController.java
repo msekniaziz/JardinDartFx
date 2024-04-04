@@ -1,4 +1,4 @@
-package User;
+package tn.jardindart.controllers;
 
 import helper.AlertHelper;
 import javafx.event.ActionEvent;
@@ -14,6 +14,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import tn.jardindart.utils.DataBase;
+import tn.jardindart.entites.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +25,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.regex.Pattern;
-import User.EmailSender ;
+import tn.jardindart.controllers.EmailSender ;
+
 public class RegisterController implements Initializable {
     private final Connection con;
 
@@ -246,7 +249,7 @@ public class RegisterController implements Initializable {
     private void showLoginStage() throws IOException {
         Stage stage = (Stage) registerButton.getScene().getWindow();
         stage.close();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("User Login");
@@ -275,7 +278,6 @@ public class RegisterController implements Initializable {
             String age = agefield.getText();
             LocalDate dateBirthdayValue = dateBirthday.getValue();
             String token = generateUniqueToken();
-
             if (pwd.equals(confirmPwd)) {
                 String hashedPwd = DigestUtils.sha1Hex(pwd);
                 String hashedConfirmPwd = DigestUtils.sha1Hex(confirmPwd);

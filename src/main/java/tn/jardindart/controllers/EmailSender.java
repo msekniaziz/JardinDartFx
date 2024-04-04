@@ -1,6 +1,6 @@
-package User ;
-import java.util.Properties;
+package tn.jardindart.controllers ;
 
+import java.util.Properties;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.PasswordAuthentication;
