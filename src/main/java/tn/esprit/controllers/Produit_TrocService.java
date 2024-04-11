@@ -1,13 +1,18 @@
 package tn.esprit.controllers;
 
-import tn.esprit.entities.Person;
 import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 import tn.esprit.utils.MyDatabase;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class Produit_TrocService implements CrudPT <Produittroc>{
     private Connection conx;
@@ -16,7 +21,6 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
     public Produit_TrocService(){
         conx = MyDatabase.getInstance().getConx();
     }
-
 
 
     @Override
@@ -98,6 +102,7 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
     }
 
 
+
     @Override
     public void deletePT(Produittroc produittroc) throws SQLException {
         String req = "DELETE FROM `produit_troc` WHERE `id`=?";
@@ -141,6 +146,9 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
         stm.executeUpdate(req);
         System.out.println("Tous les produits ont été supprimés avec succès");
     }
+
+
+
     @Override
     public Produittroc getProduitById(int id) throws SQLException {
         String req = "SELECT * FROM `produit_troc` WHERE `id`=?";
@@ -167,6 +175,36 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
     }
 
 
+    public void uploadImage(File imageFile) {
+        // Define the directory within your project where you want to store the uploaded images
+        String uploadDirectory = "src/main/java/images"; // Change this to your desired directory
 
+        // Create the directory if it doesn't exist
+        File directory = new File(uploadDirectory);
+        if (!directory.exists()) {
+            if (!directory.mkdirs()) {
+                // Failed to create the directory
+                System.err.println("Failed to create the upload directory");
+                return; // Exit the method
+            }
+        }
+
+        try {
+            // Get the file name of the uploaded image
+            String fileName = imageFile.getName();
+
+            // Define the destination path where you want to store the uploaded image
+            Path destinationPath = Path.of(uploadDirectory, fileName);
+
+            // Copy the uploaded image file to the destination path
+            Files.copy(imageFile.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            // Handle the IOException
+            System.err.println("Error uploading image: " + e.getMessage());
+        }
+    }
+
+    public static class Cardtptr {
+    }
 }
 

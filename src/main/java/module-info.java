@@ -2,6 +2,7 @@ module tn.esprit.jardindart {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
     exports tn.esprit.gui;
     exports tn.esprit.controllers;
     opens tn.esprit.controllers to javafx.fxml;
@@ -10,4 +11,5 @@ module tn.esprit.jardindart {
 
     opens tn.esprit.jardindart to javafx.fxml;
     exports tn.esprit.jardindart;
+    opens tn.esprit.gui to javafx.fxml;
 }
