@@ -104,15 +104,42 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
 
 
     @Override
-    public void deletePT(Produittroc produittroc) throws SQLException {
+    public void deletePT(Produittroc produittroc) {
         String req = "DELETE FROM `produit_troc` WHERE `id`=?";
-        pstm = conx.prepareStatement(req);
-
-        pstm.setInt(1, produittroc.getId());
-
-        pstm.executeUpdate();
-        System.out.println("Produit supprimé avec succès");
+        try (PreparedStatement pstm = conx.prepareStatement(req)) {
+            pstm.setInt(1, produittroc.getId());
+            int rowsAffected = pstm.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Produit supprimé avec succès");
+            } else {
+                System.out.println("Aucun produit trouvé avec l'ID spécifié");
+            }
+        } catch (SQLException e) {
+            System.err.println("Une erreur s'est produite lors de la suppression du produit: " + e.getMessage());
+        }
     }
+
+
+
+
+    public void deletePT1(int productId) {
+        String query = "DELETE FROM `produit_troc` WHERE `id` = ? ";
+        try (PreparedStatement preparedStatement = conx.prepareStatement(query)) {
+            preparedStatement.setInt(1, productId);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product with ID " + productId + " deleted successfully.");
+            } else {
+                System.out.println("No product found with the specified ID: " + productId);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error deleting product: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
     @Override
     public List<Produittroc> afficherListPT() throws SQLException {
         // Implement the method to retrieve a list of Produittroc objects
@@ -125,7 +152,8 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
 
         while (res.next()){
             Produittroc produit = new Produittroc();
-            produit.setId(res.getInt("id_user_id"));
+            produit.setId((res.getInt("id")));
+            produit.setId_user_id(res.getInt("id_user_id"));
             produit.setNom(res.getString("nom"));
             produit.setCategory(res.getString("category"));
             produit.setDescription(res.getString("description"));

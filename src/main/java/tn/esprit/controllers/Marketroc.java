@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -70,16 +71,18 @@ public class Marketroc implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        collectionanchor.setVisible(false);
+//        collectionanchor.setVisible(false);
+
         mainanchor.setVisible(true);
-        bookicon.setVisible(true);
+        bookicon.setVisible(false);
         loadBooks();
 //        loadCollectionItems();
 //        ObservableList<String> listData = FXCollections.observableArrayList("GARDEN", "HOUSE","AUTRE");
 //        categoryComboBox.setItems(listData);
     }
 
-    private void loadBooks() {
+
+    void loadBooks() {
         int col = 1;
         int rows = 0;
         try {
@@ -107,6 +110,7 @@ public class Marketroc implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
 //    private void loadCollectionItems() {
