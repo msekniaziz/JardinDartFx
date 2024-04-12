@@ -1,51 +1,74 @@
-.search-box{
-    -fx-background-color:#FFFFFF;
-    -fx-background-radius: 100;
+/* Apply styles to the main anchor pane */
+#mainanchor {
+    -fx-background-color: #f0f0f0; /* Light gray background color */
 }
 
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
+/* Apply styles to the collection anchor pane */
+#collectionanchor {
+    -fx-background-color: #ffffff; /* White background color */
+    -fx-border-color: #cccccc; /* Light gray border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Border radius */
 }
 
-.search-button{
-    -fx-background-color: #828282;
-    -fx-background-radius: 30;
+/* Apply styles to the buttons inside the main anchor pane */
+.button {
+    -fx-background-color: #007bff; /* Blue background color */
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-font-size: 18px; /* Button text size */
 }
 
-.right-bar{
-    -fx-background-color: #D3D3D3;
+/* Apply styles to the labels */
+.label {
+    -fx-text-fill: #000000; /* Black text color */
+    -fx-font-size: 20px; /* Label text size */
 }
 
-.shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+/* Apply styles to the scroll panes */
+.scroll-pane {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-border-color: transparent; /* Transparent border color */
 }
 
-.chosen-fruit-card{
-    -fx-background-color: #F16C31;
-    -fx-background-radius: 30;
+/* Apply styles to the grid panes */
+.grid-pane {
+    -fx-background-color: transparent; /* Transparent background */
 }
 
-.comboBox{
-    -fx-background-color: rgba(255,255,255,0.3);
-    -fx-background-radius: 30;
+/* Apply styles to the combo box */
+.combo-box {
+    -fx-background-color: #ffffff; /* White background color */
+    -fx-border-color: #cccccc; /* Light gray border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 5px; /* Border radius */
 }
 
-.add-btn{
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 100;
+/* Apply styles to the combo box items */
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #ffffff; /* White background color */
+    -fx-text-fill: #000000; /* Black text color */
+    -fx-font-size: 16px; /* Combo box item text size */
 }
 
-.free-delivery-card{
-    -fx-background-color: #D3D3D3;
-    -fx-background-radius: 30;
+/* Apply styles to the book icon */
+#bookicon {
+    -fx-effect: dropshadow(three-pass-box, #000000, 10, 0, 0, 0); /* Add drop shadow effect */
 }
 
-.shopping-online-card{
-    -fx-background-color: #BAEAC3;
-    -fx-background-radius: 30;
+/* Apply styles to the labels inside the anchor panes */
+#mainanchor .label,
+#collectionanchor .label {
+    -fx-font-weight: bold; /* Bold font weight */
 }
 
-.fruit-item{
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 30;
+/* Apply styles to the scroll panes inside the anchor panes */
+#mainanchor .scroll-pane,
+#collectionanchor .scroll-pane {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-border-color: transparent; /* Transparent border color */
+}
+
+/* Apply styles to the scroll bars inside the scroll panes */
+.scroll-bar {
+    -fx-background-color: #cccccc; /* Light gray background color */
 }

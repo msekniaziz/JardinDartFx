@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="475.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.itemsPd">
 
+<AnchorPane prefHeight="253.0" prefWidth="576.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.itemsPd">
 
    <children>
       <VBox layoutX="14.0" layoutY="32.0" prefHeight="352.0" prefWidth="297.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="477.0" AnchorPane.topAnchor="32.0">
@@ -31,7 +31,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="delete" alignment="TOP_CENTER"  layoutX="171.0" layoutY="292.0" mnemonicParsing="false"  onAction="#delete_clicked" text="Delete" textFill="WHITE">
+      <Button fx:id="delete" alignment="TOP_CENTER" layoutX="171.0" onAction="#delete_clicked" layoutY="292.0" mnemonicParsing="false" text="Delete" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
