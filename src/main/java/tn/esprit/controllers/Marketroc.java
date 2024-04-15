@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
@@ -111,8 +113,24 @@ public class Marketroc implements Initializable {
         }
     }
 
+    public void reloadMarket() {
+        try {
+            // Get the URL of the FXML file
+            URL location = getClass().getResource("/tn/esprit/jardindart/Market.fxml");
 
+            // Load the FXML file and initialize the controller
+            FXMLLoader loader = new FXMLLoader(location);
+            Parent root = loader.load();
 
+            // Get the current scene from any node within the scene hierarchy
+            Scene scene = mainanchor.getScene();
+
+            // Replace the root of the current scene with the newly loaded root
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log the exception
+        }
+    }
 //    private void loadCollectionItems() {
 //        int col = 0;
 //        int rows = 0;

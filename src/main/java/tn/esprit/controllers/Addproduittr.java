@@ -104,4 +104,5 @@ public class Addproduittr {
             imageid.setImage(image);
         }
     }
+
 }

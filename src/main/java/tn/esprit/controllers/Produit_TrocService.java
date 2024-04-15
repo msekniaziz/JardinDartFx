@@ -80,21 +80,21 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
 
     @Override
     public void modifierPT(Produittroc produittroc) throws SQLException {
-        String req = "UPDATE `produit_troc` SET `id_user_id`=?, `nom`=?, `category`=?, `description`=?, `statut`=?, `image`=?, `nom_produit_recherche`=? WHERE `id`=?";
+        String req = "UPDATE `produit_troc` SET `nom`=?, `category`=?, `description`=?, `statut`=?, `image`=?, `nom_produit_recherche`=? WHERE `id`=?";
         pstm = conx.prepareStatement(req);
 
-        pstm.setInt(1, produittroc.getId());
-        pstm.setString(2, produittroc.getNom());
-        pstm.setString(3, produittroc.getCategory());
-        pstm.setString(4, produittroc.getDescription());
-        pstm.setInt(5, produittroc.getStatut());
-        pstm.setString(6, produittroc.getImage());
-        pstm.setString(7, produittroc.getNom_produit_recherche());
-        pstm.setInt(8, produittroc.getId());
+        pstm.setString(1, produittroc.getNom());
+        pstm.setString(2, produittroc.getCategory());
+        pstm.setString(3, produittroc.getDescription());
+        pstm.setInt(4, produittroc.getStatut());
+        pstm.setString(5, produittroc.getImage());
+        pstm.setString(6, produittroc.getNom_produit_recherche());
+        pstm.setInt(7, produittroc.getId());
 
         pstm.executeUpdate();
         System.out.println("Produit modifié avec succès");
     }
+
 
     @Override
     public void modifierPT1(Producttrocwith producttrocwith, int idprd, String nom, String category, String description, String image) {

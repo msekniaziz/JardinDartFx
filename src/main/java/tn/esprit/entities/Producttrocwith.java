@@ -5,13 +5,21 @@ public class Producttrocwith {
     int id,prod_id_troc_id;
     String nom,category,description,image;
 
-    public Producttrocwith(int id, int prod_id_troc_id, String nom, String category, String description, String image) {
-        this.id = id;
-        this.prod_id_troc_id = prod_id_troc_id;
+
+    public Producttrocwith(int prod_id_troc_id, String nom, Categorie category, String description, String image) {
+//        this.id = id;
         this.nom = nom;
-        this.category = category;
+        this.prod_id_troc_id=prod_id_troc_id;
+        this.category = String.valueOf(category);
         this.description = description;
         this.image = image;
+    }
+
+
+
+    public enum Categorie {
+        House,
+        Garden
     }
 
     public Producttrocwith(int prod_id_troc_id, String nom, String category, String description, String image) {
