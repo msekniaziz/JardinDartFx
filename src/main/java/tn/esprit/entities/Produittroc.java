@@ -15,6 +15,10 @@ public class Produittroc {
         this.image = image;
         this.nom_produit_recherche = nom_produit_recherche;
     }
+    public enum Categorie {
+        House,
+        Garden
+    }
 
     public Produittroc() {
 
