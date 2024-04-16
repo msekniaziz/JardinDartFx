@@ -84,6 +84,7 @@ public class Marketroc implements Initializable {
     }
 
 
+
     void loadBooks() {
         int col = 1;
         int rows = 0;
@@ -94,6 +95,7 @@ public class Marketroc implements Initializable {
                 AnchorPane anchorPane = fxmlLoader.load();
                 itemsPd ItemController = fxmlLoader.getController();
                 ItemController.setData(BookObservableList.get(i));
+
                 BookListView.add(anchorPane, col, rows);
 
                 // Increment col for the next iteration
