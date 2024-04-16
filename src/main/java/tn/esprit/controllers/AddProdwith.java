@@ -12,13 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import  tn.esprit.entities.Producttrocwith;
-import  tn.esprit.controllers.itemsPd;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
-import tn.esprit.entities.Produittroc;
 
 import java.io.File;
 
@@ -52,7 +50,8 @@ public class AddProdwith implements Initializable {
 
     @FXML
     private ImageView imgb;
-
+    @FXML
+    private TextField prod_id_id;
     @FXML
     private Button imgbb;
 
@@ -61,22 +60,29 @@ public class AddProdwith implements Initializable {
     private  Produit_troc_with_Service produitTrocWithService = new Produit_troc_with_Service();
 
    Producttrocwith producttrocwith;
+   private itemsPd p ;
 
     public AnchorPane getAddAnchor() {
         return addanchor;
     }
-    itemsPd p =new itemsPd();
 
-    public void setprod(Producttrocwith book) {
+    private int mainProductId;
+
+    public void setMainProductId(int mainProductId) {
+        this.mainProductId = mainProductId;
+    }
+    int a=0;
+
+public Producttrocwith setprod(Producttrocwith book,int a) {
         this.producttrocwith = book;
+
         // Set existing book information to the labels and text fields
         book.setId(producttrocwith.getId());
-
+prod_id_id.setText(String.valueOf(a));
         TitleL.setText(book.getNom());
         description.setText(book.getDescription());
         CategoryCombo.setValue(book.getCategory());
-
-
+return book;
         // Load the image
 //        Image image = new Image(book.getImage()); // Assuming book.getImage() returns the path to the image file
 
@@ -116,6 +122,7 @@ public class AddProdwith implements Initializable {
         String prodtitle = TitleL.getText().trim();
         String proddesc = description.getText().trim();
         String selectedCategoryString = CategoryCombo.getValue();
+        String id_prod= prod_id_id.getText();
 
         if (prodtitle.isEmpty() || !prodtitle.matches(".*[a-zA-Z].*")) {
             showAlert("Error", "The book title cannot be empty and must contain letters.");
@@ -135,17 +142,59 @@ public class AddProdwith implements Initializable {
             showAlert("Error", "Please select an image.");
             return;
         }
-        int z;
-z=p.seti();        // Create the product and add it to the database
-        Producttrocwith book = new Producttrocwith(z,prodtitle, selectedCategory, proddesc, imagePath1);
+
+        // Create a new instance of Producttrocwith using the setprod method
+        Producttrocwith book = new Producttrocwith(Integer.parseInt(id_prod),prodtitle, selectedCategory, proddesc, imagePath1);
+
+
+
         try {
             produitTrocWithService.addMeth2(book);
             showAlert("Success", "Product added successfully.");
+            System.out.println(book);
         } catch (SQLException e) {
             showAlert("Error", "Failed to add product: " + e.getMessage());
             System.out.println(e.getMessage());
+            System.out.println(book);
         }
     }
+
+
+//    @FXML
+//    void AddBookBtn(ActionEvent event) {
+//        // Validate input fields before adding the product
+//        String prodtitle = TitleL.getText().trim();
+//        String proddesc = description.getText().trim();
+//        String selectedCategoryString = CategoryCombo.getValue();
+//
+//        if (prodtitle.isEmpty() || !prodtitle.matches(".*[a-zA-Z].*")) {
+//            showAlert("Error", "The book title cannot be empty and must contain letters.");
+//            return;
+//        }
+//
+//        if (selectedCategoryString == null) {
+//            showAlert("Error", "Please select a category.");
+//            return;
+//        }
+//
+//        // Convert the selected category string to the enum value
+//        Producttrocwith.Categorie selectedCategory = Producttrocwith.Categorie.valueOf(selectedCategoryString);
+//
+//        // Check if an image is selected
+//        if (imagePath1 == null || imagePath1.isEmpty()) {
+//            showAlert("Error", "Please select an image.");
+//            return;
+//        }
+//            // Create the product and add it to the database
+//
+//        try {
+//            produitTrocWithService.addMeth2(book);
+//            showAlert("Success", "Product added successfully.");
+//        } catch (SQLException e) {
+//            showAlert("Error", "Failed to add product: " + e.getMessage());
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
     // Method to display an alert dialog
     private void showAlert(String title, String message) {

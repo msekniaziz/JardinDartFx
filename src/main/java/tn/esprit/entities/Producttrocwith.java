@@ -1,10 +1,22 @@
 package tn.esprit.entities;
 
+import javafx.scene.control.TextField;
+
 public class Producttrocwith {
 
     int id,prod_id_troc_id;
     String nom,category,description,image;
 
+    public Producttrocwith(int prod_id_troc_id) {
+        this.prod_id_troc_id = prod_id_troc_id;
+    }
+
+    public Producttrocwith(String nom, Categorie category, String description, String image) {
+        this.nom = nom;
+        this.category = String.valueOf(category);
+        this.description = description;
+        this.image = image;
+    }
 
     public Producttrocwith(int prod_id_troc_id, String nom, Categorie category, String description, String image) {
 //        this.id = id;
@@ -14,6 +26,7 @@ public class Producttrocwith {
         this.description = description;
         this.image = image;
     }
+
 
 
 

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -65,6 +64,7 @@
             <ComboBox fx:id="CategoryCombo" layoutX="250.0" layoutY="341.0" prefWidth="150.0" />
             <TextField fx:id="imgpathstring" layoutX="91.0" layoutY="203.0" visible="false" />
             <TextField fx:id="description" layoutX="252.0" layoutY="419.0" />
+            <TextField fx:id="prod_id_id" layoutX="251.0" layoutY="302.0" />
          </children>
       </AnchorPane>
    </children>

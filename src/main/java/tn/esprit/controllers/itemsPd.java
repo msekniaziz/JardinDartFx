@@ -50,18 +50,18 @@ public class itemsPd {
 
     private Produittroc book=new Produittroc();
     Produit_TrocService produitTrocService = new Produit_TrocService();
-Producttrocwith producttrocwith=new Producttrocwith();
+    Producttrocwith producttrocwith=new Producttrocwith();
 
 
 
-public int seti()
-{int id;
-   return id=this.book.getId();
-}
+    public int seti()
+    {int id;
+        return id=this.book.getId();
+    }
     public void setData(Produittroc book){
         this.book=book;
 
-      book.setId(this.book.getId());
+        book.setId(this.book.getId());
 
         System.out.println(book);
         itemname.setText(book.getNom());
@@ -216,12 +216,16 @@ public int seti()
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        int z;
+        z=seti();
 
         // Access the controller after loading the fxml
         AddProdwith addProdController = fxmlLoader.getController();
 
         // Set the book in the AddProdwith controller
-        addProdController.setprod(producttrocwith);
+        int a;
+        a=this.book.getId();
+       addProdController.setprod(producttrocwith,this.book.getId());
 
         // Create a new scene
         Scene addProdScene = new Scene(anchorPane);
