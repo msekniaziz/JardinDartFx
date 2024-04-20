@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -96,7 +98,13 @@ public class RegisterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources)
     {
         gender.getItems().addAll("Man", "Women");
-        agefield.setText("15");
+        LocalDate birthDate = dateBirthday.getValue();
+        LocalDate currentDate = LocalDate.now();
+        if (birthDate != null) {
+            Period period = Period.between(birthDate, currentDate);
+            System.out.println(period);
+            agefield.setText(String.valueOf(period));
+        }
         checkfirstName.setVisible(false);
         checklastName.setVisible(false);
         checkMail.setVisible(false);
@@ -107,9 +115,11 @@ public class RegisterController implements Initializable {
         checkPassword.setVisible(false);
         checkConfirmPassword.setVisible(false);
         Image image1 = new Image("file:src/images/logo_site.png");
+
     }
 
     private boolean checkIsValidated() {
+
         boolean verif = true ;
         if (firstName.getText().isEmpty()) {
             checkfirstName.setVisible(true);
@@ -256,7 +266,6 @@ public class RegisterController implements Initializable {
         stage.show();
     }
     private String generateUniqueToken() {
-        // Generate a random UUID (Universally Unique Identifier)
         return UUID.randomUUID().toString();
     }
 
@@ -290,7 +299,6 @@ public class RegisterController implements Initializable {
                         rs = ps.executeQuery();
                         if (rs.next()) {
                             int userID = rs.getInt("id");
-                            System.out.println(userID);
                             String subject = "Welcome To Our Website JARDIN'ART";
                             String verificationUrl = "http://www.jardindart.com/verif/email/" + userID + "/" + token;
                             String messageBody = "Welcome to Jardin d'art!\n\n";
@@ -455,5 +463,13 @@ public class RegisterController implements Initializable {
         dateBirthday.valueProperty().setValue(null);
     }
 
-
+    public void takeDate(MouseEvent mouseEvent) {
+        LocalDate birthDate = dateBirthday.getValue();
+        LocalDate currentDate = LocalDate.now();
+        if (birthDate != null) {
+            Period period = Period.between(birthDate, currentDate);
+            String years = String.valueOf(period.getYears());
+            agefield.setText(years);
+        }
+    }
 }

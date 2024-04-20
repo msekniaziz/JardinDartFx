@@ -112,6 +112,11 @@ public class UserController implements Initializable {
     private Button resetbutton;
     private String codeFromSMS;
 
+    @FXML
+    private PasswordField confirmPassword;
+    @FXML
+    private Label labelcheckpassword;
+
     Window window;
     String tel ;
     String mail ;
@@ -127,23 +132,30 @@ public class UserController implements Initializable {
     void showcode(ActionEvent event) throws SQLException {
         String num = numField.getText();
         if (isPhoneNumberAvailable(num)) {
-            AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                    "Check your phone for your code");
-            Random random = new Random();
-            int code = random.nextInt(10000);
-            codeFromSMS = String.format("%04d", code);
-            codefield.setVisible(true);
-            codecheck.setVisible(true);
-            CodeButton1.setVisible(true);
-            numcheck.setVisible(false);
-            final String ACCOUNT_SID = "AC4116c3496ed4b8c8c4ebaa258b3f4563";
-            final String AUTH_TOKEN = "c2faec21251e3e62cebb6137416a0f6d";
-            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-            Message message = Message.creator(
-                            new PhoneNumber("+21651457111"),
-                            new PhoneNumber("+12054152034"),
-                            "Hi, this is your code for password reset: " + codeFromSMS)
-                    .create();
+            String query = "SELECT nom, prenom FROM user WHERE num_tel = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, num);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String fullName = resultSet.getString("nom") + " " + resultSet.getString("prenom");
+                AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+                        "Check your phone for your code");
+                Random random = new Random();
+                int code = random.nextInt(10000);
+                codeFromSMS = String.format("%04d", code);
+                codefield.setVisible(true);
+                codecheck.setVisible(true);
+                CodeButton1.setVisible(true);
+                numcheck.setVisible(false);
+                final String ACCOUNT_SID = "AC4116c3496ed4b8c8c4ebaa258b3f4563";
+                final String AUTH_TOKEN = "c2faec21251e3e62cebb6137416a0f6d";
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                Message message = Message.creator(
+                                new PhoneNumber("+21651457111"),
+                                new PhoneNumber("+12054152034"),
+                                "Hi " + fullName + " , this is your code for password reset: " + codeFromSMS)
+                        .create();
+            }
         } else {
             numcheck.setText("Invalid phone number");
             numcheck.setStyle("-fx-text-fill: red");
@@ -162,12 +174,12 @@ public class UserController implements Initializable {
     @FXML
     void setchangepassword(ActionEvent event) {
         String codeEntered = codefield.getText();
-
         if (codeEntered.equals(codeFromSMS)) {
             codecheck.setText("Code is correct");
             codecheck.setStyle("-fx-text-fill: green");
             codecheck.setVisible(true);
             newpasswordfield.setVisible(true);
+            confirmPassword.setVisible(true);
             resetbutton.setVisible(true);
             codecheck.setVisible(false);
         } else {
@@ -179,17 +191,26 @@ public class UserController implements Initializable {
     @FXML
     void changepassword(ActionEvent event) throws SQLException {
         String newPassword = newpasswordfield.getText();
-        String query = "UPDATE user SET password = ? , confirmpassword =? WHERE tel = ?";
-        PreparedStatement preparedStatement = DataBase.getConnect().prepareStatement(query);
-        String hashedPwd = DigestUtils.sha1Hex(newPassword);
-        preparedStatement.setString(1, hashedPwd);
-        preparedStatement.setString(2, hashedPwd);
-        preparedStatement.setString(3, numField.getText());
-        preparedStatement.executeUpdate();
-        AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                "User password updated successfully");
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        String ConfirmPassword = confirmPassword.getText();
+        if (checkPasswordForgot()) {
+            if (newPassword.equals(ConfirmPassword)) {
+                String query = "UPDATE user SET password = ? , confirmpassword =? WHERE tel = ?";
+                PreparedStatement preparedStatement = DataBase.getConnect().prepareStatement(query);
+                String hashedPwd = DigestUtils.sha1Hex(newPassword);
+                String hashedConfirmPwd = DigestUtils.sha1Hex(ConfirmPassword);
+                preparedStatement.setString(1, hashedPwd);
+                preparedStatement.setString(2, hashedConfirmPwd);
+                preparedStatement.setString(3, numField.getText());
+                preparedStatement.executeUpdate();
+                AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+                        "User password updated successfully");
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+            } else {
+                AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                        "Password and confirm password are not compatible");
+            }
+        }
     }
     public void EditPasswordFront(ActionEvent actionEvent) {
         String passwordnew = Passwordfield.getText();
@@ -200,7 +221,6 @@ public class UserController implements Initializable {
             DataBase dataBase = new DataBase();
             con = dataBase.getConnect();
             int userId = SessionManager.getInstance().getUserFront();
-
             try {
                 String query = "SELECT password FROM user WHERE id = ?";
                 PreparedStatement statement = con.prepareStatement(query);
@@ -269,6 +289,25 @@ public class UserController implements Initializable {
             verif = false;
         } else {
             checkOldPassword.setVisible(false);
+        }
+        return verif;
+    }
+
+    public boolean checkPasswordForgot()
+    {
+        boolean verif = true;
+        if (newpasswordfield.getText().isEmpty() || confirmPassword.getText().isEmpty()) {
+            labelcheckpassword.setVisible(true);
+            labelcheckpassword.setText("Fields cannot be blank.");
+            labelcheckpassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        } else if (!CheckPasswordConstraint(newpasswordfield.getText()) || !CheckPasswordConstraint(confirmPassword.getText())) {
+            labelcheckpassword.setVisible(true);
+            labelcheckpassword.setText("Password must be strong: at least one uppercase letter, one special character, and one digit.");
+            labelcheckpassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        } else {
+            labelcheckpassword.setVisible(false);
         }
         return verif;
     }
@@ -496,6 +535,7 @@ public class UserController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        labelcheckpassword.setVisible(false);
     }
 
     public void GoToLogout(MouseEvent mouseEvent) {

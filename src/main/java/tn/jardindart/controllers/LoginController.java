@@ -1,17 +1,17 @@
 package tn.jardindart.controllers;
 
-import com.twilio.rest.supersim.v1.UsageRecord;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import org.controlsfx.control.Notifications;
+import javafx.scene.input.MouseEvent;
 import tn.jardindart.utils.DataBase;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import org.apache.commons.codec.digest.DigestUtils;
 import javafx.stage.Window;
+import javafx.scene.paint.Color;
 
 public class LoginController implements Initializable {
     private final Connection con;
@@ -54,12 +55,20 @@ public class LoginController implements Initializable {
     private Label checkrecaptcha;
 
     @FXML
-    private ImageView imageView;
+    private Label LabelCopyNotify;
 
     @FXML
-    private ImageView imagePassword;
+    private ImageView copy;
+    private boolean passwordVisible = false;
+    private String originalPassword;
+    @FXML
+    private TextField tempPasswordField;
+    private String maskPassword(String password) {
+        return "•".repeat(password.length());
+    }
 
-
+    @FXML
+    private ImageView eyehide;
     @FXML
     private void generateCaptcha() {
         String captcha = generateRandomString(6);
@@ -145,11 +154,22 @@ public class LoginController implements Initializable {
         checkMailLogin.setVisible(false);
         CheckPasswordLogin.setVisible(false);
         checkrecaptcha.setVisible(false);
+        LabelCopyNotify.setVisible(false);
         generateCaptcha();
-        Image image1 = new Image("file:src/images/RecaptchaLogo.svg.png");
-        generateCap.setImage(image1);
-        Image image2 = new Image("file:src/images/logo_site.png");
-        imageView.setImage(image2);
+        CopyCaptchaCode();
+        originalPassword = passwordFieldLogin.getText();
+        tempPasswordField.setVisible(false);
+        passwordFieldLogin.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!passwordVisible) {
+                tempPasswordField.setText(newValue);
+            }
+        });
+        tempPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (passwordVisible) {
+                passwordFieldLogin.setText(newValue);
+            }
+        });
+
     }
 
     public boolean CheckPasswordConstraint(String test) {
@@ -243,5 +263,51 @@ public class LoginController implements Initializable {
         forgotPasswordStage.initOwner(currentStage);
         forgotPasswordStage.initModality(Modality.WINDOW_MODAL);
         forgotPasswordStage.show();
+    }
+
+    public void CopyCaptchaCode() {
+        copy.setOnMouseClicked(event -> {
+            tfCaptcha.setText(captchaLabel.getText());
+            LabelCopyNotify.setVisible(true);
+            LabelCopyNotify.setText("Copy !");
+            LabelCopyNotify.setTextFill(Color.GREEN);
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            LabelCopyNotify.setVisible(false);
+                        }
+                    },
+                    4000
+            );
+        });
+        /*
+        tfCaptcha.setText(captchaLabel.getText());
+        LabelCopyNotify.setVisible(true);
+        LabelCopyNotify.setText("Copy !") ;
+        Notifications.create()
+                .title("Text Copied")
+                .text("Captcha code copied successfully")
+                .showInformation();
+
+       */
+    }
+
+    @FXML
+    void SHOWpassword(MouseEvent event) {
+        if (passwordVisible) {
+            passwordFieldLogin.setVisible(true); // Show the original password field
+            tempPasswordField.setVisible(false); // Hide the temporary password field
+            eyehide.setOpacity(0.3); // Set eye icon opacity to partially transparent
+        } else {
+            passwordFieldLogin.setVisible(false); // Hide the original password field
+            tempPasswordField.setVisible(true); // Show the temporary password field
+            tempPasswordField.setText(passwordFieldLogin.getText()); // Set the temporary password field text
+            eyehide.setOpacity(1.0); // Set eye icon opacity to fully visible
+        }
+
+        // Invert the visibility flag
+        passwordVisible = !passwordVisible;
+
     }
 }

@@ -1,11 +1,11 @@
 package tn.jardindart.controllers;
 
+import helper.AlertHelper;
 import tn.jardindart.entites.* ;
 import tn.jardindart.utils.DataBase ;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,16 +21,16 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+import javafx.stage.Window;
+import javafx.scene.control.Button;
+
 
 public class AdminController {
 
     @FXML
     private TextField filterField;
-    @FXML
-    private TextField SearchBarUser;
-
-    @FXML
-    private ImageView SearchButtonUserClick;
     @FXML
     private Button btnSignout;
 
@@ -69,11 +69,9 @@ public class AdminController {
 
     private ObservableList<User> listM;
     ObservableList<User> dataList;
-    @FXML
-    private Pagination pagination;
+    Window window;
 
     public void DisplayUser() {
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("nom"));
         lname.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -83,15 +81,15 @@ public class AdminController {
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
         points.setCellValueFactory(new PropertyValueFactory<>("nb_points"));
         listM = DataBase.getDatauser();
+        tableView.setItems(listM);
     }
     public void initialize() throws SQLException {
+        DisplayUser();
         String userId = SessionManager.getInstance().getUserId();
         int id =  SessionManager.getInstance().getUserFront();
-
         adminName.setText(String.valueOf(userId));
         ActivateUserBack();
         InactiveUserBack();
-        DisplayUser();
         search_user();
     }
 
@@ -112,7 +110,7 @@ public class AdminController {
         }
     }
     void search_user() {
-        id.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
+        mail.setCellValueFactory(new PropertyValueFactory<User,String>("mail"));
         num_tel.setCellValueFactory(new PropertyValueFactory<User,String>("tel"));
         dataList = DataBase.getDatauser();
         tableView.setItems(dataList);
@@ -123,7 +121,7 @@ public class AdminController {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (String.valueOf(person.getId()).toLowerCase().contains(lowerCaseFilter)) {
+                if (String.valueOf(person.getMail()).toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 else if (person.getTel().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
@@ -137,16 +135,29 @@ public class AdminController {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(sortedData);
     }
+
+    private String generateUniqueToken() {
+        return UUID.randomUUID().toString();
+    }
     private void ActivateUserBack() {
+
+        String token = generateUniqueToken();
         TableColumn<User, Void> activateButtonColumn = new TableColumn<>("ACTIONS");
         Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
             final TableCell<User, Void> cell = new TableCell<>() {
-                private final Button activateButton = new Button("Activate");
+               private static Button activateButton = new Button("Activate");
                 {
                     activateButton.setOnAction(event -> {
-                            User user = getTableView().getItems().get(getIndex());
+                        User user = getTableView().getItems().get(getIndex());
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Confirmation Dialog");
+                        alert.setHeaderText("Confirm Account Activation");
+                        alert.setContentText("Are you sure you want to activate this account?");
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.isPresent() && result.get() == ButtonType.OK) {
                             updateUserStatus(user.getId(), "active");
-                        DisplayUser();
+                            DisplayUser();
+                        }
                     });
                 }
                 @Override
@@ -165,17 +176,8 @@ public class AdminController {
         tableView.getColumns().add(activateButtonColumn);
     }
 
+
     private void updateUserStatus(int userId, String newStatus) {
-        try (Connection conn = DataBase.getConnect();
-             PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
-            ps.setString(1, newStatus);
-            ps.setInt(2, userId);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    private void updateUserStatusInactive(int userId, String newStatus) {
         try (Connection conn = DataBase.getConnect();
              PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
             ps.setString(1, newStatus);
@@ -190,12 +192,18 @@ public class AdminController {
         Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
             final TableCell<User, Void> cell = new TableCell<>() {
                 private final Button InactivateButton = new Button("Inactivate");
-
                 {
-                    InactivateButton.setOnAction(event -> {
+                        InactivateButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
-                        updateUserStatusInactive(user.getId(), "inactive");
-                        DisplayUser();
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Confirmation Dialog");
+                        alert.setHeaderText("Confirm Account Deactivation");
+                        alert.setContentText("Are you sure you want to deactivate this account?");
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.isPresent() && result.get() == ButtonType.OK) {
+                            updateUserStatusInactive(user.getId(), "inactive");
+                            DisplayUser();
+                        }
                     });
                 }
                 @Override
@@ -213,5 +221,15 @@ public class AdminController {
         activateButtonColumn.setCellFactory(cellFactory);
         tableView.getColumns().add(activateButtonColumn);
     }
-
+    private void updateUserStatusInactive(int userId, String newStatus) {
+        try (Connection conn = DataBase.getConnect();
+             PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
+            ps.setString(1, newStatus);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+            DisplayUser();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
