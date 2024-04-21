@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 import tn.esprit.controllers.Produit_TrocService;
 import tn.esprit.controllers.Marketroc;
@@ -30,7 +31,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Editproduittr implements Initializable {
+public class Edittroc implements Initializable {
 
     @FXML
     private Label AvaibilityLabel;
@@ -44,8 +45,7 @@ public class Editproduittr implements Initializable {
     @FXML
     private TextField PriceL;
 
-    @FXML
-    private TextField TitleL;
+
 
     @FXML
     private TextField TitleL1;
@@ -60,13 +60,12 @@ public class Editproduittr implements Initializable {
     @FXML
     private Button okButton;
 
-    private Produittroc book;
+    private Producttrocwith book;
 
-    public void setBook(Produittroc book) {
+    public void setBook(Producttrocwith book) {
         this.book = book;
         // Set existing book information to the labels and text fields
         TitleL1.setText(book.getNom());
-        TitleL.setText(book.getNom_produit_recherche());
         PriceL.setText(book.getDescription());
         CategoryCombo.setValue(book.getCategory());
 
@@ -86,27 +85,20 @@ public class Editproduittr implements Initializable {
 
     @FXML
     public void okbtn_clicked(ActionEvent event) {
-        Produit_TrocService serviceBook1 = new Produit_TrocService();
-        try {
-            // Mettre à jour les propriétés de l'objet book avec les valeurs actuelles des champs de texte et des ComboBox
-            book.setNom(TitleL1.getText());
-            book.setNom_produit_recherche(TitleL.getText());
-            book.setCategory(CategoryCombo.getValue());
-            book.setDescription(PriceL.getText());
+        Produit_troc_with_Service serviceBook1 = new Produit_troc_with_Service();
+        // Mettre à jour les propriétés de l'objet book avec les valeurs actuelles des champs de texte et des ComboBox
+        book.setNom(TitleL1.getText());
+        book.setCategory(CategoryCombo.getValue());
+        book.setDescription(PriceL.getText());
 
-            // Utiliser l'objet book existant pour effectuer la modification
-            serviceBook1.modifierPT(book);
-            System.out.println("Le produit troc a été modifié avec succès.");
+        // Utiliser l'objet book existant pour effectuer la modification
+        serviceBook1.modifierPT(book);
+        System.out.println("Le produit troc a été modifié avec succès.");
+        reloadMarketFXML();
 
-            reloadMarketFXML();
+        // Close the window
+        closeWindow(event);
 
-            // Close the window
-            closeWindow(event);
-
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la modification du produit : " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     void closeWindow(ActionEvent event) {

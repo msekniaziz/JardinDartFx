@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class Marketroc implements Initializable {
     private ImageView bookicon;
     private List<Produittroc> BookObservableList;
 
+    private List<Producttrocwith> ProdwithObservelist;
 
     @FXML
     private ComboBox<String> categoryComboBox;
@@ -60,27 +62,30 @@ public class Marketroc implements Initializable {
     }
     public Marketroc() throws SQLException {
         Produit_TrocService serviceBook=new Produit_TrocService();
+        Produit_troc_with_Service serviceTRoc =new Produit_troc_with_Service();
 
         try {
-            BookObservableList = serviceBook.afficherListPT();
+            BookObservableList = serviceBook.afficherListPTdiffuser(1);
+            ProdwithObservelist =serviceTRoc.afficherListPT();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         BookListView = new GridPane();
-//        collectionListView= new GridPane();
+
+        collectionListView= new GridPane();
 
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-//        collectionanchor.setVisible(false);
+        collectionanchor.setVisible(false);
 
         mainanchor.setVisible(true);
         bookicon.setVisible(false);
         loadBooks();
-//        loadCollectionItems();
-//        ObservableList<String> listData = FXCollections.observableArrayList("GARDEN", "HOUSE","AUTRE");
-//        categoryComboBox.setItems(listData);
+        loadCollectionItems();
+//       ObservableList<String> listData = FXCollections.observableArrayList("GARDEN", "HOUSE","AUTRE");
+//       categoryComboBox.setItems(listData);
     }
 
 
@@ -133,27 +138,27 @@ public class Marketroc implements Initializable {
             e.printStackTrace(); // Handle or log the exception
         }
     }
-//    private void loadCollectionItems() {
-//        int col = 0;
-//        int rows = 0;
-//      //  System.out.println(panier);
-//        try {
-//            for (int i = 0; i < panierObservableList.size(); i++) {
-//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/User/collectionItem.fxml"));
-//                System.out.println("Loading collectionItem.fxml");
-//                AnchorPane anchorPane = fxmlLoader.load();
-//                // Assuming setData is a method in collectionItemController
-//                collectionitemController ItemController = fxmlLoader.getController();
-//                ItemController.setData(panierObservableList.get(i));
-//                collectionListView.add(anchorPane, col, rows++);
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Error loading collectionItem.fxml: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
-//
-//
+    private void loadCollectionItems() {
+        int col = 0;
+        int rows = 0;
+//        System.out.println(bookicon);
+        try {
+            for (int i = 0; i < ProdwithObservelist.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/itemstroc.fxml"));
+                System.out.println("Loading collectionItem.fxml");
+                AnchorPane anchorPane = fxmlLoader.load();
+                // Assuming setData is a method in collectionItemController
+                Itemstroc ItemController = fxmlLoader.getController();
+                ItemController.setData(ProdwithObservelist.get(i));
+                collectionListView.add(anchorPane, col, rows++);
+            }
+        } catch (IOException e) {
+            System.err.println("Error loading collectionItem.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 

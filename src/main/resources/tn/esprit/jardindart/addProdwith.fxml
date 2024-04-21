@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddProdwith">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddProdwith">
    <children>
       <AnchorPane fx:id="addanchor" layoutX="36.0" layoutY="4.0" prefHeight="572.0" prefWidth="528.0" stylesheets="@ AI.css">
          <styleClass>
@@ -45,26 +45,26 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="AvaibilityLabel" layoutX="79.0" layoutY="418.0" prefHeight="27.0" prefWidth="119.0" text="Description:">
+            <Label fx:id="AvaibilityLabel" layoutX="87.0" layoutY="418.0" prefHeight="27.0" prefWidth="119.0" text="Description:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <TextField fx:id="TitleL" layoutX="251.0" layoutY="258.0" />
-            <Label fx:id="CategorieLabel" layoutX="79.0" layoutY="340.0" prefHeight="27.0" prefWidth="104.0" text="Category :">
+            <Label fx:id="CategorieLabel" layoutX="87.0" layoutY="340.0" prefHeight="27.0" prefWidth="104.0" text="Category :">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="addbook" layoutX="203.0" layoutY="499.0" mnemonicParsing="false" onAction="#AddBookBtn" prefHeight="30.0" prefWidth="94.0" styleClass="blue-btn" stylesheets="@ AI.css" text="ADD" textFill="WHITE">
+            <Button fx:id="addbook" layoutX="193.0" layoutY="508.0" mnemonicParsing="false" onAction="#AddBookBtn" prefHeight="30.0" prefWidth="94.0" styleClass="blue-btn" stylesheets="@ AI.css" text="ADD" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Button>
             <ComboBox fx:id="CategoryCombo" layoutX="250.0" layoutY="341.0" prefWidth="150.0" />
             <TextField fx:id="imgpathstring" layoutX="91.0" layoutY="203.0" visible="false" />
-            <TextField fx:id="description" layoutX="252.0" layoutY="419.0" />
-            <TextField fx:id="prod_id_id" layoutX="251.0" layoutY="302.0" />
+            <TextField fx:id="description" layoutX="250.0" layoutY="414.0" prefHeight="61.0" prefWidth="186.0" />
+            <TextField fx:id="prod_id_id" layoutX="251.0" layoutY="302.0" visible="false" />
          </children>
       </AnchorPane>
    </children>

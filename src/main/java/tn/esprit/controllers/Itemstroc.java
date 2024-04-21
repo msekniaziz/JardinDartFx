@@ -19,13 +19,14 @@ import javafx.stage.Stage;
 import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 import tn.esprit.controllers.Marketroc;
+import tn.esprit.controllers.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class itemsPd {
+public class Itemstroc {
     @FXML
     private Parent root;
 
@@ -47,17 +48,13 @@ public class itemsPd {
     @FXML
     private Button modif;
 
-    private Produittroc book=new Produittroc();
-    Produit_TrocService produitTrocService = new Produit_TrocService();
-    Producttrocwith producttrocwith=new Producttrocwith();
+    private Producttrocwith book=new Producttrocwith();
+    Produit_troc_with_Service produitTrocService = new Produit_troc_with_Service();
 
 
 
-    public int seti()
-    {int id;
-        return id=this.book.getId();
-    }
-    public void setData(Produittroc book){
+
+    public void setData(Producttrocwith book){
         this.book=book;
 
         book.setId(this.book.getId());
@@ -77,7 +74,7 @@ public class itemsPd {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        fxmlLoader.setLocation(getClass().getResource("/tn/esprit/jardindart/editproduittr.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/tn/esprit/jardindart/edittroc.fxml"));
 
         // Load the payment.fxml file and get the root node
         Parent anchorPane = null;
@@ -88,7 +85,7 @@ public class itemsPd {
         }
 
         // Access the controller after loading the fxml
-        Editproduittr updateController = fxmlLoader.getController();
+        Edittroc updateController = fxmlLoader.getController();
 
         // Set the panier in the PaymentController
         updateController.setBook(book);
@@ -154,7 +151,7 @@ public class itemsPd {
             // Replace the root of the current scene with the newly loaded root
             scene.setRoot(root);
         } catch (IOException e) {
-            e.printStackTrace();  // Handle or log the exception
+            e.printStackTrace(); // Handle or log the exception
         }
 
     }
@@ -178,46 +175,5 @@ public class itemsPd {
         alert.showAndWait();
     }
 
-    @FXML
-    public void exchange_click(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-
-        fxmlLoader.setLocation(getClass().getResource("/tn/esprit/jardindart/addProdwith.fxml"));
-
-        // Load the addProdwith.fxml file and get the root node
-        Parent anchorPane = null;
-        try {
-            anchorPane = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        int z;
-        z=seti();
-
-        // Access the controller after loading the fxml
-        AddProdwith addProdController = fxmlLoader.getController();
-
-        // Set the book in the AddProdwith controller
-        int a;
-        a=this.book.getId();
-       addProdController.setprod(producttrocwith,this.book.getId());
-
-        // Create a new scene
-        Scene addProdScene = new Scene(anchorPane);
-
-        // Get the stage from the ActionEvent
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        // Create a new stage for the addProdwith.fxml scene
-        Stage addProdStage = new Stage();
-        addProdStage.setTitle("produit with");
-        addProdStage.setScene(addProdScene);
-
-        // Set the owner stage to the current stage
-        addProdStage.initOwner(currentStage);
-
-        // Show the addProdwith.fxml scene without closing the current scene
-        addProdStage.show();
-    }
 
 }
