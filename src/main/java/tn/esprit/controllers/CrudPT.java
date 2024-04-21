@@ -15,8 +15,10 @@ public interface CrudPT <T> {
 
     void deletePTall() throws SQLException;
     void deletePT(T t) throws SQLException;
+
     T getProduitById(int id) throws SQLException;
     List<T> afficherListPT() throws SQLException;
+    List<T> afficherListPTdiffuser(int userid) throws SQLException;
 
 
 }

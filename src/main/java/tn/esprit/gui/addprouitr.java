@@ -20,7 +20,7 @@ public class addprouitr extends Application {
         primaryStage.setScene(scene);
 
         // Set the title of the stage
-        primaryStage.setTitle("Your JavaFX Application");
+        primaryStage.setTitle("Jardin'Dart");
 
         // Show the stage
         primaryStage.show();

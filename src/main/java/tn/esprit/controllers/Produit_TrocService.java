@@ -167,6 +167,36 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
         return produits;
     }
 
+
+
+    @Override
+    public List<Produittroc> afficherListPTdiffuser(int userid) throws SQLException {
+        // Implement the method to retrieve a list of Produittroc objects for users other than the given user ID
+        String req = "SELECT * FROM `produit_troc` WHERE id_user_id != ?";
+
+        PreparedStatement stm = conx.prepareStatement(req);
+        stm.setInt(1, userid);
+        ResultSet res = stm.executeQuery();
+
+        List<Produittroc> produits = new ArrayList<>();
+
+        while (res.next()){
+            Produittroc produit = new Produittroc();
+            produit.setId(res.getInt("id"));
+            produit.setId_user_id(res.getInt("id_user_id"));
+            produit.setNom(res.getString("nom"));
+            produit.setCategory(res.getString("category"));
+            produit.setDescription(res.getString("description"));
+            produit.setStatut(res.getInt("statut"));
+            produit.setImage(res.getString("image"));
+            produit.setNom_produit_recherche(res.getString("nom_produit_recherche"));
+
+            produits.add(produit);
+        }
+
+        return produits;
+    }
+
     @Override
     public void deletePTall() throws SQLException {
         String req = "DELETE FROM `produit_troc`";

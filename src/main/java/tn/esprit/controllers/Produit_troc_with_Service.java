@@ -19,8 +19,16 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
         conx = MyDatabase.getInstance().getConx();
     }
 
+    @Override
+    public List<Producttrocwith> afficherListPTdiffuser(int userid) throws SQLException {
+        return null;
+    }
 
 
+    @Override
+    public void modifierPT1(Producttrocwith producttrocwith, int idprd, String nom, String category, String description, String image) {
+
+    }
 
     @Override
     public void addPT(Producttrocwith producttrocwith) throws SQLException {
@@ -43,13 +51,9 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
         System.out.println("Product troc with added successfully");
     }
 
-    @Override
-    public void modifierPT(Producttrocwith producttrocwith) throws SQLException {
-
-    }
 
     @Override
-    public void modifierPT1(Producttrocwith producttrocwith, int idprd, String nom, String category, String description, String image) {
+    public void modifierPT(Producttrocwith producttrocwith) {
         try {
             // Prepare the SQL query
             String req = "UPDATE produit_troc_with SET prod_id_troc_id = ?, nom = ?, category = ?, description = ?,  image = ? WHERE id = ?";
@@ -57,11 +61,11 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
             PreparedStatement ps= conx.prepareStatement(req);
 
             // Set parameters
-            ps.setInt(1, idprd);
-            ps.setString(2, nom);
-            ps.setString(3, category);
-            ps.setString(4, description);
-            ps.setString(5, image);
+            ps.setInt(1, producttrocwith.getProd_id_troc_id());
+            ps.setString(2, producttrocwith.getNom());
+            ps.setString(3, producttrocwith.getCategory());
+            ps.setString(4, producttrocwith.getDescription());
+            ps.setString(5, producttrocwith.getImage());
             ps.setInt(6,producttrocwith.getId());  // Set the id parameter
 
             // Execute the update query
@@ -99,7 +103,21 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
         System.out.println("Tous les produits ont été supprimés avec succès");
     }
 
-
+    public void deletePT1(int productId) {
+        String query = "DELETE FROM `produit_troc_with` WHERE `id` = ? ";
+        try (PreparedStatement preparedStatement = conx.prepareStatement(query)) {
+            preparedStatement.setInt(1, productId);
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product with ID " + productId + " deleted successfully.");
+            } else {
+                System.out.println("No product found with the specified ID: " + productId);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error deleting product: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
     @Override
     public Producttrocwith getProduitById(int id) throws SQLException {
         return null;
@@ -140,6 +158,42 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
         return productList;
     }
 
+
+    public List<Producttrocwith> affichersameuser(int userId) throws SQLException {
+        List<Producttrocwith> productList = new ArrayList<>();
+        String req = "SELECT * FROM produit_troc_with WHERE prod_id_troc_id != ?";
+
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            stm = conx.prepareStatement(req);
+            stm.setInt(1, userId);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                Producttrocwith product = new Producttrocwith();
+                product.setId(rs.getInt("id"));
+                product.setProd_id_troc_id(rs.getInt("prod_id_troc_id"));
+                product.setNom(rs.getString("nom"));
+                product.setCategory(rs.getString("category"));
+                product.setDescription(rs.getString("description"));
+                product.setImage(rs.getString("image"));
+
+                productList.add(product);
+            }
+        } finally {
+            // Close the resources to prevent memory leaks
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+        }
+
+        return productList;
+    }
 
 
 }

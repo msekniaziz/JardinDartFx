@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,6 +23,7 @@ import javafx.scene.image.Image;
 
 import java.io.File;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -95,6 +99,27 @@ return book;
         ObservableList<String> listData = FXCollections.observableArrayList("House", "Garden");
         CategoryCombo.setItems(listData);
     }
+
+    void reloadPage() {
+        // Get the URL of the FXML file
+        URL location = getClass().getResource("/tn/esprit/jardindart/Market.fxml");
+
+        try {
+            // Load the FXML file and initialize the controller
+            FXMLLoader loader = new FXMLLoader(location);
+            Parent root = loader.load();
+
+            // Get the stage from the current scene
+            Stage stage = (Stage) addbook.getScene().getWindow();
+
+            // Set the newly loaded root as the root of the current scene
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log the exception
+        }
+    }
+
     @FXML
     void importImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -150,8 +175,10 @@ return book;
 
         try {
             produitTrocWithService.addMeth2(book);
-            showAlert("Success", "Product added successfully.");
+            showconf("Success", "Product added successfully.");
             System.out.println(book);
+            reloadPage();
+
         } catch (SQLException e) {
             showAlert("Error", "Failed to add product: " + e.getMessage());
             System.out.println(e.getMessage());
@@ -160,43 +187,6 @@ return book;
     }
 
 
-//    @FXML
-//    void AddBookBtn(ActionEvent event) {
-//        // Validate input fields before adding the product
-//        String prodtitle = TitleL.getText().trim();
-//        String proddesc = description.getText().trim();
-//        String selectedCategoryString = CategoryCombo.getValue();
-//
-//        if (prodtitle.isEmpty() || !prodtitle.matches(".*[a-zA-Z].*")) {
-//            showAlert("Error", "The book title cannot be empty and must contain letters.");
-//            return;
-//        }
-//
-//        if (selectedCategoryString == null) {
-//            showAlert("Error", "Please select a category.");
-//            return;
-//        }
-//
-//        // Convert the selected category string to the enum value
-//        Producttrocwith.Categorie selectedCategory = Producttrocwith.Categorie.valueOf(selectedCategoryString);
-//
-//        // Check if an image is selected
-//        if (imagePath1 == null || imagePath1.isEmpty()) {
-//            showAlert("Error", "Please select an image.");
-//            return;
-//        }
-//            // Create the product and add it to the database
-//
-//        try {
-//            produitTrocWithService.addMeth2(book);
-//            showAlert("Success", "Product added successfully.");
-//        } catch (SQLException e) {
-//            showAlert("Error", "Failed to add product: " + e.getMessage());
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
-    // Method to display an alert dialog
     private void showAlert(String title, String message) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle(title);
@@ -204,7 +194,15 @@ return book;
         alert.setContentText(message);
         alert.showAndWait();
     }
-}
+
+
+private void showconf(String title, String message) {
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}}
 
 //    @FXML
 //    void AddBookBtn(ActionEvent event) {
