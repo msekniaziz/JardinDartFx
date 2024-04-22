@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ads.Controllers.addAdsController">
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="10">
+            <TitledPane style="-fx-background-color: #F5F5F5;" text="Post Your Ad">
+                <VBox alignment="TOP_LEFT" spacing="10" style="-fx-padding: 10px; -fx-background-color: #F5F5F5;">
+                    <HBox spacing="10">
+                        <Label text="Title Of Ad:" />
+                        <TextField fx:id="title" promptText="Ad title goes here" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Description:" />
+                        <TextArea fx:id="description" promptText="Write details about your product" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Select Ad Category:" />
+                        <ComboBox fx:id="categoryComboBox" onAction="#category" promptText="Select Ad Category" style="-fx-background-color: #007BFF;" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Item Price (TN):" />
+                        <TextField fx:id="price" promptText="Price" />
+                        <CheckBox fx:id="negotiableCheckBox" text="Negotiable" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #007BFF;" text="Select Files" />
+                        <Label text="Maximum upload file size: 500 KB" />
+                        <Button fx:id="addid" onAction="#addAnnonce" style="-fx-background-color: #007BFF;" text="Add" />
+                    </HBox>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </center>
+
+</BorderPane>
