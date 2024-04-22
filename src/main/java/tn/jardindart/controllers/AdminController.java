@@ -87,28 +87,11 @@ public class AdminController {
         DisplayUser();
         String userId = SessionManager.getInstance().getUserId();
         int id =  SessionManager.getInstance().getUserFront();
-        adminName.setText(String.valueOf(userId));
         ActivateUserBack();
         InactiveUserBack();
         search_user();
     }
 
-    @FXML
-    void LogoutAdmin() {
-        SessionManager.getInstance().cleanUserSessionAdmin();
-        try {
-            Node sourceNode = (Node) btnSignout;
-            Stage stage = (Stage) sourceNode.getScene().getWindow();
-            stage.close();
-            Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
-            Scene scene = new Scene(root);
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     void search_user() {
         mail.setCellValueFactory(new PropertyValueFactory<User,String>("mail"));
         num_tel.setCellValueFactory(new PropertyValueFactory<User,String>("tel"));
@@ -135,17 +118,11 @@ public class AdminController {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(sortedData);
     }
-
-    private String generateUniqueToken() {
-        return UUID.randomUUID().toString();
-    }
     private void ActivateUserBack() {
-
-        String token = generateUniqueToken();
         TableColumn<User, Void> activateButtonColumn = new TableColumn<>("ACTIONS");
         Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
             final TableCell<User, Void> cell = new TableCell<>() {
-               private static Button activateButton = new Button("Activate");
+               private final Button activateButton = new Button("Activate");
                 {
                     activateButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
@@ -175,25 +152,13 @@ public class AdminController {
         activateButtonColumn.setCellFactory(cellFactory);
         tableView.getColumns().add(activateButtonColumn);
     }
-
-
-    private void updateUserStatus(int userId, String newStatus) {
-        try (Connection conn = DataBase.getConnect();
-             PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
-            ps.setString(1, newStatus);
-            ps.setInt(2, userId);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     private void InactiveUserBack() {
         TableColumn<User, Void> activateButtonColumn = new TableColumn<>("ACTIONS");
         Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
             final TableCell<User, Void> cell = new TableCell<>() {
                 private final Button InactivateButton = new Button("Inactivate");
                 {
-                        InactivateButton.setOnAction(event -> {
+                    InactivateButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Confirmation Dialog");
@@ -220,6 +185,18 @@ public class AdminController {
         };
         activateButtonColumn.setCellFactory(cellFactory);
         tableView.getColumns().add(activateButtonColumn);
+    }
+
+
+    private void updateUserStatus(int userId, String newStatus) {
+        try (Connection conn = DataBase.getConnect();
+             PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
+            ps.setString(1, newStatus);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     private void updateUserStatusInactive(int userId, String newStatus) {
         try (Connection conn = DataBase.getConnect();

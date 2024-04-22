@@ -105,7 +105,7 @@ public class LoginController implements Initializable {
                             SessionManager.getInstance().setUserId(fullName);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/AdminPannel.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Back.fxml")));
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.setTitle("Admin Panel");

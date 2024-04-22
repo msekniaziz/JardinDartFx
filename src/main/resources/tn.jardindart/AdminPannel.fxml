@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,10 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="576.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.AdminController">
+    <fx:include source="Back.fxml" />
+
     <children>
         <StackPane layoutX="256.0" prefHeight="576.0" prefWidth="845.0" style="-fx-background-color: #02030A;">
             <children>
@@ -25,7 +23,7 @@
                 <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                     <children>
-                        <Pane fx:id="pnlOverview" layoutX="-10.0" layoutY="1.0" prefHeight="583.0" prefWidth="851.0" style="-fx-background-color: #FFFFFF;">
+                        <Pane fx:id="pnlOverview" layoutX="-10.0" layoutY="1.0" prefHeight="588.0" prefWidth="851.0" style="-fx-background-color: #FFFFFF;">
                             <children>
                                 <TextField fx:id="filterField" layoutX="600.0" layoutY="74.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #EBE8F9; -fx-border-color: #B7C3D7;" />
                                 <Label layoutX="76.0" layoutY="70.0" text="Admin Panel">
@@ -49,11 +47,11 @@
                                         <TableColumn fx:id="dn" prefWidth="75.0" text="BIRTHDAY" />
                                         <TableColumn fx:id="status" prefWidth="75.0" text="STATUS" />
                                     </columns>
-                           <styleClass>
-                              <String fx:value="scroll-bar" />
-                              <String fx:value="table-view" />
-                              <String fx:value="chart-plot-background" />
-                           </styleClass>
+                                    <styleClass>
+                                        <String fx:value="scroll-bar" />
+                                        <String fx:value="table-view" />
+                                        <String fx:value="chart-plot-background" />
+                                    </styleClass>
                                 </TableView>
                             </children>
                         </Pane>
@@ -61,62 +59,6 @@
                 </Pane>
             </children>
         </StackPane>
-        <VBox alignment="TOP_CENTER" layoutY="-4.0" prefHeight="590.0" prefWidth="256.0" style="-fx-background-color: #EBE8F9;">
-            <children>
-                <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/jimmy-fallon.png" />
-                    </image>
-                    <VBox.margin>
-                        <Insets bottom="10.0" top="50.0" />
-                    </VBox.margin>
-                </ImageView>
-                <Label fx:id="adminName" textFill="#e7e5e5">
-                    <VBox.margin>
-                        <Insets bottom="20.0" />
-                    </VBox.margin>
-                </Label>
-                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Users">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Person_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Products">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Xbox_Menu_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#LogoutAdmin" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #EBE8F9;" text="Log Out">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Sign_Out_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                    <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                    </cursor>
-                </Button>
-            </children>
-        </VBox>
     </children>
     <effect>
         <DropShadow color="#1b1eeb" />
