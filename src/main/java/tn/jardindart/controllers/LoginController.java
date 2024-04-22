@@ -122,7 +122,7 @@ public class LoginController implements Initializable {
                             SessionManager.getInstance().setUserFront(id);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/HomeON.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/banner.fxml")));
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                             stage.setTitle("User Panel");

@@ -398,8 +398,6 @@ public class UserController implements Initializable {
                     if (rowsAffected > 0) {
                         AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
                                 "User information updated successfully.");
-                        String updatedName = firstname.getText() + " " + lastname.getText() ;
-                        NameUser.setText(updatedName);
                     } else {
                         AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
                                 "Failed to update user information.");
@@ -535,7 +533,6 @@ public class UserController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        labelcheckpassword.setVisible(false);
     }
 
     public void GoToLogout(MouseEvent mouseEvent) {

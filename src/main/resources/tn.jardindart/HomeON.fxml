@@ -18,17 +18,17 @@
                     <children>
                         <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
                         <Text fill="WHITE" layoutX="55.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="JARDIN D'ART" wrappingWidth="123.80157470703125" />
-      
+
                         <Label layoutX="463.0" layoutY="20.0" text="Home" textFill="WHITE" />
                         <Label fx:id="Logout" layoutX="1033.0" layoutY="20.0" onMouseClicked="#GoToLogout" prefHeight="27.0" prefWidth="70.0" text="Logout" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Label>
                         <Label fx:id="AccountInformations" layoutX="853.0" layoutY="21.0" prefHeight="20.0" prefWidth="163.0" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                             <ContextMenu fx:id="accountMenu">
                                 <items>
                                     <MenuItem onAction="#handleAccountAction1" text="User informations" />
@@ -38,10 +38,10 @@
                             </ContextMenu>
                         </Label>
                     </children>
-               <styleClass>
-                  <String fx:value="MFXbutton" />
-                  <String fx:value="label" />
-               </styleClass>
+                    <styleClass>
+                        <String fx:value="MFXbutton" />
+                        <String fx:value="label" />
+                    </styleClass>
                 </AnchorPane>
             </children>
         </AnchorPane>
