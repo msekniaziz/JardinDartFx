@@ -27,7 +27,7 @@ public class addprouitr extends Application {
 
         // Modify the existing ComboBox
         ComboBox<String> catrgtroComboBox = (ComboBox<String>) root.lookup("#catrgtro");
-        catrgtroComboBox.getItems().addAll("house", " garden");
+        catrgtroComboBox.getItems().addAll("house", "garden");
     }
 
     public static void main(String[] args) {

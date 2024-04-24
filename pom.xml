@@ -47,6 +47,24 @@
       <artifactId>clickstream-event-listener</artifactId>
       <version>2.0.0-alpha-1-kk</version>
     </dependency>
+      <dependency>
+          <groupId>com.google.zxing</groupId>
+          <artifactId>core</artifactId>
+          <version>3.4.1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-swing</artifactId>
+          <version>17.0.10</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.zxing</groupId>
+          <artifactId>core</artifactId>
+          <version>3.4.1</version> <!-- Replace with the latest version -->
+      </dependency>
+
+
   </dependencies>
 
   <build>

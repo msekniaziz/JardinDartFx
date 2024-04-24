@@ -16,8 +16,8 @@ public class Produittroc {
         this.nom_produit_recherche = nom_produit_recherche;
     }
     public enum Categorie {
-        House,
-        Garden
+        house,
+        garden
     }
 
     public Produittroc() {

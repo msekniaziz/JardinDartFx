@@ -3,6 +3,8 @@ module tn.esprit.jardindart {
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;
+    requires com.google.zxing;
+    requires javafx.swing;
     exports tn.esprit.gui;
     exports tn.esprit.controllers;
     opens tn.esprit.controllers to javafx.fxml;

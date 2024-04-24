@@ -33,7 +33,7 @@ public class Addproduittr {
     private TextArea dectro;
 
     @FXML
-    private ComboBox<?> catrgtro;
+    private ComboBox<String> catrgtro;
 
     @FXML
     private TextField statuspt;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.Openai">
+
+    <!-- Your UI components here -->
+    <VBox alignment="CENTER" prefHeight="200" prefWidth="400" spacing="10">
+        <Label text="Ask a Question:" />
+        <TextArea fx:id="questionTextArea" />
+        <Button text="Ask" onAction="#askQuestion" />
+        <Label fx:id="answerLabel" />
+    </VBox>
+
+</AnchorPane>

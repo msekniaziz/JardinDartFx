@@ -1,14 +1,46 @@
 package tn.esprit.controllers;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.common.BitMatrix;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import com.google.zxing.qrcode.QRCodeWriter;
 
+import com.google.zxing.WriterException;
+
+
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+
+import javax.imageio.ImageIO;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javafx.fxml.FXML;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -20,6 +52,7 @@ import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 import tn.esprit.controllers.Marketroc;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -47,6 +80,8 @@ public class itemsPd {
     @FXML
     private Button modif;
 
+    @FXML
+    private HBox qr_code;
     private Produittroc book=new Produittroc();
     Produit_TrocService produitTrocService = new Produit_TrocService();
     Producttrocwith producttrocwith=new Producttrocwith();
@@ -111,6 +146,40 @@ public class itemsPd {
         paymentStage.show();
     }
 
+
+
+//    public void generateQRCode(Produittroc book, Node sourceNode) {
+//        // Construct the text to encode in the QR code
+//        String text = "Product troc ID: " + book.getId()
+//                + "\nCourse Title: " + book.getNom()
+//                + "\nCourse Description: " + book.getDescription()
+//                + "\nCourse level: " + book.getCategory()
+//                + "\nCourse level: " + book.getNom_produit_recherche();
+//
+//        // Create a QRCodeWriter instance
+//        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+//
+//        // Encode the text into a QR code image
+//        try {
+//            // Generate the QR code
+//            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+//
+//            // Convert the BitMatrix to a BufferedImage
+//            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+//
+//            // Convert the BufferedImage to a JavaFX Image
+//            javafx.scene.image.Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+//
+//            // Display the QR code in an ImageView
+//            ImageView qrCodeImageView = (ImageView) sourceNode.getScene().lookup("#qrCodeImg");
+//            qrCodeImageView.setImage(fxImage);
+//
+//            // Make the ImageView visible
+//            qrCodeImageView.setVisible(true);
+//        } catch (WriterException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public void delete_clicked(ActionEvent event) throws SQLException {

@@ -31,8 +31,8 @@ public class Producttrocwith {
 
 
     public enum Categorie {
-        House,
-        Garden
+        house,
+        garden
     }
 
     public Producttrocwith(int prod_id_troc_id, String nom, String category, String description, String image) {
