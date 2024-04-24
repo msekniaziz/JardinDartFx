@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="339.0" prefWidth="566.0" styleClass="main-pane" stylesheets="@itempt.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.itemsPd">
+<AnchorPane prefHeight="339.0" prefWidth="566.0" styleClass="main-pane" stylesheets="@itempt.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.itemsPd">
 
    <children>
       <VBox layoutX="14.0" layoutY="32.0" prefHeight="352.0" prefWidth="297.0" styleClass="vbox" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="477.0" AnchorPane.topAnchor="32.0">
@@ -17,12 +17,12 @@
             <HBox prefHeight="63.0" prefWidth="152.0" />
          </children>
       </VBox>
-      <Button fx:id="modif" alignment="TOP_CENTER" layoutX="99.0" layoutY="343.0" mnemonicParsing="false" onAction="#modif_click" styleClass="button" text="Modify" textFill="WHITE">
+      <Button fx:id="modif" alignment="TOP_CENTER" layoutX="164.0" layoutY="343.0" mnemonicParsing="false" onAction="#modif_click" styleClass="button" text="Modify" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="delete" alignment="TOP_CENTER" layoutX="255.0" layoutY="343.0" mnemonicParsing="false" onAction="#delete_clicked" styleClass="button" text="Delete" textFill="WHITE">
+      <Button fx:id="delete" alignment="TOP_CENTER" layoutX="286.0" layoutY="343.0" mnemonicParsing="false" onAction="#delete_clicked" styleClass="button" text="Delete" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -52,6 +52,7 @@
          </font>
       </Button>
       <Label layoutX="305.0" layoutY="111.0" prefHeight="38.0" prefWidth="122.0" text="Description:" />
+      <HBox fx:id="qr_code" layoutX="19.0" layoutY="343.0" prefHeight="30.0" prefWidth="114.0" />
    </children>
 
    <padding>

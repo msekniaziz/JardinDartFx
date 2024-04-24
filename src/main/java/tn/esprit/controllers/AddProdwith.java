@@ -96,7 +96,7 @@ return book;
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> listData = FXCollections.observableArrayList("House", "Garden");
+        ObservableList<String> listData = FXCollections.observableArrayList("house", "garden");
         CategoryCombo.setItems(listData);
     }
 

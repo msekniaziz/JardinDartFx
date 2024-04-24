@@ -42,6 +42,11 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
     </dependency>
+    <dependency>
+      <groupId>com.gojek.clickstream</groupId>
+      <artifactId>clickstream-event-listener</artifactId>
+      <version>2.0.0-alpha-1-kk</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -64,7 +69,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>tn.esprit.gui/tn.esprit.gui.addprouitr</mainClass>
+              <mainClass>tn.esprit.gui/tn.esprit.gui.ProductCard</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

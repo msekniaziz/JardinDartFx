@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -84,8 +85,8 @@ public class Marketroc implements Initializable {
         bookicon.setVisible(false);
         loadBooks();
         loadCollectionItems();
-//       ObservableList<String> listData = FXCollections.observableArrayList("GARDEN", "HOUSE","AUTRE");
-//       categoryComboBox.setItems(listData);
+       ObservableList<String> listData = FXCollections.observableArrayList("garden", "house");
+       categoryComboBox.setItems(listData);
     }
 
 
@@ -107,7 +108,7 @@ public class Marketroc implements Initializable {
                 col++;
 
                 // Check if col reaches 2 (number of desired columns)
-                if (col == 4) {
+                if (col == 3) {
                     col = 1;  // Reset col to 0 for the next row
                     rows++;   // Move to the next row
                 }
@@ -161,55 +162,51 @@ public class Marketroc implements Initializable {
 
 
 
+    @FXML
+    void filterByCategory(ActionEvent event) {
+        String selectedCategory = categoryComboBox.getValue();
+        if (selectedCategory != null) {
+            // Filter the books based on the selected category
+            List<Produittroc> filteredBooks = filterProdparcateg(selectedCategory);
 
-    // ... Existing code ...
+            // Clear the existing BookListView
+            BookListView.getChildren().clear();
 
-//    @FXML
-//    void filterByCategory(ActionEvent event) {
-//        Book.Categorie selectedCategory = Book.Categorie.valueOf(categoryComboBox.getValue());
-//        if (selectedCategory != null) {
-//            // Filter the books based on the selected category
-//            List<Book> filteredBooks = filterBooksByCategory(selectedCategory);
-//
-//            // Clear the existing BookListView
-//            BookListView.getChildren().clear();
-//
-//            // Reload the filtered books
-//            int col = 1;
-//            int rows = 0;
-//            try {
-//                for (int i = 0; i < filteredBooks.size(); i++) {
-//                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/Admin/itembook.fxml"));
-//                    System.out.println("Loading itembook.fxml");
-//                    AnchorPane anchorPane = fxmlLoader.load();
-//                    itembookController ItemController = fxmlLoader.getController();
-//                    ItemController.setData(filteredBooks.get(i));
-//                    BookListView.add(anchorPane, col, rows);
-//
-//                    // Increment col for the next iteration
-//                    col++;
-//
-//                    // Check if col reaches 2 (number of desired columns)
-//                    if (col == 4) {
-//                        col = 1;  // Reset col to 0 for the next row
-//                        rows++;   // Move to the next row
-//                    }
-//                }
-//            } catch (IOException e) {
-//                System.err.println("Error loading itembook.fxml: " + e.getMessage());
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+            // Reload the filtered books
+            int col = 1;
+            int rows = 0;
+            try {
+                for (int i = 0; i < filteredBooks.size(); i++) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/items.fxml"));
+                    System.out.println("Loading aaaaaaaaaaaa.fxml");
+                    AnchorPane anchorPane = fxmlLoader.load();
+                    itemsPd ItemController = fxmlLoader.getController();
+                    ItemController.setData(filteredBooks.get(i));
+                    BookListView.add(anchorPane, col, rows);
 
-//    private List<Book> filterBooksByCategory(Book.Categorie category) {
-//        // Implement your logic to filter books based on the selected category
-//        // For example, you can iterate through BookObservableList and return books with matching category
-//        return BookObservableList.stream()
-//                .filter(book -> category.equals(book.getCategorie()))
-//                .collect(Collectors.toList());
-//    }
-//
+                    // Increment col for the next iteration
+                    col++;
+
+                    // Check if col reaches 2 (number of desired columns)
+                    if (col == 3) {
+                        col = 1;  // Reset col to 0 for the next row
+                        rows++;   // Move to the next row
+                    }
+                }
+            } catch (IOException e) {
+                System.err.println("Error loading itembook.fxml: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private List<Produittroc> filterProdparcateg(String category) {
+        return BookObservableList.stream()
+                .filter(book -> category.equals(book.getCategory()))
+                .collect(Collectors.toList()); // Add this line to collect the filtered books into a list
+    }
+
+
 
 
 //    void refreshGridPane() throws SQLException {

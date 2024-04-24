@@ -98,7 +98,7 @@ public class Editproduittr implements Initializable {
             serviceBook1.modifierPT(book);
             System.out.println("Le produit troc a été modifié avec succès.");
 
-            reloadMarketFXML();
+//            reloadMarketFXML();
 
             // Close the window
             closeWindow(event);
@@ -117,21 +117,21 @@ public class Editproduittr implements Initializable {
     }
 
 
-    void reloadMarketFXML() {
-        try {
-            // Load the FXML file and initialize the controller
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/Market.fxml"));
-            Parent root = loader.load();
-
-            // Get the current scene from any node within the scene hierarchy
-            Scene scene = okButton.getScene();
-
-            // Replace the root of the current scene with the newly loaded root
-            scene.setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle or log the exception
-        }
-    }
+//    void reloadMarketFXML() {
+//        try {
+//            // Load the FXML file and initialize the controller
+////            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/Market.fxml"));
+////            Parent root = loader.load();
+//
+//            // Get the current scene from any node within the scene hierarchy
+//            Scene scene = okButton.getScene();
+//
+//            // Replace the root of the current scene with the newly loaded root
+////            scene.setRoot(root);
+//        } catch (IOException e) {
+//            e.printStackTrace(); // Handle or log the exception
+//        }
+//    }
 
 
     void closeWindow() {
