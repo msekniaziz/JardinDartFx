@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="758.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.Blogmain">
+<children>
+    <AnchorPane layoutX="420.0" layoutY="28.0" prefHeight="66.0" prefWidth="688.0" stylesheets="@AI.css">
+        <styleClass>
+            <String fx:value="left-form" />
+            <String fx:value="shadow" />
+        </styleClass>
+        <children>
+            <Button layoutX="55.0" layoutY="13.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="42.0" prefWidth="275.0" styleClass="white-btn" stylesheets="@AI.css" text="Product for exchange" textFill="#aac400">
+                <font>
+                    <Font name="Arial" size="22.0" />
+                </font>
+            </Button>
+            <Button layoutX="355.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCollectionButtonClick" prefHeight="42.0" prefWidth="291.0" styleClass="white-btn" stylesheets="@AI.css" text="Your product for exchange" textFill="#c4e105">
+                <font>
+                    <Font name="Arial" size="22.0" />
+                </font>
+            </Button>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="collectionanchor" layoutX="290.0" layoutY="100.0" prefHeight="595.0" prefWidth="1036.0" stylesheets="@AI.css">
+        <styleClass>
+            <String fx:value="left-form" />
+            <String fx:value="shadow" />
+        </styleClass>
+        <children>
+            <VBox layoutX="21.0" layoutY="102.0" prefHeight="463.0" prefWidth="984.0">
+                <children>
+                    <ScrollPane prefHeight="548.0" prefWidth="563.0">
+                        <content>
+                            <GridPane fx:id="collectionListView" prefHeight="0.0" prefWidth="419.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                            </GridPane>
+                        </content>
+                    </ScrollPane>
+                </children>
+            </VBox>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="mainanchor" layoutX="275.0" layoutY="121.0" prefHeight="601.0" prefWidth="1066.0" stylesheets="@AI.css">
+        <children>
+            <VBox layoutX="33.0" layoutY="114.0" prefHeight="446.0" prefWidth="1000.0">
+                <children>
+                    <ScrollPane prefHeight="446.0" prefWidth="980.0" styleClass="transparent-scroll-pane">
+                        <content>
+                            <GridPane fx:id="BookListView">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                            </GridPane>
+                        </content>
+                        <stylesheets>
+                            <URL value="@AI.css" />
+                            <URL value="@UpdateUI.css" />
+                        </stylesheets>
+                    </ScrollPane>
+                </children>
+            </VBox>
+            <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
+                <font>
+                    <Font name="Arial Bold" size="24.0" />
+                </font>
+            </Label>
+            <Label layoutX="757.0" layoutY="55.0" prefHeight="18.0" prefWidth="47.0" text="Filter By" textFill="#dbff03" />
+        </children>
+        <styleClass>
+            <String fx:value="left-form" />
+            <String fx:value="shadow" />
+        </styleClass>
+    </AnchorPane>
+    <ImageView fx:id="bookicon" fitHeight="384.0" fitWidth="343.0" layoutX="697.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" visible="false">
+        <!--            <image>-->
+        <!--                <Image url="@../Rresources/5432699.png" />-->
+        <!--            </image>-->
+    </ImageView>
+
+</children>
+</AnchorPane>
