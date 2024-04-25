@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,6 +46,50 @@ public class Addproduittr {
     private Button imagebuttp;
 
     private File selectedImageFile;
+
+    @FXML
+    void ajouter_prodtroc(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/addproduittr.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
+            Scene scene = new Scene(root);
+
+            // Définir la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+
+        }}
+    @FXML
+    public void market(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/Market.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
+            Scene scene = new Scene(root);
+
+            // Définir la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+
+        }
+    }
 
     @FXML
     void affichierProduit(javafx.event.ActionEvent event) {
