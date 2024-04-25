@@ -76,6 +76,18 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
         pstm.executeUpdate();
         System.out.println("Produit ajouté meth 2");
     }
+    public void updateProduittroc(Produittroc produittroc)
+            throws SQLException   {
+
+        String req = "UPDATE `produit_troc` SET `statut`=? WHERE `id`=?";
+        pstm = conx.prepareStatement(req);
+
+        pstm.setInt(1, produittroc.getStatut());
+        pstm.setInt(2, produittroc.getId());
+
+        pstm.executeUpdate();
+        System.out.println("Statut du produit modifié avec succès");
+    }
 
 
     @Override
@@ -137,6 +149,33 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
             e.printStackTrace();
         }
     }
+
+    public List<Produittroc> afficherListPTfront() throws SQLException {
+        // Implement the method to retrieve a list of Produittroc objects
+        String req = "SELECT * FROM `produit_troc`  WHERE `statut`=1 ";
+
+        stm  = conx.createStatement();
+        ResultSet res = stm.executeQuery(req);
+
+        List<Produittroc> produits = new ArrayList<>();
+
+        while (res.next()){
+            Produittroc produit = new Produittroc();
+            produit.setId((res.getInt("id")));
+            produit.setId_user_id(res.getInt("id_user_id"));
+            produit.setNom(res.getString("nom"));
+            produit.setCategory(res.getString("category"));
+            produit.setDescription(res.getString("description"));
+            produit.setStatut(res.getInt("statut"));
+            produit.setImage(res.getString("image"));
+            produit.setNom_produit_recherche(res.getString("nom_produit_recherche"));
+
+            produits.add(produit);
+        }
+
+        return produits;
+    }
+
 
 
 
@@ -261,6 +300,8 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
             System.err.println("Error uploading image: " + e.getMessage());
         }
     }
+
+
 
     public static class Cardtptr {
     }

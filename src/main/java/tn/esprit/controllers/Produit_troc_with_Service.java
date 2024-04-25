@@ -103,8 +103,10 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
         System.out.println("Tous les produits ont été supprimés avec succès");
     }
 
+
     public void deletePT1(int productId) {
         String query = "DELETE FROM `produit_troc_with` WHERE `id` = ? ";
+        System.out.println("zzzzzzzzzzz");
         try (PreparedStatement preparedStatement = conx.prepareStatement(query)) {
             preparedStatement.setInt(1, productId);
             int rowsAffected = preparedStatement.executeUpdate();

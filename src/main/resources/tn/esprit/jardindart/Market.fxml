@@ -94,13 +94,13 @@
         </ImageView>
       <AnchorPane layoutX="14.0" layoutY="37.0" prefHeight="683.0" prefWidth="171.0" stylesheets="@AI.css">
          <children>
-            <Button fx:id="logout_butt" layoutX="33.0" layoutY="576.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="recycle_butt" layoutX="33.0" layoutY="490.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="dons_butt" layoutX="33.0" layoutY="403.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="blogs_buut" layoutX="33.0" layoutY="319.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="troc_buut" layoutX="33.0" layoutY="240.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="prods_butt" layoutX="33.0" layoutY="170.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" />
-            <Button fx:id="Dashboard_btn" layoutX="36.0" layoutY="100.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-btn" AnchorPane.leftAnchor="36.0" />
+            <Button fx:id="logout_butt" layoutX="33.0" layoutY="576.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="142.0" styleClass="menu-btn" />
+            <Button fx:id="recycle_butt" layoutX="33.0" layoutY="490.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="158.0" styleClass="menu-btn" />
+            <Button fx:id="dons_butt" layoutX="33.0" layoutY="403.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="142.0" styleClass="menu-btn" />
+            <Button fx:id="blogs_buut" layoutX="33.0" layoutY="319.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="142.0" styleClass="menu-btn" />
+            <Button fx:id="troc_buut" layoutX="33.0" layoutY="240.0" mnemonicParsing="false" onAction="#ajouter_prodtroc" prefHeight="46.0" prefWidth="157.0" styleClass="menu-btn" />
+            <Button fx:id="prods_butt" layoutX="33.0" layoutY="170.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" styleClass="menu-btn" />
+            <Button fx:id="Dashboard_btn" layoutX="36.0" layoutY="100.0" mnemonicParsing="false" onAction="#market" prefHeight="46.0" prefWidth="150.0" styleClass="menu-btn" AnchorPane.leftAnchor="36.0" />
             <Label fx:id="home" layoutX="104.0" layoutY="116.0" prefHeight="15.0" prefWidth="41.0" text="Home">
                <font>
                   <Font name="Tahoma Bold" size="12.0" />
@@ -187,5 +187,6 @@
             <String fx:value="shadow-left-menu" />
          </styleClass>
       </AnchorPane>
+      <Button fx:id="backss" layoutX="1385.0" layoutY="61.0" mnemonicParsing="false" onAction="#back" text="back" />
     </children>
 </AnchorPane>

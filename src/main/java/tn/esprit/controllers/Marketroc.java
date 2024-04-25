@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import tn.esprit.entities.Producttrocwith;
 import tn.esprit.entities.Produittroc;
 
@@ -55,6 +57,72 @@ public class Marketroc implements Initializable {
         bookicon.setVisible(true);
 
     }
+
+    @FXML
+    public void market(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/Market.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
+            Scene scene = new Scene(root);
+
+            // Définir la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+
+        }
+    }
+    @FXML
+    void back(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/BackproT.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
+            Scene scene = new Scene(root);
+
+            // Définir la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+    }}
+        @FXML
+    void ajouter_prodtroc(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/addproduittr.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
+            Scene scene = new Scene(root);
+            ComboBox<String> catrgtroComboBox = (ComboBox<String>) root.lookup("#catrgtro");
+            catrgtroComboBox.getItems().addAll("house", "garden");
+            // Définir la nouvelle scène sur le stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+
+    }}
+
     @FXML
     void booksnavclicked(ActionEvent event) {
         mainanchor.setVisible(true);
@@ -66,7 +134,7 @@ public class Marketroc implements Initializable {
         Produit_troc_with_Service serviceTRoc =new Produit_troc_with_Service();
 
         try {
-            BookObservableList = serviceBook.afficherListPTdiffuser(1);
+            BookObservableList = serviceBook.afficherListPTfront();
             ProdwithObservelist =serviceTRoc.afficherListPT();
 
         } catch (SQLException e) {
@@ -205,37 +273,5 @@ public class Marketroc implements Initializable {
                 .filter(book -> category.equals(book.getCategory()))
                 .collect(Collectors.toList()); // Add this line to collect the filtered books into a list
     }
-
-
-
-
-//    void refreshGridPane() throws SQLException {
-//        // Assuming your grid pane is named BookListView
-//        collectionListView.getChildren().clear(); // Clear existing items
-////        ServicePanier servicePanier=new ServicePanier();
-//        // Reload the books and populate the grid pane
-////        List<Panier> allBooks = servicePanier.recuperer(); // Replace this with your actual method to get all books
-//        int col = 0;
-//        int rows = 0;
-//
-//        try {
-//            for (int i = 0; i < allBooks.size(); i++) {
-//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/User/collectionItem.fxml"));
-//                System.out.println("Loading itembook.fxml");
-//                AnchorPane anchorPane = fxmlLoader.load();
-//                collectionitemController ItemController = fxmlLoader.getController();
-//                ItemController.setData(allBooks.get(i));
-//                collectionListView.add(anchorPane, col, rows++);
-//
-//
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Error loading itembook.fxml: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
 
 }

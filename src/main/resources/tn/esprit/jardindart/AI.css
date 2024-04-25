@@ -54,6 +54,10 @@
 .shadow-blue{
     -fx-effect: dropshadow(three-pass-box,rgba(20,120,255,0.25),30,0,0,0);
 }
+
+.button:hover {
+    -fx-background-color: #005f75; /* Change background color on hover */
+}
 .aa {
     -fx-background-radius: 50;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 4, 4);

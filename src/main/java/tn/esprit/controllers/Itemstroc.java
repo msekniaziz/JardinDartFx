@@ -121,8 +121,12 @@ public class Itemstroc {
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 // Call the service method to delete the product from the database
-                produitTrocService.deletePT1(book.getId());
-
+                try {
+                    produitTrocService.deletePT(book);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("eee");
                 // Notify the user that the deletion was successful
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Deletion Successful");
