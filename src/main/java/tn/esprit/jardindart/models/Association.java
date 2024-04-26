@@ -1,16 +1,46 @@
 package tn.esprit.jardindart.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Association {
     private int id,rib;
     private String nom_association,adresse_association,logo_association,description_asso;
+    private List<DonBienMateriel> donBienMateriels = new ArrayList<>();
+    private List<DonArgent> donArgents = new ArrayList<>();
 
-    public Association(int id, int rib, String nom_association, String adresse_association, String logo_association, String description_asso) {
+    public Association() {
+    }
+
+    public Association(int id, int rib, String nom_association, String adresse_association, String logo_association, String description_asso){
         this.id = id;
         this.rib = rib;
         this.nom_association = nom_association;
         this.adresse_association = adresse_association;
         this.logo_association = logo_association;
         this.description_asso = description_asso;
+
+    }
+
+    public Association( String nom_association, String adresse_association, String logo_association, String description_asso,int rib){
+
+        this.nom_association = nom_association;
+        this.adresse_association = adresse_association;
+        this.logo_association = logo_association;
+        this.description_asso = description_asso;
+        this.rib = rib;
+
+
+    }
+    public Association(int id, int rib, String nom_association, String adresse_association, String logo_association, String description_asso, List<DonBienMateriel> donBienMateriels, List<DonArgent> donArgents){
+        this.id = id;
+        this.rib = rib;
+        this.nom_association = nom_association;
+        this.adresse_association = adresse_association;
+        this.logo_association = logo_association;
+        this.description_asso = description_asso;
+        this.donBienMateriels = donBienMateriels;
+        this.donArgents = donArgents;
     }
     public Association(int rib, String nom_association, String adresse_association, String logo_association, String description_asso) {
         this.rib = rib;
@@ -68,6 +98,22 @@ public class Association {
         this.description_asso = description_asso;
     }
 
+    public List<DonBienMateriel> getDonBienMateriels() {
+        return donBienMateriels;
+    }
+
+    public void setDonBienMateriels(List<DonBienMateriel> donBienMateriels) {
+        this.donBienMateriels = donBienMateriels;
+    }
+
+    public List<DonArgent> getDonArgents() {
+        return donArgents;
+    }
+
+    public void setDonArgents(List<DonArgent> donArgents) {
+        this.donArgents = donArgents;
+    }
+
     @Override
     public String toString() {
         return "Association{" +
@@ -77,6 +123,10 @@ public class Association {
                 ", adresse_association='" + adresse_association + '\'' +
                 ", logo_association='" + logo_association + '\'' +
                 ", description_asso='" + description_asso + '\'' +
+                ", donBienMateriels=" + donBienMateriels +
+                ", donArgents=" + donArgents +
                 '}';
     }
+
+
 }

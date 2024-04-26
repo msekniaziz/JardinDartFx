@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Hyperlink?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="tn.esprit.jardindart.controllers.DA.Success">
+
+    <!-- Include any common styling or layout from HomeOn.html -->
+
+    <Label fx:id="titleLabel" styleClass="title">Thanks for your donation!</Label>
+    <Label fx:id="messageLabel">
+        We appreciate your act of kindness!
+        If you have any questions, please email
+        <Hyperlink fx:id="emailLink" text="orders@example.com" />    </Label>
+
+    <!-- Add any additional elements or styling -->
+
+</VBox>
