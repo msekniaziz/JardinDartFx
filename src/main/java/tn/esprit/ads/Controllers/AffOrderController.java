@@ -163,8 +163,6 @@ public class AffOrderController implements Initializable {
             showAlert(Alert.AlertType.ERROR, "Error", "erreur.");
         }
 
-
-
     }
 
     @FXML

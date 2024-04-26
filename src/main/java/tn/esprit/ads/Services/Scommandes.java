@@ -155,7 +155,7 @@ public class Scommandes  {
                 commande.setId(rs.getInt("id"));
                 commande.setId_user_c_id(rs.getInt("id_user_c_id"));
                 commande.setEtat(rs.getInt("etat"));
-                //commande.setDate(rs.getDate("date"));
+               // commande.setDate(rs.getDate("06/04/2024"));
                 commandes.add(commande);
             }
         } catch (SQLException e) {

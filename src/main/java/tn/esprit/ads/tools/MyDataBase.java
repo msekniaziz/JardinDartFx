@@ -14,8 +14,10 @@ public class MyDataBase {
     public MyDataBase() {
         try {
             cnx = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("connected");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            System.out.println("not connected");
         }
     }
     public static MyDataBase getInstance(){

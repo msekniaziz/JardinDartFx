@@ -81,8 +81,6 @@ public class affAdsController implements Initializable {
         System.out.println("Chargement des données des Annonces...");
         sannonces = new Sannonces();
         loadAdsData();
-
-
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
@@ -172,16 +170,16 @@ public class affAdsController implements Initializable {
         Category.setText("Category : " + categoryName);
     }
 
-    public void DeleteCatSelected(javafx.event.ActionEvent actionEvent) {
+    /*public void DeleteCatSelected(javafx.event.ActionEvent actionEvent) {
         sannonces.delete(selectedAds);
         loadAdsData(); // Recharger les données des annonces
-    }
+    }*/
 
     public void RefrecheListe(ActionEvent actionEvent) {
         loadAdsData();
     }
 
-    public void DeleteAllCat(ActionEvent actionEvent) {
+    /*public void DeleteAllCat(ActionEvent actionEvent) {
         Sannonces cat = new Sannonces();
         boolean success = cat.deleteAll();
         if (success) {
@@ -190,11 +188,10 @@ public class affAdsController implements Initializable {
         } else {
             showAlert(Alert.AlertType.ERROR, "Error", "erreur.");
         }
-    }
+    }*/
+
 
     /*public void EditCat(ActionEvent actionEvent) {
-    }*/
-    public void EditCat(ActionEvent actionEvent) {
         // Vérifiez d'abord si une annonce est sélectionnée
         if (selectedAds != null) {
             try {
@@ -226,7 +223,7 @@ public class affAdsController implements Initializable {
             // Si aucune annonce n'est sélectionnée, affichez un message à l'utilisateur
             showAlert(Alert.AlertType.WARNING, "Warning", "Please select an ad to edit.");
         }
-    }
+    }*/
 
     private List<Annonces> getAds() {
         Sannonces serviceAds = new Sannonces();
@@ -273,5 +270,8 @@ public class affAdsController implements Initializable {
 
 
     public void addToCart(ActionEvent actionEvent) {
+    }
+
+    public void navigateToViewPr(ActionEvent actionEvent) {
     }
 }

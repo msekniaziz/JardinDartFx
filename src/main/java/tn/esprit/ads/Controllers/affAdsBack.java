@@ -81,6 +81,7 @@ public class affAdsBack implements Initializable {
         Image image = new Image("file:src/main/java/tn/esprit/ads/img/jimmy-fallon.png");
         imageuserads.setImage(image);
 
+
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
@@ -96,9 +97,9 @@ public class affAdsBack implements Initializable {
         flowPaneLads.getChildren().clear();
         for (Annonces annonce : annonces) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardADS.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardAdsBack.fxml"));
                 AnchorPane card = loader.load();
-                CardAdsController controller = loader.getController();
+                CardAdsBackController controller = loader.getController();
                 controller.initialize(annonce);
                 card.setUserData(annonce);
                 flowPaneLads.getChildren().add(card);

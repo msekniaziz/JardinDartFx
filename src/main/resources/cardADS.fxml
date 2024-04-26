@@ -5,13 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import java.net.URL?>
 <AnchorPane fx:id="V2" onMouseClicked="#onAdsSelected" prefHeight="210.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ads.Controllers.CardAdsController">
-
+    <stylesheets>
+        <URL value="@./styles.css"/>
+    </stylesheets>
     <children>
-        <VBox fx:id="V1" layoutX="-2.0" prefHeight="212.0" prefWidth="504.0" spacing="5" style="-fx-padding: 10px;">
+        <AnchorPane fx:id="V1" layoutX="-2.0" prefHeight="212.0" prefWidth="504.0"  style="-fx-padding: 10px;">
             <children>
                 <ImageView fx:id="imageView" fitHeight="139.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true" />
-            </children></VBox>
+            </children></AnchorPane>
         <ImageView fx:id="image" fitHeight="100.0" fitWidth="100.0" layoutX="3.0" layoutY="-86.0" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="title" layoutX="172.0" layoutY="26.0" prefHeight="18.0" prefWidth="305.0" text="Title:" />
         <Label fx:id="price" layoutX="172.0" layoutY="65.0" prefHeight="18.0" prefWidth="332.0" text="Price:" />

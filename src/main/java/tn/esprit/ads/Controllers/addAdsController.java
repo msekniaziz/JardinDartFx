@@ -7,11 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -31,8 +30,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
 import static tn.esprit.ads.Services.Sannonces.cnx;
 
 public class addAdsController implements Initializable {
@@ -60,6 +59,13 @@ public class addAdsController implements Initializable {
     private ImageView imageView;
     @FXML
     private ImageView affichageImage;
+    @FXML
+    private Label PriceErrorLabel;
+    @FXML
+    private Label titleErrorLabel;
+    @FXML
+    private Label decriptionErrorLabel;
+
 
     private Sannonces sannonces = new Sannonces();
     private Annonces annonce = new Annonces();
@@ -100,45 +106,80 @@ public class addAdsController implements Initializable {
     public void addAnnonce(ActionEvent actionEvent) {
         String titleText = title.getText();
         String descriptionText = description.getText();
-        double priceValue = Double.parseDouble(price.getText()); // Assurez-vous que le champ prix contient un nombre valide
-        String selectedCategory = category.getValue(); // Obtenez la catégorie sélectionnée dans la ComboBox
+       double priceValue = Double.parseDouble(price.getText()); // Assurez-vous que le champ prix contient un nombre valide
+        // String priceValue = price.getText();
+       // double priceValue = 0.0; // Initialisation à 0.0 par défaut
+        String priceText = price.getText();
+
+
+
+        String selectedCategory = category.getValue();
         int negotiableValue = negotiable.isSelected() ? 1 : 0;
         int categoryId = getIdFromCategoryName(selectedCategory);
         String statut ="inctive";
-       // String image = uploadImage.getText();
-        // Récupérer le chemin de l'image sélectionnée (si une image a été sélectionnée)
         String imagePath = null;
         if (imageView.getImage() != null) {
-            // Enregistrer l'image sur le disque
+
             String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-            String destinationPath = "C:/Users/user/IdeaProjects/Ads - Copie/src/main/java/tn/esprit/ads/img" + timeStamp + ".png";
+            String destinationPath = "C:/Users/user/IdeaProjects/Ads/src/main/java/tn/esprit/ads/img" + timeStamp + ".png";
             saveImageToFile(destinationPath);
             imagePath = destinationPath;
 
-            // Charger l'image dans votre ImageView affichageimage
+
             Image image = new Image("file:" + destinationPath);
             affichageImage.setImage(image);}
         int etat =0;
         Annonces newAnnonce = new Annonces();
         newAnnonce.setTitle(titleText);
         newAnnonce.setDescription(descriptionText);
-        newAnnonce.setPrix(priceValue);
+        newAnnonce.setPrix(Double.parseDouble(String.valueOf(priceValue)));
         newAnnonce.setId_Cat(categoryId); // Définir l'ID de la catégorie
         newAnnonce.setNegiciable(negotiableValue);
         newAnnonce.setCategory(statut);
         newAnnonce.setStatus(etat);
         newAnnonce.setImage(imagePath);
+
+        boolean isvalid = true;
+        if (descriptionText.isEmpty())
+        { decriptionErrorLabel.setText("this field is empty");
+            isvalid = false;
+        }
+        if (titleText.isEmpty())
+        { titleErrorLabel.setText("this field is empty");
+            isvalid = false;
+        }
+        if (!priceText.isEmpty()) {
+            try {
+                priceValue = Double.parseDouble(String.valueOf(Double.parseDouble(String.valueOf(Double.parseDouble(priceText)))));
+            } catch (NumberFormatException e) {
+                PriceErrorLabel.setText("Veuillez entrer un prix valide");
+                return; // Quitter la méthode si le prix n'est pas un nombre valide
+            }
+        } else {
+            PriceErrorLabel.setText("Veuillez entrer un prix");
+            return; // Quitter la méthode si le champ de prix est vide
+        }
+
+
+        if (!isvalid)
+        {return;}
         try {
-            // Appelez la méthode add de votre service Sannonces pour ajouter cette annonce
+
             sannonces.add(newAnnonce);
             System.out.println("Annonce ajoutée avec succès.");
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("affMyAds.fxml")));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         } catch (SQLException e) {
             System.out.println("Erreur lors de l'ajout de l'annonce : " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
 
     }
-
 
 
 
@@ -188,4 +229,6 @@ public class addAdsController implements Initializable {
     }
 
 
+    public void navigateToViewPr(ActionEvent actionEvent) {
+    }
 }

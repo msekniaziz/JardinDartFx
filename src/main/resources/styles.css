@@ -1,0 +1,311 @@
+/* General styles */
+.root {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Label styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+#name, #state, #date {
+    -fx-font-weight: bold;
+}
+
+/* Button styles */
+#delete {
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+#delete:hover {
+    -fx-background-color: rgba(101, 178, 5, 0.65);
+}
+
+#delete:pressed {
+    -fx-background-color: #335d00;
+}
+
+/* AnchorPane styles */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-start-margin: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0); /* Ajoute une ombre */
+}
+/* General styles */
+.root {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Label styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Button styles */
+#editC, #deleteC {
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+#editC:hover, #deleteC:hover {
+    -fx-background-color: rgba(101, 178, 5, 0.65);
+}
+
+#editC:pressed, #deleteC:pressed {
+    -fx-background-color: #335d00;
+}
+
+/* AnchorPane styles */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+/* General styles */
+.root {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Label styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* ImageView styles */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+/* AnchorPane styles */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+/* General styles */
+.root {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px;
+}
+
+/* Label styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* ImageView styles */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+/* AnchorPane styles */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+/* General styles */
+.root {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px;
+}
+
+/* Label styles */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Specific label styles for titles */
+#title, #category, #price, #negotiable, #description {
+    -fx-font-weight: bold;
+}
+
+/* Button styles */
+.button {
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+.button:hover {
+    -fx-background-color: rgba(101, 178, 5, 0.65);
+}
+
+.button:pressed {
+    -fx-background-color: #335d00;
+}
+
+/* ImageView styles */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+/* AnchorPane styles */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+
+/* Frame styles */
+.frame {
+    -fx-border-color: #333333;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+}
+/* Styles généraux */
+.root {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px;
+}
+
+/* Styles des labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Styles spécifiques pour les titres */
+#title, #category, #price, #negotiable, #description {
+    -fx-font-weight: bold;
+}
+
+/* Styles des ImageView */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+/* Styles des AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+/* Styles généraux */
+.root {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10px;
+}
+
+/* Styles des labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Styles spécifiques pour les titres */
+#title, #category, #price, #negotiable, #description {
+    -fx-font-weight: bold;
+}
+
+/* Styles des boutons */
+.button {
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+.button:hover {
+    -fx-background-color: rgba(101, 178, 5, 0.65);
+}
+
+.button:pressed {
+    -fx-background-color: #335d00;
+}
+
+/* Styles des ImageView */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}
+
+/* Styles des VBox et AnchorPane */
+.v-box, .anchor-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0);
+}
+/* Styles pour les labels du formulaire */
+#title .label, #description .label, #category .label, #price .label, #negotiable .label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+/* Style pour les champs de texte et TextArea */
+#title .text-field, #description .text-area, #price .text-field {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+/* Style pour le ComboBox */
+#category .combo-box {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+/* Style pour le CheckBox */
+#negotiable .check-box {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-text-fill: #333333;
+}
+
+/* Style pour le bouton d'upload d'image */
+#uploadImage .button {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* Style pour le conteneur du formulaire */
+#formContainer {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0.0, 0.0);
+}

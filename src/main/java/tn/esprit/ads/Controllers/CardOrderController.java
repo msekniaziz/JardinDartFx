@@ -1,6 +1,7 @@
 package tn.esprit.ads.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -8,7 +9,10 @@ import javafx.scene.layout.VBox;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Entity.Commandes;
 import javafx.scene.layout.FlowPane;
+import tn.esprit.ads.Services.Scommandes;
+import tn.esprit.ads.test.MainFx;
 
+import java.awt.event.ActionEvent;
 import java.util.jar.Attributes;
 
 public class CardOrderController {
@@ -21,6 +25,8 @@ public class CardOrderController {
 
     @FXML
     private VBox View1;
+    @FXML
+    private Button delete;
 
     @FXML
     private AnchorPane View2;
@@ -34,6 +40,7 @@ public class CardOrderController {
     @FXML
     private Label stateLabel;
     private Commandes com;
+    Scommandes comm = new Scommandes();
     private boolean selected = false;
 
     public boolean isSelected() {
@@ -45,16 +52,16 @@ public class CardOrderController {
 
     @FXML
     void onOrderSelected(MouseEvent event) {
-        // Récupérer la carte de livraison cliquée
+
         AnchorPane orderCard = (AnchorPane) event.getSource();
 
-        // Mettre à jour l'état de sélection de la carte
+
         setSelected(!isSelected());
 
-        // Mettre à jour l'apparence de la carte en fonction de l'état de sélection
+
         orderCard.setStyle(isSelected() ? "-fx-background-color: lightblue;" : "");
 
-        // Désélectionner les autres cartes
+
         for (int i = 0; i < flowPaneLOrder.getChildren().size(); i++) {
             AnchorPane node = (AnchorPane) flowPaneLOrder.getChildren().get(i);
             if (node != orderCard ){
@@ -82,5 +89,22 @@ public class CardOrderController {
     }
     public Commandes getCom() {
         return com;
+    }
+
+
+
+    public void delete(javafx.event.ActionEvent actionEvent) {
+        if ( comm== null) {
+            System.err.println("Erreur : Sannonces non initialisée.");
+            return;
+        }
+
+        if (com == null) {
+            System.err.println("Erreur : Aucune annonce sélectionnée.");
+            return;
+        }
+        comm.delete(com);
+        MainFx.updateCurrentView("/affOrder.fxml");
+
     }
 }

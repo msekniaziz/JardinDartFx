@@ -26,6 +26,7 @@ import java.net.URL;
 import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -145,14 +146,14 @@ public class AffCategoryController implements Initializable
         }
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String content) {
+    void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
     }
-    private void loadCartData() {
+    void loadCartData() {
         List<Categories> categories = catt.getAll();
 
         flowPaneLCat.getChildren().clear();
@@ -338,10 +339,15 @@ public class AffCategoryController implements Initializable
     @FXML
     void back(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("addCategory.fxml"));
+            System.out.println("1");
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("addCategory.fxml")));
+            System.out.println("2");
             Scene scene = new Scene(root);
+            System.out.println("3");
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            System.out.println("4");
             stage.setScene(scene);
+            System.out.println("5");
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AddCategoryController.class.getName()).log(Level.SEVERE, null, ex);
