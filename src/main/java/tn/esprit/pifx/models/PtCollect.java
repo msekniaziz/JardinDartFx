@@ -20,6 +20,15 @@ public class PtCollect {
     private List<ProdR> prodRs = new ArrayList<>();
 
 
+    public PtCollect(int id, String nomPc, String adressePc, Float latitudePc, Float longitudePc, List<TypeDispo> type) {
+       this.id=id;
+        this.nomPc = nomPc;
+        this.adressePc = adressePc;
+        this.latitudePc = latitudePc;
+        this.longitudePc = longitudePc;
+        this.type = type;
+    }
+
 
     public String getNomPc() {
         return nomPc;
@@ -61,8 +70,8 @@ public class PtCollect {
         this.type = type;
     }
 
-    public void addType(TypeDispo type) {
-        this.type.add(type);
+    public void addType(List<TypeDispo> type) {
+        this.type.addAll(type);
     }
 
     public void removeType(TypeDispo type) {
@@ -99,6 +108,13 @@ public class PtCollect {
         this.longitudePc = longitudePc;
         this.type = type;
         this.prodRs = prodRs;
+    }
+    public PtCollect( String nomPc, String adressePc, Float latitudePc, Float longitudePc) {
+        this.nomPc = nomPc;
+        this.adressePc = adressePc;
+        this.latitudePc = latitudePc;
+        this.longitudePc = longitudePc;
+
     }
 
     public int getId() {

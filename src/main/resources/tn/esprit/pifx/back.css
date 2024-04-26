@@ -1,0 +1,41 @@
+/* Table styling */
+.table-view {
+    -fx-base: #fafafa;
+    -fx-padding: 20px;
+    -fx-animation-duration: 0.3s;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #fafafa;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #eee;
+    -fx-border-style: solid;
+    -fx-background-color: #fafafa;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+}
+
+.table-row-cell {
+    -fx-background-color: #fff;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(gaussian, #bbb, 10, 0, 0, 1);
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #090350;
+    -fx-text-fill: white;
+}

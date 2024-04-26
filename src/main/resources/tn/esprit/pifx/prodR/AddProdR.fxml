@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="986.0" style="             -fx-padding: 10px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pifx.controllers.prodR.AddProdR">
+
+    <!-- Inclure le menu vertical à gauche -->
+    <left>
+        <fx:include source="../front_left.fxml" />
+    </left>
+
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+
+    <!-- Contenu principal à droite -->
+    <center>
+        <AnchorPane prefHeight="495.0" prefWidth="598.0">
+        <Label layoutX="26.0" layoutY="77.0" text="User ID:" />
+        <TextField fx:id="userIdField" layoutX="106.0" layoutY="70.0" prefHeight="26.0" prefWidth="48.0" text="1" />
+
+    <Label layoutX="26.0" layoutY="134.0" text="Collect Point:" />
+    <ComboBox fx:id="ptcComboBox" layoutX="106.0" layoutY="130.0" />
+
+
+    <Label layoutX="31.0" layoutY="216.0" text="Type Prod :" />
+    <ComboBox fx:id="typeComboBox" layoutX="106.0" layoutY="204.0" />
+
+<!--    <Label layoutX="18.0" layoutY="255.0" text="Statut:" />-->
+<!--    <CheckBox fx:id="statutCheckBox" layoutX="98.0" layoutY="255.0" />-->
+
+    <Label layoutX="345.0" layoutY="77.0" text="Description:" />
+    <TextArea fx:id="descriptionArea" layoutX="425.0" layoutY="63.0" prefHeight="100.0" prefWidth="213.0" text="" />
+
+    <Label layoutX="357.0" layoutY="195.0" text="Nom P:" />
+    <TextField fx:id="nomPField" layoutX="428.0" layoutY="195.0" prefHeight="34.0" prefWidth="292.0" text="" />
+
+    <Label layoutX="33.0" layoutY="332.0" text="Justificatif:" />
+            <ImageView fx:id="imageid" fitHeight="154.0" fitWidth="182.0" layoutX="305.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
+    <Button layoutX="168.0" layoutY="444.0" onAction="#ajouterProdR" prefHeight="36.0" prefWidth="228.0" text="Ajouter" />
+   <Button layoutX="403.0" layoutY="444.0" onAction="#afficherListe" prefHeight="36.0" prefWidth="170.0" text="Consulter liste" />
+   <Button layoutX="167.0" layoutY="496.0" prefHeight="36.0" prefWidth="406.0" text="Retour" />
+            <Button fx:id="imagebuttp" layoutX="121.0" layoutY="323.0" mnemonicParsing="false" onAction="#addImage" prefHeight="0.0" prefWidth="146.0" text="Add image" />
+            <Label fx:id="userIdCommentLabel" layoutX="106.0" layoutY="96.0" textFill="RED" />
+            <Label fx:id="ptcCommentLabel" layoutX="106.0" layoutY="177.0" prefHeight="18.0" prefWidth="204.0" textFill="RED" />
+            <Label fx:id="typeCommentLabel" layoutX="104.0" layoutY="255.0" prefHeight="18.0" prefWidth="201.0" textFill="RED" />
+            <Label fx:id="descriptionCommentLabel" layoutX="428.0" layoutY="152.0" prefHeight="18.0" prefWidth="194.0" textFill="RED" />
+            <Label fx:id="nomPCommentLabel" layoutX="330.0" layoutY="234.0" prefHeight="24.0" prefWidth="389.0" textFill="RED" />
+
+        </AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@../styles.css" />
+    </stylesheets>
+</BorderPane>

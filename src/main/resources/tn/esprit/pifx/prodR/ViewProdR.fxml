@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.pifx.controllers.prodR.ViewProdR"
+            style="-fx-padding: 10px;"
+
+>
+    <left>
+        <fx:include source="../front_left.fxml" />
+    </left>
+
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+<center>
+    <ScrollPane  style="-fx-padding: -1px;"  hbarPolicy="AS_NEEDED" vbarPolicy="NEVER">
+
+        <HBox spacing="80" prefHeight="700">
+            <TilePane  style="-fx-padding: 10px;"   fx:id="tilePane" hgap="10" vgap="50"  />
+        </HBox>
+
+    </ScrollPane>
+</center>
+    <stylesheets>
+        <URL value="@../styles.css"></URL>
+    </stylesheets>
+</BorderPane>

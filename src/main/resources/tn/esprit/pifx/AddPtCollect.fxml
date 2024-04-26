@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="333.0" prefWidth="494.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pifx.controllers.AddPtCollectController">
+    <children>
+        <Label layoutX="122.0" layoutY="66.0" text="Nom PC:" />
+        <TextField fx:id="nomPcField" layoutX="224.0" layoutY="66.0" />
+        <Label layoutX="122.0" layoutY="106.0" text="Adresse PC:" />
+        <TextField fx:id="adressePcField" layoutX="224.0" layoutY="106.0" />
+        <Label layoutX="122.0" layoutY="147.0" text="Latitude PC:" />
+        <TextField fx:id="latitudePcField" layoutX="224.0" layoutY="147.0" />
+        <Label layoutX="122.0" layoutY="187.0" text="Longitude PC:" />
+        <TextField fx:id="longitudePcField" layoutX="224.0" layoutY="187.0" />
+        <Button layoutX="119.0" layoutY="237.0" mnemonicParsing="false" onAction="#ajouterPtCollect" prefHeight="26.0" prefWidth="127.0" text="Ajouter" />
+        <Button layoutX="247.0" layoutY="237.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Consulter Liste" />
+        <Button layoutX="120.0" layoutY="278.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="256.0" text="Retour" />
+    </children>
+</AnchorPane>

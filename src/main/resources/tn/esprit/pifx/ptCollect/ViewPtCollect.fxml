@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.pifx.controllers.ptCollect.ViewPtCollect"
+            style="  -fx-padding: 10px;"
+>
+
+
+    <left>
+        <fx:include source="../front_left.fxml" />
+    </left>
+
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+
+    <center>
+
+        <SplitPane  style="-fx-padding: -1px;" dividerPositions="0.8">
+
+            <items>
+                <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                    <VBox prefWidth="1000" spacing="20" style="-fx-padding: 10px;">
+                        <Label styleClass="title-label" text="OUR CP" />
+                        <TilePane fx:id="tilePane" hgap="10" vgap="50" />
+                    </VBox>
+                </ScrollPane>
+                <WebView fx:id="webView" style=" -fx-border-style: solid; -fx-border-width: 1; -fx-border-color: black; " />
+            </items>
+
+        </SplitPane>
+    </center>
+
+    <stylesheets>
+        <URL value="@../styles.css" />
+<!--        <URL value="@../styles.css" />-->
+    </stylesheets>
+</BorderPane>

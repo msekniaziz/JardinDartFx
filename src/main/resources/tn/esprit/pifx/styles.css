@@ -1,0 +1,285 @@
+.container {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 20px;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.form-label {
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #495057;
+}
+
+.form-field, .form-area, .date-picker {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 5px;
+}
+
+.form-area {
+    -fx-pref-height: 100px;
+}
+
+.submit-button {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 16px;
+    -fx-background-color: #335d00;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+}
+
+.submit-button:hover {
+    -fx-background-color: rgba(101, 178, 5, 0.65);
+}
+
+/* styles.css */
+
+.name-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-alignment: center;
+}
+
+
+.address-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
+
+.description-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
+
+.separator-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #999999; /* Couleur du texte */
+}
+
+.rib-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
+
+.card {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+    -fx-background-radius: 10px; /* Rayon de bordure */
+    -fx-padding: 20px; /* Marge à l'intérieur de la carte */
+    -fx-start-margin: 20px; /* Marge à l'intérieur de la carte */
+
+
+}
+
+.card:hover {
+    -fx-background-color: rgba(80, 138, 8, 0.26); /* Couleur de fond */
+
+}
+
+.card .organization-label {
+    -fx-text-fill: #05071F; /* Couleur du texte */
+    -fx-font-weight: bold; /* Gras */
+    -fx-font-size: 18px; /* Taille de police */
+}
+
+.card .association-name-label {
+    -fx-text-fill: #05071F; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de police */
+}
+
+.card .description-label {
+    -fx-text-fill: #666666; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de police */
+}
+
+.card .status-label {
+    -fx-text-fill: #007bff; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de police */
+}
+
+.button
+{
+    -fx-background-color : #335d00;
+    -fx-text-fill : #e7e5e5;
+}
+.button:hover{
+    -fx-background-color : rgba(101, 178, 5, 0.65);
+}
+.button:pressed
+{
+    -fx-background-color : #335d00;
+}
+
+.scroll-pane {
+    -fx-background-color: #02030A;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+    -fx-background-color: #335d00; /* Bleu foncé pour la barre de défilement */
+    -fx-background-radius: 5em;
+}
+
+
+.title-label {
+    -fx-font-size: 80px;
+    -fx-font-weight: bold;
+    -fx-padding: 0px;
+    -fx-text-fill : #335d00; /* Texte blanc */
+
+}
+
+.button {
+    -fx-background-color : #335d00; /* Fond bleu foncé */
+    -fx-text-fill : #e7e5e5; /* Texte blanc */
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+
+}
+
+.menu-btn {
+    position: absolute; /* Position absolue pour les boutons */
+    z-index: 1; /* Place les boutons au-dessus des autres éléments */
+}
+
+
+.scroll-pane {
+    -fx-background-color: rgba(80, 138, 8, 0.54); /* Fond noir */
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent; /* Transparent */
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent; /* Transparent */
+    -fx-border-color: transparent; /* Transparent */
+}
+
+.scroll-bar:horizontal .track, .scroll-bar:vertical .track {
+    -fx-background-color: transparent; /* Transparent */
+    -fx-border-color: transparent; /* Transparent */
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+    -fx-background-color: #335d00; /* Bleu foncé pour la barre de défilement */
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
+
+/* Style pour les boutons dans l'AnchorPane imbriqué */
+.anchor-pane > .anchor-pane > .button {
+    -fx-background-radius: 15px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #9b9aac; /* Texte gris clair */
+    -fx-background-color: rgba(243, 248, 254, 1); /* Fond blanc légèrement transparent */
+}
+
+/* Style pour les labels dans l'AnchorPane imbriqué */
+.anchor-pane > .anchor-pane > .label {
+    -fx-background-radius: 15px;
+    -fx-font-size: 15px;
+    -fx-text-fill: #9b9aac; /* Texte gris clair */
+    -fx-background-color: rgba(243, 248, 254, 1); /* Fond blanc légèrement transparent */
+}
+
+/*_______________________________________________*/
+/* Style pour le formulaire */
+.form-pane {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+    -fx-padding: 20px;
+}
+
+/* Style pour les labels */
+/*.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333; !* Couleur du texte *!
+}*/
+
+/* Style pour les champs de texte */
+.text-field {
+    -fx-font-family: 'Poppins', Arial, sans-serif; /* Utilisation de la police Poppins */
+
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px; /* Largeur préférée */
+    -fx-padding: 5px;
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+}
+
+/* Style pour les zones de texte */
+.text-area {
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px; /* Largeur préférée */
+    -fx-pref-height: 80px; /* Hauteur préférée */
+    -fx-padding: 5px;
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+}
+
+/* Style pour les boutons */
+/*.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px; !* Espacement intérieur *!
+    -fx-background-color: #4CAF50; !* Couleur de fond *!
+    -fx-text-fill: white; !* Couleur du texte *!
+    -fx-background-radius: 5px; !* Rayon de la bordure *!
+    -fx-border-radius: 5px; !* Rayon de la bordure *!
+}*/
+
+/* Style pour les images */
+.image-view {
+    -fx-padding: 5px;
+}
+
+/* Style pour les combos */
+.combo-box {
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px; /* Largeur préférée */
+    -fx-padding: 5px;
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+}
+
+/* Style pour les labels d'erreur */
+.error-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #ff0000; /* Couleur du texte en cas d'erreur */
+}

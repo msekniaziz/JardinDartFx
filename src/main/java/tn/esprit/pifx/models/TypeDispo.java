@@ -13,6 +13,13 @@ public class TypeDispo {
 
     private List<ProdR> prodRType = new ArrayList<>();
 
+    public TypeDispo(int typeProdId, String s) {
+    }
+
+    public TypeDispo() {
+
+    }
+
     public Integer getId() {
         return id;
     }
@@ -39,7 +46,7 @@ public class TypeDispo {
 
     public void addPtC(PtCollect ptC) {
         this.ptC.add(ptC);
-        ptC.addType(this);
+        ptC.addType((List<TypeDispo>) this);
     }
 
     public void removePtC(PtCollect ptC) {

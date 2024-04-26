@@ -17,7 +17,7 @@ public class Main {
         nouveauProdR.setTypeProdId(1);
         nouveauProdR.setPtcId(2);
         nouveauProdR.setUserId(1);
-        nouveauProdR.setStatut(1);
+        nouveauProdR.setStatut(false);
         nouveauProdR.setDescription("CASCADE");
         nouveauProdR.setNomP("Nom");
         nouveauProdR.setJustificatif("Chemin");

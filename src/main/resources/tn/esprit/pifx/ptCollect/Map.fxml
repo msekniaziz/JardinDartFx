@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.pifx.controllers.ptCollect.Map"
+            style="-fx-background-color: white; -fx-padding: 10px;"
+            minHeight="500" minWidth="800"
+
+>
+    <left>
+        <fx:include source="../back_left.fxml"/>
+    </left>
+    <center>
+        <Label text="MAP" styleClass="title-label" />
+
+        <AnchorPane>
+
+            <WebView fx:id="webView" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-color: white; -fx-border-style: solid; -fx-border-width: 10; -fx-border-color: black; -fx-pref-width: 100%; -fx-pref-height: 100%;">
+    </WebView>
+        </AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@../styles1.css"></URL>
+    </stylesheets>
+</BorderPane>

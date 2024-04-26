@@ -5,21 +5,12 @@ import java.util.Date;
 
 public class ProdR {
 
-    private int id;
+    private Integer id,userId,ptcId,typeProdId;
 
-    private int userId;
+    private Boolean statut;
 
-    private int ptcId;
+    private String description,nomP,justificatif,nomPtcId,nomTypeProd,nomUtilisateur;
 
-    private int typeProdId;
-
-    private int statut;
-
-    private String description;
-
-    private String nomP;
-
-    private String justificatif;
 
 
     public int getId() {
@@ -34,7 +25,7 @@ public class ProdR {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -42,7 +33,7 @@ public class ProdR {
         return ptcId;
     }
 
-    public void setPtcId(int ptcId) {
+    public void setPtcId(Integer ptcId) {
         this.ptcId = ptcId;
     }
 
@@ -50,15 +41,15 @@ public class ProdR {
         return typeProdId;
     }
 
-    public void setTypeProdId(int typeProdId) {
+    public void setTypeProdId(Integer typeProdId) {
         this.typeProdId = typeProdId;
     }
 
-    public int getStatut() {
+    public Boolean getStatut() {
         return statut;
     }
 
-    public void setStatut(int statut) {
+    public void setStatut(Boolean statut) {
         this.statut = statut;
     }
 
@@ -85,9 +76,29 @@ public class ProdR {
     public void setJustificatif(String justificatif) {
         this.justificatif = justificatif;
     }
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
+    }
 
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
+    }
 
+    public String getNomPtcId() {
+        return nomPtcId;
+    }
 
+    public void setNomPtcId(String nomPtcId) {
+        this.nomPtcId = nomPtcId;
+    }
+
+    public String getNomTypeProd() {
+        return nomTypeProd;
+    }
+
+    public void setNomTypeProd(String nomTypeProd) {
+        this.nomTypeProd = nomTypeProd;
+    }
     @Override
     public String toString() {
         return String.valueOf(id); // ou toute autre propriété à afficher
@@ -98,7 +109,16 @@ public class ProdR {
     public ProdR() {
     }
 
-    public ProdR( int userId, int ptcId, int typeProdId, int statut, String description, String nomP, String justificatif) {
+    public ProdR( Integer userId, Integer ptcId, Integer typeProdId, Boolean statut, String description, String nomP, String justificatif) {
+        this.userId = userId;
+        this.ptcId = ptcId;
+        this.typeProdId = typeProdId;
+        this.statut = statut;
+        this.description = description;
+        this.nomP = nomP;
+        this.justificatif = justificatif;
+    }    public ProdR( Integer id ,Integer userId, Integer ptcId, Integer typeProdId, Boolean statut, String description, String nomP, String justificatif) {
+        this.id = id;
         this.userId = userId;
         this.ptcId = ptcId;
         this.typeProdId = typeProdId;
