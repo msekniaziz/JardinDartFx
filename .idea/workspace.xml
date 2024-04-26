@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="767cf32d-92f5-453c-9c13-73a145fcbc32" name="Changes" comment="">
+    <list default="true" id="94a447dc-f565-425e-a215-079a3d09655f" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/piFx__javafx_run_.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/MenuBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/front_left.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/front_top.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/prodR/ViewProdR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/ptCollect/ListType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/ptCollect/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/controllers/ptCollect/ViewPtCollect.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/models/ProdR.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/models/PtCollect.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/models/TypeDispo.java" afterDir="false" />
@@ -34,38 +27,6 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/test/HelloApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/test/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/pifx/utils/MyDataBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/AI.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/add-to-basket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/blog.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/compare.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/logo_site.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/nature.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/shutdown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/Resources/zakat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/back.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/back_left.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/front_left.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/front_top.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/icons/done.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Box_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_GPS_Antenna_64px_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Home_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Meanpath_64px_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Open_Envelope_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Person_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Search_52px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Sign_Out_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Slider__32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/icons8_Xbox_Menu_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/images/jimmy-fallon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/prodR/ViewProdR.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/ptCollect/ListType.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/ptCollect/Map.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/ptCollect/ViewPtCollect.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/styles1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/pifx/styles_front_top.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,95 +36,68 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2fCUJrWXUqwYVIDdCOvrkKR9wVd" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectId" id="2eMsMdeSQ1bHv9BTL50a95WifOX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.piFx [javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.piFx [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/azizm/OneDrive - ESPRIT/Documents/piFxx/__piFx/piFx/src/main/java/tn/esprit/pifx/models&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\java\tn\esprit\pifx\models" />
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx\Resources" />
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx\ptCollect" />
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx\icons" />
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx" />
-      <recent name="C:\Users\azizm\OneDrive - ESPRIT\Documents\piFxx\__piFx\piFx\src\main\resources\tn\esprit\pifx\Resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="tn.esprit.pifx.utils" />
-    </key>
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-jbr-17.0.9-4caba194b151-51f1b679" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="767cf32d-92f5-453c-9c13-73a145fcbc32" name="Changes" comment="" />
-      <created>1713304486439</created>
+      <changelist id="94a447dc-f565-425e-a215-079a3d09655f" name="Changes" comment="" />
+      <created>1711725743498</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713304486439</updated>
-      <workItem from="1713304487548" duration="10818000" />
-      <workItem from="1713395232337" duration="3374000" />
-      <workItem from="1713399534750" duration="462000" />
-      <workItem from="1713400246522" duration="1648000" />
-      <workItem from="1713477959459" duration="6851000" />
-      <workItem from="1713484938607" duration="1815000" />
-      <workItem from="1713522667385" duration="1292000" />
-      <workItem from="1713573429914" duration="1795000" />
-      <workItem from="1713699871841" duration="5906000" />
-      <workItem from="1713706826160" duration="4000000" />
-      <workItem from="1713730166295" duration="1174000" />
-      <workItem from="1713735707125" duration="11473000" />
-      <workItem from="1713898402834" duration="14646000" />
-      <workItem from="1713951102723" duration="7286000" />
-      <workItem from="1713973911079" duration="10893000" />
-      <workItem from="1713992574451" duration="1182000" />
-      <workItem from="1714003686740" duration="41000" />
-      <workItem from="1714003955417" duration="2211000" />
-      <workItem from="1714067142491" duration="13631000" />
-      <workItem from="1714091705785" duration="359000" />
-      <workItem from="1714117739368" duration="1041000" />
+      <updated>1711725743498</updated>
+      <workItem from="1711725745171" duration="1119000" />
+      <workItem from="1711728711262" duration="11025000" />
     </task>
     <servers />
   </component>

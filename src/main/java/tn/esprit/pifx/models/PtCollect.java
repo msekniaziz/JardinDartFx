@@ -19,6 +19,8 @@ public class PtCollect {
 
     private List<ProdR> prodRs = new ArrayList<>();
 
+    public PtCollect(String nomPc, String adressePc, float latitudePc, float longitudePc) {
+    }
 
     public PtCollect(int id, String nomPc, String adressePc, Float latitudePc, Float longitudePc, List<TypeDispo> type) {
        this.id=id;
