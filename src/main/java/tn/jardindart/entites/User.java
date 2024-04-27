@@ -165,7 +165,6 @@ public class User {
         {
             String sql = "INSERT INTO user (nom, prenom, mail, tel, gender, password, nb_points, age, date_birthday, confirmpassword, status, role) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, nom);
                 stmt.setString(2, prenom);

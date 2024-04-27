@@ -9,6 +9,8 @@ module tn.jardindart{
     requires twilio;
     requires slf4j.simple;
     requires jakarta.mail;
+    requires com.google.common;
+    requires bcrypt;
     opens tn.jardindart.controllers;
     opens tn.jardindart.utils;
     opens tn.jardindart.entites;

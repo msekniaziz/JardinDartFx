@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.codec.digest.DigestUtils;
 import javafx.stage.Window;
 import javafx.scene.paint.Color;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class LoginController implements Initializable {
     private final Connection con;
@@ -88,20 +89,22 @@ public class LoginController implements Initializable {
         if (checkIsValidated()) {
             PreparedStatement ps;
             ResultSet rs;
-            String hashedPwd = DigestUtils.sha1Hex(passwordFieldLogin.getText());
-            String query = "SELECT * FROM user WHERE mail = ? AND password = ?";
+            String query = "SELECT * FROM user WHERE mail = ? ";
             try {
                 ps = con.prepareStatement(query);
                 ps.setString(1, mailFieldLogin.getText());
-                ps.setString(2, hashedPwd);
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    String role = rs.getString("role");
-                    String status = rs.getString("status");
-                    if ("ADMIN".equals(role)) {
-                            String nom= rs.getString("nom") ;
+                    String password = rs.getString("password");
+                    BCrypt.Result result = BCrypt.verifyer().verify(passwordFieldLogin.getText().toCharArray(), password);
+                    if (result.verified) {
+                        String role = rs.getString("role");
+                        String status = rs.getString("status");
+                        if ("ADMIN".equals(role)) {
+                            System.out.println("aaaaaaaaaaaaaaaa");
+                            String nom = rs.getString("nom");
                             String prenom = rs.getString("prenom");
-                            String fullName = nom + " " + prenom ;
+                            String fullName = nom + " " + prenom;
                             SessionManager.getInstance().setUserId(fullName);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
@@ -110,28 +113,29 @@ public class LoginController implements Initializable {
                             stage.setScene(scene);
                             stage.setTitle("Admin Panel");
                             stage.show();
-                    }
-                    else if("USER".equals(role)) {
-                        if ("active".equals(status))
-                        {
-                            String nom= rs.getString("nom") ;
-                            String prenom = rs.getString("prenom");
-                            int id = rs.getInt("id");
-                            String fullName = nom + " " + prenom ;
-                            SessionManager.getInstance().setUserId(fullName);
-                            SessionManager.getInstance().setUserFront(id);
-                            Stage stage = (Stage) loginButton.getScene().getWindow();
-                            stage.close();
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/banner.fxml")));
-                            Scene scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.setTitle("User Panel");
-                            stage.show();
+                        } else if ("USER".equals(role)) {
+                            if ("active".equals(status)) {
+                                String nom = rs.getString("nom");
+                                String prenom = rs.getString("prenom");
+                                int id = rs.getInt("id");
+                                String fullName = nom + " " + prenom;
+                                SessionManager.getInstance().setUserId(fullName);
+                                SessionManager.getInstance().setUserFront(id);
+                                Stage stage = (Stage) loginButton.getScene().getWindow();
+                                stage.close();
+                                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/HomeON.fxml")));
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.setTitle("User Panel");
+                                stage.show();
+                            } else {
+                                AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                        "User is not activated yet.");
+                            }
                         }
-                        else {
-                            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                                    "User is not activated yet.");
-                        }
+                    } else {
+                        AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                "Incorrect password.");
                     }
                 } else {
                     AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",

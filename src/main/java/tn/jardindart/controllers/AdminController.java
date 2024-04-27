@@ -1,6 +1,8 @@
 package tn.jardindart.controllers;
 
 import helper.AlertHelper;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import tn.jardindart.entites.* ;
 import tn.jardindart.utils.DataBase ;
 import javafx.collections.transformation.FilteredList;
@@ -87,8 +89,7 @@ public class AdminController {
         DisplayUser();
         String userId = SessionManager.getInstance().getUserId();
         int id =  SessionManager.getInstance().getUserFront();
-        ActivateUserBack();
-        InactiveUserBack();
+        setupActionButtonColumn();
         search_user();
     }
 
@@ -118,93 +119,90 @@ public class AdminController {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(sortedData);
     }
-    private void ActivateUserBack() {
-        TableColumn<User, Void> activateButtonColumn = new TableColumn<>("ACTIONS");
-        Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
-            final TableCell<User, Void> cell = new TableCell<>() {
-               private final Button activateButton = new Button("Activate");
+    private void setupActionButtonColumn() {
+        TableColumn<User, Void> actionButtonColumn = new TableColumn<>("ACTIONS");
+        Callback <TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
+            final TableCell<User, Void> cell = new TableCell<User, Void>() {
+                private final Button actionButton = new Button();
                 {
-                    activateButton.setOnAction(event -> {
+                    actionButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("Confirmation Dialog");
-                        alert.setHeaderText("Confirm Account Activation");
-                        alert.setContentText("Are you sure you want to activate this account?");
-                        Optional<ButtonType> result = alert.showAndWait();
-                        if (result.isPresent() && result.get() == ButtonType.OK) {
-                            updateUserStatus(user.getId(), "active");
-                            DisplayUser();
+                        String currentStatus = user.getStatus();
+                        if (currentStatus.equals("active")) {
+                            showConfirmationDialog("Confirm Account Deactivation",
+                                    "Are you sure you want to deactivate this account?", () -> {
+                                        updateUserStatus(user.getId(), "inactive");
+                                        DisplayUser();
+                                        Image image1 = new Image(getClass().getResourceAsStream("/images/off.png"));
+                                        ImageView view = new ImageView(image1);
+                                        view.setFitWidth(30);
+                                        view.setFitHeight(30);
+                                        actionButton.setGraphic(view);
+                                    });
+                        } else {
+                            showConfirmationDialog("Confirm Account Activation",
+                                    "Are you sure you want to activate this account?", () -> {
+                                        updateUserStatus(user.getId(), "active");
+                                        DisplayUser();
+                                        Image image1 = new Image(getClass().getResourceAsStream("/images/on.png"));
+                                        ImageView view = new ImageView(image1);
+                                        view.setFitWidth(30);
+                                        view.setFitHeight(30);
+                                        actionButton.setGraphic(view);
+                                    });
                         }
                     });
                 }
+
                 @Override
                 public void updateItem(Void item, boolean empty) {
                     super.updateItem(item, empty);
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(activateButton);
-                    }
-                }
-            };
-            return cell;
-        };
-        activateButtonColumn.setCellFactory(cellFactory);
-        tableView.getColumns().add(activateButtonColumn);
-    }
-    private void InactiveUserBack() {
-        TableColumn<User, Void> activateButtonColumn = new TableColumn<>("ACTIONS");
-        Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = (TableColumn<User, Void> param) -> {
-            final TableCell<User, Void> cell = new TableCell<>() {
-                private final Button InactivateButton = new Button("Inactivate");
-                {
-                    InactivateButton.setOnAction(event -> {
                         User user = getTableView().getItems().get(getIndex());
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("Confirmation Dialog");
-                        alert.setHeaderText("Confirm Account Deactivation");
-                        alert.setContentText("Are you sure you want to deactivate this account?");
-                        Optional<ButtonType> result = alert.showAndWait();
-                        if (result.isPresent() && result.get() == ButtonType.OK) {
-                            updateUserStatusInactive(user.getId(), "inactive");
-                            DisplayUser();
+                        if (user.getStatus().equals("active")) {
+                            Image image1 = new Image(getClass().getResourceAsStream("/images/off.png"));
+                            ImageView view = new ImageView(image1);
+                            view.setFitWidth(30);
+                            view.setFitHeight(30);
+                            actionButton.setGraphic(view);
+                        } else {
+                            Image image1 = new Image(getClass().getResourceAsStream("/images/on.png"));
+                            ImageView view = new ImageView(image1);
+                            view.setFitWidth(30);
+                            view.setFitHeight(30);
+                            actionButton.setGraphic(view);
                         }
-                    });
-                }
-                @Override
-                public void updateItem(Void item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                    } else {
-                        setGraphic(InactivateButton);
+                        setGraphic(actionButton);
                     }
                 }
             };
             return cell;
         };
-        activateButtonColumn.setCellFactory(cellFactory);
-        tableView.getColumns().add(activateButtonColumn);
+        actionButtonColumn.setCellFactory(cellFactory);
+        tableView.getColumns().add(actionButtonColumn);
     }
 
 
+    private void showConfirmationDialog(String title, String content, Runnable action) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText(title);
+        alert.setContentText(content);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                action.run();
+            }
+        });
+    }
     private void updateUserStatus(int userId, String newStatus) {
         try (Connection conn = DataBase.getConnect();
              PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
             ps.setString(1, newStatus);
             ps.setInt(2, userId);
             ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    private void updateUserStatusInactive(int userId, String newStatus) {
-        try (Connection conn = DataBase.getConnect();
-             PreparedStatement ps = conn.prepareStatement("UPDATE user SET status = ? WHERE id = ?")) {
-            ps.setString(1, newStatus);
-            ps.setInt(2, userId);
-            ps.executeUpdate();
-            DisplayUser();
         } catch (SQLException e) {
             e.printStackTrace();
         }

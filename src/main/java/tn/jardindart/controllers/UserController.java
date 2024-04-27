@@ -1,5 +1,6 @@
 package tn.jardindart.controllers ;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
 import helper.AlertHelper;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -39,8 +41,13 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
-public class UserController implements Initializable {
+public class UserController extends HomeON implements Initializable  {
 
+    @FXML
+    private Label labelpassword;
+
+    @FXML
+    private Label enterpassword;
     @FXML
     private TextField Mailfield;
 
@@ -102,12 +109,12 @@ public class UserController implements Initializable {
 
     @FXML
     private TextField numField;
-
+    @FXML
+    private Button EditButton;
     @FXML
     private Label numcheck;
     @FXML
     private Label passcheck;
-
     @FXML
     private Button resetbutton;
     private String codeFromSMS;
@@ -117,6 +124,9 @@ public class UserController implements Initializable {
     @FXML
     private Label labelcheckpassword;
 
+
+    @FXML
+    private PasswordField Passwordcheckedit;
     Window window;
     String tel ;
     String mail ;
@@ -132,7 +142,7 @@ public class UserController implements Initializable {
     void showcode(ActionEvent event) throws SQLException {
         String num = numField.getText();
         if (isPhoneNumberAvailable(num)) {
-            String query = "SELECT nom, prenom FROM user WHERE num_tel = ?";
+            String query = "SELECT nom, prenom FROM user WHERE tel = ?";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, num);
             ResultSet resultSet = statement.executeQuery();
@@ -147,12 +157,12 @@ public class UserController implements Initializable {
                 codecheck.setVisible(true);
                 CodeButton1.setVisible(true);
                 numcheck.setVisible(false);
-                final String ACCOUNT_SID = "AC4116c3496ed4b8c8c4ebaa258b3f4563";
-                final String AUTH_TOKEN = "c2faec21251e3e62cebb6137416a0f6d";
+                final String ACCOUNT_SID = "AC826dd4583d21e1d761edfdbefca0daf8";;
+                final String AUTH_TOKEN = "6dfb8cfec4006bd5b1df833c60c9eca2";
                 Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
                 Message message = Message.creator(
-                                new PhoneNumber("+21651457111"),
-                                new PhoneNumber("+12054152034"),
+                                new PhoneNumber("+21655614560"),
+                                new PhoneNumber("+14845529358"),
                                 "Hi " + fullName + " , this is your code for password reset: " + codeFromSMS)
                         .create();
             }
@@ -194,10 +204,11 @@ public class UserController implements Initializable {
         String ConfirmPassword = confirmPassword.getText();
         if (checkPasswordForgot()) {
             if (newPassword.equals(ConfirmPassword)) {
+
                 String query = "UPDATE user SET password = ? , confirmpassword =? WHERE tel = ?";
                 PreparedStatement preparedStatement = DataBase.getConnect().prepareStatement(query);
-                String hashedPwd = DigestUtils.sha1Hex(newPassword);
-                String hashedConfirmPwd = DigestUtils.sha1Hex(ConfirmPassword);
+                String hashedPwd = BCrypt.withDefaults().hashToString(12, newPassword.toCharArray());
+                String hashedConfirmPwd = BCrypt.withDefaults().hashToString(12, ConfirmPassword.toCharArray());
                 preparedStatement.setString(1, hashedPwd);
                 preparedStatement.setString(2, hashedConfirmPwd);
                 preparedStatement.setString(3, numField.getText());
@@ -216,8 +227,6 @@ public class UserController implements Initializable {
         String passwordnew = Passwordfield.getText();
         String ConfirmpasswordNew = ConfirmPasswordField.getText();
         if (password()) {
-            String oldPassword = oldPasswordfield.getText();
-            String hashedOldPwd = DigestUtils.sha1Hex(oldPassword);
             DataBase dataBase = new DataBase();
             con = dataBase.getConnect();
             int userId = SessionManager.getInstance().getUserFront();
@@ -226,12 +235,12 @@ public class UserController implements Initializable {
                 PreparedStatement statement = con.prepareStatement(query);
                 statement.setInt(1, userId);
                 ResultSet resultSet = statement.executeQuery();
-
                 if (resultSet.next()) {
                     String hashedbase = resultSet.getString("password");
-                    if (hashedbase.equals(hashedOldPwd)) {
+                    BCrypt.Result result = BCrypt.verifyer().verify(oldPasswordfield.getText().toCharArray(), hashedbase);
+                    if (result.verified) {
                         if (passwordnew.equals(ConfirmpasswordNew)) {
-                            String hashedPwd = DigestUtils.sha1Hex(passwordnew);
+                            String hashedPwd = BCrypt.withDefaults().hashToString(12, Passwordfield.getText().toCharArray());
                             String query_edit = "UPDATE user SET password = ? , confirmpassword = ? WHERE id = ?";
                             PreparedStatement statement1 = con.prepareStatement(query_edit);
                             statement1.setString(1, hashedPwd);
@@ -240,8 +249,8 @@ public class UserController implements Initializable {
                             int rowsAffected = statement1.executeUpdate();
                             if (rowsAffected > 0) {
                                 AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                                        "User password updated successfully , Session expired in 10 seconds");
-                                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+                                        "User password updated successfully , Session expired in 5 seconds");
+                                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
                                     SessionManager.getInstance().cleanUserSessionFront();
                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.jardindart/Login.fxml"));
                                     Parent root = null;
@@ -276,19 +285,52 @@ public class UserController implements Initializable {
 
     private boolean password() {
         boolean verif = true;
-
-        if (oldPasswordfield.getText().isEmpty() || Passwordfield.getText().isEmpty() || ConfirmPasswordField.getText().isEmpty()) {
+        if (oldPasswordfield.getText().isEmpty()) {
             checkOldPassword.setVisible(true);
-            checkOldPassword.setText("Fields cannot be blank.");
+            checkOldPassword.setText("Old password cannot be blank.");
             checkOldPassword.setStyle("-fx-text-fill: red;");
             verif = false;
-        } else if (!CheckPasswordConstraint(Passwordfield.getText()) || !CheckPasswordConstraint(ConfirmPasswordField.getText())) {
+        }
+        if (Passwordfield.getText().isEmpty()) {
+            checkPassword.setVisible(true);
+            checkPassword.setText("New password cannot be blank.");
+            checkPassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        }
+
+        if (ConfirmPasswordField.getText().isEmpty()) {
+            checkConfirmPassword.setVisible(true);
+            checkConfirmPassword.setText("Confirm password cannot be blank.");
+            checkConfirmPassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        }
+
+        if (!CheckPasswordConstraint(oldPasswordfield.getText())) {
             checkOldPassword.setVisible(true);
             checkOldPassword.setText("Password must be strong: at least one uppercase letter, one special character, and one digit.");
             checkOldPassword.setStyle("-fx-text-fill: red;");
             verif = false;
-        } else {
+        }
+
+
+        if (!CheckPasswordConstraint(Passwordfield.getText())) {
+            checkPassword.setVisible(true);
+            checkPassword.setText("Password must be strong: at least one uppercase letter, one special character, and one digit.");
+            checkPassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        }
+
+        if (!CheckPasswordConstraint(ConfirmPasswordField.getText())) {
+            checkConfirmPassword.setVisible(true);
+            checkConfirmPassword.setText("Password must be strong: at least one uppercase letter, one special character, and one digit.");
+            checkConfirmPassword.setStyle("-fx-text-fill: red;");
+            verif = false;
+        }
+
+        if (verif) {
             checkOldPassword.setVisible(false);
+            checkPassword.setVisible(false);
+            checkConfirmPassword.setVisible(false);
         }
         return verif;
     }
@@ -387,22 +429,96 @@ public class UserController implements Initializable {
             if (checkIsValidated()) {
                 try {
                     int userId = SessionManager.getInstance().getUserFront();
-                    String query = "UPDATE user SET nom = ?, prenom = ?, mail = ?, tel = ? WHERE id = ?";
-                    PreparedStatement statement = con.prepareStatement(query);
-                    statement.setString(1, firstname.getText());
-                    statement.setString(2, lastname.getText());
-                    statement.setString(3, Mailfield.getText());
-                    statement.setString(4, PhoneNumberfield.getText());
-                    statement.setInt(5, userId);
-                    int rowsAffected = statement.executeUpdate();
-                    if (rowsAffected > 0) {
-                        AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                                "User information updated successfully.");
-                    } else {
-                        AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                                "Failed to update user information.");
+                    String query_password = "SELECT mail FROM user WHERE id = ?";
+                    PreparedStatement preparedStatement = DataBase.getConnect().prepareStatement(query_password);
+                    preparedStatement.setInt(1, userId);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    if (resultSet.next())
+                    {
+                        System.out.println("nafseh 1");
+
+                        String mail =  resultSet.getString("mail");
+                        System.out.println("nafseh 2 ");
+
+                        if (mail.equals(Mailfield.getText()))
+                       {
+                           System.out.println("nafseh 3 ");
+                           System.out.println("same mail");
+                           String query = "UPDATE user SET nom = ?, prenom = ?, mail = ?, tel = ? WHERE id = ?";
+                           PreparedStatement statement = con.prepareStatement(query);
+                           statement.setString(1, firstname.getText());
+                           statement.setString(2, lastname.getText());
+                           statement.setString(3, Mailfield.getText());
+                           statement.setString(4, PhoneNumberfield.getText());
+                           statement.setInt(5, userId);
+                           int rowsAffected = statement.executeUpdate();
+                           if (rowsAffected > 0) {
+                               AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+                                       "User information updated successfully.");
+                           } else {
+                               AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                       "Failed to update user information.");
+                           }
+                           statement.close();
+
+                       }
+                       else
+                       {
+                           if (Passwordcheckedit.getText().isEmpty())
+                           {
+                               enterpassword.setVisible(true);
+                               Passwordcheckedit.setVisible(true);
+                               labelpassword.setVisible(true);
+                               labelpassword.setText("Field can not be blank");
+                               labelpassword.setStyle("-fx-text-fill: red");
+
+                           }else {
+                               enterpassword.setVisible(true);
+                               Passwordcheckedit.setVisible(true);
+                               labelpassword.setVisible(false);
+                               System.out.println("different mail");
+                               boolean verif = checkpasswordFront(userId, Passwordcheckedit.getText());
+                               if (verif) {
+                                   String query = "UPDATE user SET nom = ?, prenom = ?, mail = ?, tel = ? WHERE id = ?";
+                                   PreparedStatement statement = con.prepareStatement(query);
+                                   statement.setString(1, firstname.getText());
+                                   statement.setString(2, lastname.getText());
+                                   statement.setString(3, Mailfield.getText());
+                                   statement.setString(4, PhoneNumberfield.getText());
+                                   statement.setInt(5, userId);
+                                   int rowsAffected = statement.executeUpdate();
+                                   if (rowsAffected > 0) {
+                                       AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+                                               "User mail updated successfully , Session expired in 5 seconds");
+                                       Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
+                                           SessionManager.getInstance().cleanUserSessionFront();
+                                           FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.jardindart/Login.fxml"));
+                                           Parent root = null;
+                                           try {
+                                               root = loader.load();
+                                           } catch (IOException e) {
+                                               throw new RuntimeException(e);
+                                           }
+                                           Stage stage = (Stage) Passwordfield.getScene().getWindow();
+                                           stage.setScene(new Scene(root));
+                                       }));
+                                       timeline.setCycleCount(1);
+                                       timeline.play();
+                                       enterpassword.setVisible(false);
+                                       Passwordcheckedit.setVisible(false);
+                                   } else {
+                                       AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                               "Failed to update user information.");
+                                   }
+                                   statement.close();
+                               } else {
+                                   AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                                           "Incorrect password");
+                               }
+                           }
+                       }
                     }
-                    statement.close();
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -526,28 +642,31 @@ public class UserController implements Initializable {
                 PhoneNumberfield.setText(resultSet.getString("tel"));
                 tel = resultSet.getString("tel");
                 mail = resultSet.getString("mail");
-                NameUser.setText(username);
             }
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        enterpassword.setVisible(false);
+
     }
 
-    public void GoToLogout(MouseEvent mouseEvent) {
-        SessionManager.getInstance().cleanUserSessionAdmin();
-        try {
-            Node sourceNode = (Node) Logout;
-            Stage stage = (Stage) sourceNode.getScene().getWindow();
-            stage.close();
-            Stage newStage = new Stage();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/tn.jardindart/Login.fxml")));
-            Scene scene = new Scene(root);
-            newStage.setScene(scene);
-            newStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public boolean checkpasswordFront(int idUser , String password) throws SQLException {
+        String query_password = "SELECT password FROM user WHERE id = ?";
+        PreparedStatement preparedStatement = DataBase.getConnect().prepareStatement(query_password);
+        preparedStatement.setInt(1, idUser);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            System.out.println("found");
+            String password_crypted = resultSet.getString("password");
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), password_crypted);
+            if (result.verified)
+            {
+                return true ;
+            }
         }
-    }
+                return false ;
+        }
+
 }

@@ -6,44 +6,13 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.UserController">
    <fx:include source="banner.fxml" />
-
-   <left>
-      <VBox prefHeight="576.0" prefWidth="278.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefHeight="248.0" prefWidth="278.0">
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="278.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="211.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="Logout" alignment="CENTER" onMouseClicked="#GoToLogout" prefHeight="18.0" prefWidth="278.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-         </children></VBox>
-   </left>
-   <center>
-      <VBox fillWidth="false" prefHeight="567.0" prefWidth="838.0" BorderPane.alignment="CENTER">
+   <right>
+      <VBox fillWidth="false" prefHeight="617.0" prefWidth="868.0" BorderPane.alignment="CENTER">
          <children>
             <Label prefHeight="156.0" prefWidth="261.0" text="Profile Settings">
                <padding>
@@ -105,7 +74,7 @@
                   <Insets left="130.0" top="-128.0" />
                </VBox.margin>
             </TextField>
-            <Label fx:id="checklastName">
+            <Label fx:id="checklastName" prefHeight="18.0" prefWidth="175.0">
                <VBox.margin>
                   <Insets left="130.0" top="2.0" />
                </VBox.margin>
@@ -118,7 +87,7 @@
                   <Insets left="130.0" />
                </VBox.margin>
             </TextField>
-            <Label fx:id="checkMail">
+            <Label fx:id="checkMail" prefHeight="18.0" prefWidth="178.0">
                <VBox.margin>
                   <Insets left="130.0" top="2.0" />
                </VBox.margin>
@@ -131,7 +100,7 @@
                   <Insets left="130.0" />
                </VBox.margin>
             </TextField>
-            <Label fx:id="checkPhoneNumber">
+            <Label fx:id="checkPhoneNumber" prefHeight="18.0" prefWidth="172.0">
                <padding>
                   <Insets right="5.0" />
                </padding>
@@ -152,7 +121,7 @@
                   <Insets left="630.0" top="-48.0" />
                </VBox.margin>
             </PasswordField>
-            <Label fx:id="checkPassword">
+            <Label fx:id="checkPassword" prefHeight="18.0" prefWidth="180.0">
                <VBox.margin>
                   <Insets left="630.0" />
                </VBox.margin>
@@ -172,7 +141,7 @@
             </PasswordField>
             <Button fx:id="EditButton" mnemonicParsing="false" onAction="#EditFrontUser" prefHeight="43.0" prefWidth="136.0" styleClass="MFXbutton" stylesheets="@style.css" text="Save edit" textFill="WHITE">
                <VBox.margin>
-                  <Insets left="120.0" top="150.0" />
+                  <Insets left="130.0" top="160.0" />
                </VBox.margin>
                <font>
                   <Font size="20.0" />
@@ -199,14 +168,35 @@
                   <Insets left="630.0" top="-34.0" />
                </VBox.margin>
             </PasswordField>
-            <Label fx:id="checkOldPassword">
+            <Label fx:id="checkOldPassword" prefHeight="18.0" prefWidth="174.0">
                <VBox.margin>
                   <Insets left="630.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="checkConfirmPassword">
+            <Label fx:id="checkConfirmPassword" prefHeight="18.0" prefWidth="176.0">
                <VBox.margin>
                   <Insets left="630.0" top="85.0" />
+               </VBox.margin>
+            </Label>
+            <PasswordField fx:id="Passwordcheckedit" visible="false">
+               <VBox.margin>
+                  <Insets left="130.0" top="80.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Label fx:id="enterpassword" prefHeight="46.0" prefWidth="106.0" text="Enter Password" visible="false">
+               <padding>
+                  <Insets left="25.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="-40.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="labelpassword" prefHeight="18.0" prefWidth="172.0" visible="false">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="130.0" />
                </VBox.margin>
             </Label>
          </children>
@@ -214,5 +204,5 @@
             <Insets top="70.0" />
          </BorderPane.margin>
       </VBox>
-   </center>
+   </right>
 </BorderPane>

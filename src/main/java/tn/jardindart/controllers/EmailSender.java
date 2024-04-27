@@ -11,7 +11,7 @@ import jakarta.mail.internet.MimeMessage;
 
 public class EmailSender {
     private static final String EMAIL_FROM = "khalil.bouazizi@esprit.tn";
-    private static final String APP_PASSWORD = "zaqf mdie ugws vajd\n";
+    private static final String APP_PASSWORD = "ssssss\n";
 
     public static void sendEmail(String email_to, String subject, String messageBody) throws Exception {
         Message message = new MimeMessage(getEmailSession());

@@ -20,14 +20,21 @@ import tn.jardindart.entites.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.regex.Pattern;
 import tn.jardindart.controllers.EmailSender ;
+import com.google.common.hash.Hashing;
+import java.nio.charset.StandardCharsets;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class RegisterController implements Initializable {
     private final Connection con;
@@ -97,6 +104,13 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        String password = "Winners2002@";
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
+            if (result.verified)
+            {
+                System.out.println("yes");
+            }
         gender.getItems().addAll("Man", "Women");
         LocalDate birthDate = dateBirthday.getValue();
         LocalDate currentDate = LocalDate.now();
@@ -288,8 +302,8 @@ public class RegisterController implements Initializable {
             LocalDate dateBirthdayValue = dateBirthday.getValue();
             String token = generateUniqueToken();
             if (pwd.equals(confirmPwd)) {
-                String hashedPwd = DigestUtils.sha1Hex(pwd);
-                String hashedConfirmPwd = DigestUtils.sha1Hex(confirmPwd);
+                String hashedPwd = BCrypt.withDefaults().hashToString(12, pwd.toCharArray());
+                String hashedConfirmPwd = BCrypt.withDefaults().hashToString(12, confirmPwd.toCharArray());
                 boolean isUserAdded = user.addUser(nom, prenom, mail, tel, genderValue, hashedPwd, 0, age, dateBirthdayValue, hashedConfirmPwd);
 
                 if (isUserAdded) {
@@ -465,11 +479,27 @@ public class RegisterController implements Initializable {
 
     public void takeDate(MouseEvent mouseEvent) {
         LocalDate birthDate = dateBirthday.getValue();
+        System.out.println(birthDate);
         LocalDate currentDate = LocalDate.now();
+        System.out.println(currentDate);
         if (birthDate != null) {
             Period period = Period.between(birthDate, currentDate);
             String years = String.valueOf(period.getYears());
             agefield.setText(years);
         }
+    }
+    public static String getSHA256(String input){
+
+        String toReturn = null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.reset();
+            digest.update(input.getBytes(StandardCharsets.UTF_8));
+            toReturn = String.format("%064x", new BigInteger(1, digest.digest()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return toReturn;
     }
 }

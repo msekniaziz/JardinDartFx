@@ -27,6 +27,7 @@ public class HomeON implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String userId = SessionManager.getInstance().getUserId();
+        int id = SessionManager.getInstance().getUserFront();
         AccountInformations.setText("Account");
         AccountInformations.setContextMenu(accountMenu);
         AccountInformations.setOnMouseClicked(event -> {
