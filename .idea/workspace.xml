@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -32,7 +33,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Recycle",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -58,7 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714120436677</updated>
       <workItem from="1714120437794" duration="91000" />
-      <workItem from="1714312223447" duration="919000" />
+      <workItem from="1714312223447" duration="1166000" />
     </task>
     <task id="LOCAL-00001" summary="indiv">
       <option name="closed" value="true" />
@@ -76,7 +77,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714312374745</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Khalil+Aziz">
+      <option name="closed" value="true" />
+      <created>1714313162572</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714313162572</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Khalil+Aziz">
+      <option name="closed" value="true" />
+      <created>1714313332433</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714313332433</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
