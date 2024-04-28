@@ -32,7 +32,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Recycle",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -58,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714120436677</updated>
       <workItem from="1714120437794" duration="91000" />
-      <workItem from="1714312223447" duration="329000" />
+      <workItem from="1714312223447" duration="919000" />
     </task>
     <task id="LOCAL-00001" summary="indiv">
       <option name="closed" value="true" />
@@ -81,6 +81,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="indiv" />
