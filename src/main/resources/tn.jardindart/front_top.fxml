@@ -1,0 +1,64 @@
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Button?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="tn.jardindart.controllers.front_top"
+      prefHeight="50.0" prefWidth="250.0"
+      style="-fx-padding: 30px; -fx-spacing: 25px; -fx-margin: 10px; -fx-background-radius: 40px; -fx-background-color: #335d00;">
+
+    <!-- Logo -->
+    <ImageView fitHeight="30.0" fitWidth="30.0" HBox.hgrow="NEVER">
+        <!-- <image>
+            <Image url="@Resources/logo.png" />
+        </image> -->
+    </ImageView>
+
+
+
+    <HBox spacing="10.0" HBox.hgrow="ALWAYS">
+        <MenuButton text="User" textFill="WHITE">
+
+                <items>
+                    <MenuItem onAction="#handleAccountAction1" text="User informations" />
+                    <MenuItem onAction="#handleAccountAction2" text="Account Action 2" />
+                    <!-- Add more menu items as needed -->
+                </items>
+        </MenuButton>
+
+        <MenuButton text="Home" textFill="WHITE">
+
+            <items>
+                <!-- Ajoutez des éléments de menu ici -->
+                <MenuItem text="Submenu 1" />
+                <MenuItem text="Submenu 2" />
+            </items>
+        </MenuButton>
+
+        <MenuButton text="I recycle " textFill="WHITE">
+
+            <items>
+                <!-- Ajoutez des éléments de menu ici -->
+                <MenuItem  onAction="#ourCP" text="Our collect points" />
+                <MenuItem onAction="#myprd" text="My recycling products" />
+            </items>
+        </MenuButton>
+
+        <!-- Ajoutez d'autres MenuButton pour les autres éléments du menu -->
+
+    </HBox>
+
+    <!-- Bouton de connexion -->
+    <Button fx:id="btn" text="Login" onAction="#navigateToLogin" style="-fx-background-color: #dbff03; -fx-text-fill: rgba(10,1,1,0.4);" HBox.hgrow="NEVER" />
+    <stylesheets>
+        <URL value="@styles_front_top.css" />
+    </stylesheets>
+
+</HBox>
