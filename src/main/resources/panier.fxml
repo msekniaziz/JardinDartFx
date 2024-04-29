@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="470.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ads.Controllers.PanierController">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+    <children>
+        <FlowPane fx:id="flowPaneLads" layoutX="1.0" layoutY="96.0" prefHeight="400.0" prefWidth="400.0" />
+              <TableView fx:id="paniertable" editable="true" layoutX="113.0" layoutY="99.0" prefHeight="495.0" prefWidth="721.0">
+                  <columns>
+                      <TableColumn fx:id="image" prefWidth="131.0" text="Image" />
+                      <TableColumn fx:id="title" prefWidth="136.0" text="Title" />
+                      <TableColumn fx:id="price" prefWidth="128.0" text="Price" />
+                  </columns>
+              </TableView>
+          <AnchorPane layoutX="3.0" layoutY="605.0" prefHeight="86.0" prefWidth="1016.0" style="-fx-background-color: #335d00;">
+              <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Total: ">
+                      <font>
+                          <Font name="Cambria" size="18.0" />
+                      </font>
+                  </Label>
+                  <Label fx:id="totalLabel" layoutX="75.0" layoutY="14.0" text="0.0">
+                      <font>
+                          <Font name="Cambria Bold" size="18.0" />
+                      </font>
+                  </Label>
+                  <Button layoutX="251.0" layoutY="14.0" mnemonicParsing="false" styleClass="add-btn" stylesheets="@style.css" text="Payer">
+                      <font>
+                          <Font name="System Bold" size="14.0" />
+                      </font>
+                  </Button>
+              </children>
+          </AnchorPane>
+          <AnchorPane layoutX="-12.0" layoutY="-1.0" prefHeight="98.0" prefWidth="973.0" style="-fx-background-color: #335d00;">
+              <children>
+                  <Label alignment="CENTER" layoutX="438.0" layoutY="29.0" prefHeight="20.0" prefWidth="122.0" text="Card" textFill="#878787">
+                      <font>
+                          <Font name="Cambria Bold" size="36.0" />
+                      </font>
+                  </Label>
+              </children>
+          </AnchorPane>
+    </children>
+</AnchorPane>

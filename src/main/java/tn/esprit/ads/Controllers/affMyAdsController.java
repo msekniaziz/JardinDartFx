@@ -85,7 +85,7 @@ public class affMyAdsController implements Initializable {
 
     void loadAdsData() {
         Sannonces sannonces = new Sannonces();
-        List<Annonces> annonces = sannonces.getAll();
+        List<Annonces> annonces = sannonces.getAllMyAds(5);
         for (Annonces annonce : annonces) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardMyAds.fxml"));
@@ -208,7 +208,7 @@ public class affMyAdsController implements Initializable {
     public void refreshFlowPane() throws SQLException {
         flowPaneLads.getChildren().clear(); // Clear existing items
 
-        List<Annonces> annonces = sannonces.getAll();
+        List<Annonces> annonces = sannonces.getAllMyAds(5);
 
         int col = 0;
         int rows = 0;

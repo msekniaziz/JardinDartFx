@@ -108,6 +108,33 @@ public class Sannonces implements IServices<Annonces> {
         return annonces;
     }
 
+    public ArrayList<Annonces> getAllMyAds(int userId) {
+        ArrayList<Annonces> annonces = new ArrayList<>();
+        String query = "SELECT * FROM annonces WHERE user_id = ?";
+        try {
+            PreparedStatement stm = cnx.prepareStatement(query);
+            stm.setInt(1, userId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Annonces annonce = new Annonces();
+                annonce.setId(rs.getInt("id"));
+                annonce.setUser_id(rs.getInt("user_id"));
+                annonce.setTitle(rs.getString("title"));
+                annonce.setDescription(rs.getString("description"));
+                annonce.setNegiciable(rs.getInt("negociable"));
+                annonce.setPrix(rs.getFloat("prix"));
+                annonce.setStatus(rs.getInt("status"));
+                annonce.setImage(rs.getString("image"));
+                annonce.setId_Cat(rs.getInt("id_cat_id"));
+                annonces.add(annonce);
+            }
+        } catch (SQLException e) {
+            // Lancer une nouvelle RuntimeException avec l'exception d'origine
+            throw new RuntimeException("Erreur lors de la récupération des annonces.", e);
+        }
+        return annonces;
+    }
+
     @Override
     public void update(Annonces annonces) {
         try {
@@ -137,32 +164,7 @@ public class Sannonces implements IServices<Annonces> {
         }
     }
 
-    /*public void update(Annonces annonces) {
 
-
-        try {
-            String query = "UPDATE annonces SET user_id=?, title=?, description=?, negociable=?, prix=?, image=?, id_cat_id=? WHERE id=?";
-            PreparedStatement stm = cnx.prepareStatement(query);
-            stm.setInt(1, annonces.getUser_id());
-            stm.setString(2, annonces.getTitle());
-            stm.setString(3, annonces.getDescription());
-            stm.setInt(4, annonces.getNegiciable());
-            stm.setDouble(5, annonces.getPrix());
-            stm.setString(6, annonces.getImage());
-            stm.setInt(7, annonces.getId());
-            stm.setInt(8, annonces.getId_Cat());
-            stm.executeUpdate();
-            // int rowsAffected = stm.executeUpdate();
-            //  if (rowsAffected > 0) {
-            System.out.println("Annonce mise à jour avec succès: " + annonces);
-        }
-     catch(
-    SQLException e)
-
-    {
-        e.printStackTrace();
-    }
-}*/
 
     public String getCategoryName(int categoryId) {
         String categoryName = null;
@@ -211,41 +213,39 @@ public class Sannonces implements IServices<Annonces> {
         return statement.executeQuery();
     }
     public Annonces getById(int idAds) {
-        ArrayList<Annonces> allAds = getAll(); // Récupérer tous les dons
+        ArrayList<Annonces> allAds = getAll();
 
-        // Parcourir la liste des dons et comparer l'ID
+
         for (Annonces a : allAds) {
             if (a.getId() == idAds) {
-                return a; // Retourner le don s'il correspond à l'ID recherché
+                return a;
             }
         }
 
-        return null; // Retourner null si aucun don avec l'ID spécifié n'est trouvé
+        return null;
     }
-    /*public Annonces getById(int idAds) {
-        String query = "SELECT * FROM annonces WHERE id = ?";
+    /*public Annonces getAnnonceById(int idAnnonce) {
+        Annonces annonce = null;
+        String query = "SELECT id, user_id, title, prix, image FROM annonces WHERE id = ?";
         try {
-            PreparedStatement pstmt = cnx.prepareStatement(query);
-            pstmt.setInt(1, idAds);
-            ResultSet rs = pstmt.executeQuery();
+            PreparedStatement stm = cnx.prepareStatement(query);
+            stm.setInt(1, idAnnonce);
+            ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                Annonces annonce = new Annonces();
+                annonce = new Annonces();
                 annonce.setId(rs.getInt("id"));
                 annonce.setUser_id(rs.getInt("user_id"));
                 annonce.setTitle(rs.getString("title"));
-                annonce.setDescription(rs.getString("description"));
-                annonce.setNegiciable(rs.getInt("negociable"));
                 annonce.setPrix(rs.getFloat("prix"));
-                annonce.setStatus(rs.getInt("status"));
                 annonce.setImage(rs.getString("image"));
-                annonce.setId_Cat(rs.getInt("id_cat_id"));
-                return annonce;
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée
+            // Lancer une nouvelle RuntimeException avec l'exception d'origine
+            throw new RuntimeException("Erreur lors de la récupération de l'annonce avec l'ID : " + idAnnonce, e);
         }
-        return null; // Retourner null si aucun don avec l'ID spécifié n'est trouvé
+        return annonce;
     }*/
+
 
 
 

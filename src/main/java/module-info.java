@@ -4,6 +4,7 @@ module tn.esprit.ads {
     requires java.sql;
     requires mysql.connector.java;
     requires javafx.swing;
+    requires com.jfoenix;
 
 
     opens tn.esprit.ads to javafx.fxml;

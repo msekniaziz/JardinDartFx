@@ -19,8 +19,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import tn.esprit.ads.Entity.Annonces;
 import tn.esprit.ads.Entity.Categories;
-import tn.esprit.ads.Services.Sannonces;
-import tn.esprit.ads.Services.Scategories;
+import tn.esprit.ads.Entity.Panier;
+import tn.esprit.ads.Entity.User;
+import tn.esprit.ads.Services.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,13 +70,19 @@ public class affAdsController implements Initializable {
 
     @FXML
     private ComboBox<?> Sort;
+    @FXML
+    private ImageView PanierImage;
 
 
 
 
     private Annonces selectedAds;
+    private Spanier pnss;
+    Spanier pns = new Spanier();
 
     private Sannonces sannonces;
+    Panier p ;
+    SpanierAnnonce pa = new SpanierAnnonce();
 
     public void initialize(URL url, ResourceBundle resourceBundle ) {
         System.out.println("Chargement des données des Annonces...");
@@ -110,17 +117,7 @@ public class affAdsController implements Initializable {
         }
     }
 
-   /* private void onAdsSelected(MouseEvent event) {
-        selectedCard = (AnchorPane) event.getSource();
-        Object userData = selectedCard.getUserData();
-        if (userData instanceof Annonces) {
-            selectedAds = (Annonces) userData;
-            System.out.println("Annonce sélectionnée : " + selectedAds.getTitle());
-            initData(selectedAds);
-        } else {
-            System.err.println("Erreur : Données utilisateur invalides.");
-        }
-    }*/
+
    private void onAdsSelected(MouseEvent event) {
        selectedCard = (AnchorPane) event.getSource();
        Object userData = selectedCard.getUserData();
@@ -133,14 +130,13 @@ public class affAdsController implements Initializable {
        }}
 
     private void initData(Annonces selectedAds) {
-        // Implement initialization logic here
-        // Sélectionner la carte et afficher les détails de l'annonce sélectionnée
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardADS.fxml"));
             AnchorPane card = loader.load();
             CardAdsController controller = loader.getController();
             controller.setSelectedAds(selectedAds);
-            // Ajoutez la carte sélectionnée à selectedCard
+
             selectedCard.getChildren().clear();
             selectedCard.getChildren().add(card);
         } catch (IOException e) {
@@ -155,18 +151,18 @@ public class affAdsController implements Initializable {
         Negotiable.setText( negotiableStatus);
         Description.setText(selectedAds.getDescription());
 
-        // Mise à jour de l'image
+
         Image image = new Image("file:" + selectedAds.getImage());
         imgSelected.setImage(image);
 
-        // Mise à jour de la catégorie
+
        // Category.setText(selectedAds.getId_Cat());
       //  Category.setText("anas");
-        // Récupérer le nom de la catégorie à partir de l'id_cat_id
+
         int categoryId = selectedAds.getId_Cat();
         String categoryName = new Sannonces().getCategoryName(categoryId);
 
-        // Afficher le nom de la catégorie dans l'interface utilisateur
+
         Category.setText("Category : " + categoryName);
     }
 
@@ -179,51 +175,6 @@ public class affAdsController implements Initializable {
         loadAdsData();
     }
 
-    /*public void DeleteAllCat(ActionEvent actionEvent) {
-        Sannonces cat = new Sannonces();
-        boolean success = cat.deleteAll();
-        if (success) {
-            showAlert(Alert.AlertType.INFORMATION, "Success", "tous les Factures sont supprimés!");
-            loadAdsData();
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Error", "erreur.");
-        }
-    }*/
-
-
-    /*public void EditCat(ActionEvent actionEvent) {
-        // Vérifiez d'abord si une annonce est sélectionnée
-        if (selectedAds != null) {
-            try {
-                // Chargez la vue du formulaire d'édition
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditAds.fxml"));
-                Parent root = loader.load();
-
-                // Obtenez le contrôleur du formulaire d'édition
-                EditAdFormController editAdFormController = loader.getController();
-
-                // Passez l'annonce sélectionnée au contrôleur du formulaire d'édition
-                editAdFormController.initData(selectedAds);
-
-                // Créez une nouvelle scène
-                Scene scene = new Scene(root);
-
-                // Obtenez la scène actuelle à partir de l'événement d'action
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-                // Affichez le formulaire d'édition dans une nouvelle fenêtre
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Gérez l'exception si le chargement du formulaire d'édition échoue
-                showAlert(Alert.AlertType.ERROR, "Error", "Failed to load edit form.");
-            }
-        } else {
-            // Si aucune annonce n'est sélectionnée, affichez un message à l'utilisateur
-            showAlert(Alert.AlertType.WARNING, "Warning", "Please select an ad to edit.");
-        }
-    }*/
 
     private List<Annonces> getAds() {
         Sannonces serviceAds = new Sannonces();
@@ -235,10 +186,10 @@ public class affAdsController implements Initializable {
         List<Annonces> annonces = getAds();
 
         if (annonces != null) {
-            // Récupérer la valeur sélectionnée dans le ComboBox
+
             String selectedOption = Sort.getValue().toString();
 
-            // Trier les annonces en fonction de l'option sélectionnée
+
             switch (selectedOption) {
                 case "sort by lowest price":
                     annonces.sort(Comparator.comparingDouble(Annonces::getPrix));
@@ -250,10 +201,10 @@ public class affAdsController implements Initializable {
                     break;
             }
 
-            // Effacer les enfants existants de flowPaneLads
+
             flowPaneLads.getChildren().clear();
 
-            // Recharger les données des annonces triées
+
             for (Annonces annonce : annonces) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardAds.fxml"));
@@ -269,9 +220,96 @@ public class affAdsController implements Initializable {
     }
 
 
+
+    /*
+      private Annonces selectedAds;
+    private Spanier pnss;
+    Spanier pns = new Spanier();
+
+    private Sannonces sannonces;
+    Panier p ;
+    SpanierAnnonce pa = new SpanierAnnonce();
+     */
+
     public void addToCart(ActionEvent actionEvent) {
+        int idUtilisateur = 5;
+
+        Suser utilisateurService = new Suser();
+        User user = utilisateurService.getUserById(idUtilisateur);
+
+        if (user != null) {
+
+            Panier panier = pns.selectPanierParUserId(user.getId());
+
+            if (panier != null) {
+
+
+                pa.ajouterProduitAuPanier(panier.getIdPanier(), selectedAds.getId());
+                showAlert(Alert.AlertType.INFORMATION, "Succès", "Produit ajouté au panier.");
+            } else {
+
+                pns.ajouterPanier(user.getId());
+                showAlert(Alert.AlertType.WARNING, "Avertissement", "Vous n'avez pas de panier. Un nouveau panier a été créé.");
+            }
+        } else {
+
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Utilisateur introuvable.");
+        }
     }
+
+
 
     public void navigateToViewPr(ActionEvent actionEvent) {
     }
+
+    @FXML
+   /* public void showpanier(MouseEvent event) throws IOException {
+        // Charger le fichier FXML de la vue du panier
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
+        Parent panierView = loader.load();
+        PanierController controller = loader.getController();
+        controller.initialize(p.getIdPanier());
+
+        // Créer une nouvelle scène
+        Scene panierScene = new Scene(panierView);
+
+        // Obtenir la fenêtre actuelle à partir de l'événement de la souris
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // Afficher la vue du panier dans la fenêtre actuelle
+        currentStage.setScene(panierScene);
+        currentStage.show();
+    }*/
+    public void showpanier(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/panier.fxml"));
+        Parent panierView = loader.load();
+        PanierController controller = loader.getController();
+
+
+        Panier panier = pns.selectPanierParUserId(5);
+        if (panier != null) {
+            int idPanier = panier.getIdPanier();
+            controller.initialize(idPanier);
+        } else {
+
+            System.err.println("Aucun panier trouvé pour cet utilisateur.");
+
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun panier trouvé pour cet utilisateur.");
+            return;
+        }
+
+
+        Scene panierScene = new Scene(panierView);
+
+
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+
+        currentStage.setScene(panierScene);
+        currentStage.show();
+    }
+
+
+
 }
