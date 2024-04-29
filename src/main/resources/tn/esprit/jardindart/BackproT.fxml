@@ -145,19 +145,18 @@
                                     </content>
                                     <stylesheets>
                                         <URL value="@styleback.css" />
-                                        <URL value="@UpdateUIs.css" />
                                     </stylesheets>
                                 </ScrollPane>
                             </children>
                         </VBox>
-                        <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
+                        <Label layoutX="281.0" layoutY="17.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
                             <font>
                                 <Font name="Arial Bold" size="24.0" />
                             </font>
                         </Label>
                         <ComboBox fx:id="categoryComboBox" layoutX="807.0" layoutY="51.0" prefWidth="150.0" styleClass="white-bor-anchor" />
-                        <Label layoutX="757.0" layoutY="55.0" prefHeight="18.0" prefWidth="47.0" text="Filter By" textFill="#dbff03" />
                   <Button layoutX="78.0" layoutY="26.0" mnemonicParsing="false" onAction="#back" text="Front" />
+                  <Button fx:id="pdf" layoutX="750.0" layoutY="51.0" mnemonicParsing="false" onAction="#generatePDF" text="Pdf by" />
                     </children>
                     <styleClass>
                         <String fx:value="left-form" />
