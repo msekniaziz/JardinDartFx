@@ -167,7 +167,7 @@ public class addAdsController implements Initializable {
 
             sannonces.add(newAnnonce);
             System.out.println("Annonce ajoutée avec succès.");
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("affMyAds.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("affAds.fxml")));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(scene);

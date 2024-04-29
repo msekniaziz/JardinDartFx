@@ -2,6 +2,9 @@ package tn.esprit.ads.Controllers;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -11,8 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import tn.esprit.ads.Entity.Annonces;
+import tn.esprit.ads.Entity.Commandes;
 import tn.esprit.ads.Entity.Panier;
 import tn.esprit.ads.Services.Sannonces;
+import tn.esprit.ads.Services.Scommandes;
 import tn.esprit.ads.Services.Spanier;
 import tn.esprit.ads.Services.SpanierAnnonce;
 import com.jfoenix.controls.JFXButton;
@@ -22,6 +27,7 @@ import tn.esprit.ads.test.MainFx;
 //import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -33,6 +39,7 @@ import javafx.util.Callback;
 
 
 public class PanierController {
+
     @FXML
     private TableView<Annonces> paniertable;
 
@@ -47,6 +54,8 @@ public class PanierController {
 
     @FXML
     private TableColumn<Annonces, Void> actions;
+    @FXML
+    private Button payer;
 
     @FXML
     private VBox panierItems;
@@ -87,6 +96,26 @@ public class PanierController {
         price.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPrix()));
 
     }
+  /* private void afficherPanier() {
+       List<Annonces> panier = pa.getCard(id);
+       System.out.println("Chargement du panier...");
+
+       ObservableList<Annonces> observableList = FXCollections.observableArrayList(panier);
+
+       image.setCellValueFactory(cellData -> {
+           Annonces annonce = cellData.getValue();
+           ImageView imageView = new ImageView(new Image(annonce.getImage()));
+           imageView.setFitWidth(100); // Ajustez la largeur souhaitée
+           imageView.setFitHeight(100); // Ajustez la hauteur souhaitée
+           return new SimpleObjectProperty<>(imageView);
+       });
+
+       title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+       price.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPrix()));
+
+       paniertable.setItems(observableList);
+   }*/
+
     private void showConfirmationDialog(String title, String content, Runnable action) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
@@ -152,7 +181,18 @@ public class PanierController {
 
         // Ajout de la colonne d'action à votre TableView
         paniertable.getColumns().add(actionButtonColumn);
+
     }
+
+
+
+    @FXML
+    void payer(ActionEvent event) {
+
+    }
+
+    
+
 
 
 }

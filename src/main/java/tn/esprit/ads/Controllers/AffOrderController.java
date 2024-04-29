@@ -23,8 +23,14 @@ import tn.esprit.ads.Entity.Commandes;
 import tn.esprit.ads.Services.Scategories;
 import tn.esprit.ads.Services.Scommandes;
 
+import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +40,8 @@ public class AffOrderController implements Initializable {
 
     @FXML
     private TextField SearchBarOrder;
+    @FXML
+    private Button excelProduit;
     @FXML
     private Button affOrder;
     @FXML
@@ -87,6 +95,8 @@ public class AffOrderController implements Initializable {
     @FXML
     Commandes Order;
     private FXMLLoader CardLoader;
+    private static Connection cnx;
+
     private void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -258,4 +268,59 @@ public class AffOrderController implements Initializable {
 
 
     }
+
+   /* @FXML
+    public void generateExcelProduit(ActionEvent actionEvent) {
+        String req = "SELECT c.nomCategorie, p.idProduit, p.nomProduit, p.quantite, p.prix, SUM(p.quantite) OVER(PARTITION BY c.nomCategorie) AS stock " +
+                "FROM produit p JOIN categorie c ON p.categorie_id = c.idCategorie ORDER BY c.nomCategorie, p.idProduit";
+
+        try (Connection cnx = MyDataBase.getInstance().getCnx();
+             Statement statement = cnx.createStatement();
+             ResultSet rs = statement.executeQuery(req)) {
+
+            Workbook wb = new HSSFWorkbook(); // Utilisation de HSSFWorkbook pour créer un fichier Excel en format .xls
+            Sheet sheet = wb.createSheet("Détails produit");
+            Row header = sheet.createRow(0);
+
+            // Ajouter des en-têtes pour chaque colonne
+            String[] headers = {"Catégorie", "idProduit", "nomProduit", "quantite", "prix", "Stock total"};
+            for (int i = 0; i < headers.length; i++) {
+                header.createCell(i).setCellValue(headers[i]);
+            }
+
+            int index = 1;
+            String currentCategory = "";
+            while (rs.next()) {
+                String category = rs.getString("nomCategorie");
+                if (!category.equals(currentCategory)) {
+                    currentCategory = category;
+                }
+
+                Row row = sheet.createRow(index);
+                row.createCell(0).setCellValue(category);
+                row.createCell(1).setCellValue(rs.getInt("idProduit"));
+                row.createCell(2).setCellValue(rs.getString("nomProduit"));
+                row.createCell(3).setCellValue(rs.getInt("quantite"));
+                row.createCell(4).setCellValue(rs.getDouble("prix"));
+                row.createCell(5).setCellValue(rs.getInt("stock"));
+
+                index++;
+            }
+
+            // Écrire le contenu dans un fichier
+            String filePath = "C:/Users/Hp/Desktop/produitCategorie/src/main/java/EXCEL/produit.xls";
+            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+                wb.write(fileOut);
+                JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL.");
+        }
+    }*/
+
 }

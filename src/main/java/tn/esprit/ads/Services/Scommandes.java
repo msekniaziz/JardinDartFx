@@ -164,6 +164,30 @@ public class Scommandes  {
         }
         return commandes;
     }
+  /* public ArrayList<Commandes> getAll() {
+       ArrayList<Commandes> commandes = new ArrayList<>();
+       String query = "SELECT commandes.*, user.nom " +
+               "FROM commandes " +
+               "INNER JOIN user ON commandes.id_user_c_id = users.id";
+       try {
+           Statement stm = cnx.createStatement();
+           ResultSet rs = stm.executeQuery(query);
+           while (rs.next()) {
+               Commandes commande = new Commandes();
+               commande.setId(rs.getInt("id"));
+               commande.setId_user_c_id(rs.getInt("id_user_c_id"));
+               commande.setEtat(rs.getInt("etat"));
+               commande.setName(rs.getString("nom")); // Setter pour le nom d'utilisateur
+               // commande.setDate(rs.getDate("06/04/2024")); // Assurez-vous de définir la date correctement
+               commandes.add(commande);
+           }
+       } catch (SQLException e) {
+           // Lancer une nouvelle RuntimeException avec l'exception d'origine
+           throw new RuntimeException("Erreur lors de la récupération des commandes.", e);
+       }
+       return commandes;
+   }*/
+
 
     public void update(Commandes commandes) {
         String query = "UPDATE commandes SET id_user_c_id=?, etat=? WHERE id=?";
