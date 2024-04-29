@@ -1,24 +1,34 @@
 package tn.esprit.controllers;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Pane;
+import org.controlsfx.control.Notifications;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+
+import javafx.scene.control.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import  tn.esprit.entities.Producttrocwith;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -27,7 +37,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+import javafx.util.Duration;
 public class AddProdwith implements Initializable {
 
     @FXML
@@ -75,7 +85,6 @@ public class AddProdwith implements Initializable {
     public void setMainProductId(int mainProductId) {
         this.mainProductId = mainProductId;
     }
-    int a=0;
 
 public Producttrocwith setprod(Producttrocwith book,int a) {
         this.producttrocwith = book;
@@ -100,23 +109,24 @@ return book;
         CategoryCombo.setItems(listData);
     }
 
-    void reloadPage() {
+    void reloadPage(ActionEvent event) {
         // Get the URL of the FXML file
-        URL location = getClass().getResource("/tn/esprit/jardindart/Market.fxml");
-
         try {
-            // Load the FXML file and initialize the controller
-            FXMLLoader loader = new FXMLLoader(location);
-            Parent root = loader.load();
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/jardindart/Market.fxml"));
+            Parent newContent = loader.load();
 
-            // Get the stage from the current scene
-            Stage stage = (Stage) addbook.getScene().getWindow();
+            // Obtenir le stage actuel
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            // Set the newly loaded root as the root of the current scene
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            // Obtenir la scène actuelle
+            Scene currentScene = stage.getScene();
+
+            // Remplacer le contenu de la racine de la scène actuelle avec le nouveau contenu chargé depuis le fichier FXML
+            currentScene.setRoot(newContent);
+
         } catch (IOException e) {
-            e.printStackTrace(); // Handle or log the exception
+            e.printStackTrace();
         }
     }
 
@@ -140,14 +150,13 @@ return book;
             imgb.setImage(image);
         }
     }
-
-    @FXML
-    void AddBookBtn(ActionEvent event) {
+@FXML
+void AddBookBtn(ActionEvent event) {
         // Validate input fields before adding the product
         String prodtitle = TitleL.getText().trim();
         String proddesc = description.getText().trim();
         String selectedCategoryString = CategoryCombo.getValue();
-        String id_prod= prod_id_id.getText();
+        String id_prod = prod_id_id.getText();
 
         if (prodtitle.isEmpty() || !prodtitle.matches(".*[a-zA-Z].*")) {
             showAlert("Error", "The book title cannot be empty and must contain letters.");
@@ -169,22 +178,49 @@ return book;
         }
 
         // Create a new instance of Producttrocwith using the setprod method
-        Producttrocwith book = new Producttrocwith(Integer.parseInt(id_prod),prodtitle, selectedCategory, proddesc, imagePath1);
-
-
+        Producttrocwith book = new Producttrocwith(Integer.parseInt(id_prod), prodtitle, selectedCategory, proddesc, imagePath1);
 
         try {
             produitTrocWithService.addMeth2(book);
-            showconf("Success", "Product added successfully.");
+            showNotificationWithButtons("Success", "Product added successfully.", "View Product", "Close");
             System.out.println(book);
-            reloadPage();
-
+            reloadPage(event);
         } catch (SQLException e) {
             showAlert("Error", "Failed to add product: " + e.getMessage());
             System.out.println(e.getMessage());
             System.out.println(book);
         }
     }
+
+    private void showNotificationWithButtons(String title, String message, String button1Text, String button2Text) {
+        Button button1 = new Button(button1Text);
+        button1.getStyleClass().add("notification-button");
+        button1.setOnAction(event -> {
+            // Handle button 1 action
+            // For example, open the product details page
+        });
+
+        Button button2 = new Button(button2Text);
+        button2.getStyleClass().add("notification-button");
+        button2.setOnAction(event -> {
+            // Handle button 2 action
+            // For example, close the notification
+        });
+
+        HBox buttonsContainer = new HBox(10);
+        buttonsContainer.setAlignment(Pos.CENTER_RIGHT);
+        buttonsContainer.getChildren().addAll(button1, button2);
+
+        Notifications.create()
+                .title(title)
+                .text(message)
+                .position(Pos.TOP_RIGHT)
+                .graphic(buttonsContainer)
+                //.hideAfter(Duration.seconds(5))
+                .show();
+    }
+
+
 
 
     private void showAlert(String title, String message) {
