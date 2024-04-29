@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 
 public class Openai {
 
-    // private static final String API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions";
-    // private static final String API_KEY = "sk-proj-y0fbBY6rPVIz4gqlIBv4T3BlbkFJoJpwIAtpIsIPYJEbv7is";
 
     @FXML
     private Label answerLabel;
