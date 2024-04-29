@@ -49,9 +49,17 @@ public class Itemrb  {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        if(Produit.getStatut()==1)
+        {
+            statusid.setText(""+ "Active"); // Assuming status is a label showing the status
+
+        }
+        else
+            statusid.setText(""+ "inactive"); // Assuming status is a label showing the status
+
+
 
         // Update the UI or show a confirmation message if needed
-        statusid.setText(""+ Produit.getStatut()); // Assuming status is a label showing the status
     }
     Produit_TrocService produitTrocService = new Produit_TrocService();
     Producttrocwith producttrocwith=new Producttrocwith();
