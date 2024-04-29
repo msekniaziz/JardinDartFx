@@ -15,14 +15,19 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 import com.google.zxing.WriterException;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
+import java.io.IOException;
+
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
+
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
@@ -79,6 +84,9 @@ public class itemsPd {
 
     @FXML
     private Button modif;
+
+    @FXML
+    private ImageView qrCodeImageView;
 
     @FXML
     private HBox qr_code;
@@ -289,4 +297,41 @@ public class itemsPd {
         addProdStage.show();
     }
 
+    public void qr_click(ActionEvent event) {
+        // Construct the text to encode in the QR code
+        String text =
+                 "\nProduct Name: " + book.getNom()
+                + "\nProduct Description: " + book.getDescription()
+                + "\nProduct Category: " + book.getCategory()
+                + "\nProduct looking for: " + book.getNom_produit_recherche();
+
+        // Create a QRCodeWriter instance
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+
+        // Create a BitMatrix from the QR code text
+        try {
+            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+
+            // Convert the BitMatrix to a BufferedImage
+            BufferedImage bufferedImage = new BufferedImage(bitMatrix.getWidth(), bitMatrix.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+            for (int x = 0; x < bitMatrix.getWidth(); x++) {
+                for (int y = 0; y < bitMatrix.getHeight(); y++) {
+                    int grayValue = bitMatrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF;
+                    bufferedImage.setRGB(x, y, grayValue);
+                }
+            }
+
+            // Convert the BufferedImage to a JavaFX Image
+            Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            // Display the QR code in the ImageView
+            qrCodeImageView.setImage(fxImage);
+
+            // Set the ImageView to visible
+            qrCodeImageView.setVisible(true);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
 }
