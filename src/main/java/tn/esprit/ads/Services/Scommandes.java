@@ -8,7 +8,11 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import tn.esprit.ads.tools.MyDataBase;
 import tn.esprit.ads.Entity.Annonces;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import static tn.esprit.ads.Services.Sannonces.cnx;
+
 public class Scommandes  {
     private static Connection cnx;
 
@@ -71,53 +75,38 @@ public class Scommandes  {
             System.out.println(e.getMessage());
         }
     }*/
-    private int recupereNom(String name) throws SQLException {
-        int id = -1;
-        String query = "SELECT id_user_c_id FROM `commandes` WHERE name=?";
-
-        try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setString(1, name);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    id = resultSet.getInt("id_user_c_id");
-                    System.out.println("ID de comande trouvé : " + id);
-                } else {
-                    System.out.println("Aucune categorie trouvée pour les critères spécifiés.");
-                }
+    public String recupereNom(int idUser) throws SQLException {
+        String nom = null;
+        try {
+            String query = "SELECT * FROM user WHERE id = ?";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.setInt(1, idUser);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                nom = resultSet.getString("nom");
             }
+            resultSet.close();
+            statement.close();
         } catch (SQLException e) {
-            System.err.println("Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
             e.printStackTrace();
         }
-
-        return id;
+        return nom ;
     }
-    public void add(Commandes commandes) throws SQLException {
-        int id_user_c_id = recupereNom(commandes.getName());
-        if (id_user_c_id != -1) {
-            // Récupérer les détails de la livraison pour mettre à jour la facture
-            String queryAds = "SELECT name FROM `user` WHERE id_user_c_id=?";
-            try (PreparedStatement stmAds = cnx.prepareStatement(queryAds)) {
-                stmAds.setInt(1, id_user_c_id);
-                ResultSet rsAds = stmAds.executeQuery();
-                if (rsAds.next()) {
-                    commandes.setName(rsAds.getString("name"));
-
-                }
-
-                String req = "INSERT INTO `commandes`(id, id_user_c_id, etat) VALUES (?,?,?)";
-                try {
+    public void add(int idUser) throws SQLException {
+                String req = "INSERT INTO `commandes`(id_user_c_id, etat,date) VALUES (?,?,?)";
+        LocalDate localDate = LocalDate.now();
+        int etat = 0 ;
+        try {
                     PreparedStatement pstm = cnx.prepareStatement(req);
-                    pstm.setInt(1, commandes.getId());
-                    pstm.setInt(2, commandes.getId_user_c_id());
-                    pstm.setInt(3, commandes.getEtat());
-                    //  pstm.setDate(2, commandes.getDate());
+                    pstm.setInt(1, idUser);
+                    pstm.setInt(2, etat);
+                    pstm.setObject(3, localDate);
                     pstm.executeUpdate();
                     System.out.println("Order added successfully.");
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
                 }
-            }}}
+            }
 
     public boolean delete(Commandes commandes) {
         String query = "DELETE FROM `commandes` WHERE id = ?";
@@ -152,10 +141,9 @@ public class Scommandes  {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 Commandes commande = new Commandes();
-                commande.setId(rs.getInt("id"));
                 commande.setId_user_c_id(rs.getInt("id_user_c_id"));
                 commande.setEtat(rs.getInt("etat"));
-               // commande.setDate(rs.getDate("06/04/2024"));
+                commande.setDate(rs.getDate("date"));
                 commandes.add(commande);
             }
         } catch (SQLException e) {

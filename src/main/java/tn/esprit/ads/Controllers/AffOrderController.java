@@ -144,6 +144,8 @@ public class AffOrderController implements Initializable {
             } catch (IOException e) {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des données de catégorie.");
                 e.printStackTrace();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -269,8 +271,8 @@ public class AffOrderController implements Initializable {
 
     }
 
-   /* @FXML
-    public void generateExcelProduit(ActionEvent actionEvent) {
+    @FXML
+    public void generateExcelProduit(ActionEvent actionEvent) {/*
         String req = "SELECT c.nomCategorie, p.idProduit, p.nomProduit, p.quantite, p.prix, SUM(p.quantite) OVER(PARTITION BY c.nomCategorie) AS stock " +
                 "FROM produit p JOIN categorie c ON p.categorie_id = c.idCategorie ORDER BY c.nomCategorie, p.idProduit";
 
@@ -320,7 +322,7 @@ public class AffOrderController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL.");
-        }
-    }*/
+        }*/
+    }
 
 }

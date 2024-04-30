@@ -184,10 +184,11 @@ public class PanierController {
 
     }
 
-
-
     @FXML
-    void payer(ActionEvent event) {
+    void payer(ActionEvent event) throws SQLException {
+       int idUser = 5 ;
+       Scommandes scommandes = new Scommandes() ;
+       scommandes.add(idUser);
 
     }
 

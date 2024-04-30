@@ -1,5 +1,6 @@
 package tn.esprit.ads.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,11 +10,16 @@ import javafx.scene.layout.VBox;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Entity.Commandes;
 import javafx.scene.layout.FlowPane;
+import tn.esprit.ads.Services.Sannonces;
 import tn.esprit.ads.Services.Scommandes;
 import tn.esprit.ads.test.MainFx;
 
-import java.awt.event.ActionEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.jar.Attributes;
+
+import static tn.esprit.ads.Services.Sannonces.cnx;
 
 public class CardOrderController {
     @FXML
@@ -74,17 +80,18 @@ public class CardOrderController {
     }
 
 
-    public void initialize(Commandes com) {
+    public void initialize(Commandes com) throws SQLException {
         if (com == null) {
             System.err.println("Erreur: instance de Facture est nulle");
             return;
         }
-
+        int iduser = com.getId_user_c_id() ;
         this.com = com;
-        name.setText("Name:" + com.getId());
-        state.setText("key : " + com.getEtat());
-
-
+        Scommandes scommandes = new Scommandes() ;
+        String nom = scommandes.recupereNom(iduser);
+        name.setText("Name: " + nom);
+        state.setText("Status : " + com.getEtat());
+        dateLabel.setText(" "+com.getDate());
 
     }
     public Commandes getCom() {
@@ -93,7 +100,7 @@ public class CardOrderController {
 
 
 
-    public void delete(javafx.event.ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) {
         if ( comm== null) {
             System.err.println("Erreur : Sannonces non initialisée.");
             return;
