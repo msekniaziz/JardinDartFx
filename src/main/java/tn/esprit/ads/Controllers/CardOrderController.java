@@ -90,7 +90,7 @@ public class CardOrderController {
         Scommandes scommandes = new Scommandes() ;
         String nom = scommandes.recupereNom(iduser);
         name.setText("Name: " + nom);
-        state.setText("Status : " + com.getEtat());
+        state.setText(String.valueOf("Status : " + com.getEtat()));
         dateLabel.setText(" "+com.getDate());
 
     }

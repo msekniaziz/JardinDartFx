@@ -5,9 +5,10 @@ import java.util.Objects;
 import java.time.LocalDate;
 
 public class Commandes {
-    int id , id_user_c_id , etat;
+    int id , id_user_c_id ;
     Date date ;
     String name;
+    Double etat;
 
     public Commandes() {
     }
@@ -16,7 +17,7 @@ public class Commandes {
         this.id_user_c_id = id_user_c_id;
     }
 
-    public Commandes(int id, int id_user_c_id, int etat, Date date) {
+    public Commandes(int id, int id_user_c_id, double etat, Date date) {
         this.id = id;
         this.id_user_c_id = id_user_c_id;
         this.etat = etat;
@@ -39,11 +40,11 @@ public class Commandes {
         this.id_user_c_id = id_user_c_id;
     }
 
-    public int getEtat() {
+    public double getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(double etat) {
         this.etat = etat;
     }
 

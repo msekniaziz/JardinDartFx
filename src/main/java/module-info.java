@@ -5,6 +5,8 @@ module tn.esprit.ads {
     requires mysql.connector.java;
     requires javafx.swing;
     requires com.jfoenix;
+    requires jakarta.mail;
+    requires org.apache.poi.poi;
 
 
     opens tn.esprit.ads to javafx.fxml;

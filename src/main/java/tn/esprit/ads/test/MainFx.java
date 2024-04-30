@@ -21,11 +21,11 @@ public class MainFx extends Application {
     public void start(Stage stage) {
         try {
             primaryStage=stage;
-            FXMLLoader fxmlLoader=new FXMLLoader(MainFx.class.getResource("/affOrder.fxml"));
+            FXMLLoader fxmlLoader=new FXMLLoader(MainFx.class.getResource("/affAds.fxml"));
             Parent root =fxmlLoader.load();
             Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();//nzid hedhi
             Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
-//Scene scene = new Scene(root,1500,600);
+            //Scene scene = new Scene(root,1500,600);
             stage.setTitle("Hello!");
             stage.setScene(scene);
             stage.show();

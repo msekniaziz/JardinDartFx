@@ -1,5 +1,6 @@
 package tn.esprit.ads.Controllers;
 
+import com.mysql.cj.result.Row;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +19,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Entity.Commandes;
 import tn.esprit.ads.Services.Scategories;
 import tn.esprit.ads.Services.Scommandes;
+import tn.esprit.ads.tools.MyDataBase;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
@@ -31,10 +35,15 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//execl fasakhhom baed ken matessthakhomch  ye noussa
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class AffOrderController implements Initializable {
 

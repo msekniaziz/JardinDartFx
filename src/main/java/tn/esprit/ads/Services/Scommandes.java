@@ -184,7 +184,7 @@ public class Scommandes  {
             PreparedStatement stm = cnx.prepareStatement(query);
 
             stm.setInt(1, commandes.getId_user_c_id());
-            stm.setInt(2, commandes.getEtat());
+            stm.setDouble(2, commandes.getEtat());
 
             // Spécification de l'ID uniquement dans la clause WHERE
             stm.setInt(3, commandes.getId());
