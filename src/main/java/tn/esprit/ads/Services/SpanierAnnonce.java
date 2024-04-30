@@ -101,6 +101,24 @@ public class SpanierAnnonce {
             throw new RuntimeException(e);
         }
     }
+    public void deleteAllAnnoncesDansPanier(int idPanier) {
+        String query = "DELETE FROM panierannonce WHERE idPanier = ?";
+
+        try (PreparedStatement stm = cnx.prepareStatement(query)) {
+            stm.setInt(1, idPanier);
+            int rowsAffected = stm.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Toutes les annonces du panier ont été supprimées!");
+            } else {
+                System.out.println("Aucune annonce trouvée dans le panier pour cet ID.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression des annonces du panier : " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }

@@ -147,7 +147,7 @@ public class Sannonces implements IServices<Annonces> {
     @Override
     public ArrayList<Annonces> getAll() {
         ArrayList<Annonces> annonces = new ArrayList<>();
-        String query = "SELECT * FROM annonces";
+        String query = "SELECT * FROM annonces WHERE status=0";
         try {
             Statement stm = cnx.createStatement();
             ResultSet rs = stm.executeQuery(query);
@@ -173,7 +173,7 @@ public class Sannonces implements IServices<Annonces> {
 
     public ArrayList<Annonces> getAllMyAds(int userId) {
         ArrayList<Annonces> annonces = new ArrayList<>();
-        String query = "SELECT * FROM annonces WHERE user_id = ?";
+        String query = "SELECT * FROM annonces WHERE status =0 and user_id = ?";
         try {
             PreparedStatement stm = cnx.prepareStatement(query);
             stm.setInt(1, userId);

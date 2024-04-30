@@ -27,18 +27,20 @@ import tn.esprit.ads.test.MainFx;
 //import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.util.Callback;
-
-
+import tn.esprit.ads.tools.MyDataBase;
 
 
 public class PanierController {
+    public static Connection cnx;
+
 
     @FXML
     private TableView<Annonces> paniertable;
@@ -76,7 +78,7 @@ public class PanierController {
 
     public void initialize(int id) {
         System.out.println("Chargement des données de panier...");
-
+        cnx = MyDataBase.getInstance().getCnx();
         this.id = id;
         afficherPanier();
         deleteAds();
@@ -184,15 +186,177 @@ public class PanierController {
 
     }
 
-    @FXML
+   /* @FXML
     void payer(ActionEvent event) throws SQLException {
        int idUser = 5 ;
        Scommandes scommandes = new Scommandes() ;
        scommandes.add(idUser);
 
+
+
+    }*/
+  /* @FXML
+   void payer(ActionEvent event) throws SQLException {
+       int idUser = 5;
+       Scommandes scommandes = new Scommandes() ;
+       scommandes.add(idUser);
+
+
+       try {
+
+           String selectPanierIdQuery = "SELECT idPanier FROM panier WHERE idUser = ?";
+           int idPanier = -1;
+
+           try (PreparedStatement ps = cnx.prepareStatement(selectPanierIdQuery)) {
+               ps.setInt(1, idUser);
+               ResultSet resultSet = ps.executeQuery();
+
+               if (resultSet.next()) {
+                   idPanier = resultSet.getInt("idPanier");
+               } else {
+                   System.out.println("Aucun panier trouvé pour cet utilisateur.");
+                   return;
+               }
+           }
+
+           if (idPanier == -1) {
+               System.out.println("Aucun panier trouvé pour cet utilisateur.");
+               return;
+           }
+
+
+           String selectAnnoncesQuery = "SELECT idAnnonce FROM panierannonce WHERE idPanier = ?";
+           List<Integer> annonceIds = new ArrayList<>();
+
+           try (PreparedStatement ps = cnx.prepareStatement(selectAnnoncesQuery)) {
+               ps.setInt(1, idPanier);
+               ResultSet resultSet = ps.executeQuery();
+
+               while (resultSet.next()) {
+                   annonceIds.add(resultSet.getInt("idAnnonce"));
+               }
+           }
+
+
+           String updateAnnoncesQuery = "UPDATE annonces SET status = 1 WHERE id = ?";
+
+           try (PreparedStatement ps = cnx.prepareStatement(updateAnnoncesQuery)) {
+               for (int annonceId : annonceIds) {
+                   ps.setInt(1, annonceId);
+                   ps.executeUpdate();
+               }
+
+               System.out.println("Statut des annonces mis à jour avec succès.");
+           }
+       } catch (SQLException e) {
+           System.err.println("Erreur lors de la mise à jour du statut des annonces : " + e.getMessage());
+       }
+
+   }*/
+   @FXML
+   void payer(ActionEvent event) {
+       int idUser = 5; // ID de l'utilisateur (à remplacer par la récupération de l'ID de l'utilisateur qui paie)
+
+       try {
+           // Ajouter la commande pour l'utilisateur
+           Scommandes scommandes = new Scommandes();
+           scommandes.add(idUser);
+
+           // Récupérer l'ID du panier de l'utilisateur
+           int idPanier = getIdPanierUtilisateur(idUser);
+           if (idPanier == -1) {
+               System.out.println("Aucun panier trouvé pour cet utilisateur.");
+               return;
+           }
+
+           // Récupérer les ID des annonces dans le panier
+           List<Integer> annonceIds = getIdAnnoncesDansPanier(idPanier);
+
+           // Mettre à jour le statut des annonces (ex: passer le statut à 1 pour les annonces commandées)
+           updateStatutAnnonces(annonceIds);
+
+           // Supprimer toutes les annonces du panier
+           deleteAllAnnoncesDansPanier(idPanier);
+
+           System.out.println("Commande traitée avec succès!");
+
+       } catch (SQLException e) {
+           System.err.println("Erreur lors du traitement de la commande : " + e.getMessage());
+       }
+   }
+
+    // Méthode pour récupérer l'ID du panier de l'utilisateur
+    private int getIdPanierUtilisateur(int idUser) throws SQLException {
+        String selectPanierIdQuery = "SELECT idPanier FROM panier WHERE idUser = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(selectPanierIdQuery)) {
+            ps.setInt(1, idUser);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("idPanier");
+            } else {
+                return -1; // Aucun panier trouvé pour cet utilisateur
+            }
+        }
     }
 
-    
+    // Méthode pour récupérer les ID des annonces dans un panier
+    private List<Integer> getIdAnnoncesDansPanier(int idPanier) throws SQLException {
+        List<Integer> annonceIds = new ArrayList<>();
+        String selectAnnoncesQuery = "SELECT idAnnonce FROM panierannonce WHERE idPanier = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(selectAnnoncesQuery)) {
+            ps.setInt(1, idPanier);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                annonceIds.add(resultSet.getInt("idAnnonce"));
+            }
+        }
+        return annonceIds;
+    }
+
+    // Méthode pour mettre à jour le statut des annonces
+    private void updateStatutAnnonces(List<Integer> annonceIds) throws SQLException {
+        String updateAnnoncesQuery = "UPDATE annonces SET status = 1 WHERE id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(updateAnnoncesQuery)) {
+            for (int annonceId : annonceIds) {
+                ps.setInt(1, annonceId);
+                ps.executeUpdate();
+            }
+        }
+    }
+
+
+    private void deleteAllAnnoncesDansPanier(int idPanier) throws SQLException {
+        String deleteAnnoncesQuery = "DELETE FROM panierannonce WHERE idPanier = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(deleteAnnoncesQuery)) {
+            ps.setInt(1, idPanier);
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Toutes les annonces du panier ont été supprimées!");
+
+                refreshPage();
+            } else {
+                System.out.println("Aucune annonce trouvée dans le panier pour cet ID.");
+            }
+        }
+    }
+
+
+    private void refreshPage() {
+
+        paniertable.getItems().clear();
+
+
+        afficherPanier();
+
+
+    }
+
+
+
+
+
+
 
 
 
