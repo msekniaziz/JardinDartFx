@@ -58,6 +58,11 @@
                               <Font name="Arial Black" size="12.0" />
                            </font>
                         </Button>
+                        <Button fx:id="pdfProduit" layoutX="701.0" layoutY="675.0" mnemonicParsing="false" onAction="#generatePdfProduit" prefHeight="25.0" prefWidth="55.0" text="PDF">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Button>
                             </children>
                         </Pane>
                     </children>

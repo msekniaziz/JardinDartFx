@@ -38,6 +38,7 @@ public class Scommandes  {
         }
         return nom ;
     }
+
     public void add(int idUser) throws SQLException {
                 String req = "INSERT INTO `commandes`(id_user_c_id, etat,date) VALUES (?,?,?)";
         LocalDate localDate = LocalDate.now();
@@ -53,6 +54,7 @@ public class Scommandes  {
                     System.out.println(e.getMessage());
                 }
             }
+
 
     public boolean delete(Commandes commandes) {
         String query = "DELETE FROM `commandes` WHERE id = ?";

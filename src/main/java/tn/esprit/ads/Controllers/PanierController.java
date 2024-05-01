@@ -23,8 +23,6 @@ import tn.esprit.ads.Services.SpanierAnnonce;
 import com.jfoenix.controls.JFXButton;
 import tn.esprit.ads.test.MainFx;
 
-
-//import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -75,6 +73,7 @@ public class PanierController {
     Panier p;
     int id = 1;
     SpanierAnnonce pa = new SpanierAnnonce();
+    Commandes com = new Commandes();
 
 
     public void initialize(int id) {
@@ -165,7 +164,7 @@ public class PanierController {
 
     }
 
-   @FXML
+    @FXML
    void payer(ActionEvent event) {
        int idUser = 5;
 
@@ -185,7 +184,8 @@ public class PanierController {
            List<Integer> annonceIds = getIdAnnoncesDansPanier(idPanier);
 
 
-           updateStatutAnnonces(annonceIds);
+          double price= updateStatutAnnonces(annonceIds);
+
 
 
            deleteAllAnnoncesDansPanier(idPanier);
@@ -203,6 +203,9 @@ public class PanierController {
            throw new RuntimeException(e);
        }
    }
+
+
+
 
     private int getIdPanierUtilisateur(int idUser) throws SQLException {
         String selectPanierIdQuery = "SELECT idPanier FROM panier WHERE idUser = ?";

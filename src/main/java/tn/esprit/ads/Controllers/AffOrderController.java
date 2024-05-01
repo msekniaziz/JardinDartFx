@@ -1,4 +1,5 @@
 package tn.esprit.ads.Controllers;
+import javafx.collections.ObservableList;
 import org.apache.poi.ss.usermodel.Row;
 //import com.mysql.cj.result.Row;
 import javafx.event.ActionEvent;
@@ -21,6 +22,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Entity.Commandes;
 import tn.esprit.ads.Services.Scategories;
@@ -28,6 +33,8 @@ import tn.esprit.ads.Services.Scommandes;
 import tn.esprit.ads.tools.MyDataBase;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -54,6 +61,8 @@ public class AffOrderController implements Initializable {
     private TextField SearchBarOrder;
     @FXML
     private Button excelProduit;
+    @FXML
+    private Button pdfProduit;
     @FXML
     private Button affOrder;
     @FXML
@@ -283,44 +292,7 @@ public class AffOrderController implements Initializable {
 
     }
 
-   /* @FXML
-    public void generateExcelProduit(ActionEvent actionEvent) {
-        String req = "SELECT * FROM commandes";
 
-        try (Connection cnx = MyDataBase.getInstance().getCnx();
-             Statement statement = cnx.createStatement();
-             ResultSet rs = statement.executeQuery(req)) {
-
-            Workbook wb = new HSSFWorkbook(); // Use HSSFWorkbook to create an Excel file in .xls format
-            Sheet sheet = wb.createSheet("Détails commande");
-            Row header = sheet.createRow(0);
-
-            // Add headers for each column
-            String[] headers = {"id_user_c_id", "etat", "date"};
-            for (int i = 0; i < headers.length; i++) {
-                header.createCell(i).setCellValue(headers[i]);
-            }
-
-
-
-            // Write content to a file
-            String filePath = " C:/Users/user/Desktop/commande.xls";
-
-            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-                wb.write(fileOut);
-                JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
-            } catch (FileNotFoundException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Fichier Excel non trouvé : " + e.getMessage());
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel : " + e.getMessage());
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
-        }
-    }*/
    @FXML
    public void generateExcelProduit(ActionEvent actionEvent) {
        String req = "SELECT * FROM commandes";
@@ -361,7 +333,58 @@ public class AffOrderController implements Initializable {
        }
    }
 
+    @FXML
+    void generatePdfProduit(ActionEvent event) {
+        List<Commandes> data = getOrder();
 
+        try {
+            // Créez un nouveau document PDF
+            PDDocument document = new PDDocument();
+
+            // Créez une page dans le document
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            // Obtenez le contenu de la page
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Écrivez du texte dans le document
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+            contentStream.beginText();
+            contentStream.newLineAtOffset(100, 700);
+
+
+            for (Commandes com : data) {
+
+
+                String ligne = "ID : " + com.getId_user_c_id() + "   prix : " + com.getEtat() + "     date : " + com.getDate() ;
+                contentStream.showText(ligne);
+
+                contentStream.newLine();
+                contentStream.newLineAtOffset(0, -15);
+
+
+            }
+
+            contentStream.endText();
+
+            // Fermez le contenu de la page
+            contentStream.close();
+
+            String outputPath ="C:/Users/user/Desktop/produits.pdf";
+            File file = new File(outputPath);
+            document.save(file);
+
+            // Fermez le document
+            document.close();
+
+            System.out.println("Le PDF a été généré avec succès.");
+            Desktop.getDesktop().open(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }

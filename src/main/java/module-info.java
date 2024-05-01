@@ -7,6 +7,7 @@ module tn.esprit.ads {
     requires com.jfoenix;
     requires jakarta.mail;
     requires org.apache.poi.poi;
+    requires org.apache.pdfbox;
 
 
     opens tn.esprit.ads to javafx.fxml;

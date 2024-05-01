@@ -186,7 +186,7 @@ public class Sannonces implements IServices<Annonces> {
         return annonces;
     }
 
-   
+
     @Override
     public void update(Annonces annonces) {
         try {
