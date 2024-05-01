@@ -39,14 +39,14 @@ public class Scommandes  {
         return nom ;
     }
 
-    public void add(int idUser) throws SQLException {
+    public void add(int idUser,double price) throws SQLException {
                 String req = "INSERT INTO `commandes`(id_user_c_id, etat,date) VALUES (?,?,?)";
         LocalDate localDate = LocalDate.now();
         int etat = 0 ;
         try {
                     PreparedStatement pstm = cnx.prepareStatement(req);
                     pstm.setInt(1, idUser);
-                    pstm.setInt(2, etat);
+                    pstm.setDouble(2, price);
                     pstm.setObject(3, localDate);
                     pstm.executeUpdate();
                     System.out.println("Order added successfully.");
@@ -57,10 +57,14 @@ public class Scommandes  {
 
 
     public boolean delete(Commandes commandes) {
+        System.out.println("fel scommandes delete hedhi ");
         String query = "DELETE FROM `commandes` WHERE id = ?";
+        System.out.println("hedhi baad requette ");
         try {
             PreparedStatement stm = cnx.prepareStatement(query);
+            System.out.println(commandes.getId());
             stm.setInt(1, commandes.getId());
+            System.out.println("kaaba okhra");
             int rowsAffected = stm.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -89,6 +93,7 @@ public class Scommandes  {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 Commandes commande = new Commandes();
+                commande.setId(rs.getInt("id"));
                 commande.setId_user_c_id(rs.getInt("id_user_c_id"));
                 commande.setEtat(rs.getInt("etat"));
                 commande.setDate(rs.getDate("date"));

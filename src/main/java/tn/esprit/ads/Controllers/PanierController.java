@@ -130,7 +130,7 @@ public class PanierController {
                            setGraphic(imageView);
                        } catch (Exception e) {
                            System.err.println("Erreur lors du chargement de l'image : " + e.getMessage());
-                           setGraphic(null); 
+                           setGraphic(null);
                        }
                    }
                }
@@ -211,32 +211,20 @@ public class PanierController {
        int idUser = 5;
 
        try {
-
            Scommandes scommandes = new Scommandes();
-           scommandes.add(idUser);
-
-
            int idPanier = getIdPanierUtilisateur(idUser);
            if (idPanier == -1) {
                System.out.println("Aucun panier trouvé pour cet utilisateur.");
                return;
            }
-
-
            List<Integer> annonceIds = getIdAnnoncesDansPanier(idPanier);
-
-
           double price= updateStatutAnnonces(annonceIds);
-
-
-
+           scommandes.add(idUser,price);
            deleteAllAnnoncesDansPanier(idPanier);
-
            System.out.println("Commande traitée avec succès!");
            String subject = "Order";
-           String messageBody = "votre commande est effectue avec succées!\n\n";
-           messageBody += "Please click the following link to verify your account:\n";
-           String email_to = "khalil.bouazizi@esprit.tn";
+           String messageBody = "votre commande est effectue avec succées! Prix total \n\n"+price;
+           String email_to = "anas.joo@esprit.tn";
            EmailSender.sendEmail(email_to, subject, messageBody);
 
        } catch (SQLException e) {

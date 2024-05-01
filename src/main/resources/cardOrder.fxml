@@ -12,7 +12,7 @@
     <children>
         <AnchorPane prefHeight="107.0" prefWidth="570.0" styleClass="anchor-pane">
             <Label fx:id="name" layoutX="14.0" layoutY="14.0" styleClass="label" text="Name:" />
-            <Label fx:id="nameLabel" layoutX="60.0" layoutY="14.0" styleClass="label" />
+            <Label fx:id="nameLabel" layoutX="60.0" layoutY="14.0" prefHeight="20.0" prefWidth="149.0" styleClass="label" />
             <Label fx:id="state" layoutX="14.0" layoutY="40.0" styleClass="label" text="State:" />
             <Button fx:id="delete" layoutX="478.0" layoutY="16.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #4B49AC;" text="delete" />
             <Label fx:id="stateLabel" layoutX="60.0" layoutY="40.0" styleClass="label" />

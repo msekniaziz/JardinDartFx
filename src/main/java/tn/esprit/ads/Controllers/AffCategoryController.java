@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import tn.esprit.ads.Controllers.CardCatController;
+import tn.esprit.ads.Entity.Annonces;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Services.Scategories;
 
@@ -80,7 +81,7 @@ public class AffCategoryController implements Initializable
     private TextField keyCat;
 
     @FXML
-    private AnchorPane left_main;
+    private AnchorPane selectedCard;
 
     @FXML
     private Rectangle montant;
@@ -102,12 +103,7 @@ public class AffCategoryController implements Initializable
     private FXMLLoader CardLoader;
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Chargement des données de facture...");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("affCategory.fxml"));
-
-
-
-        CardLoader = new FXMLLoader(getClass().getResource("/cardAds.fxml"));
+        Scategories serviceCat = new Scategories();
         loadCartData();
 
         System.out.println("Chargement des données de category...");
@@ -119,17 +115,6 @@ public class AffCategoryController implements Initializable
     private List<Categories> getCat() {
         Scategories serviceCat = new Scategories();
         return serviceCat.getAll();
-    }
-    private AnchorPane getSelectedCard() {
-        for (Node node : flowPaneLCat.getChildren()) {
-            if (node instanceof AnchorPane) {
-                AnchorPane card = (AnchorPane) node;
-                if (card.getStyle().contains("-fx-background-color: lightblue;")) {
-                    return card;
-                }
-            }
-        }
-        return null;
     }
     private void updateCatCards() {
         for (Node node : flowPaneLCat.getChildren()) {
@@ -165,12 +150,8 @@ public class AffCategoryController implements Initializable
                 controller.initialize(cat); // Initialise la carte avec les données de catégorie
                 card.setUserData(cat); // Définit les données utilisateur de la carte comme la catégorie
                 flowPaneLCat.getChildren().add(card);
+                card.setOnMouseClicked(this::onCatSelected);
 
-                // Mettre en place l'événement de sélection de la carte de catégorie
-                card.setOnMouseClicked(event -> {
-                    onCatSelected(event);
-                    updateCatCards(); // Mettre à jour l'apparence des cartes de catégorie
-                });
             } catch (IOException e) {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des données de catégorie.");
                 e.printStackTrace();
@@ -181,28 +162,28 @@ public class AffCategoryController implements Initializable
     @FXML
 
     void onCatSelected(MouseEvent event) {
-        AnchorPane selectedCard = (AnchorPane) event.getSource();
+        selectedCard = (AnchorPane) event.getSource();
+
         Object userData = selectedCard.getUserData();
-
-        if (userData != null && userData instanceof Categories) {
-            Categories selectedCat = (Categories) userData;
-
-            System.out.println("Catégorie sélectionnée : " + selectedCat.getName());
-
-            this.selectedCategory = selectedCat;
-            initData(selectedCat);
+        if (userData instanceof Categories) {
+            selectedCategory = (Categories) userData;
+            System.out.println("Annonce sélectionnée : " + selectedCategory.getName());
+            initData(selectedCategory);
         } else {
             System.err.println("Erreur : Données utilisateur invalides.");
         }
+
     }
 
 
 
+
     void initData(Categories selectedCat) {
-        if (selectedCat != null) {
+      /*  System.out.println("init data");
             nameCat.setText(selectedCat.getName());
+            System.out.println(selectedCat.getName());
             keyCat.setText(String.valueOf(selectedCat.getKey_cat()));
-        }
+            System.out.println(selectedCat.getId());*/
     }
 
 

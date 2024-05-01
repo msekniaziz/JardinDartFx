@@ -185,7 +185,7 @@ public class CardAdsBackController implements Initializable {
         }
     }*/
     public void gotoactivate(ActionEvent actionEvent) {
-       /* Button button = (Button) actionEvent.getSource();
+        Button button = (Button) actionEvent.getSource();
         AnchorPane cardView = (AnchorPane) button.getParent();
         Object userData = cardView.getUserData();
 
@@ -221,7 +221,7 @@ public class CardAdsBackController implements Initializable {
                 showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while processing the request.");
             }
         }
-   */ }
+    }
 
     private void showAlert(Alert.AlertType alertType, String error, String s) {
     }

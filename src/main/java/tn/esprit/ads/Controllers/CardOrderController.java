@@ -87,18 +87,18 @@ public class CardOrderController {
         }
         int iduser = com.getId_user_c_id() ;
         this.com = com;
-        Scommandes scommandes = new Scommandes() ;
-        String nom = scommandes.recupereNom(iduser);
+      //  Scommandes scommandes = new Scommandes() ;
+        String nom = comm.recupereNom(iduser);
         name.setText("Name: " + nom);
         state.setText(String.valueOf("Status : " + com.getEtat()));
         dateLabel.setText(" "+com.getDate());
 
     }
+
+
     public Commandes getCom() {
         return com;
     }
-
-
 
     public void delete(ActionEvent actionEvent) {
         if ( comm== null) {
@@ -111,7 +111,28 @@ public class CardOrderController {
             return;
         }
         comm.delete(com);
-        MainFx.updateCurrentView("/affOrder.fxml");
+      MainFx.updateCurrentView("/affOrder.fxml");
 
     }
+
+  /* @FXML
+   public void delete(ActionEvent event) {
+       System.out.println("wosslot hne");
+       if (comm == null) {
+           System.err.println("Erreur : Sannonces non initialisée.");
+           return;
+       }
+
+       if (com == null) {
+           System.err.println("Erreur : Aucune commande sélectionnée.");
+           return;
+       }
+
+       System.out.println("kbaldelete");
+       comm.delete(com);
+
+       System.out.println("baeddelete");
+       MainFx.updateCurrentView("/affOrder.fxml");
+   }*/
+
 }

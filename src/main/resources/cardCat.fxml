@@ -15,6 +15,7 @@
             <Label fx:id="Key" layoutX="12.0" layoutY="56.0" prefHeight="18.0" prefWidth="134.0" styleClass="label" text="Key Category:" />
             <Button fx:id="editC" contentDisplay="BOTTOM" layoutX="419.0" layoutY="18.0" mnemonicParsing="false" onAction="#editC" prefHeight="36.0" prefWidth="74.0" style="-fx-background-color: #4B49AC;" text="Edit" />
             <Button fx:id="deleteC" layoutX="419.0" layoutY="58.0" mnemonicParsing="false" onAction="#deleteC" prefHeight="36.0" prefWidth="74.0" style="-fx-background-color: #4B49AC;" text="Delete" />
+         <Button fx:id="nbr" layoutX="12.0" layoutY="89.0" mnemonicParsing="false" onAction="#nbrAds" prefHeight="36.0" prefWidth="215.0" style="-fx-background-color: #4B49AC;" text="number" />
         </AnchorPane>
 
     </children>

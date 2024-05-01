@@ -26,6 +26,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import tn.esprit.ads.Entity.Annonces;
 import tn.esprit.ads.Entity.Categories;
 import tn.esprit.ads.Entity.Commandes;
 import tn.esprit.ads.Services.Scategories;
@@ -108,6 +109,8 @@ public class AffOrderController implements Initializable {
 
     @FXML
     private Pane pnlOverview;
+    @FXML
+    private AnchorPane getSelectedCard;
 
     @FXML
     private Button sort1;
@@ -127,23 +130,13 @@ public class AffOrderController implements Initializable {
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Chargement des données des Commandes...");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("affOrder.fxml"));
-
-
-
-        CardLoader = new FXMLLoader(getClass().getResource("/cardOrder.fxml"));
+         Sc = new Scommandes();
         loadCartData();
 
-        System.out.println("Chargement des données de category...");
         Image image1 = new Image("file:src/main/java/tn/esprit/ads/img/jimmy-fallon.png");
         imageuser.setImage(image1);
-
-
     }
     @FXML
-
-
     private void loadCartData() {
         List<Commandes> order = Sc.getAll();
 
@@ -156,14 +149,10 @@ public class AffOrderController implements Initializable {
                 controller.initialize(com); // Initialise la carte avec les données de catégorie
                 card.setUserData(com); // Définit les données utilisateur de la carte comme la catégorie
                 flowPaneLOrder.getChildren().add(card);
+                card.setOnMouseClicked(this::onOrderSelected);
 
-                // Mettre en place l'événement de sélection de la carte de catégorie
-                card.setOnMouseClicked(event -> {
-                    onOrderSelected(event);
-                    updateOrderCards(); // Mettre à jour l'apparence des cartes de catégorie
-                });
             } catch (IOException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des données de catégorie.");
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des données de commandes.");
                 e.printStackTrace();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -171,20 +160,10 @@ public class AffOrderController implements Initializable {
         }
     }
     private List<Commandes> getOrder() {
-        Scategories serviceCat = new Scategories();
-        return Sc.getAll();
+        Scommandes serviceCat = new Scommandes();
+        return serviceCat.getAll();
     }
-    private AnchorPane getSelectedCard() {
-        for (Node node : flowPaneLOrder.getChildren()) {
-            if (node instanceof AnchorPane) {
-                AnchorPane card = (AnchorPane) node;
-                if (card.getStyle().contains("-fx-background-color: lightblue;")) {
-                    return card;
-                }
-            }
-        }
-        return null;
-    }
+
     @FXML
     void DeleteAllOrder(ActionEvent event) {
         Scommandes order = new Scommandes();
@@ -243,7 +222,21 @@ public class AffOrderController implements Initializable {
     void sortByDate(ActionEvent event) {
 
     }
-    void onOrderSelected(MouseEvent event) {
+    private void onOrderSelected(MouseEvent event) {
+        getSelectedCard = (AnchorPane) event.getSource();
+        Object userData = getSelectedCard.getUserData();
+        System.out.println(userData);
+        if (userData instanceof Commandes) {
+            selectedOrder = (Commandes) userData;
+            System.out.println("commande sélectionnée : " + selectedOrder.getId());
+
+            initData(selectedOrder);
+        } else {
+            System.err.println("Erreur : Données utilisateur invalides.");
+        }
+    }
+
+   /* void onOrderSelected(MouseEvent event) {
         AnchorPane selectedCard = (AnchorPane) event.getSource();
         Object userData = selectedCard.getUserData();
 
@@ -257,7 +250,7 @@ public class AffOrderController implements Initializable {
         } else {
             System.err.println("Erreur : Données utilisateur invalides.");
         }
-    }
+    }*/
 
     private void initData(Commandes selectedOrder) {
     }
@@ -293,45 +286,45 @@ public class AffOrderController implements Initializable {
     }
 
 
-   @FXML
-   public void generateExcelProduit(ActionEvent actionEvent) {
-       String req = "SELECT * FROM commandes";
+    @FXML
+    public void generateExcelProduit(ActionEvent actionEvent) {
+        String req = "SELECT * FROM commandes";
 
-       try (Connection cnx = MyDataBase.getInstance().getCnx();
-            Statement statement = cnx.createStatement();
-            ResultSet rs = statement.executeQuery(req)) {
+        try (Connection cnx = MyDataBase.getInstance().getCnx();
+             Statement statement = cnx.createStatement();
+             ResultSet rs = statement.executeQuery(req)) {
 
-           Workbook wb = new HSSFWorkbook(); // Use HSSFWorkbook to create an Excel file in .xls format
-           Sheet sheet = wb.createSheet("Détails commande");
-           Row header = sheet.createRow(0);
+            Workbook wb = new HSSFWorkbook(); // Use HSSFWorkbook to create an Excel file in .xls format
+            Sheet sheet = wb.createSheet("Détails commande");
+            Row header = sheet.createRow(0);
 
-           // Add headers for each column
-           String[] headers = {"id_user_c_id", "etat", "date"};
-           for (int i = 0; i < headers.length; i++) {
-               header.createCell(i).setCellValue(headers[i]);
-           }
+            // Add headers for each column
+            String[] headers = {"id_user_c_id", "etat", "date"};
+            for (int i = 0; i < headers.length; i++) {
+                header.createCell(i).setCellValue(headers[i]);
+            }
 
-           int rowNum = 1;
-           while (rs.next()) {
-               Row row = sheet.createRow(rowNum++);
-               row.createCell(0).setCellValue(rs.getInt("id_user_c_id"));
-               row.createCell(1).setCellValue(rs.getString("etat"));
-               row.createCell(2).setCellValue(rs.getString("date"));
-           }
+            int rowNum = 1;
+            while (rs.next()) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(rs.getInt("id_user_c_id"));
+                row.createCell(1).setCellValue(rs.getString("etat"));
+                row.createCell(2).setCellValue(rs.getString("date"));
+            }
 
-           // Write content to a file
-           String filePath = "C:/Users/user/Desktop/commande.xls";
-           try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-               wb.write(fileOut);
-               JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
-           } catch (IOException e) {
-               showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel : " + e.getMessage());
-           }
+            // Write content to a file
+            String filePath = "C:/Users/user/Desktop/commande.xls";
+            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+                wb.write(fileOut);
+                JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
+            } catch (IOException e) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel : " + e.getMessage());
+            }
 
-       } catch (SQLException e) {
-           showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
-       }
-   }
+        } catch (SQLException e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
+        }
+    }
 
     @FXML
     void generatePdfProduit(ActionEvent event) {
