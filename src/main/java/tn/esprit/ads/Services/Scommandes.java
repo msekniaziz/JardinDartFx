@@ -20,61 +20,7 @@ public class Scommandes  {
         cnx = MyDataBase.getInstance().getCnx();
     }
 
-    /*public void add(Commandes commandes) throws SQLException {
-        String selectQuery = "SELECT `status` FROM `annonces` WHERE user_id=?";
-        String updateQuery = "UPDATE `annonces` SET `status` = 1 WHERE user_id=?";
-        String insertQuery = "INSERT INTO `commandes`(`id`,`id_user_c_id`, `etat`, `date`) VALUES (?, ?, ?, ?)";
 
-        try {
-            // Vérifier le statut de l'annonce
-            PreparedStatement selectStatement = cnx.prepareStatement(selectQuery);
-            selectStatement.setInt(1, commandes.getId_user_c_id());
-            ResultSet resultSet = selectStatement.executeQuery();
-
-            int status = 0;
-            if (resultSet.next()) {
-                status = resultSet.getInt("status");
-            }
-
-            if (status != 1) {
-                // Mettre à jour le statut de l'annonce à 1
-                PreparedStatement updateStatement = cnx.prepareStatement(updateQuery);
-                updateStatement.setInt(1, commandes.getId_user_c_id());
-                updateStatement.executeUpdate();
-            }
-
-            // Vérifier si l'utilisateur avec l'ID spécifié existe
-            String userExistQuery = "SELECT id FROM user WHERE id=?";
-            PreparedStatement userExistStatement = cnx.prepareStatement(userExistQuery);
-            userExistStatement.setInt(1, commandes.getId_user_c_id());
-            ResultSet userResultSet = userExistStatement.executeQuery();
-
-            if (!userResultSet.next()) {
-                System.out.println("L'utilisateur avec l'ID spécifié n'existe pas.");
-                return; // Arrêter l'opération d'ajout de commande si l'utilisateur n'existe pas
-            }
-
-            // Vérifier la date de la commande
-            if (commandes.getDate() == null) {
-                System.out.println("La date de la commande est null.");
-                return; // Arrêter l'opération d'ajout de commande si la date est null
-            }
-
-            // Insérer la nouvelle commande
-            PreparedStatement insertStatement = cnx.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            insertStatement.setInt(1, commandes.getId());
-            insertStatement.setInt(2, commandes.getId_user_c_id());
-            insertStatement.setInt(3, commandes.getEtat());
-            insertStatement.setDate(4, new java.sql.Date(commandes.getDate().getTime()));
-
-            insertStatement.executeUpdate();
-
-            System.out.println("Commande ajoutée avec succès.");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
     public String recupereNom(int idUser) throws SQLException {
         String nom = null;
         try {

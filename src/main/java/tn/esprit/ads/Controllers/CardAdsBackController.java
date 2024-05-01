@@ -142,7 +142,7 @@ public class CardAdsBackController implements Initializable {
         }
     }
 
-    public void gotoactivate(ActionEvent actionEvent) {
+    /*public void gotoactivate(ActionEvent actionEvent) {
 
         Button button = (Button) actionEvent.getSource();
         AnchorPane cardView = (AnchorPane) button.getParent();
@@ -183,6 +183,48 @@ public class CardAdsBackController implements Initializable {
                 e.printStackTrace(); // Handle the exception appropriately
             }
         }
+    }*/
+    public void gotoactivate(ActionEvent actionEvent) {
+        Button button = (Button) actionEvent.getSource();
+        AnchorPane cardView = (AnchorPane) button.getParent();
+        Object userData = cardView.getUserData();
+
+        if (userData instanceof Annonces) {
+            Annonces annonce = (Annonces) userData;
+            int id = annonce.getId();
+
+            try {
+                ResultSet resultSet = Sannonces.checkdispo(id);
+
+                if (resultSet.next()) {
+                    String category = resultSet.getString("category");
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation Dialog");
+
+                    if (category.equals("inactive")) {
+                        alert.setHeaderText("Confirm Account Activation");
+                        alert.setContentText("Are you sure you want to activate this account?");
+                    } else if (category.equals("active")) {
+                        alert.setHeaderText("Confirm Account Deactivation");
+                        alert.setContentText("Are you sure you want to deactivate this account?");
+                    }
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        String newStatus = category.equals("inactive") ? "active" : "inactive";
+                        updateUserStatus(id, newStatus);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while processing the request.");
+            }
+        }
     }
+
+    private void showAlert(Alert.AlertType alertType, String error, String s) {
+    }
+
 
 }

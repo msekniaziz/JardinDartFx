@@ -21,7 +21,7 @@ public class MainFx extends Application {
     public void start(Stage stage) {
         try {
             primaryStage=stage;
-            FXMLLoader fxmlLoader=new FXMLLoader(MainFx.class.getResource("/affAds.fxml"));
+            FXMLLoader fxmlLoader=new FXMLLoader(MainFx.class.getResource("/affOrder.fxml"));
             Parent root =fxmlLoader.load();
             Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();//nzid hedhi
             Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());

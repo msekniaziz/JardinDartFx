@@ -1,6 +1,6 @@
 package tn.esprit.ads.Controllers;
-
-import com.mysql.cj.result.Row;
+import org.apache.poi.ss.usermodel.Row;
+//import com.mysql.cj.result.Row;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,9 +41,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //execl fasakhhom baed ken matessthakhomch  ye noussa
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+
 
 public class AffOrderController implements Initializable {
 
@@ -280,58 +283,85 @@ public class AffOrderController implements Initializable {
 
     }
 
-    @FXML
-    public void generateExcelProduit(ActionEvent actionEvent) {/*
-        String req = "SELECT c.nomCategorie, p.idProduit, p.nomProduit, p.quantite, p.prix, SUM(p.quantite) OVER(PARTITION BY c.nomCategorie) AS stock " +
-                "FROM produit p JOIN categorie c ON p.categorie_id = c.idCategorie ORDER BY c.nomCategorie, p.idProduit";
+   /* @FXML
+    public void generateExcelProduit(ActionEvent actionEvent) {
+        String req = "SELECT * FROM commandes";
 
         try (Connection cnx = MyDataBase.getInstance().getCnx();
              Statement statement = cnx.createStatement();
              ResultSet rs = statement.executeQuery(req)) {
 
-            Workbook wb = new HSSFWorkbook(); // Utilisation de HSSFWorkbook pour créer un fichier Excel en format .xls
-            Sheet sheet = wb.createSheet("Détails produit");
+            Workbook wb = new HSSFWorkbook(); // Use HSSFWorkbook to create an Excel file in .xls format
+            Sheet sheet = wb.createSheet("Détails commande");
             Row header = sheet.createRow(0);
 
-            // Ajouter des en-têtes pour chaque colonne
-            String[] headers = {"Catégorie", "idProduit", "nomProduit", "quantite", "prix", "Stock total"};
+            // Add headers for each column
+            String[] headers = {"id_user_c_id", "etat", "date"};
             for (int i = 0; i < headers.length; i++) {
                 header.createCell(i).setCellValue(headers[i]);
             }
 
-            int index = 1;
-            String currentCategory = "";
-            while (rs.next()) {
-                String category = rs.getString("nomCategorie");
-                if (!category.equals(currentCategory)) {
-                    currentCategory = category;
-                }
 
-                Row row = sheet.createRow(index);
-                row.createCell(0).setCellValue(category);
-                row.createCell(1).setCellValue(rs.getInt("idProduit"));
-                row.createCell(2).setCellValue(rs.getString("nomProduit"));
-                row.createCell(3).setCellValue(rs.getInt("quantite"));
-                row.createCell(4).setCellValue(rs.getDouble("prix"));
-                row.createCell(5).setCellValue(rs.getInt("stock"));
 
-                index++;
-            }
+            // Write content to a file
+            String filePath = " C:/Users/user/Desktop/commande.xls";
 
-            // Écrire le contenu dans un fichier
-            String filePath = "C:/Users/Hp/Desktop/produitCategorie/src/main/java/EXCEL/produit.xls";
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
                 wb.write(fileOut);
                 JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
+            } catch (FileNotFoundException e) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Fichier Excel non trouvé : " + e.getMessage());
             } catch (IOException e) {
                 e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel.");
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel : " + e.getMessage());
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL.");
-        }*/
-    }
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
+        }
+    }*/
+   @FXML
+   public void generateExcelProduit(ActionEvent actionEvent) {
+       String req = "SELECT * FROM commandes";
+
+       try (Connection cnx = MyDataBase.getInstance().getCnx();
+            Statement statement = cnx.createStatement();
+            ResultSet rs = statement.executeQuery(req)) {
+
+           Workbook wb = new HSSFWorkbook(); // Use HSSFWorkbook to create an Excel file in .xls format
+           Sheet sheet = wb.createSheet("Détails commande");
+           Row header = sheet.createRow(0);
+
+           // Add headers for each column
+           String[] headers = {"id_user_c_id", "etat", "date"};
+           for (int i = 0; i < headers.length; i++) {
+               header.createCell(i).setCellValue(headers[i]);
+           }
+
+           int rowNum = 1;
+           while (rs.next()) {
+               Row row = sheet.createRow(rowNum++);
+               row.createCell(0).setCellValue(rs.getInt("id_user_c_id"));
+               row.createCell(1).setCellValue(rs.getString("etat"));
+               row.createCell(2).setCellValue(rs.getString("date"));
+           }
+
+           // Write content to a file
+           String filePath = "C:/Users/user/Desktop/commande.xls";
+           try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+               wb.write(fileOut);
+               JOptionPane.showMessageDialog(null, "Exportation 'EXCEL' effectuée avec succès");
+           } catch (IOException e) {
+               showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'écriture du fichier Excel : " + e.getMessage());
+           }
+
+       } catch (SQLException e) {
+           showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'exécution de la requête SQL : " + e.getMessage());
+       }
+   }
+
+
+
 
 }

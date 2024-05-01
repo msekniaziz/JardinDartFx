@@ -86,19 +86,7 @@ public class Sannonces implements IServices<Annonces> {
    }
 
 
-  /*  @Override
-    public boolean delete(Annonces a) {
-        String query = "DELETE FROM annonces WHERE id = ?";
-        try {
-            PreparedStatement stm = cnx.prepareStatement(query);
-            stm.setInt(1, a.getId());
-            int rowsAffected = stm.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }*/
+
   @Override
   public boolean delete(Annonces a) {
       String deleteQuery = "DELETE FROM annonces WHERE id = ?";
@@ -198,34 +186,7 @@ public class Sannonces implements IServices<Annonces> {
         return annonces;
     }
 
-    /*@Override
-    public void update(Annonces annonces) {
-        try {
-            // Construire la requête SQL UPDATE avec la clause WHERE pour spécifier l'ID de l'annonce à mettre à jour
-            String query = "UPDATE annonces SET user_id=?, title=?, description=?, negociable=?, prix=?, image=?, id_cat_id=? WHERE id=?";
-
-            // Préparer la déclaration de requête avec la requête SQL
-            PreparedStatement stm = cnx.prepareStatement(query);
-
-            // Remplacer les paramètres de la requête par les valeurs de l'annonce fournie
-            stm.setInt(1, annonces.getUser_id());
-            stm.setString(2, annonces.getTitle());
-            stm.setString(3, annonces.getDescription());
-            stm.setInt(4, annonces.getNegiciable());
-            stm.setDouble(5, annonces.getPrix());
-            stm.setString(6, annonces.getImage());
-            stm.setInt(7, annonces.getId_Cat());
-            stm.setInt(8, annonces.getId()); // Spécifier l'ID de l'annonce dans la clause WHERE
-
-            // Exécuter la mise à jour de la base de données
-            stm.executeUpdate();
-
-            // Afficher un message de confirmation
-            System.out.println("Annonce mise à jour avec succès: " + annonces);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
+   
     @Override
     public void update(Annonces annonces) {
         try {
@@ -329,7 +290,7 @@ public class Sannonces implements IServices<Annonces> {
         return false; // La mise à jour a échoué
     }
 
-    public static ResultSet checkdispo(int id) throws SQLException {
+    /*public static ResultSet checkdispo(int id) throws SQLException {
         String query = "SELECT category FROM annonces WHERE id = ?";
         System.out.println("1");
         PreparedStatement statement = cnx.prepareStatement(query);
@@ -337,7 +298,15 @@ public class Sannonces implements IServices<Annonces> {
         statement.setInt(1, id);
         System.out.println("3");
         return statement.executeQuery();
+    }*/
+    public static ResultSet checkdispo(int id) throws SQLException {
+        String query = "SELECT category FROM annonces WHERE id = ?";
+        Connection cnx = MyDataBase.getInstance().getCnx();
+        PreparedStatement statement = cnx.prepareStatement(query);
+        statement.setInt(1, id);
+        return statement.executeQuery();
     }
+
     public Annonces getById(int idAds) {
         ArrayList<Annonces> allAds = getAll();
 
@@ -350,27 +319,7 @@ public class Sannonces implements IServices<Annonces> {
 
         return null;
     }
-    /*public Annonces getAnnonceById(int idAnnonce) {
-        Annonces annonce = null;
-        String query = "SELECT id, user_id, title, prix, image FROM annonces WHERE id = ?";
-        try {
-            PreparedStatement stm = cnx.prepareStatement(query);
-            stm.setInt(1, idAnnonce);
-            ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                annonce = new Annonces();
-                annonce.setId(rs.getInt("id"));
-                annonce.setUser_id(rs.getInt("user_id"));
-                annonce.setTitle(rs.getString("title"));
-                annonce.setPrix(rs.getFloat("prix"));
-                annonce.setImage(rs.getString("image"));
-            }
-        } catch (SQLException e) {
-            // Lancer une nouvelle RuntimeException avec l'exception d'origine
-            throw new RuntimeException("Erreur lors de la récupération de l'annonce avec l'ID : " + idAnnonce, e);
-        }
-        return annonce;
-    }*/
+
 
 
 
