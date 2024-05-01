@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -18,8 +19,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="1416.0" style="-fx-background-color: #ebecef;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.BackproT">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="2049.0" style="-fx-background-color: #ebecef;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.BackproT">
     <children>
+
         <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
@@ -126,16 +128,17 @@
                 </Button>
             </children>
         </VBox>
-        <StackPane layoutX="258.0" maxHeight="686.0" maxWidth="1163.0" prefHeight="686.0" prefWidth="1163.0" style="-fx-background-color: #dddee8;">
+
+        <StackPane layoutX="258.0" maxHeight="774.0" maxWidth="1506.0" prefHeight="774.0" prefWidth="1789.0" style="-fx-background-color: #dddee8;">
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-                <AnchorPane fx:id="mainanchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="655.0" prefWidth="1150.0" stylesheets="@styleback.css">
+                <Pane fx:id="pnlMenus" prefHeight="648.0" prefWidth="1300.0" />
+                <AnchorPane fx:id="mainanchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="626.0" prefWidth="1122.0" stylesheets="@styleback.css">
                     <children>
-                        <VBox layoutX="33.0" layoutY="114.0" prefHeight="446.0" prefWidth="1000.0">
+                        <VBox layoutX="33.0" layoutY="114.0" prefHeight="475.0" prefWidth="862.0">
                             <children>
-                                <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1018.0" styleClass="transparent-scroll-pane">
+                                <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="792.0" styleClass="transparent-scroll-pane">
                                     <content>
                                         <GridPane fx:id="BookListView">
                                             <columnConstraints>
@@ -149,14 +152,21 @@
                                 </ScrollPane>
                             </children>
                         </VBox>
-                        <Label layoutX="281.0" layoutY="17.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
+                        <Label layoutX="239.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
                             <font>
                                 <Font name="Arial Bold" size="24.0" />
                             </font>
                         </Label>
-                        <ComboBox fx:id="categoryComboBox" layoutX="807.0" layoutY="51.0" prefWidth="150.0" styleClass="white-bor-anchor" />
-                  <Button layoutX="78.0" layoutY="26.0" mnemonicParsing="false" onAction="#back" text="Front" />
-                  <Button fx:id="pdf" layoutX="750.0" layoutY="51.0" mnemonicParsing="false" onAction="#generatePDF" text="Pdf by" />
+                        <ComboBox fx:id="categoryComboBox" layoutX="674.0" layoutY="51.0" prefWidth="150.0" styleClass="white-bor-anchor" />
+                        <Button fx:id="pdf" layoutX="609.0" layoutY="51.0" mnemonicParsing="false" onAction="#generatePDF" text="Pdf by" />
+
+                                    <!-- Add the title for the PieChart -->
+                        <VBox alignment="CENTER" />
+                        <Button layoutX="33.0" layoutY="51.0" mnemonicParsing="false" onAction="#back" text="Front" />
+                  <Button fx:id="stat" layoutX="957.0" layoutY="51.0" mnemonicParsing="false" onAction="#generatePieChart" text="Stat" />
+                       <!-- Add the PieChart component -->
+                        <PieChart fx:id="pieChart" layoutX="833.0" layoutY="152.0" prefHeight="334.0" prefWidth="398.0" />
+
                     </children>
                     <styleClass>
                         <String fx:value="left-form" />

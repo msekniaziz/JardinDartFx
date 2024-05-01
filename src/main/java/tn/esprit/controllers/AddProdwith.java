@@ -4,10 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Pane;
 import org.controlsfx.control.Notifications;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,24 +18,18 @@ import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import  tn.esprit.entities.Producttrocwith;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
-
 import java.io.File;
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.util.Duration;
+
+
 public class AddProdwith implements Initializable {
 
     @FXML
@@ -73,8 +65,8 @@ public class AddProdwith implements Initializable {
     private TextField imgpathstring;
     private  Produit_troc_with_Service produitTrocWithService = new Produit_troc_with_Service();
 
-   Producttrocwith producttrocwith;
-   private itemsPd p ;
+   Producttrocwith producttrocwith=new Producttrocwith();
+    int z=this.producttrocwith.getId();
 
     public AnchorPane getAddAnchor() {
         return addanchor;
@@ -88,7 +80,6 @@ public class AddProdwith implements Initializable {
 
 public Producttrocwith setprod(Producttrocwith book,int a) {
         this.producttrocwith = book;
-
         // Set existing book information to the labels and text fields
         book.setId(producttrocwith.getId());
 prod_id_id.setText(String.valueOf(a));
@@ -96,11 +87,7 @@ prod_id_id.setText(String.valueOf(a));
         description.setText(book.getDescription());
         CategoryCombo.setValue(book.getCategory());
 return book;
-        // Load the image
-//        Image image = new Image(book.getImage()); // Assuming book.getImage() returns the path to the image file
 
-        // Set the image to the ImageView
-//        imgb.setImage(image);
     }
 
 
@@ -150,7 +137,10 @@ return book;
             imgb.setImage(image);
         }
     }
-@FXML
+
+    Itemstroc i =new Itemstroc();
+
+    @FXML
 void AddBookBtn(ActionEvent event) {
         // Validate input fields before adding the product
         String prodtitle = TitleL.getText().trim();
@@ -182,8 +172,8 @@ void AddBookBtn(ActionEvent event) {
 
         try {
             produitTrocWithService.addMeth2(book);
-            showNotificationWithButtons("Success", "Product added successfully.", "View Product", "Close");
-            System.out.println(book);
+            // Pass the product ID to the notification method
+            showNotificationWithButtons("Success", "Product added successfully.", "View Product", "Close", book.getId());
             reloadPage(event);
         } catch (SQLException e) {
             showAlert("Error", "Failed to add product: " + e.getMessage());
@@ -192,34 +182,35 @@ void AddBookBtn(ActionEvent event) {
         }
     }
 
-    private void showNotificationWithButtons(String title, String message, String button1Text, String button2Text) {
-        Button button1 = new Button(button1Text);
+
+    void showNotificationWithButtons(String title, String message, String button1Text, String button2Text, int productId) {
+        // Create buttons with appropriate actions
+        Button button1 = new Button("No");
         button1.getStyleClass().add("notification-button");
         button1.setOnAction(event -> {
-            // Handle button 1 action
-            // For example, open the product details page
+            // Delete the product with the given ID
+            produitTrocWithService.deletePT1(productId);
         });
 
-        Button button2 = new Button(button2Text);
+        Button button2 = new Button("Yes");
         button2.getStyleClass().add("notification-button");
         button2.setOnAction(event -> {
             // Handle button 2 action
-            // For example, close the notification
         });
 
+        // Create HBox to hold buttons
         HBox buttonsContainer = new HBox(10);
         buttonsContainer.setAlignment(Pos.CENTER_RIGHT);
         buttonsContainer.getChildren().addAll(button1, button2);
 
+        // Show notification
         Notifications.create()
                 .title(title)
                 .text(message)
                 .position(Pos.TOP_RIGHT)
                 .graphic(buttonsContainer)
-                //.hideAfter(Duration.seconds(5))
                 .show();
     }
-
 
 
 
@@ -239,82 +230,3 @@ private void showconf(String title, String message) {
     alert.setContentText(message);
     alert.showAndWait();
 }}
-
-//    @FXML
-//    void AddBookBtn(ActionEvent event) {
-//
-//
-//        String path;
-//        imgpathstring.setText(imagePath1.toString());
-//
-//        path=imgpathstring .getText();
-//        Produit_troc_with_Service serviceBook = new Produit_troc_with_Service();
-//
-//        Producttrocwith book = new Producttrocwith();
-//        String prodtitle = TitleL.getText().trim();
-//        String proddesc = description.getText().trim();
-//
-//
-//        if (!prodtitle.isEmpty() && prodtitle.matches(".*[a-zA-Z].*")) {
-//            book.setNom(prodtitle);
-//                  book.setDescription(proddesc);
-//
-//
-//            String selectedCategoryString = (String) CategoryCombo.getValue();
-//
-//            // Check if a category is selected
-//            if (selectedCategoryString != null) {
-//                // Convert the String to Categorie enum
-//                try {
-//                    Producttrocwith.Categorie selectedCategory = Producttrocwith.Categorie.valueOf(selectedCategoryString);
-//                    book.setCategory(String.valueOf(selectedCategory));
-//
-//                    // Check if an availability is selected
-//                        // Convert the String to Disponibilite enum
-//
-//
-//
-//                            try {
-//                                Producttrocwith book2 =new Producttrocwith(TitleL.getText(),selectedCategory,,);
-//                                    public Producttrocwith(int id, int prod_id_troc_id, String nom, String category, String description, String image) {
-//
-//                                    serviceBook.addMeth2(book2);
-//
-//                                // Refresh the list of books after successful addition
-//
-//                            } catch (SQLException e) {
-//                                showAlert("Error", e.getMessage());
-//                            }
-//
-//                    } else {
-//                        // Show an alert if no availability is selected
-//                        showAlert("Error", "Please select an availability");
-//                    }
-//                } catch (IllegalArgumentException e) {
-//                    // Show an alert if the category is not a valid enum constant
-//                    showAlert("Error", "Invalid category: " + selectedCategoryString);
-//                }
-//            } else {
-//                // Show an alert if no category is selected
-//                showAlert("Error", "Please select a category");
-//            }
-//        } else {
-//            // Show an alert if the book title is empty or doesn't contain letters
-//            showAlert("Error", "The book title cannot be empty and must contain letters.");
-//        }
-//    }
-//
-//    @FXML
-//    void Select_Category(ActionEvent event) {
-//        String s1 = CategoryCombo.getSelectionModel().getSelectedItem().toString();
-//        CategorieLabel.setText(s1);
-//
-//    }
-//
-//
-//    @FXML
-//    void importImage(ActionEvent event) {
-//
-//    }
-
-
