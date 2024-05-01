@@ -127,6 +127,7 @@
             <artifactId>stripe-java</artifactId>
             <version>20.71.0</version> <!-- Use the latest version -->
         </dependency>
+
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

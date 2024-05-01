@@ -149,9 +149,9 @@ dbms=new DonBienMaterielService();
 
     private void sendEmailConfirmation() {
         String to = "mohamedaziz.msekni@esprit.tn"; // Mettez l'adresse e-mail du destinataire ici
-        String subject = "DONATION APPROVED!";
-        String body = "Dear User, <br>"
-                + "Your donation has been approved, please stay up to date we will call you later. <br>"
+        String subject = "Thank you!";
+        String body = "Dear Linda, <br>"
+                + "Your donation has been registred, please stay up to date we will call you later. <br>"
                 + "Thank you for your trust. <br><br>"
                 + "The JARDIN D'ART Team";
 

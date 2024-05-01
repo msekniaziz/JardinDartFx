@@ -2,15 +2,23 @@ package tn.esprit.jardindart.controllers.DA;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
+import com.stripe.model.LineItem;
 import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import tn.esprit.jardindart.models.DonArgent;
+
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +32,9 @@ public class StripePay {
     @FXML
     private void handlePayment(ActionEvent event) {
         try {
+
             String paymentUrl = createCheckoutSession();
+           // String paymentUrl = createCheckoutSession();
             openBrowser(paymentUrl);
         } catch (StripeException | URISyntaxException | IOException e) {
             e.printStackTrace();

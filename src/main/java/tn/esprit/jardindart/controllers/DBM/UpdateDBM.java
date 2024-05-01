@@ -59,13 +59,9 @@ public class UpdateDBM {
             //photoDonField.setText(donToUpdate.getPhoto_don());
             descriptionDonArea.setText(donToUpdate.getDesc_don());
             File imageFile = new File(donToUpdate.getPhoto_don());
-
             Image image = new Image(imageFile.toURI().toString());
-            // Affecter l'image à l'ImageView
             imageid.setImage(image);
-
-            // Find the association corresponding to the fetched association ID
-            int associationId = donToUpdate.getId_association();
+              int associationId = donToUpdate.getId_association();
             for (Association association : associationComboBox.getItems()) {
                 if (association.getId() == associationId) {
                     associationComboBox.setValue(association);
@@ -77,7 +73,7 @@ public class UpdateDBM {
 
     private DonBienMateriel fetchDonDetailsFromDatabase(int donId) {
         // Retrieve all material goods donations from the database
-       DonBienMaterielService donServ = new DonBienMaterielService();
+        DonBienMaterielService donServ = new DonBienMaterielService();
         ArrayList<DonBienMateriel> allDonations = donServ.afficher();
 
 
@@ -122,10 +118,8 @@ public class UpdateDBM {
 
     @FXML
     void handleUpdateButton() {
-
-
         Association selectedAssociation = associationComboBox.getValue();
-        String photoDon = selectedImageFile != null ? selectedImageFile.getPath() : "";
+        String photoDon = selectedImageFile != null ? selectedImageFile.getPath() : ""; // Par défaut, utiliser l'ancienne URL de l'image
         String descriptionDon = descriptionDonArea.getText();
 
         boolean hasError = false;
@@ -151,7 +145,13 @@ public class UpdateDBM {
                 DonBienMateriel donToUpdate = donService.getById(donIdToUpdate);
 
                 if (donToUpdate != null) {
-                    donToUpdate.setPhoto_don(photoDon);
+                    // Vérifier si une nouvelle image a été sélectionnée
+                    if (selectedImageFile != null) {
+                        // Si oui, mettre à jour l'URL de l'image
+                        donToUpdate.setPhoto_don(photoDon);
+                    }
+
+                    // Mettre à jour les autres champs du don
                     donToUpdate.setDesc_don(descriptionDon);
                     donToUpdate.setId_association(selectedAssociation.getId());
                     donService.modifier(donToUpdate);
@@ -169,6 +169,7 @@ public class UpdateDBM {
             }
         }
     }
+
 
 
 
