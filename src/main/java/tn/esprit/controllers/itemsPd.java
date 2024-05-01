@@ -96,10 +96,6 @@ public class itemsPd {
 
 
 
-    public int seti()
-    {int id;
-        return id=this.book.getId();
-    }
     public void setData(Produittroc book){
         this.book=book;
 
@@ -155,39 +151,6 @@ public class itemsPd {
     }
 
 
-
-//    public void generateQRCode(Produittroc book, Node sourceNode) {
-//        // Construct the text to encode in the QR code
-//        String text = "Product troc ID: " + book.getId()
-//                + "\nCourse Title: " + book.getNom()
-//                + "\nCourse Description: " + book.getDescription()
-//                + "\nCourse level: " + book.getCategory()
-//                + "\nCourse level: " + book.getNom_produit_recherche();
-//
-//        // Create a QRCodeWriter instance
-//        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-//
-//        // Encode the text into a QR code image
-//        try {
-//            // Generate the QR code
-//            BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
-//
-//            // Convert the BitMatrix to a BufferedImage
-//            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
-//
-//            // Convert the BufferedImage to a JavaFX Image
-//            javafx.scene.image.Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
-//
-//            // Display the QR code in an ImageView
-//            ImageView qrCodeImageView = (ImageView) sourceNode.getScene().lookup("#qrCodeImg");
-//            qrCodeImageView.setImage(fxImage);
-//
-//            // Make the ImageView visible
-//            qrCodeImageView.setVisible(true);
-//        } catch (WriterException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 
     public void delete_clicked(ActionEvent event) throws SQLException {
@@ -268,15 +231,13 @@ public class itemsPd {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        int z;
-        z=seti();
+
 
         // Access the controller after loading the fxml
         AddProdwith addProdController = fxmlLoader.getController();
 
         // Set the book in the AddProdwith controller
-        int a;
-        a=this.book.getId();
+
        addProdController.setprod(producttrocwith,this.book.getId());
 
         // Create a new scene

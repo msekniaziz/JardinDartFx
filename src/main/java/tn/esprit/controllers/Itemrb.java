@@ -26,14 +26,7 @@ public class Itemrb  {
     @FXML
     private Label itemprice;
 
-    @FXML
-    private Button modif;
 
-    @FXML
-    private HBox qr_code;
-
-    @FXML
-    private Label status;
 
     @FXML
     private Label statusid;

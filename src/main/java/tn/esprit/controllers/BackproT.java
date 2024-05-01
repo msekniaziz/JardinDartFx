@@ -17,6 +17,7 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.*;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -46,6 +47,8 @@ public class BackproT implements Initializable {
     @FXML
     private GridPane BookListView;
 
+    @FXML
+    private PieChart pieChart;
 
     @FXML
     private Button btnCustomers;
@@ -87,7 +90,7 @@ public class BackproT implements Initializable {
 
     private List<Produittroc> BookObservableList;
 
-
+private  Produit_TrocService p=new Produit_TrocService();
 
 
 
@@ -169,6 +172,20 @@ public class BackproT implements Initializable {
         ObservableList<String> categories = FXCollections.observableArrayList("garden", "house");
         categoryComboBox.setItems(categories);
     }
+
+
+
+    @FXML
+    void generatePieChart(ActionEvent event) throws SQLException {
+        // Prepare your data
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("garden", p.countGardenProducts()),
+                new PieChart.Data("house", p.counthouse())
+        );
+        // Add data to the PieChart
+        pieChart.setData(pieChartData);
+    }
+
 
 
     @FXML
@@ -256,61 +273,4 @@ public class BackproT implements Initializable {
             }
         }
     }
-//void generatePDF(ActionEvent event) {
-//    String selectedCategory = categoryComboBox.getValue();
-//    if (selectedCategory != null) {
-//        try {
-//            // Create a new PDF document
-//            PdfDocument pdfDoc = new PdfDocument(new PdfWriter("C:/Users/Zakraoui/Desktop/JardinDart/ouee.pdf"));
-//            System.out.println("PDF works");
-//
-//            // Set the document size and margins
-//            Document document = new Document(pdfDoc, PageSize.A4);
-//            document.setMargins(50, 50, 50, 50);
-//
-//            // Add a title to the document
-//            Paragraph title = new Paragraph("Products Exchange in Category: " + selectedCategory);
-//            title.setFontSize(18f);
-//            title.setBold();
-//            title.setTextAlignment(TextAlignment.CENTER);
-//            document.add(title);
-//
-//            // Add a line separator
-//            LineSeparator lineSeparator = new LineSeparator(new DottedLine());
-//            document.add(lineSeparator);
-//
-//            // Add the books based on the selected category
-//            for (Produittroc book : BookObservableList) {
-//                if (book.getCategory().equals(selectedCategory)) {
-//                    // Add book title
-//                    Paragraph bookTitle = new Paragraph(book.getNom());
-//                    bookTitle.setBold();
-//                    bookTitle.setFontSize(14f);
-//                    document.add(bookTitle);
-//
-//                    // Add book image
-//                    Image image = new Image(ImageDataFactory.create(book.getImage()));
-//                    image.setWidth(200);
-//                    image.setHeight(200);
-//                    document.add(image);
-//
-//                    // Add book description
-//                    Paragraph description = new Paragraph(book.getDescription());
-//                    description.setFontSize(12f);
-//                    document.add(description);
-//
-//                    // Add a line separator
-//                    document.add(lineSeparator);
-//                }
-//            }
-//
-//            // Close the document
-//            document.close();
-//
-//            System.out.println("PDF generated successfully.");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//}
 }

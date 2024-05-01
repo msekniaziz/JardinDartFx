@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class Openai {
 
     private static final String API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions";
-    private static final String API_KEY = "sk-proj-y0fbBY6rPVIz4gqlIBv4T3BlbkFJoJpwIAtpIsIPYJEbv7is";
+    private static final String API_KEY = "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";
 
     @FXML
     private Label answerLabel;
@@ -122,7 +122,6 @@ public class Openai {
         private static String getTermsAndConditions() {
             return "En utilisant l'application JardinDars, vous acceptez les présentes conditions d'utilisation...";
         }
-
         private static String getAnswerFromAPI(String question) throws Exception {
             URL url = new URL(API_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -155,7 +154,7 @@ public class Openai {
                     }
                     String jsonResponse = response.toString();
                     // Use regex to extract email address from the answer if present
-                    Pattern pattern = Pattern.compile("(?<=contact@amena.com).*?$", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
+                    Pattern pattern = Pattern.compile("(?<=contact@jardindart.com).*?$", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(jsonResponse);
                     if (matcher.find()) {
                         return matcher.group().trim();
@@ -163,8 +162,16 @@ public class Openai {
                     return jsonResponse;
                 }
             } else {
-                throw new RuntimeException("Failed to retrieve response from API. Response code: " + responseCode);
+                // Handle different HTTP response codes
+                if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                    return "Bad request: Please check your input and try again.";
+                } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                    return "Unauthorized: Please check your API key.";
+                } else {
+                    return "Failed to retrieve response from API. Response code: " + responseCode;
+                }
             }
         }
+
     }
 }

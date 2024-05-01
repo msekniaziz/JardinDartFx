@@ -11,7 +11,7 @@ public class addprouitr extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/jardindart/BackproT.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/jardindart/openai.fxml"));
 
         // Set up the scene
         Scene scene = new Scene(root);

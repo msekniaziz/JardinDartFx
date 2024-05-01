@@ -108,6 +108,33 @@ public class Produit_TrocService implements CrudPT <Produittroc>{
     }
 
 
+    private static final String COUNT_GARDEN_PRODUCTS_QUERY = "SELECT COUNT(*) AS garden_product_count FROM produit_troc WHERE category = 'garden'";
+    private static final String COUNT_house_PRODUCTS_QUERY = "SELECT COUNT(*) AS garden_product_count FROM produit_troc WHERE category = 'house'";
+
+    public int countGardenProducts() throws SQLException { // Remove 'static'
+        try (PreparedStatement statement = conx.prepareStatement(COUNT_GARDEN_PRODUCTS_QUERY);
+             ResultSet resultSet = statement.executeQuery()) {
+            // Retrieving the count
+            if (resultSet.next()) {
+                return resultSet.getInt("garden_product_count");
+            }
+        }
+        return 0; // Return 0 if no count found
+    }
+    public int counthouse() throws SQLException { // Remove 'static'
+        try (PreparedStatement statement = conx.prepareStatement(COUNT_house_PRODUCTS_QUERY);
+             ResultSet resultSet = statement.executeQuery()) {
+            // Retrieving the count
+            if (resultSet.next()) {
+                return resultSet.getInt("garden_product_count");
+            }
+        }
+        return 0; // Return 0 if no count found
+    }
+
+
+
+
     @Override
     public void modifierPT1(Producttrocwith producttrocwith, int idprd, String nom, String category, String description, String image) {
 
