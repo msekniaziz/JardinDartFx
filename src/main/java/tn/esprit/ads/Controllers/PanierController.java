@@ -86,7 +86,7 @@ public class PanierController {
 
 
     }
-    private void afficherPanier() {
+   /* private void afficherPanier() {
 
         List<Annonces> panier = pa.getCard(id);
         System.out.println("chfama ");
@@ -95,7 +95,49 @@ public class PanierController {
         title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         price.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPrix()));
 
-    }
+
+
+    }*/
+   private void afficherPanier() {
+       List<Annonces> panier = pa.getCard(id);
+       System.out.println("Chargement du panier...");
+
+       paniertable.getItems().clear();
+
+       paniertable.getItems().addAll(panier);
+
+       image.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getImage()));
+       title.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+       price.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPrix()));
+
+
+       image.setCellFactory(column -> {
+           return new TableCell<Annonces, String>() {
+               private final ImageView imageView = new ImageView();
+               @Override
+               protected void updateItem(String imagePath, boolean empty) {
+                   super.updateItem(imagePath, empty);
+                   if (empty || imagePath == null) {
+                       setGraphic(null);
+                   } else {
+                       System.out.println("src/main/java/tn/esprit/ads/ads.java : " + imagePath);
+                       try {
+
+                           Image image = new Image("file:" + imagePath);
+                           imageView.setImage(image);
+                           imageView.setFitWidth(50);
+                           imageView.setFitHeight(50);
+                           setGraphic(imageView);
+                       } catch (Exception e) {
+                           System.err.println("Erreur lors du chargement de l'image : " + e.getMessage());
+                           setGraphic(null); 
+                       }
+                   }
+               }
+           };
+       });
+   }
+
     private void showConfirmationDialog(String title, String content, Runnable action) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
