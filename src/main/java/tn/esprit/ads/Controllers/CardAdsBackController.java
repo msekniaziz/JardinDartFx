@@ -188,10 +188,12 @@ public class CardAdsBackController implements Initializable {
         Button button = (Button) actionEvent.getSource();
         AnchorPane cardView = (AnchorPane) button.getParent();
         Object userData = cardView.getUserData();
+        System.out.println(userData);
 
         if (userData instanceof Annonces) {
             Annonces annonce = (Annonces) userData;
             int id = annonce.getId();
+            System.out.println(id);
 
             try {
                 ResultSet resultSet = Sannonces.checkdispo(id);

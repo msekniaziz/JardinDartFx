@@ -1,5 +1,7 @@
 package tn.esprit.ads.Controllers;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import tn.esprit.ads.Controllers.CardCatController;
 import tn.esprit.ads.Entity.Annonces;
 import tn.esprit.ads.Entity.Categories;
+import tn.esprit.ads.Services.Sannonces;
 import tn.esprit.ads.Services.Scategories;
 
 import java.io.IOException;
@@ -35,14 +36,12 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
-public class AffCategoryController implements Initializable
-{
+public class AffCategoryController implements Initializable {
 
     @FXML
     private TextField TFSearch;
@@ -96,11 +95,13 @@ public class AffCategoryController implements Initializable
     private Button sort;
 
     private Categories selectedCategory;
-    Scategories catt =new Scategories();
+    Scategories catt = new Scategories();
+    Sannonces ads = new Sannonces();
 
     @FXML
     Categories cat;
     private FXMLLoader CardLoader;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Chargement des données de facture...");
         Scategories serviceCat = new Scategories();
@@ -112,10 +113,12 @@ public class AffCategoryController implements Initializable
 
 
     }
+
     private List<Categories> getCat() {
         Scategories serviceCat = new Scategories();
         return serviceCat.getAll();
     }
+
     private void updateCatCards() {
         for (Node node : flowPaneLCat.getChildren()) {
             if (node instanceof AnchorPane) {
@@ -138,6 +141,7 @@ public class AffCategoryController implements Initializable
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     void loadCartData() {
         List<Categories> categories = catt.getAll();
 
@@ -160,11 +164,11 @@ public class AffCategoryController implements Initializable
     }
 
     @FXML
-
     void onCatSelected(MouseEvent event) {
         selectedCard = (AnchorPane) event.getSource();
 
         Object userData = selectedCard.getUserData();
+        System.out.println(userData);
         if (userData instanceof Categories) {
             selectedCategory = (Categories) userData;
             System.out.println("Annonce sélectionnée : " + selectedCategory.getName());
@@ -174,8 +178,6 @@ public class AffCategoryController implements Initializable
         }
 
     }
-
-
 
 
     void initData(Categories selectedCat) {
@@ -189,7 +191,7 @@ public class AffCategoryController implements Initializable
 
     @FXML
     void DeleteAllCat(ActionEvent event) {
-            Scategories cat = new Scategories();
+        Scategories cat = new Scategories();
         boolean success = cat.deleteAll();
         if (success) {
             showAlert(Alert.AlertType.INFORMATION, "Success", "tous les Factures sont supprimés!");
@@ -197,7 +199,6 @@ public class AffCategoryController implements Initializable
         } else {
             showAlert(Alert.AlertType.ERROR, "Error", "erreur.");
         }
-
 
 
     }
@@ -209,101 +210,67 @@ public class AffCategoryController implements Initializable
     }
 
 
-   /* @FXML
+
+    @FXML
     void EditCat(ActionEvent event) {
+        if (selectedCategory != null) {
+            try {
+                // Récupération des valeurs saisies
+                String newName = nameCat.getText();
+                String newKey = keyCat.getText();
 
-            if (selectedCategory != null) {
-                System.out.println("ooooooooooooooo");
-                try {
-                    // Mise à jour des attributs de la livraison avec les nouvelles valeurs
-                    selectedCategory.setName(nameCat.getText());
-                    System.out.println(nameCat.getText());
-                    selectedCategory.setKey_cat(Integer.parseInt(keyCat.getText()));
-                    System.out.println(keyCat.getText());
-                    //     selectedLivraison.setID_Livraison();
+                // Expression régulière pour vérifier si le nom ne contient que des lettres et des espaces
+                String nameRegex = "^[a-zA-Z\\s]+$";
 
-                    // Appel de la méthode de mise à jour du service de livraison
-                    catt.update(selectedCategory);
+                // Expression régulière pour vérifier si la clé ne contient que des chiffres
+                String keyRegex = "^[0-9]+$";
 
-                    // Rafraîchir la liste des livraisons pour afficher les modifications
-                    loadCartData();
-
-                    // Afficher un message de succès
-                    showAlert(Alert.AlertType.INFORMATION, "Succès", "La livraison a été mise à jour avec succès.");
-
-                } catch (NumberFormatException e) {
-                    // En cas d'erreur de conversion de type, afficher un message d'erreur
-                    showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir des valeurs numériques valides pour la quantité et le montant.");
-                } catch (Exception e) {
-                    // En cas d'erreur, afficher un message d'erreur
-                    showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la mise à jour de la livraison : " + e.getMessage());
+                // Vérifier si le nom de la catégorie est vide
+                if (newName.isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom de la catégorie ne peut pas être vide.");
+                    return;
                 }
+
+                // Vérifier si le nom de la catégorie correspond au format requis
+                if (!newName.matches(nameRegex)) {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom de la catégorie doit contenir uniquement des lettres et des espaces.");
+                    return;
+                }
+
+                // Vérifier si la clé de la catégorie est vide
+                if (newKey.isEmpty()) {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "La clé de la catégorie ne peut pas être vide.");
+                    return;
+                }
+
+                // Vérifier si la clé de la catégorie correspond au format requis
+                if (!newKey.matches(keyRegex)) {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "La clé de la catégorie doit être un nombre entier.");
+                    return;
+                }
+
+                // Mise à jour des attributs de la catégorie avec les nouvelles valeurs
+                selectedCategory.setName(newName);
+                selectedCategory.setKey_cat(Integer.parseInt(newKey));
+
+                // Appel de la méthode de mise à jour du service de catégorie
+                catt.update(selectedCategory);
+
+                // Rafraîchir la liste des catégories pour afficher les modifications
+                loadCartData();
+
+                // Afficher un message de succès
+                showAlert(Alert.AlertType.INFORMATION, "Succès", "La catégorie a été mise à jour avec succès.");
+
+            } catch (NumberFormatException e) {
+                // En cas d'erreur de conversion de type, afficher un message d'erreur
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir des valeurs numériques valides pour la clé de catégorie.");
+            } catch (Exception e) {
+                // En cas d'erreur, afficher un message d'erreur
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la mise à jour de la catégorie : " + e.getMessage());
             }
-
         }
-
-*/
-   @FXML
-   void EditCat(ActionEvent event) {
-       if (selectedCategory != null) {
-           try {
-               // Récupération des valeurs saisies
-               String newName = nameCat.getText();
-               String newKey = keyCat.getText();
-
-               // Expression régulière pour vérifier si le nom ne contient que des lettres et des espaces
-               String nameRegex = "^[a-zA-Z\\s]+$";
-
-               // Expression régulière pour vérifier si la clé ne contient que des chiffres
-               String keyRegex = "^[0-9]+$";
-
-               // Vérifier si le nom de la catégorie est vide
-               if (newName.isEmpty()) {
-                   showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom de la catégorie ne peut pas être vide.");
-                   return;
-               }
-
-               // Vérifier si le nom de la catégorie correspond au format requis
-               if (!newName.matches(nameRegex)) {
-                   showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom de la catégorie doit contenir uniquement des lettres et des espaces.");
-                   return;
-               }
-
-               // Vérifier si la clé de la catégorie est vide
-               if (newKey.isEmpty()) {
-                   showAlert(Alert.AlertType.ERROR, "Erreur", "La clé de la catégorie ne peut pas être vide.");
-                   return;
-               }
-
-               // Vérifier si la clé de la catégorie correspond au format requis
-               if (!newKey.matches(keyRegex)) {
-                   showAlert(Alert.AlertType.ERROR, "Erreur", "La clé de la catégorie doit être un nombre entier.");
-                   return;
-               }
-
-               // Mise à jour des attributs de la catégorie avec les nouvelles valeurs
-               selectedCategory.setName(newName);
-               selectedCategory.setKey_cat(Integer.parseInt(newKey));
-
-               // Appel de la méthode de mise à jour du service de catégorie
-               catt.update(selectedCategory);
-
-               // Rafraîchir la liste des catégories pour afficher les modifications
-               loadCartData();
-
-               // Afficher un message de succès
-               showAlert(Alert.AlertType.INFORMATION, "Succès", "La catégorie a été mise à jour avec succès.");
-
-           } catch (NumberFormatException e) {
-               // En cas d'erreur de conversion de type, afficher un message d'erreur
-               showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir des valeurs numériques valides pour la clé de catégorie.");
-           } catch (Exception e) {
-               // En cas d'erreur, afficher un message d'erreur
-               showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la mise à jour de la catégorie : " + e.getMessage());
-           }
-       }
-   }
-
+    }
 
 
     @FXML
@@ -341,8 +308,6 @@ public class AffCategoryController implements Initializable
     }
 
 
-
-
     @FXML
     void sortByName(ActionEvent event) {
         List<Categories> categories = getCat();
@@ -367,6 +332,7 @@ public class AffCategoryController implements Initializable
             }
         }
     }
+
     @FXML
     void affCategory(ActionEvent event) {
         try {
@@ -382,6 +348,7 @@ public class AffCategoryController implements Initializable
 
     public void Add(ActionEvent actionEvent) {
     }
+
     @FXML
     void affOrder(ActionEvent event) {
         try {
@@ -395,6 +362,7 @@ public class AffCategoryController implements Initializable
         }
 
     }
+
     @FXML
     void affAds(ActionEvent event) {
         try {

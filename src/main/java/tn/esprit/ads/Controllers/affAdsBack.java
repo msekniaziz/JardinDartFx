@@ -93,7 +93,7 @@ public class affAdsBack implements Initializable {
     }
 
     private void loadAdsData() {
-        List<Annonces> annonces = sannonces.getAll();
+        List<Annonces> annonces = sannonces.getAllBack();
         flowPaneLads.getChildren().clear();
         for (Annonces annonce : annonces) {
             try {
@@ -152,7 +152,7 @@ public class affAdsBack implements Initializable {
     }
     private List<Annonces> getAds() {
         Sannonces serviceAds = new Sannonces();
-        return serviceAds.getAll();
+        return serviceAds.getAllBack();
     }
 
     @FXML

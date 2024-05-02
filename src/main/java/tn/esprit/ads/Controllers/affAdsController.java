@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -36,6 +33,8 @@ public class affAdsController implements Initializable {
 
     @FXML
     private Label Category;
+    @FXML
+    private TextField valeurAchercher;
     @FXML
     private Label titleAds;
 
@@ -83,11 +82,39 @@ public class affAdsController implements Initializable {
     private Sannonces sannonces;
     Panier p ;
     SpanierAnnonce pa = new SpanierAnnonce();
+    private String newValue = "";
 
     public void initialize(URL url, ResourceBundle resourceBundle ) {
         System.out.println("Chargement des données des Annonces...");
         sannonces = new Sannonces();
         loadAdsData();
+        filterAds("");
+        valeurAchercher.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterAds(newValue);
+        });
+    }
+
+    private void filterAds(String searchTerm) {
+        List<Annonces> filteredAds = sannonces.getAll().stream()
+                .filter(ad -> ad.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                        ad.getDescription().toLowerCase().contains(searchTerm.toLowerCase()))
+                .collect(Collectors.toList());
+
+        flowPaneLads.getChildren().clear();
+        for (Annonces annonce : filteredAds) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardADS.fxml"));
+                AnchorPane card = loader.load();
+                CardAdsController controller = loader.getController();
+                controller.initialize(annonce);
+                card.setUserData(annonce);
+                flowPaneLads.getChildren().add(card);
+                card.setOnMouseClicked(this::onAdsSelected);
+            } catch (IOException e) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des données des annonces.");
+                e.printStackTrace();
+            }
+        }
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {

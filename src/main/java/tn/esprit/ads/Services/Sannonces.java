@@ -163,6 +163,32 @@ public class Sannonces implements IServices<Annonces> {
         return annonces;
     }
 
+    public ArrayList<Annonces> getAllBack() {
+        ArrayList<Annonces> annonces = new ArrayList<>();
+        String query = "SELECT * FROM annonces WHERE status =0 ";
+        try {
+            PreparedStatement stm = cnx.prepareStatement(query);
+
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Annonces annonce = new Annonces();
+                annonce.setId(rs.getInt("id"));
+                annonce.setUser_id(rs.getInt("user_id"));
+                annonce.setTitle(rs.getString("title"));
+                annonce.setDescription(rs.getString("description"));
+                annonce.setNegiciable(rs.getInt("negociable"));
+                annonce.setPrix(rs.getFloat("prix"));
+                annonce.setStatus(rs.getInt("status"));
+                annonce.setImage(rs.getString("image"));
+                annonce.setId_Cat(rs.getInt("id_cat_id"));
+                annonces.add(annonce);
+            }
+        } catch (SQLException e) {
+            // Lancer une nouvelle RuntimeException avec l'exception d'origine
+            throw new RuntimeException("Erreur lors de la récupération des annonces.", e);
+        }
+        return annonces;
+    }
 
     public ArrayList<Annonces> getAllMyAds(int userId) {
         ArrayList<Annonces> annonces = new ArrayList<>();

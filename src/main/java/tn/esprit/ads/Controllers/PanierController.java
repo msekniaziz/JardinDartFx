@@ -263,7 +263,7 @@ public class PanierController {
         return annonceIds;
     }
 
-    private double updateStatutAnnonces(List<Integer> annonceIds) throws SQLException {
+   /* private double updateStatutAnnonces(List<Integer> annonceIds) throws SQLException {
         String updateAnnoncesQuery = "UPDATE annonces SET status = 1 WHERE id = ?";
         double totalPrice = 0.0;
         try (PreparedStatement ps = cnx.prepareStatement(updateAnnoncesQuery)) {
@@ -276,7 +276,49 @@ public class PanierController {
             }
         }
         return totalPrice;
+    }*/
+   private double updateStatutAnnonces(List<Integer> annonceIds) throws SQLException {
+       String updateAnnoncesQuery = "UPDATE annonces SET status = 1 WHERE id = ?";
+       String updateCategoryQuery = "UPDATE category SET nbr_annonce = nbr_annonce - 1 WHERE id = ?";
+       double totalPrice = 0.0;
+       try (PreparedStatement psAnnonces = cnx.prepareStatement(updateAnnoncesQuery);
+            PreparedStatement psCategory = cnx.prepareStatement(updateCategoryQuery)) {
+
+           for (int annonceId : annonceIds) {
+               // Mettre à jour le statut de l'annonce
+               psAnnonces.setInt(1, annonceId);
+               psAnnonces.executeUpdate();
+
+               // Récupérer l'ID de la catégorie associée à l'annonce
+               int categoryId = getCategorieIdByAnnonceId(annonceId); // À remplacer par la méthode appropriée
+
+               // Mettre à jour le nombre d'annonces dans la catégorie
+               psCategory.setInt(1, categoryId);
+               psCategory.executeUpdate();
+
+               // Calculer le prix de l'annonce et mettre à jour le total
+               double annoncePrice = getPrixAnnonceById(annonceId); // À remplacer par la méthode appropriée
+               totalPrice += annoncePrice;
+               System.out.println(totalPrice);
+           }
+       }
+       return totalPrice;
+   }
+
+    // Méthode pour récupérer l'ID de la catégorie associée à une annonce (à adapter selon votre schéma de base de données)
+    private int getCategorieIdByAnnonceId(int annonceId) throws SQLException {
+        String query = "SELECT id_cat_id FROM annonces WHERE id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setInt(1, annonceId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id_cat_id");
+                }
+            }
+        }
+        return -1; // Retourner une valeur par défaut ou gérer le cas où aucun résultat n'est trouvé
     }
+
 
     private void deleteAllAnnoncesDansPanier(int idPanier) throws SQLException {
         String deleteAnnoncesQuery = "DELETE FROM panierannonce WHERE idPanier = ?";
