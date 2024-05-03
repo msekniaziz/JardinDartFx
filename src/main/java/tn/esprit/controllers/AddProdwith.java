@@ -138,23 +138,34 @@ return book;
         }
     }
 
-    Itemstroc i =new Itemstroc();
 
     @FXML
-void AddBookBtn(ActionEvent event) {
+    void AddBookBtn(ActionEvent event) {
         // Validate input fields before adding the product
         String prodtitle = TitleL.getText().trim();
         String proddesc = description.getText().trim();
         String selectedCategoryString = CategoryCombo.getValue();
         String id_prod = prod_id_id.getText();
 
+
+        if (prodtitle.isEmpty() ||proddesc.isEmpty() || selectedCategoryString.isEmpty())
+    {
+        showAlert("Error", "all filds must be field");
+        showNotification("Error", "all filds must be field");
+
+        return;
+    }
         if (prodtitle.isEmpty() || !prodtitle.matches(".*[a-zA-Z].*")) {
             showAlert("Error", "The book title cannot be empty and must contain letters.");
+            showNotification("Error", "The book title cannot be empty and must contain letters.");
+
             return;
         }
 
-        if (selectedCategoryString == null) {
+        if (selectedCategoryString == null|| selectedCategoryString.isEmpty()) {
             showAlert("Error", "Please select a category.");
+            showNotification("Error", "Please select a category.");
+
             return;
         }
 
@@ -164,6 +175,7 @@ void AddBookBtn(ActionEvent event) {
         // Check if an image is selected
         if (imagePath1 == null || imagePath1.isEmpty()) {
             showAlert("Error", "Please select an image.");
+            showNotification("Error", "Please select an image.");
             return;
         }
 
@@ -172,9 +184,10 @@ void AddBookBtn(ActionEvent event) {
 
         try {
             produitTrocWithService.addMeth2(book);
+            System.out.println(book);
             // Pass the product ID to the notification method
-            showNotificationWithButtons("Success", "Product added successfully.", "View Product", "Close", book.getId());
-            reloadPage(event);
+            showNotificationWithButtons("Success", "Product added successfully.", "View Product", "Close",book);
+          //  reloadPage(event);
         } catch (SQLException e) {
             showAlert("Error", "Failed to add product: " + e.getMessage());
             System.out.println(e.getMessage());
@@ -183,19 +196,50 @@ void AddBookBtn(ActionEvent event) {
     }
 
 
-    void showNotificationWithButtons(String title, String message, String button1Text, String button2Text, int productId) {
+
+    // Method to show alert and notification
+    private void showAlertAndNotification(String title, String message) {
+        showAlert(title, message);
+        showNotification(title, message);
+    }
+
+// Your showAlert and showNotification methods go here
+
+    void showNotification(String title, String message) {
+        // Create buttons with appropriate actions
+
+
+        // Create HBox to hold buttons
+        HBox buttonsContainer = new HBox(10);
+        buttonsContainer.setAlignment(Pos.CENTER_RIGHT);
+
+        // Show notification
+        Notifications.create()
+                .title(title)
+                .text(message)
+                .position(Pos.TOP_RIGHT)
+                .graphic(buttonsContainer)
+                .show();
+    }
+
+
+    void showNotificationWithButtons(String title, String message, String button1Text, String button2Text, Producttrocwith productId) {
         // Create buttons with appropriate actions
         Button button1 = new Button("No");
         button1.getStyleClass().add("notification-button");
         button1.setOnAction(event -> {
             // Delete the product with the given ID
-            produitTrocWithService.deletePT1(productId);
+            try {
+                produitTrocWithService.deletePT111(productId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         Button button2 = new Button("Yes");
         button2.getStyleClass().add("notification-button");
         button2.setOnAction(event -> {
-            // Handle button 2 action
+            showNotification("Accepted","Your friend whats to exchange with you");
         });
 
         // Create HBox to hold buttons

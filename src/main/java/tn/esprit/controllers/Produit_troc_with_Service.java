@@ -85,6 +85,20 @@ public class Produit_troc_with_Service implements CrudPT <Producttrocwith> {
 
 
 
+    public void deletePT111(Producttrocwith produittroc) throws SQLException {
+        String req = "DELETE FROM `produit_troc_with` WHERE  `nom` = ? AND `category` = ? AND `description` = ? AND `image` = ?";
+        pstm = conx.prepareStatement(req);
+
+        // Set parameters based on the product details
+        pstm.setString(1, produittroc.getNom());
+        pstm.setString(2, produittroc.getCategory());
+        pstm.setString(3, produittroc.getDescription());
+        pstm.setString(4, produittroc.getImage());
+
+        pstm.executeUpdate();
+        System.out.println("Produit supprimé avec succès");
+    }
+
     @Override
             public void deletePT(Producttrocwith produittroc) throws SQLException {
         String req = "DELETE FROM `produit_troc_with` WHERE  `id`=?";
