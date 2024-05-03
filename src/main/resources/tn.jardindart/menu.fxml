@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+        <AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.jardindart.controllers.Menu"
+            style="-fx-background-color: #000000;">
+<VBox prefHeight="62.0" prefWidth="176.0" spacing="10" >
+<Button style="-fx-background-color: #000000;" text="MD List" textFill="WHITE" onAction="#navigateToListDBM" />
+<Button  style="-fx-background-color: #000000;" text="CP Dashboard" textFill="WHITE"  onAction="#navigateToListPtc" />
+<Button style="-fx-background-color: #000000;" text="Add a collect Point" textFill="WHITE" onAction="#navigateToAddPtc" />
+<Button style="-fx-background-color: #000000;" text="My RP" textFill="WHITE" onAction="#navigateToViewPr" />
+<!-- Ajoutez plus de boutons pour d'autres interfaces -->
+</VBox>
+        </AnchorPane>

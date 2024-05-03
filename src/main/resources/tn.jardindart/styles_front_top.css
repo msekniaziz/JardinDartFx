@@ -1,0 +1,64 @@
+/* Styles pour le conteneur HBox */
+#menuHBox {
+    -fx-padding: 10px;
+    -fx-spacing: 25px;
+    -fx-background-radius: 35px;
+    -fx-background-color: #335d00;
+}
+
+/* Styles pour les MenuButtons */
+.menu-button {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.menu-button:hover {
+    -fx-text-fill: rgba(80, 138, 8, 0.26);
+}
+
+.menu-button .label {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+
+}
+.menu-button .label:hover {
+    -fx-text-fill: rgb(197, 186, 7);
+
+
+}
+
+/* Styles pour les MenuItems */
+.menu-item {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: 12pt;
+
+}
+
+.menu-item:hover {
+    -fx-background-color: rgb(197, 186, 7);
+}
+
+/* Styles pour le bouton de connexion */
+#loginButton {
+    -fx-background-color: rgba(80, 138, 8, 0.26);
+    -fx-text-fill: rgb(197, 186, 7);
+    -fx-background-radius: 35px;
+
+}
+/* Styles pour le menu déroulant */
+.context-menu {
+    -fx-background-color: rgba(80, 138, 8, 0.26); /* Couleur de fond */
+    -fx-border-width: 0;
+}
+
+.context-menu .menu-item {
+    -fx-text-fill: rgba(10, 1, 1, 0.4); /* Couleur du texte */
+    -fx-font-size: 14px;
+}
+
+.context-menu .menu-item:hover {
+    -fx-text-fill: rgb(197, 186, 7); /* Couleur de survol */
+}

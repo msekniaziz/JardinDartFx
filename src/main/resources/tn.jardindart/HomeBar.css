@@ -1,0 +1,28 @@
+.menu-bar {
+    -fx-background-color: rgba(66, 144, 248, 0.78);
+}
+
+.menu-bar .menu {
+    -fx-text-fill: #fafafa;
+    -fx-padding: 0 30; /* Adjusted padding values to add space between menus */
+}
+
+.menu-bar .menu .menu-item {
+    -fx-text-fill: white;
+    -fx-padding: 10 20; /* Padding for individual menu items */
+}
+
+.menu-bar .menu .menu-item:hover {
+    -fx-background-color: #555555;
+}
+
+.menu-bar .menu .menu-item:focused {
+    -fx-background-color: #555555;
+}
+
+.menu-bar .menu .menu-item:selected {
+    -fx-border-color: white;
+    -fx-border-width: 0 0 2 0; /* Border width for bottom border */
+    -fx-border-style: solid;
+    -fx-border-insets: 0;
+}
