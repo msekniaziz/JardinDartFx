@@ -132,9 +132,9 @@
         <StackPane layoutX="258.0" maxHeight="774.0" maxWidth="1506.0" prefHeight="774.0" prefWidth="1789.0" style="-fx-background-color: #dddee8;">
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlMenus" prefHeight="648.0" prefWidth="1300.0" />
-                <AnchorPane fx:id="mainanchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="626.0" prefWidth="1122.0" stylesheets="@styleback.css">
+                <Pane fx:id="pnlOrders" prefHeight="774.0" prefWidth="1602.0" />
+                <Pane fx:id="pnlMenus" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="1300.0" />
+                <AnchorPane fx:id="mainanchor" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="626.0" prefWidth="1334.0" stylesheets="@styleback.css">
                     <children>
                         <VBox layoutX="33.0" layoutY="114.0" prefHeight="475.0" prefWidth="862.0">
                             <children>
@@ -165,7 +165,7 @@
                         <Button layoutX="33.0" layoutY="51.0" mnemonicParsing="false" onAction="#back" text="Front" />
                   <Button fx:id="stat" layoutX="957.0" layoutY="51.0" mnemonicParsing="false" onAction="#generatePieChart" text="Stat" />
                        <!-- Add the PieChart component -->
-                        <PieChart fx:id="pieChart" layoutX="833.0" layoutY="152.0" prefHeight="334.0" prefWidth="398.0" />
+                        <PieChart fx:id="pieChart" layoutX="833.0" layoutY="152.0" prefHeight="389.0" prefWidth="450.0" />
 
                     </children>
                     <styleClass>

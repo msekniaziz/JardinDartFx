@@ -11,7 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -36,11 +38,17 @@ public class Marketroc implements Initializable {
     @FXML
     private ImageView bookicon;
     private List<Produittroc> BookObservableList;
-
+    @FXML
+    private TextField searchpanel;
     private List<Producttrocwith> ProdwithObservelist;
 
     @FXML
     private ComboBox<String> categoryComboBox;
+
+    public AnchorPane getMainanchor() {
+        return mainanchor;
+    }
+
     @FXML
     private AnchorPane mainanchor;
 
@@ -99,8 +107,39 @@ public class Marketroc implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
 
-    }}
-        @FXML
+        }}
+
+
+
+
+
+
+    public void searchbook_clicked(KeyEvent keyEvent) {
+        // 1. Retrieve the text from the searchpanel TextField
+        String searchText = searchpanel.getText().toLowerCase().trim();
+
+        // 2. Clear the existing content in the gridPane
+        BookListView.getChildren().clear();
+
+        // 3. Iterate through the list of books to find matches
+        int col = 0;
+        int rows = 0;
+        for (Produittroc book : BookObservableList) {
+            if (book.getNom().toLowerCase().contains(searchText))  {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/tn/esprit/jardindart/items.fxml"));
+                    AnchorPane anchorPane = fxmlLoader.load();
+                    itemsPd itemAdminController = fxmlLoader.getController();
+                    itemAdminController.setData(book);
+                    BookListView.add(anchorPane, col, rows++);
+                } catch (IOException e) {
+                    System.out.println("Error loading FXML: " + e.getMessage());
+                }
+            }
+        }
+    }
+    @FXML
     void ajouter_prodtroc(ActionEvent event) {
         try {
             // Charger le fichier FXML
@@ -121,7 +160,7 @@ public class Marketroc implements Initializable {
             e.printStackTrace();
 
 
-    }}
+        }}
 
     @FXML
     void booksnavclicked(ActionEvent event) {
@@ -153,8 +192,8 @@ public class Marketroc implements Initializable {
         bookicon.setVisible(false);
         loadBooks();
         loadCollectionItems();
-       ObservableList<String> listData = FXCollections.observableArrayList("garden", "house");
-       categoryComboBox.setItems(listData);
+        ObservableList<String> listData = FXCollections.observableArrayList("garden", "house");
+        categoryComboBox.setItems(listData);
     }
 
 

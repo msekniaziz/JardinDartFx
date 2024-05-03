@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,6 +32,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Editproduittr implements Initializable {
+    private Marketroc marketrocController;
 
     @FXML
     private Label AvaibilityLabel;
@@ -96,18 +98,29 @@ public class Editproduittr implements Initializable {
 
             // Utiliser l'objet book existant pour effectuer la modification
             serviceBook1.modifierPT(book);
+Marketroc m=new Marketroc();
+            AnchorPane a = m.getMainanchor();
+
+
             System.out.println("Le produit troc a été modifié avec succès.");
 
-//            reloadMarketFXML();
+        // reloadMarketFXML();
 
             // Close the window
-            closeWindow(event);
+          closeWindow(event);
 
         } catch (SQLException e) {
             System.out.println("Erreur lors de la modification du produit : " + e.getMessage());
             e.printStackTrace();
         }
     }
+
+
+    public void setMarketrocController(Marketroc marketrocController) {
+        this.marketrocController = marketrocController;
+    }
+
+
 
     void closeWindow(ActionEvent event) {
         // Close the window
