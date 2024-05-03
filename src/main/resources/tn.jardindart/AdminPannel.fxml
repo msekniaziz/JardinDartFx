@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="576.0" prefWidth="1116.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.user.AdminController">
+    <left>
+        <fx:include source="back_left.fxml" />
+    </left>
+<center>
+<AnchorPane>
+
+          <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" layoutY="-4.0" prefHeight="488.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Pane fx:id="pnlOverview" layoutX="21.0" layoutY="-13.0" prefHeight="588.0" prefWidth="851.0" style="-fx-background-color: #FFFFFF;">
+                            <children>
+                                <TextField fx:id="filterField" layoutX="600.0" layoutY="74.0" onKeyReleased="#handleSearch" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #EBE8F9; -fx-border-color: #B7C3D7;" />
+                                <Label layoutX="76.0" layoutY="70.0" text="Admin Panel">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="SearchButtonUserClick" fitHeight="17.0" fitWidth="16.0" layoutX="760.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons8_Search_52px.png" />
+                                    </image>
+                                </ImageView>
+                                <TableView fx:id="tableView" layoutX="35.0" layoutY="139.0" prefHeight="359.0" prefWidth="781.0" stylesheets="@stylesheet.css">
+                                    <columns>
+                                        <TableColumn fx:id="name" prefWidth="75.0" text="NOM" />
+                                        <TableColumn fx:id="lname" prefWidth="75.0" text="PRENOM" />
+                                        <TableColumn fx:id="mail" prefWidth="75.0" text="MAIL" />
+                                        <TableColumn fx:id="num_tel" prefWidth="75.0" text="TEL" />
+                                        <TableColumn fx:id="gender" prefWidth="75.0" text="GENDER" />
+                                        <TableColumn fx:id="points" prefWidth="75.0" text="POINTS" />
+                                        <TableColumn fx:id="dn" prefWidth="75.0" text="BIRTHDAY" />
+                                        <TableColumn fx:id="status" prefWidth="75.0" text="STATUS" />
+                                    </columns>
+                                    <styleClass>
+                                        <String fx:value="scroll-bar" />
+                                        <String fx:value="table-view" />
+                                        <String fx:value="chart-plot-background" />
+                                    </styleClass>
+                                </TableView>
+                                <Button fx:id="pdf" layoutX="757.0" layoutY="514.0" mnemonicParsing="false" onAction="#generatepdf" text="PDF" />
+
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+
+</AnchorPane>
+</center>
+</BorderPane>

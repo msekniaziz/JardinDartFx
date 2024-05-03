@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1116.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.HomeOFF">
+    <top>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="1102.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane layoutX="-7.0" prefHeight="69.0" prefWidth="1124.0" stylesheets="@style.css">
+                    <children>
+                        <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="34.0" fitWidth="55.0" layoutX="946.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="455.0" layoutY="23.0" stylesheets="@style.css" text="Home">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Label fx:id="Login" layoutX="1027.0" layoutY="23.0" onMouseClicked="#GoToLogin" onMousePressed="#GoToLogin" prefHeight="20.0" prefWidth="50.0" stylesheets="@style.css" text="Login">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="42.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="JARDIN D'ART" wrappingWidth="178.20159912109375">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Text>
+                    </children>
+               <styleClass>
+                  <String fx:value="MFXbutton" />
+                  <String fx:value="label" />
+               </styleClass>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

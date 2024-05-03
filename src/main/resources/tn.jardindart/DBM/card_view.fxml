@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="tn.jardindart.controllers.DBM.CardView"  style="-fx-padding: 20px;">
+    <content>
+        <BorderPane>
+            <stylesheets>
+                <URL value="@../styles.css" />
+            </stylesheets>
+            <left>
+                <fx:include source="../front_left.fxml" />
+            </left>
+
+            <top>
+                <fx:include source="../front_top.fxml" />
+            </top>
+
+            <center>
+                <VBox prefWidth="1000" spacing="20" style="-fx-padding: 10px;">
+                    <Label styleClass="title-label" text="My Donations" style="-fx-font-size: 50px;" />
+                    <GridPane fx:id="gridPane" hgap="10" vgap="10"   style="-fx-padding: 60px;" />
+                </VBox>
+
+
+            </center>
+        </BorderPane>
+    </content>
+</ScrollPane>

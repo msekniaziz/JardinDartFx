@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="503.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Prdtroc.Showproduitr">
+   <children>
+      <TableView fx:id="tableviewTroc" layoutX="27.0" layoutY="94.0" prefHeight="377.0" prefWidth="712.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="108.0" text="Name product" />
+          <TableColumn fx:id="categ" prefWidth="147.0" text="Category" />
+            <TableColumn fx:id="decription" prefWidth="142.0" text="Descritption" />
+            <TableColumn fx:id="image" prefWidth="158.0" text="Image" />
+            <TableColumn fx:id="print" prefWidth="158.0" text="Product in return" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchField" layoutX="27.0" layoutY="33.0" prefHeight="31.0" prefWidth="574.0" />
+   </children>
+</AnchorPane>
