@@ -17,8 +17,9 @@ public class HelloApplication extends Application {
         primaryStage = stage;
        // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/DBM/card_view.fxml"));
      // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/Association/card_view.fxml"));
-         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/Association/AfficherAssoc.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/DA/AddDA.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/Association/AfficherAssoc.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/DA/AddDA.fxml"));
+  FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/DA/Payment.fxml"));
 
         Parent root =fxmlLoader.load();
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();//nzid hedhi

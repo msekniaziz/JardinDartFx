@@ -62,6 +62,23 @@ public class AfficherDBM {
     private void initialize() {
         // Bind DonBienMateriel properties to table columns
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+//        pictureColumn.setCellFactory(param -> new TableCell<>() {
+//            private final ImageView imageView = new ImageView();
+//
+//            @Override
+//            protected void updateItem(String imagePath, boolean empty) {
+//                super.updateItem(imagePath, empty);
+//                if (empty || imagePath == null) {
+//                    setGraphic(null);
+//                } else {
+//                    Image image = new Image(imagePath);
+//                    imageView.setImage(image);
+//                    imageView.setFitWidth(50); // Set the width of the image
+//                    imageView.setFitHeight(50); // Set the height of the image
+//                    setGraphic(imageView);
+//                }
+//            }
+//        });
         pictureColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhoto_don()));
         descriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDesc_don()));
         // organizationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(getAssociationNameById(cellData.getValue())));
