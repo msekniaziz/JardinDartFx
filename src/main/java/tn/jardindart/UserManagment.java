@@ -10,7 +10,7 @@ import tn.jardindart.entites.User;
 public class UserManagment extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("/tn.jardindart/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("/tn.jardindart/chatbot.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1101, 576);
         stage.setTitle("JARDIN D'ART");
         stage.setScene(scene);

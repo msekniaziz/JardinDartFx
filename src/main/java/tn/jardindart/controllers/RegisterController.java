@@ -317,7 +317,7 @@ public class RegisterController implements Initializable {
                             String verificationUrl = "http://www.jardindart.com/verif/email/" + userID + "/" + token;
                             String messageBody = "Welcome to Jardin d'art!\n\n";
                             messageBody += "Please click the following link to verify your account:\n";
-                            messageBody += "<a href='" + verificationUrl + "'>Verify Account</a>";
+                            messageBody +=  verificationUrl ;
                             String email_to = email.getText();
                             EmailSender.sendEmail(email_to, subject, messageBody);
                             clearForm();

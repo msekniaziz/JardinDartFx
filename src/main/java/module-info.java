@@ -11,6 +11,8 @@ module tn.jardindart{
     requires jakarta.mail;
     requires com.google.common;
     requires bcrypt;
+    requires org.apache.pdfbox;
+    requires itextpdf;
     opens tn.jardindart.controllers;
     opens tn.jardindart.utils;
     opens tn.jardindart.entites;
