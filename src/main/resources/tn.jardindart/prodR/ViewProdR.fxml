@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="841.0" prefWidth="717.0" style="-fx-padding: 10px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.prodR.ViewProdR">
+    <left>
+
+        <fx:include source="../front_left.fxml" />
+    </left>
+
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+<center>
+    <ScrollPane hbarPolicy="AS_NEEDED" prefWidth="365.0" style="-fx-padding: -1px;" vbarPolicy="NEVER">
+        <ComboBox fx:id="searchComboBox" />
+
+        <HBox prefHeight="700" spacing="80">
+
+            <TextField fx:id="searchField" onKeyReleased="#rechercherAssociations"  />
+
+            <TilePane fx:id="tilePane" hgap="10" style="-fx-padding: 10px;" vgap="50" />
+        </HBox>
+
+    </ScrollPane>
+</center>
+    <stylesheets>
+        <URL value="@../styles.css" />
+    </stylesheets>
+</BorderPane>

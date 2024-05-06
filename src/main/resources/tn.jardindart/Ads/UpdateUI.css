@@ -1,0 +1,44 @@
+.rectangle{
+    -fx-border-radius: 30px ;
+    -fx-border-color: #9b9aac;
+}
+
+.add-btn{
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-text-fill: #9b9aac;
+    -fx-border-radius: 15px ;
+
+
+}
+.add-btn:focused{
+
+
+    -fx-border-color: #1478FF;
+
+
+
+}
+.labels{
+    -fx-text-fill: #1478FF;
+    -fx-font-size:15px;}
+.question {
+    -fx-background-color: white;
+    -fx-font-size: 16px;
+    -fx-font-family: sans-serif;
+    -fx-border-color: #9b9aac;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-radius: 0px 0px 5px 5px;
+}
+
+.question:focused {
+    -fx-border-color: #1478FF;
+
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}

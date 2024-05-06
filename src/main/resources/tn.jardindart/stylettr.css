@@ -1,0 +1,44 @@
+.root {
+    -fx-background-color: #f0f0f0; /* Set background color */
+}
+
+#nomidt, #prodrtr, #dectro, #statuspt {
+    -fx-background-color: #ffffff; /* Set background color of text fields */
+    -fx-border-color: #bcbcbc; /* Set border color of text fields */
+    -fx-border-width: 1px; /* Set border width of text fields */
+    -fx-border-radius: 5px; /* Set border radius of text fields */
+    -fx-padding: 5px; /* Add padding to text fields */
+}
+
+#catrgtro {
+    -fx-background-color: #ffffff; /* Set background color of combo box */
+    -fx-border-color: #bcbcbc; /* Set border color of combo box */
+    -fx-border-width: 1px; /* Set border width of combo box */
+    -fx-border-radius: 5px; /* Set border radius of combo box */
+    -fx-padding: 5px; /* Add padding to combo box */
+}
+
+#imagebuttp {
+    -fx-background-color: #4CAF50; /* Set background color of button */
+    -fx-text-fill: #ffffff; /* Set text color of button */
+    -fx-border-radius: 5px; /* Set border radius of button */
+}
+
+#imagebuttp:hover {
+    -fx-background-color: #45a049; /* Change background color on hover */
+}
+
+.button {
+    -fx-background-color: #008CBA; /* Set background color of buttons */
+    -fx-text-fill: #ffffff; /* Set text color of buttons */
+    -fx-border-radius: 5px; /* Set border radius of buttons */
+}
+
+.button:hover {
+    -fx-background-color: #005f75; /* Change background color on hover */
+}
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Add additional styling as needed */

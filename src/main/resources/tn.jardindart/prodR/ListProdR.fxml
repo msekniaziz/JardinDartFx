@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.prodR.ListProdR">
+
+<!-- Inclure le menu vertical à gauche -->
+    <left>
+        <fx:include source="../back_left.fxml" />
+    </left>
+
+    <!-- Contenu principal à droite -->
+    <center>
+<AnchorPane>
+    <TextField fx:id="filterField" layoutX="600.0" layoutY="74.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #EBE8F9; -fx-border-color: #B7C3D7;" />
+
+    <TableView fx:id="prodRTable"  stylesheets="@../stylesheet.css" layoutX="21.0" layoutY="151.0" prefHeight="476.0" prefWidth="1172.0">
+        <columns>
+<!--            <TableColumn fx:id="userIdColumn" prefWidth="80.0" text="User ID" />-->
+            <TableColumn fx:id="nomUtilisateurColumn" prefWidth="100.0" text="Nom Utilisateur" />
+
+<!--            <TableColumn fx:id="ptcIdColumn" prefWidth="70.0" text="Ptc ID" />-->
+            <TableColumn fx:id="nomCentreTriColumn" prefWidth="100.0" text="Nom Pt collect" />
+
+
+<!--            <TableColumn fx:id="typeProdIdColumn" prefWidth="100.0" text="Type Prod ID" />-->
+            <TableColumn fx:id="nomTypeProdColumn" prefWidth="100.0" text="Nom Type Prod" />
+            <TableColumn fx:id="nomPColumn" prefWidth="100.0" text="Nom P" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="150.0" text="Description" />
+            <TableColumn fx:id="statutColumn" prefWidth="80.0" text="isVerified?" />
+            <TableColumn fx:id="justificatifColumn" prefWidth="100.0" text="Justificatif" />
+            <TableColumn fx:id="actionsColumn" prefWidth="167.19989013671875" text="Actions" />
+
+
+        </columns>
+    </TableView>
+
+</AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@../styles1.css" />
+    </stylesheets>
+</BorderPane>
