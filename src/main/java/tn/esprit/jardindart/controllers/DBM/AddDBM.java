@@ -20,7 +20,10 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
@@ -69,7 +72,20 @@ dbms=new DonBienMaterielService();
         // userIdComboBox.setValue("Default User ID");
     }
 
-
+    public static String imageToBase64(String imagePath) {
+        String base64Image = "";
+        try {
+            File file = new File(imagePath);
+            FileInputStream imageInFile = new FileInputStream(file);
+            byte[] imageData = new byte[(int) file.length()];
+            imageInFile.read(imageData);
+            base64Image = Base64.getEncoder().encodeToString(imageData);
+            imageInFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return base64Image;
+    }
     private void fillAssociationComboBox() {
 
         List<Association> associations = retrieveAssociationsFromDatabase();
@@ -138,7 +154,11 @@ dbms=new DonBienMaterielService();
                 showAlert("Succès", "Le don a été ajouté avec succès.");
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/jardindart/DBM/card_view.fxml"));
                 imageid.getScene().setRoot(fxmlLoader.load());
-                sendEmailConfirmation();
+                // Convertir l'image en base64
+                String base64Image = imageToBase64(photoDon);
+
+                // Ajouter l'image à l'e-mail et envoyer
+                sendEmailConfirmation(base64Image);
 
             } catch (Exception e) {
                 // Capturer et gérer l'exception
@@ -147,13 +167,63 @@ dbms=new DonBienMaterielService();
         }
     }
 
-    private void sendEmailConfirmation() {
+    private void sendEmailConfirmation(String base64Image) {
         String to = "mohamedaziz.msekni@esprit.tn"; // Mettez l'adresse e-mail du destinataire ici
         String subject = "Thank you!";
-        String body = "Dear Linda, <br>"
-                + "Your donation has been registred, please stay up to date we will call you later. <br>"
-                + "Thank you for your trust. <br><br>"
-                + "The JARDIN D'ART Team";
+        String body = "<!DOCTYPE html>" +
+                "<html>" +
+                "<head>" +
+                "<style>" +
+                "body {" +
+                "    font-family: Arial, sans-serif;" +
+                "    background-color: #f4f4f4;" +
+                "    margin: 0;" +
+                "    padding: 0;" +
+                "}" +
+                ".container {" +
+                "    max-width: 600px;" +
+                "    margin: 0 auto;" +
+                "    padding: 20px;" +
+                "    background-color: #fff;" +
+                "    border-radius: 8px;" +
+                "    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" +
+                "}" +
+                ".header {" +
+                "    background-color: #4CAF50;" +
+                "    color: #fff;" +
+                "    text-align: center;" +
+                "    padding: 20px;" +
+                "    border-radius: 8px 8px 0 0;" +
+                "}" +
+                ".content {" +
+                "    padding: 20px;" +
+                "}" +
+                ".footer {" +
+                "    background-color: #f4f4f4;" +
+                "    padding: 20px;" +
+                "    text-align: center;" +
+                "    border-radius: 0 0 8px 8px;" +
+                "}" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<div class=\"container\">" +
+                "    <div class=\"header\">" +
+                "        <h1>Thank you!</h1>" +
+                "    </div>" +
+                "    <div class=\"content\">" +
+                "        <p>Dear Linda,</p>" +
+                "        <p>Your donation has been registered. Please stay up to date, we will contact you later.</p>" +
+                "        <p>Thank you for your trust.</p>" +
+                "        <img src=\"data:image/png;base64," + base64Image + "\" alt=\"Donation Image\">" +
+                "    </div>" +
+                "    <div class=\"footer\">" +
+                "        <p>The JARDIN D'ART Team</p>" +
+                "    </div>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
+
 
         String host = "smtp.office365.com";
         String user = "lindafarah.trabelsi@esprit.tn"; // Votre adresse e-mail
