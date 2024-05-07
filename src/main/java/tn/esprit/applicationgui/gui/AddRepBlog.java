@@ -15,7 +15,7 @@ public class AddRepBlog extends Application {
     public void start(Stage primaryStage) {
         try {
             // Load the FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/applicationgui/AddRepBlog.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/applicationgui/calendrier.fxml"));
 
             // Set up the scene
             Scene scene = new Scene(root);

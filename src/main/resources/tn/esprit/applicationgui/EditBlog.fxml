@@ -33,8 +33,11 @@
             </items>
         </ComboBox>
 
-        <Button fx:id="button_edit" layoutX="590.0" layoutY="365.0" mnemonicParsing="false" onAction="#EditBlog" text="Edit Blog" />
-        <ImageView fx:id="imageid" fitHeight="158.0" fitWidth="237.0" layoutX="529.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+        <Button fx:id="okButton" layoutX="106.0" layoutY="512.0" mnemonicParsing="false" onAction="#okbtn_clicked" prefHeight="30.0" prefWidth="94.0" styleClass="blue-btn" stylesheets="@ AI.css" text="OK" textFill="WHITE">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Button>        <ImageView fx:id="imageid" fitHeight="158.0" fitWidth="237.0" layoutX="529.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
 
         </ImageView>
         <Button fx:id="upload_image" layoutX="579.0" layoutY="177.0" mnemonicParsing="false" onAction="#editImage_blog" text="upload image" />

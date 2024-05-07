@@ -8,33 +8,39 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import tn.esprit.applicationgui.entites.ReponseBlog;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 public class AddRepBlog {
+    ReponseBlog reponseBlog = new ReponseBlog();
 
     @FXML
     private DatePicker daterepField;
+
+
+    @FXML
+    private TextField blog_id;
+
 
     @FXML
     private TextArea dectro;
 
     @FXML
     private TextField statuspt;
-
     @FXML
     void AddRepBlog(ActionEvent event) {
         ReponseBlogservice reponseBlogService = new ReponseBlogservice();
-        ReponseBlog reponseBlog = new ReponseBlog();
 
         // Retrieve values from input fields
         String date = daterepField.getValue().toString();
         String contenu = dectro.getText();
         String status = statuspt.getText();
+        int blogId = Integer.parseInt(blog_id.getText()); // Récupérer l'identifiant du blog à partir du champ blog_id
 
         // Assign values to the ReponseBlog object
-        reponseBlog.setDate(date);
+        reponseBlog.setDate(LocalDate.parse(date));
         reponseBlog.setContenu(contenu);
-        reponseBlog.setStatus(Integer.parseInt(status));
+        reponseBlog.setBlog_id(blogId);
 
         try {
             // Call the addRepBlog method from the service
@@ -58,7 +64,7 @@ public class AddRepBlog {
             alert.showAndWait();
         }
     }
-ReponseBlog rep;
+    ReponseBlog rep;
     public ReponseBlog setBlog(ReponseBlog book,int a) {
         this.rep = book;
 
@@ -74,5 +80,21 @@ ReponseBlog rep;
         // Set the image to the ImageView
 //        imgb.setImage(image);
     }
+
+
+    public ReponseBlog setprod(ReponseBlog book,int a) {
+        this.reponseBlog = book;
+
+        // Set existing book information to the labels and text fields
+        this.reponseBlog = book;
+
+        // Set existing book information to the labels and text fields
+        book.setId(reponseBlog.getId());
+        blog_id.setText(String.valueOf(a));
+        //   dectro.setText(book.getContenu());
+        //daterepField.sett (book.getDate());
+        return book;
+    }
+
 
 }

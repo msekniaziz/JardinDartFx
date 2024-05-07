@@ -7,7 +7,7 @@ public interface Service <T>{
     public void addblog(T t) throws SQLException;
     public List<T> showblog() throws SQLException;
     public void deleteblog(int id) throws SQLException;
-    public void editblog(T t) throws SQLException;
+    public void EditBlog(T t) throws SQLException;
 
 
 

@@ -4,13 +4,16 @@ public class Blog {
         private int id, status;
         private String titre, contenu_blog, category;
         String image_blog;
+    private int like_blog;
 
 
         // Constructeur par défaut
 
 
+
     public Blog() {
     }
+
 
     // Constructeur avec des paramètres
 
@@ -103,6 +106,7 @@ public class Blog {
                 ", image_blog='" + image_blog + '\'' +
                 '}';
     }
+
 
 }
 

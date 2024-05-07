@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-
-<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane prefHeight="758.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.Blogmain">
 <children>
     <AnchorPane layoutX="420.0" layoutY="28.0" prefHeight="66.0" prefWidth="688.0" stylesheets="@AI.css">
@@ -19,17 +22,12 @@
             <String fx:value="shadow" />
         </styleClass>
         <children>
-            <Button layoutX="55.0" layoutY="13.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="42.0" prefWidth="275.0" styleClass="white-btn" stylesheets="@AI.css" text="Product for exchange" textFill="#aac400">
+            <Button layoutX="312.0" layoutY="15.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="39.0" prefWidth="126.0" styleClass="white-btn" stylesheets="@AI.css" textFill="#aac400">
                 <font>
                     <Font name="Arial" size="22.0" />
                 </font>
             </Button>
-            <Button layoutX="355.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCollectionButtonClick" prefHeight="42.0" prefWidth="291.0" styleClass="white-btn" stylesheets="@AI.css" text="Your product for exchange" textFill="#c4e105">
-                <font>
-                    <Font name="Arial" size="22.0" />
-                </font>
-            </Button>
-        </children>
+            <TextField fx:id="searchField" layoutX="14.0" layoutY="5.0" onKeyReleased="#handleSearch" prefHeight="56.0" prefWidth="765.0" promptText="🔍 Search..." />        </children>
     </AnchorPane>
     <AnchorPane fx:id="collectionanchor" layoutX="290.0" layoutY="100.0" prefHeight="595.0" prefWidth="1036.0" stylesheets="@AI.css">
         <styleClass>
@@ -37,6 +35,7 @@
             <String fx:value="shadow" />
         </styleClass>
         <children>
+
             <VBox layoutX="21.0" layoutY="102.0" prefHeight="463.0" prefWidth="984.0">
                 <children>
                     <ScrollPane prefHeight="548.0" prefWidth="563.0">
@@ -71,7 +70,7 @@
                     </ScrollPane>
                 </children>
             </VBox>
-            <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="Discover Our Product Troc" textFill="#40b74a">
+            <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="All Blogs List " textFill="#40b74a">
                 <font>
                     <Font name="Arial Bold" size="24.0" />
                 </font>
@@ -88,6 +87,5 @@
         <!--                <Image url="@../Rresources/5432699.png" />-->
         <!--            </image>-->
     </ImageView>
-
 </children>
 </AnchorPane>

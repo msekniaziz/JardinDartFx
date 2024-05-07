@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="758.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.Repmain">
+<AnchorPane prefHeight="758.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.RepBlogmain">
     <children>
         <AnchorPane layoutX="420.0" layoutY="28.0" prefHeight="66.0" prefWidth="688.0" stylesheets="@AI.css">
             <styleClass>
@@ -20,12 +20,7 @@
                 <String fx:value="shadow" />
             </styleClass>
             <children>
-                <Button layoutX="55.0" layoutY="13.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="42.0" prefWidth="275.0" styleClass="white-btn" stylesheets="@AI.css" text="Blogs" textFill="#aac400">
-                    <font>
-                        <Font name="Arial" size="22.0" />
-                    </font>
-                </Button>
-                <Button layoutX="355.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCollectionButtonClick" prefHeight="42.0" prefWidth="291.0" styleClass="white-btn" stylesheets="@AI.css" text="Responses" textFill="#c4e105">
+                <Button layoutX="163.0" layoutY="12.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="42.0" prefWidth="275.0" styleClass="white-btn" stylesheets="@AI.css" text="Reponses Blogs List" textFill="#aac400">
                     <font>
                         <Font name="Arial" size="22.0" />
                     </font>
@@ -72,12 +67,12 @@
                         </ScrollPane>
                     </children>
                 </VBox>
-                <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="Discover all of our responses" textAlignment="CENTER" textFill="#40b74a" wrapText="true">
+                <Label layoutX="397.0" layoutY="16.0" prefHeight="94.0" prefWidth="333.0" text="All Reponses Blog List " textFill="#40b74a">
                     <font>
                         <Font name="Arial Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="757.0" layoutY="55.0" prefHeight="18.0" prefWidth="47.0" text="Filter By" textFill="#dbff03" />
+              <Button layoutX="759.0" layoutY="51.0" onAction="#generatePDF" text="Generate PDF" />
             </children>
             <styleClass>
                 <String fx:value="left-form" />

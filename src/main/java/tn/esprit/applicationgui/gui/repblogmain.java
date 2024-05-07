@@ -12,7 +12,7 @@ public class repblogmain extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/applicationgui/Repblogmain.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/applicationgui/Mainrep.fxml"));
             primaryStage.setTitle("Add Blog");
             primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();

@@ -1,5 +1,7 @@
 package tn.esprit.applicationgui.Controllers;
 
+import tn.esprit.applicationgui.entites.ReponseBlog;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,4 +11,5 @@ public interface ServiceRep <T> {
     public void deleterep(int id) throws SQLException;
     public void editrep(T t) throws SQLException;
 
+    List<ReponseBlog> readAll();
 }

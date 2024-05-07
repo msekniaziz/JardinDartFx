@@ -27,4 +27,11 @@
     -fx-text-fill: #666; /* Gray text color */
     -fx-font-family: "Cambria"; /* Font family */
     -fx-font-size: 14px; /* Font size */
+
+
+    .blue-button {
+        -fx-background-color: #007bff; /* Couleur bleue */
+        -fx-text-fill: white; /* Texte blanc */
+    }
+
 }

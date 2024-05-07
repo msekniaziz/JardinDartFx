@@ -23,6 +23,7 @@
         <Button layoutX="590.0" layoutY="365.0" mnemonicParsing="false" onAction="#AddRepBlog" text="Add respond blog" />
         <TextField fx:id="statuspt" layoutX="415.0" layoutY="217.0" promptText="status" text="0" visible="false" />
       <DatePicker fx:id="daterepField" layoutX="281.0" layoutY="304.0" />
+        <TextField fx:id="blog_id" layoutX="20.0" layoutY="329.0" visible="false" />
 
 
     </children>

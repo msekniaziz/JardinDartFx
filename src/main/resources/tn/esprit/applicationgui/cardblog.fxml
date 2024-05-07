@@ -9,50 +9,70 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="339.0" prefWidth="566.0" styleClass="main-pane" stylesheets="@itempt.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.Cardblog">
+<AnchorPane prefHeight="565.0" prefWidth="572.0" styleClass="main-pane" stylesheets="@itempt.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.applicationgui.Controllers.Cardblog">
 
     <children>
-        <VBox layoutX="14.0" layoutY="32.0" prefHeight="352.0" prefWidth="297.0" styleClass="vbox" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="477.0" AnchorPane.topAnchor="32.0">
+        <VBox layoutX="199.0" layoutY="389.0" prefHeight="45.0" prefWidth="236.0" styleClass="vbox" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="389.0">
             <children>
                 <HBox prefHeight="63.0" prefWidth="152.0" />
             </children>
         </VBox>
-        <Label fx:id="itemname" layoutX="149.0" layoutY="243.0" prefHeight="38.0" prefWidth="93.0" styleClass="label" text="Les miserables" textFill="#ffc73e">
+        <Label fx:id="itemname" layoutX="173.0" layoutY="258.0" prefHeight="38.0" prefWidth="93.0" styleClass="label" text="Les miserables">
             <font>
                 <Font name="Cambria" size="14.0" />
             </font>
         </Label>
-        <Label fx:id="itemprice" layoutX="164.0" layoutY="287.0" prefHeight="26.0" prefWidth="64.0" styleClass="label" text="   15DT" textFill="#ffc73e">
+        <Label fx:id="itemprice" layoutX="445.0" layoutY="338.0" prefHeight="26.0" prefWidth="64.0" styleClass="label" text="   15DT">
             <font>
                 <Font name="Cambria" />
             </font>
         </Label>
-        <Label fx:id="dectro" layoutX="305.0" layoutY="168.0" prefHeight="38.0" prefWidth="227.0" styleClass="label" text="Contenu">
+        <Label fx:id="dectro" layoutX="206.0" layoutY="318.0" prefHeight="38.0" prefWidth="227.0" styleClass="label" text="Contenu">
         </Label>
-        <ImageView fx:id="itemimg" fitHeight="172.0" fitWidth="205.0" layoutX="57.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="itemimg" fitHeight="172.0" fitWidth="205.0" layoutX="173.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
             <!--               <image>-->
             <!--                  <Image url="@../../../../../../../../Downloads/Na9ra-23-24-Pidev&#45;&#45;mainn/Na9ra-23-24-Pidev&#45;&#45;mainn/src/main/resources/gui/Rresources/lesmiserables.png" />-->
             <!--               </image>-->
         </ImageView>
-        <Label fx:id="nomidt" layoutX="41.0" layoutY="253.0" prefHeight="17.0" prefWidth="76.0" text="Titre" />
-        <Label fx:id="catrgtro" layoutX="52.0" layoutY="291.0" prefHeight="18.0" prefWidth="76.0" text="category" />
-        <Button fx:id="exchange" alignment="TOP_CENTER" onAction="AddRepBlog" layoutX="413.0" layoutY="343.0" mnemonicParsing="false" styleClass="button" text="Exchnage" textFill="WHITE">
-            <font>
-                <Font name="Arial" size="12.0" />
-            </font>
-        </Button>
+        <Label fx:id="nomidt" layoutX="65.0" layoutY="264.0" prefHeight="17.0" prefWidth="76.0" text="Titre:" textAlignment="CENTER" textFill="#18ab2b" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+        <Label fx:id="catrgtro" layoutX="422.0" layoutY="296.0" prefHeight="26.0" prefWidth="110.0" text="category" textFill="#18ab2b">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font></Label>
         <Label layoutX="305.0" layoutY="111.0" prefHeight="38.0" prefWidth="122.0" />
-        <HBox fx:id="qr_code" layoutX="19.0" layoutY="343.0" prefHeight="30.0" prefWidth="114.0" />
-      <Button fx:id="modifier" alignment="TOP_CENTER" layoutX="164.0" layoutY="343.0" mnemonicParsing="false" onAction="#modifie_cli" styleClass="button" text="modifier" textFill="WHITE">
+      <Button fx:id="modifier" alignment="TOP_CENTER" layoutX="143.0" layoutY="446.0" mnemonicParsing="false" onAction="#modifie_cli" styleClass="button"  text="modifier" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="modifier1" alignment="TOP_CENTER" layoutX="277.0" layoutY="343.0" mnemonicParsing="false" onAction="#delete_clicked" styleClass="button" text="delete" textFill="WHITE">
+      <Button fx:id="modifier1" alignment="TOP_CENTER" layoutX="266.0" layoutY="446.0" mnemonicParsing="false" onAction="#delete_clicked" styleClass="button" text="delete" textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
+
+      <Button fx:id="exchange1" alignment="TOP_CENTER" layoutX="427.0" layoutY="391.0" mnemonicParsing="false" onAction="#AddRepBlog" prefWidth="141.0" styleClass="button" text="ajouter reponse" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="contetid" layoutX="54.0" layoutY="324.0" text="Contenu de Blog: " textFill="#18ab2b">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Label>
+
+      <Button fx:id="exchange11" alignment="TOP_CENTER" layoutX="427.0" layoutY="440.0" mnemonicParsing="false" onAction="#ListRepBlog" prefWidth="168.0" styleClass="button" text="Liste des reponses " textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+        <Button fx:id="shareFbBtn" layoutX="28.0" layoutY="446.0" mnemonicParsing="false" onAction="#partage" styleClass="blue-button" text="facebook" />
+
+
     </children>
 
     <padding>
