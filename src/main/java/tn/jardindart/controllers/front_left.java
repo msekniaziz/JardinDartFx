@@ -23,6 +23,7 @@ public class front_left implements Initializable {
     public Button btn;
 
     @Override
+            //INIT
     public void initialize(URL location, ResourceBundle resources) {
 
 
