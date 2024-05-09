@@ -1,11 +1,10 @@
 package tn.jardindart.controllers;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class PdfBackground extends PdfPageEventHelper {

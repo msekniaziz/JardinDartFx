@@ -14,10 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.controlsfx.control.action.Action;
+import tn.jardindart.entites.PtCollect;
 import tn.jardindart.utils.DataBase;
 import java.io.IOException;
 import java.net.URL;
@@ -25,9 +29,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.jar.Attributes;
 import java.util.regex.Pattern;
 import com.twilio.Twilio;
@@ -40,7 +42,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
-
+import com.google.gson.Gson;
 public class UserController extends HomeON implements Initializable  {
 
     @FXML
@@ -119,6 +121,8 @@ public class UserController extends HomeON implements Initializable  {
     private Button resetbutton;
     private String codeFromSMS;
 
+    @FXML
+    private WebView webView;
     @FXML
     private PasswordField confirmPassword;
     @FXML
@@ -646,6 +650,42 @@ public class UserController extends HomeON implements Initializable  {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        WebEngine webEngine = webView.getEngine();
+        String htmlFilePath = getClass().getResource("/tn.jardindart/map.html").toString();
+        webView.getEngine().load(htmlFilePath);
+        webEngine.documentProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Gson gson = new Gson();
+                List<PtCollect> test = recuperer();
+               String jsonData = gson.toJson(test);
+                String jsonEscapedData = jsonData.replace("'", "\\'");
+                String script = "var data = JSON.parse('" + jsonEscapedData + "'); processData(data);";
+                System.out.println(script);
+                webEngine.executeScript(script);
+            }
+        });
+
+    }
+    public List<PtCollect> recuperer() {
+        List<PtCollect> ptCollectList = new ArrayList<>();
+        String req = "SELECT * FROM `pt_collect`";
+        try {
+            PreparedStatement pstm = con.prepareStatement(req);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                PtCollect ptCollect = new PtCollect();
+                ptCollect.setId(rs.getInt("id"));
+                ptCollect.setNomPc(rs.getString("nom_pc"));
+                ptCollect.setAdressePc(rs.getString("adresse_pc"));
+                System.out.println(rs.getString("adresse_pc"));
+                ptCollect.setLatitudePc(rs.getFloat("latitude_pc"));
+                ptCollect.setLongitudePc(rs.getFloat("longitude_pc"));
+                ptCollectList.add(ptCollect);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des points de collecte : " + e.getMessage());
+        }
+        return ptCollectList;
     }
 
     public boolean checkpasswordFront(int idUser , String password) throws SQLException {

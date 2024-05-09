@@ -13,6 +13,7 @@ module tn.jardindart{
     requires bcrypt;
     requires org.apache.pdfbox;
     requires itextpdf;
+    requires com.google.gson;
     opens tn.jardindart.controllers;
     opens tn.jardindart.utils;
     opens tn.jardindart.entites;

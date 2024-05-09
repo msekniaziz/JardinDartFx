@@ -105,6 +105,8 @@ public class LoginController implements Initializable {
                             String nom = rs.getString("nom");
                             String prenom = rs.getString("prenom");
                             String fullName = nom + " " + prenom;
+                            int id = rs.getInt("id");
+                            SessionManager.getInstance().setUserFront(id);
                             SessionManager.getInstance().setUserId(fullName);
                             Stage stage = (Stage) loginButton.getScene().getWindow();
                             stage.close();
