@@ -8,6 +8,7 @@ module tn.esprit.jardindart {
     requires kernel;
     requires layout;
     requires io;
+    requires org.controlsfx.controls;
     exports tn.esprit.gui;
     exports tn.esprit.controllers;
     opens tn.esprit.controllers to javafx.fxml;
