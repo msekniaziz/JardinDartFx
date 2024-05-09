@@ -49,6 +49,7 @@ public class AddAssoc {
     private File selectedImageFile;
     @FXML
     private ImageView imageid;
+    //les champs
 
     private final AssociationService associationService = new AssociationService();
     Menu menuc = new Menu();
