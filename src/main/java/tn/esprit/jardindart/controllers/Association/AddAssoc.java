@@ -51,6 +51,8 @@ public class AddAssoc {
     private ImageView imageid;
     //les champs
     //nafshom
+    //nas
+
 
     private final AssociationService associationService = new AssociationService();
     Menu menuc = new Menu();
