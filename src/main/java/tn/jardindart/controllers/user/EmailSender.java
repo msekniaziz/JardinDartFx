@@ -18,7 +18,8 @@ public class EmailSender {
         message.setFrom(new InternetAddress(EMAIL_FROM));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email_to));
         message.setSubject(subject);
-        message.setText(messageBody);
+        message.setContent(messageBody, "text/html");
+
         Transport.send(message);
     }
 

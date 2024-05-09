@@ -156,10 +156,59 @@ public class ListProdR {
                     if (result.isPresent() && result.get() == ButtonType.OK) {
                         prodRService.updateStatus(p, true); // Mettez le nouveau statut ici (true ou false)
                         try {
-                            EmailSender.sendEmail("mohamedaziz.msekni@esprit.tn", "PRODUCT APPROVED!", "Dear User, <br>"
-                                    + "Your donation has been approved, please stay up to date we will call you later. <br>"
-                                    + "Thank you for your trust. <br><br>"
-                                    + "The JARDIN D'ART Team");
+                            String body = "<!DOCTYPE html>" +
+                                    "<html>" +
+                                    "<head>" +
+                                    "<style>" +
+                                    "body {" +
+                                    "    font-family: Arial, sans-serif;" +
+                                    "    background-color: #f4f4f4;" +
+                                    "    margin: 0;" +
+                                    "    padding: 0;" +
+                                    "}" +
+                                    ".container {" +
+                                    "    max-width: 600px;" +
+                                    "    margin: 0 auto;" +
+                                    "    padding: 20px;" +
+                                    "    background-color: #fff;" +
+                                    "    border-radius: 8px;" +
+                                    "    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" +
+                                    "}" +
+                                    ".header {" +
+                                    "    background-color: #4CAF50;" +
+                                    "    color: #fff;" +
+                                    "    text-align: center;" +
+                                    "    padding: 20px;" +
+                                    "    border-radius: 8px 8px 0 0;" +
+                                    "}" +
+                                    ".content {" +
+                                    "    padding: 20px;" +
+                                    "}" +
+                                    ".footer {" +
+                                    "    background-color: #f4f4f4;" +
+                                    "    padding: 20px;" +
+                                    "    text-align: center;" +
+                                    "    border-radius: 0 0 8px 8px;" +
+                                    "}" +
+                                    "</style>" +
+                                    "</head>" +
+                                    "<body>" +
+                                    "<div class=\"container\">" +
+                                    "    <div class=\"header\">" +
+                                    "        <h1>Thank you!</h1>" +
+                                    "    </div>" +
+                                    "    <div class=\"content\">" +
+                                    "        <p>Dear Linda,</p>" +
+                                    "        <p>Your donation has been registered. Please stay up to date, we will contact you later.</p>" +
+                                    "        <p>Thank you for your trust.</p>" +
+                                    "    </div>" +
+                                    "    <div class=\"footer\">" +
+                                    "        <p>The JARDIN D'ART Team</p>" +
+                                    "    </div>" +
+                                    "</div>" +
+                                    "</body>" +
+                                    "</html>";
+                            EmailSender.sendEmail("mohamedaziz.msekni@esprit.tn", "PRODUCT APPROVED!", body);
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
