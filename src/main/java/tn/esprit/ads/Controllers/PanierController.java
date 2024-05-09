@@ -220,6 +220,7 @@ public class PanierController {
            List<Integer> annonceIds = getIdAnnoncesDansPanier(idPanier);
           double price= updateStatutAnnonces(annonceIds);
            scommandes.add(idUser,price);
+           System.out.println(idUser);
            deleteAllAnnoncesDansPanier(idPanier);
            System.out.println("Commande traitée avec succès!");
            String subject = "Order";
@@ -285,19 +286,18 @@ public class PanierController {
             PreparedStatement psCategory = cnx.prepareStatement(updateCategoryQuery)) {
 
            for (int annonceId : annonceIds) {
-               // Mettre à jour le statut de l'annonce
+
                psAnnonces.setInt(1, annonceId);
                psAnnonces.executeUpdate();
 
-               // Récupérer l'ID de la catégorie associée à l'annonce
-               int categoryId = getCategorieIdByAnnonceId(annonceId); // À remplacer par la méthode appropriée
 
-               // Mettre à jour le nombre d'annonces dans la catégorie
+               int categoryId = getCategorieIdByAnnonceId(annonceId);
+
+
                psCategory.setInt(1, categoryId);
                psCategory.executeUpdate();
 
-               // Calculer le prix de l'annonce et mettre à jour le total
-               double annoncePrice = getPrixAnnonceById(annonceId); // À remplacer par la méthode appropriée
+               double annoncePrice = getPrixAnnonceById(annonceId);
                totalPrice += annoncePrice;
                System.out.println(totalPrice);
            }
@@ -305,7 +305,7 @@ public class PanierController {
        return totalPrice;
    }
 
-    // Méthode pour récupérer l'ID de la catégorie associée à une annonce (à adapter selon votre schéma de base de données)
+
     private int getCategorieIdByAnnonceId(int annonceId) throws SQLException {
         String query = "SELECT id_cat_id FROM annonces WHERE id = ?";
         try (PreparedStatement ps = cnx.prepareStatement(query)) {
@@ -316,7 +316,7 @@ public class PanierController {
                 }
             }
         }
-        return -1; // Retourner une valeur par défaut ou gérer le cas où aucun résultat n'est trouvé
+        return -1;
     }
 
 
