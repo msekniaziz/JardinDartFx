@@ -9,10 +9,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.UserController">
    <fx:include source="banner.fxml" />
    <right>
       <VBox fillWidth="false" prefHeight="617.0" prefWidth="868.0" BorderPane.alignment="CENTER">
+=======
+<?import java.net.URL?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="670.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21"
+
+            xmlns:fx="http://javafx.com/fxml/1"
+            style="  -fx-padding: 10px;"
+
+            fx:controller="tn.jardindart.controllers.user.UserController">
+   <left>
+   <fx:include source="front_left.fxml" />
+   </left>
+   <top>
+      <fx:include source="front_top.fxml" />
+
+   </top>
+   <center>
+      <VBox fillWidth="false" prefHeight="567.0" prefWidth="838.0" BorderPane.alignment="CENTER">
+>>>>>>> Recycle
          <children>
             <Label prefHeight="156.0" prefWidth="261.0" text="Profile Settings">
                <padding>
@@ -74,7 +94,11 @@
                   <Insets left="130.0" top="-128.0" />
                </VBox.margin>
             </TextField>
+<<<<<<< HEAD
             <Label fx:id="checklastName" prefHeight="18.0" prefWidth="175.0">
+=======
+            <Label fx:id="checklastName">
+>>>>>>> Recycle
                <VBox.margin>
                   <Insets left="130.0" top="2.0" />
                </VBox.margin>
@@ -87,7 +111,11 @@
                   <Insets left="130.0" />
                </VBox.margin>
             </TextField>
+<<<<<<< HEAD
             <Label fx:id="checkMail" prefHeight="18.0" prefWidth="178.0">
+=======
+            <Label fx:id="checkMail">
+>>>>>>> Recycle
                <VBox.margin>
                   <Insets left="130.0" top="2.0" />
                </VBox.margin>
@@ -100,7 +128,11 @@
                   <Insets left="130.0" />
                </VBox.margin>
             </TextField>
+<<<<<<< HEAD
             <Label fx:id="checkPhoneNumber" prefHeight="18.0" prefWidth="172.0">
+=======
+            <Label fx:id="checkPhoneNumber">
+>>>>>>> Recycle
                <padding>
                   <Insets right="5.0" />
                </padding>
@@ -121,7 +153,11 @@
                   <Insets left="630.0" top="-48.0" />
                </VBox.margin>
             </PasswordField>
+<<<<<<< HEAD
             <Label fx:id="checkPassword" prefHeight="18.0" prefWidth="180.0">
+=======
+            <Label fx:id="checkPassword">
+>>>>>>> Recycle
                <VBox.margin>
                   <Insets left="630.0" />
                </VBox.margin>
@@ -141,7 +177,11 @@
             </PasswordField>
             <Button fx:id="EditButton" mnemonicParsing="false" onAction="#EditFrontUser" prefHeight="43.0" prefWidth="136.0" styleClass="MFXbutton" stylesheets="@style.css" text="Save edit" textFill="WHITE">
                <VBox.margin>
+<<<<<<< HEAD
                   <Insets left="130.0" top="160.0" />
+=======
+                  <Insets left="120.0" top="150.0" />
+>>>>>>> Recycle
                </VBox.margin>
                <font>
                   <Font size="20.0" />
@@ -168,16 +208,25 @@
                   <Insets left="630.0" top="-34.0" />
                </VBox.margin>
             </PasswordField>
+<<<<<<< HEAD
             <Label fx:id="checkOldPassword" prefHeight="18.0" prefWidth="174.0">
+=======
+            <Label fx:id="checkOldPassword">
+>>>>>>> Recycle
                <VBox.margin>
                   <Insets left="630.0" />
                </VBox.margin>
             </Label>
+<<<<<<< HEAD
             <Label fx:id="checkConfirmPassword" prefHeight="18.0" prefWidth="176.0">
+=======
+            <Label fx:id="checkConfirmPassword">
+>>>>>>> Recycle
                <VBox.margin>
                   <Insets left="630.0" top="85.0" />
                </VBox.margin>
             </Label>
+<<<<<<< HEAD
             <PasswordField fx:id="Passwordcheckedit" visible="false">
                <VBox.margin>
                   <Insets left="130.0" top="80.0" />
@@ -199,10 +248,20 @@
                   <Insets left="130.0" />
                </VBox.margin>
             </Label>
+=======
+>>>>>>> Recycle
          </children>
          <BorderPane.margin>
             <Insets top="70.0" />
          </BorderPane.margin>
       </VBox>
+<<<<<<< HEAD
    </right>
+=======
+   </center>
+   <stylesheets>
+      <URL value="@styles.css" />
+      <!--        <URL value="@../styles.css" />-->
+   </stylesheets>
+>>>>>>> Recycle
 </BorderPane>

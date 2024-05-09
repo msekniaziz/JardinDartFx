@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+<<<<<<< HEAD
+=======
+import tn.jardindart.controllers.user.SessionManager;
+
+>>>>>>> Recycle
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;

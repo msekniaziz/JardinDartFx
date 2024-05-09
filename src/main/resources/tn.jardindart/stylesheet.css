@@ -1,6 +1,10 @@
 .table-view .column-header,
 .table-view .column-header-background .filler {
+<<<<<<< HEAD
     -fx-background-color:  #6622CC; 
+=======
+    -fx-background-color: #c5ba07;
+>>>>>>> Recycle
 }
 .table-view .column-header .label{
    -fx-text-fill: white;
@@ -10,15 +14,24 @@
 .table-view .cell{
    -fx-cell-size: 35;
   -fx-alignment: center-left;
+<<<<<<< HEAD
   -fx-background-color: #29292D;
   -fx-border-color: #29292D;
+=======
+  -fx-background-color: #10165F;
+  -fx-border-color: #020648;
+>>>>>>> Recycle
   -fx-text-fill: lightgray;
   -fx-alignment: CENTER_LEFT;
    
 }
 .table-row-cell:selected {
    -fx-background-color: whitesmoke; 
+<<<<<<< HEAD
    -fx-text-background-color:  #6622CC;
+=======
+   -fx-text-background-color:  #020648;
+>>>>>>> Recycle
    
        
 }
@@ -36,7 +49,11 @@
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
 	-fx-background-color: transparent;
+<<<<<<< HEAD
 	-fx-border-color:derive( #6622CC,80%);
+=======
+	-fx-border-color:#10165F;
+>>>>>>> Recycle
 
 	-fx-background-radius: 2em;
 	-fx-border-radius:2em;
@@ -45,7 +62,11 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
+<<<<<<< HEAD
     -fx-background-color:derive( #6622CC,90%);
+=======
+    -fx-background-color:derive( #10165F,90%);
+>>>>>>> Recycle
 	-fx-background-insets: 2, 0, 0;
 	-fx-background-radius: 2em;
 

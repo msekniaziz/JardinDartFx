@@ -14,19 +14,31 @@
 
 .h1, .h2 {
     -fx-font-size: 38px;
+<<<<<<< HEAD
     -fx-text-fill: #da5f46;
+=======
+    -fx-text-fill: #c5ba07;
+>>>>>>> Recycle
 }
 
 .h3 {
     -fx-font-size: 28px;
+<<<<<<< HEAD
     -fx-text-fill: #da5f46;
+=======
+    -fx-text-fill: #c5ba07;
+>>>>>>> Recycle
 }
 
 /* Buttons */
 .MFXbutton {
     -fx-font-family: "Montserrat", sans-serif;
     -fx-font-size: 14px;
+<<<<<<< HEAD
     -fx-background-color: linear-gradient(to right, #46c468, #73f569);
+=======
+    -fx-background-color: linear-gradient(to right, #335d00, rgb(51, 93, 0));
+>>>>>>> Recycle
     -fx-text-fill: white;
     -fx-padding: 8px 16px;
     -fx-background-radius: 0;
@@ -34,7 +46,11 @@
 }
 
 .button:hover {
+<<<<<<< HEAD
     -fx-background-color: linear-gradient(to right, #FA849B, #da5f46);
+=======
+    -fx-background-color: rgb(197, 186, 7);
+>>>>>>> Recycle
 }
 
 /* Text Fields */
@@ -48,7 +64,11 @@
 }
 
 .text-field:focused {
+<<<<<<< HEAD
     -fx-border-color: #da5f46;
+=======
+    -fx-border-color: #c5ba07;
+>>>>>>> Recycle
 }
 
 /* Labels */
@@ -65,7 +85,11 @@
 
 /* Borders */
 .border {
+<<<<<<< HEAD
     -fx-border-color: #da5f46;
+=======
+    -fx-border-color: #c5ba07;
+>>>>>>> Recycle
 }
 
 /* Dropdown */
@@ -99,7 +123,11 @@
 }
 .dropdown-item:hover {
     -fx-background-color: transparent;
+<<<<<<< HEAD
     -fx-text-fill: #da5f46;
+=======
+    -fx-text-fill: #c5ba07;
+>>>>>>> Recycle
 }
 /* style.css */
 

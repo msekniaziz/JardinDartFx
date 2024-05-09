@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import org.controlsfx.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.ptCollect.AddPtCollect">
+    <left>
+        <fx:include source="../back_left.fxml" />
+    </left>
+
+    <!-- Contenu principal à droite -->
+    <center>
+    <AnchorPane fx:id="ap" prefHeight="1646.0" prefWidth="2656.0">
+    <children>
+        <Label layoutX="226.0" layoutY="40.0" text="Nom PC:" />
+        <TextField fx:id="nomPcField" layoutX="224.0" layoutY="66.0" />
+        <Label layoutX="389.0" layoutY="40.0" text="Adresse PC:" />
+        <TextField fx:id="adressePcField" layoutX="389.0" layoutY="66.0" />
+        <Label layoutX="577.0" layoutY="40.0" text="Latitude PC:" />
+        <TextField fx:id="latitudePcField" editable="false" layoutX="565.0" layoutY="66.0" />
+        <Label layoutX="734.0" layoutY="40.0" text="Longitude PC:" />
+        <TextField fx:id="longitudePcField" editable="false" layoutX="734.0" layoutY="66.0" />
+        <Label layoutX="901.0" layoutY="40.0" text="Type Prod :" />
+        <org.controlsfx.control.CheckComboBox fx:id="typeComboBox" accessibleText="Type" layoutX="901.0" layoutY="66.0" prefHeight="26.0" prefWidth="136.0" />
+        <Button layoutX="227.0" layoutY="119.0" mnemonicParsing="false" onAction="#ajouterPtCollect" prefHeight="26.0" prefWidth="405.0" text="Ajouter" />
+        <Button layoutX="666.0" layoutY="119.0" mnemonicParsing="false" onAction="#afficherListePt" prefHeight="26.0" prefWidth="369.0" text="Consulter Liste" />
+        <WebView fx:id="webView" layoutX="31.0" layoutY="167.0" prefHeight="903.0" prefWidth="1143.0" />
+    </children>
+
+</AnchorPane>
+</center>
+    <stylesheets>
+        <URL value="@../styles1.css" />
+    </stylesheets>
+</BorderPane>

@@ -3,12 +3,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
+<<<<<<< HEAD
 import tn.jardindart.entites.User;
 
 public class DataBase {
         public static Connection connect;
         public static Connection getConnect() {
             String DatabaseName = "pi";
+=======
+import tn.jardindart.models.User;
+
+public class DataBase {
+
+    public static Connection connect;
+        public static Connection getConnect() {
+            String DatabaseName = "jardindart";
+>>>>>>> Recycle
             String username = "root";
             String password = "";
             String url = "jdbc:mysql://localhost:3306/" + DatabaseName + "?user=" + username + "&password=" + password;
@@ -21,9 +31,18 @@ public class DataBase {
                 e.printStackTrace();
                 System.err.println("Error connecting to the database: " + e.getMessage());
             }
+<<<<<<< HEAD
             return connect;
         }
         public static ObservableList<User> getDatauser(){
+=======
+
+            return connect;
+        }
+
+
+    public static ObservableList<User> getDatauser(){
+>>>>>>> Recycle
             Connection conn = getConnect();
             ObservableList<User> list = FXCollections.observableArrayList();
             try {
@@ -48,4 +67,8 @@ public class DataBase {
             }
             return list;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Recycle
     }

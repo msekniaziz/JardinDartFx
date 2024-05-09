@@ -9,6 +9,7 @@ module tn.jardindart{
     requires twilio;
     requires slf4j.simple;
     requires jakarta.mail;
+<<<<<<< HEAD
     requires com.google.common;
     requires bcrypt;
     requires org.apache.pdfbox;
@@ -17,4 +18,18 @@ module tn.jardindart{
     opens tn.jardindart.controllers;
     opens tn.jardindart.utils;
     opens tn.jardindart.entites;
+=======
+    requires flying.saucer.pdf;
+    requires java.desktop;
+    requires com.jfoenix;
+    requires org.apache.pdfbox;
+    requires bcrypt;
+    requires jdk.jsobject;
+    opens tn.jardindart.controllers;
+    opens tn.jardindart.utils;
+    opens tn.jardindart.models;
+    opens tn.jardindart.controllers.user;
+    opens tn.jardindart.controllers.ptCollect;
+    opens tn.jardindart.controllers.prodR;
+>>>>>>> Recycle
 }

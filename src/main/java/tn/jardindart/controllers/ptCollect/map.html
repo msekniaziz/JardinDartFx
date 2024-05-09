@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
+    <script>
+        var map;
+        var javaConnector;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 8
+            });
+
+            // Create an instance of JavaConnector and assign it to the javaConnector variable
+            javaConnector = new JavaConnector();
+
+            // Add code to handle location selection and call the corresponding Java function
+            map.addListener('click', function(event) {
+                var latitude = event.latLng.lat();
+                var longitude = event.latLng.lng();
+
+                // Call the Java function in the controller to pass the coordinates
+                javaConnector.onLocationSelected(latitude, longitude);
+            });
+        }
+
+        // Define the JavaConnector class
+        function JavaConnector() {
+            this.onLocationSelected = function(latitude, longitude) {
+                // Use the coordinates to fill the fields or perform other actions
+                // For example, you can access the "latitudePcField" and "longitudePcField" fields and update them with the selected values
+                // Make sure the fields are correctly referenced in your FXML file and you have defined the corresponding methods in your controller
+                // For example: latitudePcField.setText(String.valueOf(latitude));
+                // For example: longitudePcField.setText(String.valueOf(longitude));
+                window.javaConnector.onLocationSelected(latitude, longitude);
+
+                // You can also close the map or perform any additional actions from here
+            };
+        }
+    </script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>
