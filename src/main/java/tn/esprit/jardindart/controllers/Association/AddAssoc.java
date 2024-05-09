@@ -50,6 +50,7 @@ public class AddAssoc {
     @FXML
     private ImageView imageid;
     //les champs
+    //nafshom
 
     private final AssociationService associationService = new AssociationService();
     Menu menuc = new Menu();
