@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class Openai {
 
     private static final String API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions";
-    private static final String API_KEY = "sk-proj-z1ykyyNnmcBkSJ96yK5fT3BlbkFJBLj89fj5aA3aSMwTKLHk";
+    private static final String API_KEY = "sk-proj-GNLjKfpCNTT9W0SjsVwGT3BlbkFJBOv30uMrbaFiGZzwMHvt";
 
     @FXML
     private Label answerLabel;

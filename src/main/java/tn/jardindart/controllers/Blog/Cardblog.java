@@ -360,10 +360,9 @@ public class Cardblog {
 
     @FXML
     void partage(ActionEvent event) {
-        String appId = "239959405871715";
-        String appSecret = "e57840c5504e611f";
-        String accessTokenString = "EAAERIQJ4OLsBO6xpsMsGxNIbMiLSGZBR803mJuxzo6hYZBMBhMBAGpwmcvlf514gJQLAgvHZAsS4gAG0ZAXRfi85mgx7l9X6OBdhVGIGkq9lh0OrXMSE78GjFQyK4iZAdtmnSb1CYEyx6j1NWQMFdYXy6MqZCmanhefch0lJjHmpwhukvLqDZAweUm7xR0A18AanPwVTZAsFe1pgfnmerK1m53QkwCAZD";
-
+        String appId = "300308449736891";
+        String appSecret = "4cf17d1c8ce3d0b4e57840c5504e611f";
+        String accessTokenString = "EAAERIQJ4OLsBOZBjocsnORqmWrXp4iCZA4GpB3BC1wHVpvwpYk3saP1mM1cXCNZAOBYbcdzeRdxj2qcdIUA3dvI0sj9gJMCAZCTlm6m4sQ7jGEyTQ0Inqv8g9J2IfbvaNDwZAj1BVCcM76LysbBJ9ZBOjq93t8F37u5VSoHKeWQSHLtyC1l7HQYYVrcr86gHSV3AhYZBgBn7LUhZAV2g97HnV0MZD";
         Facebook facebook = new FacebookFactory().getInstance();
         facebook.setOAuthAppId(appId, appSecret);
         facebook.setOAuthAccessToken(new AccessToken(accessTokenString, null));

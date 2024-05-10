@@ -1,31 +1,141 @@
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Blogservice.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Mainrep.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\entites\ReponseBlog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Blogmain.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\gui\Addbolg.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Homaback.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\entites\dislike.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\utils\MyDataBase.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\gui\blogmain.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\AddBlog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\entites\Blog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\entites\like_blog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\EditBlog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Service.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\ServiceRep.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\gui\AddRepBlog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Cardrep.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\AddRepBlog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\gui\repblogmain.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\ReponseBlogservice.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Cardblog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\main.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Backblog.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\module-info.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\Itemrb.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\likeservice.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\EditRep.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\HelloController.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\calendrier.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\like_blogservice.java
-C:\Users\ROUMAYSA\IdeaProjects\Blog\src\main\java\tn\esprit\applicationgui\Controllers\RepBlogmain.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\utils\DataBase.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Association\UpdateAssoc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\Scommandes.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\LoginController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\affAdsBack.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\ViewPtCollect.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Commandes.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Service.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\CardOrderController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\Success.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Association\AddAssoc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DBM\UpdateDBMback.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\DonBienMateriel.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\Map.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Editproduittr.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\EditPtCollect.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Cardblog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DBM\CardView.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\itemsPd.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\prodR\EditProdR.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\PdfBackground.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Cardrep.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\AddProdwith.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\Scategories.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Homaback.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\like_blogservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\UserManagment.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\CardAdsBackController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Categories.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DBM\AddDBM.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Annonces.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\PtCollectService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\module-info.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Openai.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\IAssocService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Backblog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\EditAdFormController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\likeservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\ICRUD.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\DonArgent.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\AffOrderController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\StripePay.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\front_top.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\com\example\user1\HelloApplication.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Back.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Itemrb.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\affMyAdsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\dislike_blog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\AssociationService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\Sannonces.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Blogmain.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Association.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\com\example\user1\HelloController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Produit_troc_with_Service.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Itemstroc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\AfficherDA.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\RecyclingService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\CardView.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\like_blog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\MyAds.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Blog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\utils\MyDataBase.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\Spanier.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\EmailSender.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\Cancel.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\AdminController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\EditBlog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\AddPtCollect.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Menu.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Blogservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\EmailSender.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\DonBienMaterielService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\IServices.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\affAdsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\ListType.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Banner.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\PanierAnnonce.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Producttrocwith.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\BackproT.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\CrudPT.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\addAdsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Mainfx.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\CardAdsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\dislikeservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\MenuBack.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\UserController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\test\Main.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\prodR\ViewProdR.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\DonArgentService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\helper\AlertHelper.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Association\CardView.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Panier.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DBM\AfficherDBM.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\HomeOFF.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\PtCollect.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\calendrier.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\dislike.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\prodR\AddProdR.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Showproduitr.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\cardMyAdsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DA\AddDA.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\ptCollect\ListPtCollect.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\ReponseBlog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\DisplayAddsController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\updateCategoryController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\AddCategoryController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Edittroc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\front_left.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Mainrep.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\Itemrb.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\Back.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\TypeDispoService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\Produittroc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\MarketV.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\dislike_blogservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Marketroc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\ProdRService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\CardCatController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Produit_TrocService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\AffCategoryController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Ads\PanierController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\RepBlogmain.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\IService.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\test\HelloApplication.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\TypeDispo.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\services\SpanierAnnonce.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\ReponseBlogservice.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\ServiceRep.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\DBM\UpdateDBM.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\User.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Association\AfficherAssoc.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\RegisterController.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\EditRep.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\HomeON.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\AddRepBlog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\prodR\ListProdR.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Blog\AddBlog.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\models\ProdR.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\Addproduittr.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\Prdtroc\ItemsL.java
+C:\Users\azizm\OneDrive - ESPRIT\Bureau\JardinDartFx - int\src\main\java\tn\jardindart\controllers\user\SessionManager.java

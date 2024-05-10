@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="applicationgui" />
         <module name="Pi" />
+        <module name="User1" />
       </profile>
     </annotationProcessing>
   </component>

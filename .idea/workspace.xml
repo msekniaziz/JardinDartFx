@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3615c3a3-9c1a-4dd9-8b41-8f2bb3325021" name="Changes" comment="" />
+    <list default="true" id="3615c3a3-9c1a-4dd9-8b41-8f2bb3325021" name="Changes" comment="finale">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Blog/Cardblog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Blog/Cardblog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Prdtroc/Openai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Prdtroc/Openai.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/applicationgui/entites/dislike.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/applicationgui/entites/dislike.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,15 +38,8 @@
         <entry key="$PROJECT_DIR$/JardinDartFx" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/blog" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="autoscrollToSource" value="true" />
@@ -46,6 +49,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2fCCEhAXImIcsiwZJjGnjhDifsg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,14 +61,18 @@
     &quot;Application.AddRepBlog.executor&quot;: &quot;Run&quot;,
     &quot;Application.Addbolg.executor&quot;: &quot;Run&quot;,
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Mainfx.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserManagment.executor&quot;: &quot;Run&quot;,
     &quot;Application.blogmain.executor&quot;: &quot;Run&quot;,
     &quot;Application.main.executor&quot;: &quot;Run&quot;,
     &quot;Application.repblogmain.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Pi [org.apache.maven.plugins:maven-compiler-plugin:3.1:compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Pi [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.User1 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.User1 [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;final&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/ROUMAYSA/IdeaProjects/Blog/src/main/java/tn/esprit/applicationgui&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ROUMAYSA/Downloads/JardinDartFx&quot;,
@@ -72,7 +82,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -88,7 +101,7 @@
       <recent name="tn.esprit.applicationgui.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.blogmain">
+  <component name="RunManager" selected="Application.Addbolg">
     <configuration name="AddRepBlog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.applicationgui.gui.AddRepBlog" />
       <module name="Pi" />
@@ -115,12 +128,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="blogmain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.applicationgui.gui.blogmain" />
-      <module name="Pi" />
+    <configuration name="UserManagment" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.jardindart.UserManagment" />
+      <module name="User1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tn.esprit.applicationgui.gui.*" />
+          <option name="PATTERN" value="tn.jardindart.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,12 +141,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.applicationgui.main" />
+    <configuration name="blogmain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.applicationgui.gui.blogmain" />
       <module name="Pi" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tn.esprit.applicationgui.*" />
+          <option name="PATTERN" value="tn.esprit.applicationgui.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,19 +182,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserManagment" />
         <item itemvalue="Application.blogmain" />
         <item itemvalue="Application.AddRepBlog" />
         <item itemvalue="Application.repblogmain" />
         <item itemvalue="Application.Addbolg" />
-        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
       </set>
     </attachedChunks>
   </component>
@@ -206,11 +218,20 @@
       <workItem from="1714683817558" duration="13385000" />
       <workItem from="1714741799864" duration="51772000" />
       <workItem from="1715032687735" duration="20867000" />
+      <workItem from="1715308814212" duration="2441000" />
+      <workItem from="1715328939038" duration="575000" />
+      <workItem from="1715329533594" duration="510000" />
+      <workItem from="1715330556998" duration="1812000" />
+      <workItem from="1715337597090" duration="56000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="finale" />
+    <option name="LAST_COMMIT_MESSAGE" value="finale" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

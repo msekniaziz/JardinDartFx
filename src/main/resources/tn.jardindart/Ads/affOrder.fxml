@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@../styles.css"   xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tn.jardindart.controllers.Ads.AffOrderController">
+    <left>
+        <fx:include source="../back_left.fxml" />
+    </left>
+
+    <center>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="576.0" prefWidth="1116.0"
+          >
+    <children>
+
+
+        <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="576.0" prefWidth="841.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Pane fx:id="pnlOverview" layoutX="-49.0" layoutY="1.0" prefHeight="576.0" prefWidth="951.0" style="-fx-background-color: #FFFFFF;">
+                            <children>
+                                <Label layoutX="36.0" layoutY="28.0" prefHeight="35.0" prefWidth="165.0" text="Aff order">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <AnchorPane layoutX="61.0" layoutY="111.0" prefHeight="280.0" prefWidth="613.0">
+                                    <children>
+                                        <ScrollPane layoutY="7.0" prefHeight="391.0" prefWidth="626.0">
+                                 <content>
+                                                <FlowPane fx:id="flowPaneLOrder" prefHeight="501.0" prefWidth="624.0" styleClass="-fx-background-r-f" />
+                                 </content>
+                                        </ScrollPane>
+                                    </children>
+                                </AnchorPane>
+                                <Button fx:id="brtn_DeleteAll1" layoutX="550.0" layoutY="29.0" mnemonicParsing="false" onAction="#DeleteAllOrder" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #4B49AC;" text="DeleteAll" textFill="WHITE">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="19.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="btn_Refresh1" layoutX="705.0" layoutY="29.0" mnemonicParsing="false" onAction="#RefrecheOrder" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #4B49AC;" text="Refresh" textFill="WHITE">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="19.0" />
+                                    </font>
+                                </Button>
+                        <Button fx:id="excelProduit" layoutX="756.0" layoutY="362.0" mnemonicParsing="false" onAction="#generateExcelProduit" prefHeight="25.0" prefWidth="55.0" text="Excel">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="pdfProduit" layoutX="756.0" layoutY="407.0" mnemonicParsing="false" onAction="#generatePdfProduit" prefHeight="25.0" prefWidth="55.0" text="PDF">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
+    </center>
+</BorderPane>

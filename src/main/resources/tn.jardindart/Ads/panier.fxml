@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="717.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Ads.PanierController">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+    <children>
+        <FlowPane fx:id="flowPaneLads" layoutX="1.0" layoutY="96.0" prefHeight="400.0" prefWidth="400.0" />
+              <TableView fx:id="paniertable" editable="true" layoutX="34.0" layoutY="97.0" prefHeight="495.0" prefWidth="800.0">
+                  <columns>
+                      <TableColumn fx:id="image" prefWidth="131.0" text="Image" />
+                      <TableColumn fx:id="title" prefWidth="136.0" text="Title" />
+                      <TableColumn fx:id="price" prefWidth="128.0" text="Price" />
+                  </columns>
+              </TableView>
+          <AnchorPane layoutX="35.0" layoutY="611.0" prefHeight="86.0" prefWidth="800.0" style="-fx-background-color: #335d00;">
+              <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Total: ">
+                      <font>
+                          <Font name="Cambria" size="18.0" />
+                      </font>
+                  </Label>
+                  <Label fx:id="totalLabel" layoutX="75.0" layoutY="14.0" text="0.0">
+                      <font>
+                          <Font name="Cambria Bold" size="18.0" />
+                      </font>
+                  </Label>
+                  <Button fx:id="payer" layoutX="251.0" layoutY="14.0" mnemonicParsing="false" onAction="#payer" styleClass="add-btn" stylesheets="@style.css" text="Payer">
+                      <font>
+                          <Font name="System Bold" size="14.0" />
+                      </font>
+                  </Button>
+              </children>
+          </AnchorPane>
+          <AnchorPane layoutX="33.0" layoutY="-1.0" prefHeight="98.0" prefWidth="800.0" style="-fx-background-color: #335d00;">
+              <children>
+                  <Label alignment="CENTER" layoutX="215.0" layoutY="39.0" prefHeight="20.0" prefWidth="122.0" text="Card" textFill="#878787">
+                      <font>
+                          <Font name="Cambria Bold" size="36.0" />
+                      </font>
+                  </Label>
+              </children>
+          </AnchorPane>
+    </children>
+</AnchorPane>

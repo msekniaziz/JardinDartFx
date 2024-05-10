@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Ads.AffCategoryController">
+
+<left>
+        <fx:include source="../back_left.fxml" />
+    </left>
+
+    <center>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1800.0">
+    <children>
+
+        <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="794.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlMenus" prefHeight="649.0" prefWidth="1006.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Pane fx:id="pnlOverview" layoutX="34.0" layoutY="-117.0" prefHeight="697.0" prefWidth="951.0" style="-fx-background-color: #FFFFFF;">
+                            <children>
+                        <AnchorPane layoutX="61.0" layoutY="147.0" prefHeight="434.0" prefWidth="654.0">
+                           <children>
+                              <ScrollPane layoutY="72.0" prefHeight="397.0" prefWidth="654.0">
+                                 <content>
+                                    <FlowPane fx:id="flowPaneLCat" prefHeight="390.0" prefWidth="703.0" styleClass="-fx-background-r-f" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="back" layoutX="551.0" layoutY="628.0" mnemonicParsing="false" onAction="#back" prefHeight="46.0" prefWidth="141.0" style="-fx-background-color: #4B49AC;" text="Add Category" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="brtn_DeleteAll" layoutX="85.0" layoutY="634.0" mnemonicParsing="false" onAction="#DeleteAllCat" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #4B49AC;" text="DeleteAll" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_Refresh" layoutX="238.0" layoutY="634.0" mnemonicParsing="false" onAction="#RefrecheListe" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #4B49AC;" text="Refresh" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="sort" layoutX="777.0" layoutY="52.0" mnemonicParsing="false" onAction="#sortByName" prefHeight="17.0" prefWidth="134.0" style="-fx-background-color: #4B49AC;" text="sort by name" textFill="WHITE">
+                           <font>
+                              <Font name="Times New Roman Bold" size="19.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
+    </center>
+</BorderPane>
