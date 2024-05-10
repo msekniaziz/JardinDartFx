@@ -157,7 +157,7 @@ public class AssociationService implements IService<Association> {
         return true;
     }
 
-
+//upload
     public void uploadImage(File imageFile) {
         // Define the directory within your project where you want to store the uploaded images
         String uploadDirectory = "src/main/resources/tn/esprit/jardindart/images"; // Change this to your desired directory
@@ -172,6 +172,7 @@ public class AssociationService implements IService<Association> {
             }
         }
 
+//hello
         try {
             // Get the file name of the uploaded image
             String fileName = imageFile.getName();
