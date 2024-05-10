@@ -1,6 +1,14 @@
 package tn.jardindart.services;
 
 import tn.jardindart.models.ProdR;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+import tn.jardindart.models.User;
+import tn.jardindart.utils.DataBase;
+=======
+>>>>>>> Master
+>>>>>>> Stashed changes
 import tn.jardindart.utils.MyDataBase;
 
 import java.io.File;
@@ -177,11 +185,64 @@ public class ProdRService implements RecyclingService<ProdR> {
             System.err.println("Error uploading image: " + e.getMessage());
         }
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public Integer getNbById(int userId) {
+        int nb = 0;
+        try {
+            String query = "SELECT nb_points FROM user WHERE id = ?";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                nb = resultSet.getInt("nb_points");
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nb;
+    }
+
+    public void EditNbPtsUser(int id ,int nb ) {
+        try {
+            //  int userId = SessionManager.getInstance().getUserFront();
+            String query = "UPDATE user SET nb_points = ? WHERE id = ?";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.setInt(1,nb );
+
+            statement.setInt(2, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("nbpts++");
+            } else {
+                System.out.println("nbpts err");
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+>>>>>>> Stashed changes
+    public void updateStatus(ProdR prodR, boolean newStatus) {
+        // Implémentez la logique pour mettre à jour le statut de prodR dans la base de données
+        // Par exemple :
+        prodR.setStatut(newStatus); // Mettez à jour le statut de l'objet ProdR
+<<<<<<< Updated upstream
+     modifier(prodR); // Appelez la méthode modifier pour mettre à jour le statut dans la base de données
+=======
+        modifier(prodR); // Appelez la méthode modifier pour mettre à jour le statut dans la base de données
+=======
     public void updateStatus(ProdR prodR, boolean newStatus) {
         // Implémentez la logique pour mettre à jour le statut de prodR dans la base de données
         // Par exemple :
         prodR.setStatut(newStatus); // Mettez à jour le statut de l'objet ProdR
      modifier(prodR); // Appelez la méthode modifier pour mettre à jour le statut dans la base de données
+>>>>>>> Master
+>>>>>>> Stashed changes
     }
     public List<ProdR> recupererParUtilisateur(int userId) {
         List<ProdR> prodRList = new ArrayList<>();
@@ -212,6 +273,13 @@ public class ProdRService implements RecyclingService<ProdR> {
                 pR.setNomTypeProd(rs.getString("nom_type_prod"));
                 prodRList.add(pR);
             }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Master
+>>>>>>> Stashed changes
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
