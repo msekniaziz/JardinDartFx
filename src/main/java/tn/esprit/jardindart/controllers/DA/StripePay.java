@@ -67,7 +67,7 @@ public class StripePay {
         System.out.println("Payment URL: " + session.getUrl());
 
         return session.getUrl();
-// stripe
+// stripepay
     }
 
     public void openBrowser(String url) throws IOException, URISyntaxException {

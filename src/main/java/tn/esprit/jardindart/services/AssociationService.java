@@ -172,7 +172,7 @@ public class AssociationService implements IService<Association> {
             }
         }
 
-//hello
+//hellohello
         try {
             // Get the file name of the uploaded image
             String fileName = imageFile.getName();
