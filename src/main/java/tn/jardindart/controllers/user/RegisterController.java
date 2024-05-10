@@ -284,7 +284,7 @@ public class RegisterController implements Initializable {
                             messageBody += "Please click the following link to verify your account:\n";
                             messageBody += "<a href='" + verificationUrl + "'>Verify Account</a>";
                             String email_to = email.getText();
-                           // EmailSender.sendEmail(email_to, subject, messageBody);
+                            EmailSender.sendEmail(email_to, subject, messageBody);
                             clearForm();
                             AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
                                     "You have registered successfully.");

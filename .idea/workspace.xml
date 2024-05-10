@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3615c3a3-9c1a-4dd9-8b41-8f2bb3325021" name="Changes" comment="finale">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Blog/Cardblog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Blog/Cardblog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Prdtroc/Openai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/Prdtroc/Openai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/applicationgui/entites/dislike.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/applicationgui/entites/dislike.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/user/RegisterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,39 +49,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AddRepBlog.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Addbolg.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Mainfx.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserManagment.executor&quot;: &quot;Run&quot;,
-    &quot;Application.blogmain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.repblogmain.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pi [org.apache.maven.plugins:maven-compiler-plugin:3.1:compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Pi [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.User1 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.User1 [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;final&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/ROUMAYSA/IdeaProjects/Blog/src/main/java/tn/esprit/applicationgui&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ROUMAYSA/Downloads/JardinDartFx&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AddRepBlog.executor": "Run",
+    "Application.Addbolg.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Mainfx.executor": "Run",
+    "Application.UserManagment.executor": "Run",
+    "Application.blogmain.executor": "Run",
+    "Application.main.executor": "Run",
+    "Application.repblogmain.executor": "Run",
+    "Maven.Pi [org.apache.maven.plugins:maven-compiler-plugin:3.1:compile].executor": "Run",
+    "Maven.Pi [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.User1 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.User1 [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "LASTv",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/ROUMAYSA/IdeaProjects/Blog/src/main/java/tn/esprit/applicationgui",
+    "last_opened_file_path": "C:/Users/ROUMAYSA/Downloads/JardinDartFx",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="tn.esprit.applicationgui.Controllers" />
@@ -223,6 +216,7 @@
       <workItem from="1715329533594" duration="510000" />
       <workItem from="1715330556998" duration="1812000" />
       <workItem from="1715337597090" duration="56000" />
+      <workItem from="1715381548208" duration="544000" />
     </task>
     <servers />
   </component>
