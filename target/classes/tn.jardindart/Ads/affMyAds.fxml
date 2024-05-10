@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Ads.affMyAdsController">
+    <!-- Include front_left.fxml content -->
+    <fx:include fx:id="leftContent" source="../front_left.fxml" />
+
+    <!-- Include front_top.fxml content -->
+    <fx:include fx:id="topContent" source="../front_top.fxml" />
+
+    <!-- Contenu existant -->
+    <ScrollPane fx:id="scroll" layoutX="318.0" layoutY="138.0" prefHeight="534.0" prefWidth="868.0">
+        <content>
+            <FlowPane fx:id="flowPaneLads" prefHeight="498.0" prefWidth="952.0" />
+        </content>
+    </ScrollPane>
+
+    <Button fx:id="brtn_DeleteAll1" layoutX="629.0" layoutY="701.0" mnemonicParsing="false" onAction="#DeleteAllCat" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: #335d00;" text="Delete All">
+        <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+        </font>
+    </Button>
+
+    <Button fx:id="btn_Refresh1" layoutX="785.0" layoutY="701.0" mnemonicParsing="false" onAction="#RefrecheListe" prefHeight="38.0" prefWidth="102.0" style="-fx-background-color: #335d00;" text="Refresh">
+        <font>
+            <Font name="Times New Roman Bold" size="19.0" />
+        </font>
+    </Button>
+
+    <stylesheets>
+        <URL value="@styles_front_top.css" />
+    </stylesheets>
+</AnchorPane>

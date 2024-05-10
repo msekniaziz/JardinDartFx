@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="758.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Prdtroc.MarketV">
+
+   <!-- Inclure le menu vertical à gauche -->
+   <left>
+      <fx:include source="./front_left.fxml" />
+   </left>
+
+   <top>
+      <fx:include source="./front_top.fxml" />
+   </top>
+
+   <!-- Contenu principal à droite -->
+   <center>
+      <AnchorPane prefHeight="495.0" prefWidth="598.0">
+         <children>
+            <AnchorPane layoutX="250.0" layoutY="23.0" prefHeight="66.0" prefWidth="688.0" stylesheets="@AI.css">
+               <styleClass>
+                  <String fx:value="left-form" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <Button layoutX="55.0" layoutY="13.0" mnemonicParsing="false" onAction="#booksnavclicked" prefHeight="42.0" prefWidth="275.0" styleClass="white-btn" stylesheets="@ AI.css" text="Product for exchange" textFill="#aac400">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="355.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCollectionButtonClick" prefHeight="42.0" prefWidth="291.0" styleClass="white-btn" stylesheets="@ AI.css" text="Your product for exchange" textFill="#c4e105">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="collectionanchor" layoutX="61.0" layoutY="100.0" prefHeight="595.0" prefWidth="1022.0" stylesheets="@ AI.css">
+               <styleClass>
+                  <String fx:value="left-form" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <VBox layoutX="21.0" layoutY="102.0" prefHeight="463.0" prefWidth="984.0">
+                     <children>
+                        <ScrollPane prefHeight="548.0" prefWidth="563.0">
+                           <content>
+                              <GridPane fx:id="collectionListView" prefHeight="0.0" prefWidth="419.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="mainanchor" layoutX="48.0" layoutY="121.0" prefHeight="602.0" prefWidth="1040.0" stylesheets="@ AI.css">
+               <children>
+                  <VBox layoutX="33.0" layoutY="114.0" prefHeight="446.0" prefWidth="1000.0">
+                     <children>
+                        <ScrollPane prefHeight="446.0" prefWidth="980.0" styleClass="transparent-scroll-pane">
+                           <content>
+                              <GridPane fx:id="BookListView">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                              </GridPane>
+                           </content>
+                           <stylesheets>
+                              <URL value="@ AI.css" />
+                              <URL value="@ UpdateUI.css" />
+                           </stylesheets>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <Label layoutX="394.0" layoutY="30.0" prefHeight="66.0" prefWidth="334.0" text="Discover Our Product Troc" textFill="#40b74a">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="categoryComboBox" layoutX="807.0" layoutY="51.0" onAction="#filterByCategory" prefWidth="150.0" styleClass="white-bor-anchor" />
+                  <Label layoutX="757.0" layoutY="55.0" prefHeight="18.0" prefWidth="47.0" text="Filter By" textFill="#dbff03" />
+                  <TextField fx:id="searchpanel" layoutX="21.0" layoutY="42.0" onKeyReleased="#searchbook_clicked" prefHeight="42.0" prefWidth="334.0" promptText="search here" />
+                  <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="308.0" layoutY="47.0">
+                     <image>
+                        <Image url="@icons8-search.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="left-form" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </AnchorPane>
+            <ImageView fx:id="bookicon" fitHeight="384.0" fitWidth="343.0" layoutX="697.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <!--            <image>-->
+               <!--                <Image url="@../Rresources/5432699.png" />-->
+               <!--            </image>-->
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

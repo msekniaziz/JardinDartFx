@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.Ads.updateCategoryController">
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+   <children>
+       <fx:include source="../back_left.fxml" />
+      <Pane fx:id="pnlMenus" layoutX="378.0" prefHeight="576.0" prefWidth="841.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Button fx:id="buttonadd" layoutX="174.0" layoutY="344.0" mnemonicParsing="false" onAction="#Edit" prefHeight="33.0" prefWidth="153.0" style="-fx-background-color: #4B49AC; -fx-background-radius: 10;" text="Edit" textFill="#252525">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="57.0" layoutX="98.0" layoutY="109.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="300.0" />
+            <TextField fx:id="nameCat" layoutX="98.0" layoutY="109.0" prefHeight="57.0" prefWidth="300.0" promptText="Name of Category" />
+            <Rectangle fx:id="key" arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="57.0" layoutX="98.0" layoutY="202.0" stroke="#1e2b3c" strokeType="OUTSIDE" strokeWidth="2.0" width="300.0" />
+            <TextField fx:id="keyCat" layoutX="98.0" layoutY="202.0" prefHeight="57.0" prefWidth="300.0" promptText="Key of Category" />
+            <Label fx:id="namecategory" layoutX="98.0" layoutY="176.0" prefHeight="17.0" prefWidth="302.0" />
+            <Label fx:id="keycategory" layoutX="98.0" layoutY="268.0" prefHeight="17.0" prefWidth="303.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

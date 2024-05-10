@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.TextField?>
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.DA.AddDA">
+    <left>
+        <fx:include source="../front_left.fxml" />
+    </left>
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+    <center>
+        <AnchorPane styleClass="container">
+            <Label layoutX="195.0" layoutY="117.0" styleClass="title" text="Money Donation" />
+            <!-- Form -->
+            <AnchorPane />
+            <!-- Submit button -->
+            <Button layoutX="175.0" layoutY="347.0" onAction="#handleAddButton" styleClass="submit-button" text="Ajouter" />
+
+            <ComboBox fx:id="associationComboBox" layoutX="175.0" layoutY="285.0" styleClass="form-field" />
+            <Label layoutX="67.0" layoutY="288.0" styleClass="form-label" text="NGO" />
+            <!-- ComboBox for selecting donation amount -->
+          <!--  <ComboBox fx:id="montantComboBox" layoutX="175.0" layoutY="213.0" styleClass="form-field">
+                &lt;!&ndash; Define preset values &ndash;&gt;
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                       &lt;!&ndash; <String fx:value="20" />
+                        <String fx:value="50" />
+                        <String fx:value="100" />&ndash;&gt;
+                    </FXCollections>
+                </items>
+            </ComboBox>-->
+            <Label layoutX="67.0" layoutY="211.0" styleClass="form-label" text="Montant" />
+            <!-- Error label for montant -->
+            <TextField fx:id="montantField" layoutX="175.0" layoutY="213.0" promptText="Montant" styleClass="form-field" />
+            <Label layoutX="67.0" layoutY="211.0" styleClass="form-label" text="Montant" />
+            <Label fx:id="montantErrorLabel" layoutX="175.0" layoutY="255.0" prefHeight="18.0" prefWidth="180.0" textFill="RED" />        </AnchorPane>
+    </center>
+</BorderPane>

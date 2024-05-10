@@ -1,0 +1,93 @@
+.menu-btn{
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-text-fill: #9b9aac; /* Set the default font color */
+    -fx-background-color: rgba(243, 248, 254, 1); /* Lower opacity */
+
+}
+.left-form{
+
+     -fx-background-color: white;
+    -fx-background-radius: 50px;
+}
+
+.logout-btn{
+
+
+    -fx-background-color: transparent; /* Lower opacity */
+
+}
+.right-form{
+
+    -fx-background-color: #f8fbff;}
+.mid-menu{
+    -fx-arc-height: 25px;
+    -fx-arc-width: 25px;
+}
+.blue-btn{
+     -fx-background-color: #1478FF; /* Lower opacity */
+    -fx-background-radius:10px;
+
+ }
+
+.white-btn{
+    -fx-background-color: white; /* Lower opacity */
+    -fx-background-radius:10px;
+
+}
+.white-bor-anchor{
+    -fx-background-radius:25px;
+
+    -fx-background-color: white;}
+.lab {
+    -fx-background-color: rgba(243, 248, 254, 1); /* Lower opacity */
+    -fx-background-radius:15px;
+
+}
+.anchor-p{
+    -fx-arc-height: 25px;
+    -fx-arc-width: 25px;}
+.shadow{
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.1),30,0,0,0);
+}
+
+.shadow-blue{
+    -fx-effect: dropshadow(three-pass-box,rgba(20,120,255,0.25),30,0,0,0);
+}
+
+.button:hover {
+    -fx-background-color: #005f75; /* Change background color on hover */
+}
+.aa {
+    -fx-background-radius: 50;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 4, 4);
+    -fx-background-insets: 12;
+    -fx-background-color: #f8fbff;
+}
+.aaa {
+    -fx-background-radius: 50;
+    -fx-background-color: #f8fbff;
+}
+.shadow-left-menu{
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.2),30,0,0,0);
+}
+.transparent-scroll-pane {
+    -fx-background-color: white;
+}
+.yellow-btn{
+    -fx-background-color: #ffc73e; /* Lower opacity */
+
+}
+/* AI.css */
+
+/* Style for the VBox */
+.vbox {
+    -fx-spacing: 10;
+}
+
+/* Style for the ImageView */
+#itemimg {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+

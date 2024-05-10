@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.*?>
+
+<?import java.net.URL?>
+<BorderPane prefHeight="368.0" prefWidth="494.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.ptCollect.EditPtCollect">
+
+<!-- Inclure le menu vertical à gauche -->
+    <left>
+        <fx:include source="../back_left.fxml"/>
+    </left>
+
+    <!-- Contenu principal à droite -->
+    <center>
+<AnchorPane >
+
+    <children>
+        <Label layoutX="122.0" layoutY="66.0" text="Nom PC:" />
+        <TextField fx:id="nomPcField" layoutX="224.0" layoutY="66.0" />
+        <Label layoutX="122.0" layoutY="106.0" text="Adresse PC:" />
+        <TextField fx:id="adressePcField" layoutX="224.0" layoutY="106.0" />
+        <Label layoutX="122.0" layoutY="147.0" text="Latitude PC:" />
+        <TextField fx:id="latitudePcField" layoutX="224.0" layoutY="147.0" />
+        <Label layoutX="122.0" layoutY="187.0" text="Longitude PC:" />
+        <TextField fx:id="longitudePcField" layoutX="224.0" layoutY="187.0" />
+        <org.controlsfx.control.CheckComboBox fx:id="typeComboBox" accessibleText="Type" layoutX="224.0" layoutY="224.0" prefHeight="26.0" prefWidth="150.0" />
+
+        <Button layoutX="130.0" layoutY="276.0" mnemonicParsing="false" onAction="#modifierPtCollect" prefHeight="26.0" prefWidth="127.0" text="Modifier" />
+        <Button layoutX="258.0" layoutY="276.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="Consulter Liste" />
+        <Button layoutX="131.0" layoutY="317.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="256.0" text="Retour" />
+    </children>
+</AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@../styles1.css"></URL>
+    </stylesheets>
+</BorderPane>

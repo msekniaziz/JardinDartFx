@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="733.0" prefWidth="1103.0" style="  -fx-padding: 10px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.jardindart.controllers.prodR.EditProdR">
+    <left>
+        <fx:include source="../front_left.fxml" />
+    </left>
+
+    <top>
+        <fx:include source="../front_top.fxml" />
+    </top>
+    <center>
+<AnchorPane>
+
+    <children>
+        <Label layoutX="40.0" layoutY="225.0" text="PTC ID:" />
+        <Label layoutX="40.0" layoutY="273.0" text="Type Prod ID:" />
+        <Label layoutX="405.0" layoutY="172.0" text="Description:" />
+        <Label layoutX="406.0" layoutY="303.0" text="Nom P:" />
+        <Label layoutX="405.0" layoutY="265.0" text="Justificatif:" />
+        <TextArea fx:id="descriptionArea" layoutX="514.0" layoutY="168.0" prefHeight="74.0" prefWidth="279.0" />
+        <TextField fx:id="nomPField" layoutX="514.0" layoutY="307.0" prefHeight="26.0" prefWidth="279.0" />
+        <TextField fx:id="justificatifField" layoutX="514.0" layoutY="261.0" prefHeight="26.0" prefWidth="279.0" />
+        <ComboBox fx:id="ptcComboBox" layoutX="149.0" layoutY="213.0" prefHeight="26.0" prefWidth="150.0" />
+        <ComboBox fx:id="typeComboBox" layoutX="149.0" layoutY="267.0" prefHeight="26.0" prefWidth="150.0" />
+        <Button layoutX="254.0" layoutY="414.0" mnemonicParsing="false" onAction="#modifierProdR" prefHeight="26.0" prefWidth="214.0" text="Modifier" />
+    </children>
+    <Label fx:id="userIdCommentLabel" layoutX="106.0" layoutY="96.0" textFill="RED" />
+    <Label fx:id="ptcCommentLabel" layoutX="103.0" layoutY="187.0" prefHeight="18.0" prefWidth="204.0" textFill="RED" />
+    <Label fx:id="typeCommentLabel" layoutX="45.0" layoutY="323.0" prefHeight="18.0" prefWidth="201.0" textFill="RED" />
+    <Label fx:id="descriptionCommentLabel" layoutX="405.0" layoutY="149.0" prefHeight="18.0" prefWidth="194.0" textFill="RED" />
+    <Label fx:id="nomPCommentLabel" layoutX="352.0" layoutY="366.0" prefHeight="24.0" prefWidth="389.0" textFill="RED" />
+
+</AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@../styles.css" />
+    </stylesheets>
+</BorderPane>
