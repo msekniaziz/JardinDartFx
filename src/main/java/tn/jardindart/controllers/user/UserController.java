@@ -630,24 +630,7 @@ public class UserController implements Initializable  {
         con = dataBase.getConnect();
         int userId = SessionManager.getInstance().getUserFront();
         String username = SessionManager.getInstance().getUserId();
-        try {
-            String query = "SELECT * FROM user WHERE id = ?";
-            PreparedStatement statement = con.prepareStatement(query);
-            statement.setInt(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                firstname.setText(resultSet.getString("nom"));
-                lastname.setText(resultSet.getString("prenom"));
-                Mailfield.setText(resultSet.getString("mail"));
-                PhoneNumberfield.setText(resultSet.getString("tel"));
-                tel = resultSet.getString("tel");
-                mail = resultSet.getString("mail");
-            }
-            resultSet.close();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
     public String getEmailById(int userId) {
         String email = null;

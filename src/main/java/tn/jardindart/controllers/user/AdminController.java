@@ -84,17 +84,17 @@ public class AdminController {
     public void generatepdf(ActionEvent actionEvent) {
         Document document = new Document();
         try {
-            String filePath = "C:\\Users\\user\\Desktop\\userreport.pdf";
+            String filePath = "C:\\Users\\azizm\\OneDrive - ESPRIT\\Bureau\\userreport.pdf";
             FileOutputStream fileOutputStream = new FileOutputStream(filePath);
             PdfWriter writer = PdfWriter.getInstance(document, fileOutputStream);
 
-            String backgroundImagePath = "C:\\Users\\user\\Downloads\\background.jpg";
+            String backgroundImagePath = "C:\\Users\\azizm\\OneDrive - ESPRIT\\Bureau\\finale\\JardinDartFx - int\\src\\main\\resources\\tn.jardindart\\imagesbackground.jpg";
             PdfBackground pdfBackground  = new PdfBackground(backgroundImagePath);
             writer.setPageEvent(pdfBackground);
             document.open();
 
 
-            String logoPath = "C:\\Users\\user\\IdeaProjects\\JardinDartFx\\src\\main\\resources\\images\\logo_site.png";
+            String logoPath = "C:\\Users\\azizm\\OneDrive - ESPRIT\\Bureau\\JardinDartFx-USER - Copie\\src\\main\\resources\\images\\logo_site.png";
             try {
                 com.itextpdf.text.Image logo = com.itextpdf.text.Image.getInstance(logoPath);
                 logo.scaleAbsolute(50, 50);

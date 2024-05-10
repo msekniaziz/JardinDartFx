@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3615c3a3-9c1a-4dd9-8b41-8f2bb3325021" name="Changes" comment="finale">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/jardindart/controllers/user/RegisterController.java" afterDir="false" />
-    </list>
+    <list default="true" id="3615c3a3-9c1a-4dd9-8b41-8f2bb3325021" name="Changes" comment="finale" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,7 +213,7 @@
       <workItem from="1715329533594" duration="510000" />
       <workItem from="1715330556998" duration="1812000" />
       <workItem from="1715337597090" duration="56000" />
-      <workItem from="1715381548208" duration="544000" />
+      <workItem from="1715381548208" duration="883000" />
     </task>
     <servers />
   </component>
