@@ -262,13 +262,21 @@ public class Addproduittr {
             p.setStatut(Integer.parseInt(statuspt.getText()));
 
             produitTrocService.addMeth2(p);
-            showAlert("Success", "Produit troc ajouté avec succès");
+            showcorrect("Success", "Produit troc ajouté avec succès");
         } catch (NumberFormatException e) {
             showAlert("Erreur", "Le statut doit être un nombre entier.");
         } catch (SQLException e) {
             showAlert("Erreur", "Erreur lors de l'ajout du produit troc: " + e.getMessage());
         }
     }
+
+    private void showcorrect(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -62,22 +62,7 @@
             ptcComboBox.setDisable(true);
             ptcComboBox.setStyle("-fx-opacity: 1;");
 
-         /*   PtCollect pt = ptcComboBox.getValue();
-            List<TypeDispo> associatedTypes = pt.getType();
-            typeComboBox.setConverter(new StringConverter<>() {
-                @Override
-                public String toString(TypeDispo p) {
-                    return p != null ? p.getNom() : null;
-                }
-
-                @Override
-                public TypeDispo fromString(String string) {
-                    return null;
-                }
-            });
-
-            typeComboBox.getItems().addAll(associatedTypes);*/
-            fillTypeComboBox();
+                fillTypeComboBox();
 
         }
 

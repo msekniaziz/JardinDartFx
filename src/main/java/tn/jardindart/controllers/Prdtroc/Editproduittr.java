@@ -73,8 +73,8 @@ public class Editproduittr implements Initializable {
 
         if (book.getImage() != null && !book.getImage().isEmpty()) {
             // Use the file:/// protocol for local file paths
-           // String imageUrl = "file:///" + book.getImage();
-            Image image = new Image(book.getImage());
+            String imageUrl = "file:///" + book.getImage();
+            Image image = new Image(imageUrl);
             imgb1.setImage(image);
         } else {
             // Handle case where image path is empty or null

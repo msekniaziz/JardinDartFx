@@ -24,7 +24,10 @@ import tn.jardindart.test.HelloApplication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;*/
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
@@ -105,6 +108,20 @@ dbms=new DonBienMaterielService();
         return associations;
     }
 
+    public static String imageToBase64(String imagePath) {
+        String base64Image = "";
+        try {
+            File file = new File(imagePath);
+            FileInputStream imageInFile = new FileInputStream(file);
+            byte[] imageData = new byte[(int) file.length()];
+            imageInFile.read(imageData);
+            base64Image = Base64.getEncoder().encodeToString(imageData);
+            imageInFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return base64Image;
+    }
 
     @FXML
     void handleAddButton() {
@@ -113,6 +130,7 @@ dbms=new DonBienMaterielService();
         User user=new User();
         user.setId(id);
         UserController u = new UserController();
+        String nomU= SessionManager.getInstance().getFirstNameById(id);
         String mail = u.getEmailById(id);
        // String mail =user.getMail();
         System.out.println(mail);
@@ -147,14 +165,65 @@ dbms=new DonBienMaterielService();
                 donServ.ajouter(newDon);
 
                 //sendEmailConfirmation();
-
+                String base64Image = imageToBase64(photoDon );
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn.jardindart/DBM/card_view.fxml"));
                 descriptionDonArea.getScene().setRoot(fxmlLoader.load());
+                String body = "<!DOCTYPE html>" +
+                        "<html>" +
+                        "<head>" +
+                        "<style>" +
+                        "body {" +
+                        "    font-family: Arial, sans-serif;" +
+                        "    background-color: #f4f4f4;" +
+                        "    margin: 0;" +
+                        "    padding: 0;" +
+                        "}" +
+                        ".container {" +
+                        "    max-width: 600px;" +
+                        "    margin: 0 auto;" +
+                        "    padding: 20px;" +
+                        "    background-color: #fff;" +
+                        "    border-radius: 8px;" +
+                        "    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" +
+                        "}" +
+                        ".header {" +
+                        "    background-color: #4CAF50;" +
+                        "    color: #fff;" +
+                        "    text-align: center;" +
+                        "    padding: 20px;" +
+                        "    border-radius: 8px 8px 0 0;" +
+                        "}" +
+                        ".content {" +
+                        "    padding: 20px;" +
+                        "}" +
+                        ".footer {" +
+                        "    background-color: #f4f4f4;" +
+                        "    padding: 20px;" +
+                        "    text-align: center;" +
+                        "    border-radius: 0 0 8px 8px;" +
+                        "}" +
+                        "</style>" +
+                        "</head>" +
+                        "<body>" +
+                        "<div class=\"container\">" +
+                        "    <div class=\"header\">" +
+                        "        <h1>Thank you!</h1>" +
+                        "    </div>" +
+                        "    <div class=\"content\">" +
+                        "        <p>Dear "+ nomU + " ,</p>" +
+                        "        <p>Your donation  has been registered. Please stay up to date, we will check your item and contact you later.</p>" +
+                        "        <p>Thank you for your trust.</p>" +
+                        "        <img src=\"data:image/png;base64," + base64Image + "\" alt=\"Recycling Product  Image\">" +
+                        "    </div>" +
+                        "    <div class=\"footer\">" +
+                        "        <p>The JARDIN D'ART Team</p>" +
+                        "    </div>" +
+                        "</div>" +
+                        "</body>" +
+                        "</html>";
+
 //                EmailSender.sendEmail( "lindafarah.trabelsi@esprit.tn", "DONATION SENT!", "Dear User, <br>"
-                EmailSender.sendEmail( mail, "DONATION SENT!", "Dear User, <br>"
-                        + "Your donation has been approved, please stay up to date we will call you later. <br>"
-                        + "Thank you for your trust. <br><br>"
-                        + "The JARDIN D'ART Team");
+                EmailSender.sendEmail( mail, "DONATION SENT!", body);
                 showAlert("Succès", "Le don a été ajouté avec succès.");
             } catch (Exception e) {
                 // Capturer et gérer l'exception

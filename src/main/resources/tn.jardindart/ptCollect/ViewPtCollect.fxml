@@ -21,9 +21,14 @@
     <center>
 
         <SplitPane  style="-fx-padding: -1px;" dividerPositions="0.8">
+        <!--    <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Filtrer par type de disponibilité:" />
+                <ComboBox fx:id="typeComboBox" promptText="Sélectionner un type de disponibilité" />&lt;!&ndash;                <ComboBox fx:id="typeComboBox" prefWidth="200" promptText="Select Type" />&ndash;&gt;
 
+            </HBox>-->
             <items>
                 <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+
                     <VBox prefWidth="1000" spacing="20" style="-fx-padding: 10px;">
                         <Label styleClass="title-label" text="OUR CP" />
                         <TilePane fx:id="tilePane" hgap="10" vgap="50" />

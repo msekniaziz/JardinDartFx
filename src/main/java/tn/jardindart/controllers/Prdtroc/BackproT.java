@@ -195,7 +195,7 @@ private  Produit_TrocService p=new Produit_TrocService();
         if (selectedCategory != null) {
             try {
                 // Create a new PDF document
-                PdfDocument pdfDoc = new PdfDocument(new PdfWriter("C:\\Users\\Zakraoui\\Desktop\\JardinDartFx-integ\\troc.pdf"));
+                PdfDocument pdfDoc = new PdfDocument(new PdfWriter("troc.pdf"));
                 System.out.println("PDF works");
 
                 // Set the document size and margins

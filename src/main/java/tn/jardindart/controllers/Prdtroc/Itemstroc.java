@@ -66,8 +66,18 @@ public class Itemstroc {
         itemprice.setText(book.getCategory());
         descript.setText(book.getDescription());
 
-        Image image = new Image(book.getImage());
-        itemimg.setImage(image);
+        if (book.getImage() != null && !book.getImage().isEmpty()) {
+            // Use the file:/// protocol for local file paths
+            String imageUrl = "file:///" + book.getImage();
+            Image image = new Image(imageUrl);
+            itemimg.setImage(image);
+        } else {
+            // Handle case where image path is empty or null
+            // You can set a default image or do nothing
+            // For example, setting a default image:
+            // Image defaultImage = new Image("default_image.png");
+            // itemimg.setImage(defaultImage);
+        }
     }
 
 

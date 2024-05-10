@@ -179,7 +179,8 @@ afficherMap();
 
         // Afficher les données dans le PieChart
         statistiquesTypesChart.setData(pieChartData);
-    }*/private void afficherStatistiquesTypes() {
+    }*/
+    private void afficherStatistiquesTypes() {
         Map<String, Integer> statistiquesTypes = ptCollectService.recupererStatistiquesTypes();
         statistiquesTypesContainer.getChildren().clear(); // Nettoyer le conteneur avant d'ajouter de nouveaux éléments
 

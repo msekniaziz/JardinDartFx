@@ -9,11 +9,57 @@ import java.util.*;
 
 public class PtCollectService {
 
-    private Connection cnx;
+    private static Connection cnx;
 
     public PtCollectService() {
         cnx = MyDataBase.getInstance().getCnx();
     }
+
+    public static List<PtCollect> recupererParType(String searchTerm) {
+        List<PtCollect> ptCollectList = new ArrayList<>();
+        String req = "SELECT pt.*, GROUP_CONCAT(td.nom) AS Types_Disponibles " +
+                "FROM pt_collect pt " +
+                "JOIN pt_collect_type_dispo ptd ON pt.id = ptd.pt_collect_id " +
+                "JOIN type_dispo td ON ptd.type_dispo_id = td.id " +
+                "WHERE td.nom = ? " + // Ajouter une condition pour filtrer par type de disponibilité
+                "GROUP BY pt.id";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+            pstm.setString(1, searchTerm); // Paramètre pour le type de disponibilité
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                PtCollect ptCollect = new PtCollect();
+                ptCollect.setId(rs.getInt("id"));
+                ptCollect.setNomPc(rs.getString("nom_pc"));
+                ptCollect.setAdressePc(rs.getString("adresse_pc"));
+                ptCollect.setLatitudePc(rs.getFloat("latitude_pc"));
+                ptCollect.setLongitudePc(rs.getFloat("longitude_pc"));
+
+                // Récupérer les types de disponibilité en tant que chaîne
+                String typesDisponibles = rs.getString("Types_Disponibles");
+
+                // Diviser la chaîne en une liste de noms de types de disponibilité
+                List<String> typesDisponiblesNames = Arrays.asList(typesDisponibles.split(","));
+
+                // Créer une liste d'objets TypeDispo à partir des noms
+                List<TypeDispo> typesDisponiblesList = new ArrayList<>();
+                for (String typeName : typesDisponiblesNames) {
+                    TypeDispo typeDispo = new TypeDispo();
+                    typeDispo.setNom(typeName);
+                    typesDisponiblesList.add(typeDispo);
+                }
+
+                // Mettre à jour la liste des types de disponibilité pour le point de collecte
+                ptCollect.setType(typesDisponiblesList);
+
+                ptCollectList.add(ptCollect);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des points de collecte par type de disponibilité : " + e.getMessage());
+        }
+        return ptCollectList;
+    }
+
 
     // Create
     public void ajouter(PtCollect ptCollect) {

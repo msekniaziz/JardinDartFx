@@ -78,4 +78,21 @@ public class TypeDispoService {
             return false;
         }
     }
-}
+
+    public TypeDispo recupererParNom(String nom) {
+        String req = "SELECT `id`, `nom` FROM `type_dispo` WHERE `nom`=?";
+        try {
+            PreparedStatement pstmt = cnx.prepareStatement(req);
+            pstmt.setString(1, nom);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                TypeDispo t = new TypeDispo();
+                t.setId(rs.getInt("id"));
+                t.setNom(rs.getString("nom"));
+                return t;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Retourner null si aucun TypeDispo n'est trouvé avec le nom spécifié
+    }}

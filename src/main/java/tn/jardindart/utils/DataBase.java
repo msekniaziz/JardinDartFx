@@ -9,7 +9,7 @@ public class DataBase {
 
     public static Connection connect;
         public static Connection getConnect() {
-            String DatabaseName = "dev";
+            String DatabaseName = "pi";
             String username = "root";
             String password = "";
             String url = "jdbc:mysql://localhost:3306/" + DatabaseName + "?user=" + username + "&password=" + password;
@@ -17,7 +17,7 @@ public class DataBase {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connect = DriverManager.getConnection(url);
-                System.out.println("Connected to the database");
+              //  System.out.println("Connected to the database");
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
                 System.err.println("Error connecting to the database: " + e.getMessage());
