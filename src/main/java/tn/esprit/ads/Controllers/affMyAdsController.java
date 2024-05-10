@@ -123,13 +123,13 @@ public class affMyAdsController implements Initializable {
     }
 
     private void updateSelectedCardFields(Annonces selectedAds) {
+
         titleAds.setText(selectedAds.getTitle());
         priceAds.setText(String.valueOf(selectedAds.getPrix()));
         String negotiableStatus = selectedAds.getNegiciable() != 0 ? "Negotiable" : "Not Negotiable";
         Negotiable.setText( negotiableStatus);
         Description.setText(selectedAds.getDescription());
 
-        // Mise à jour de l'image
         Image image = new Image("file:" + selectedAds.getImage());
         imgSelected.setImage(image);
 
