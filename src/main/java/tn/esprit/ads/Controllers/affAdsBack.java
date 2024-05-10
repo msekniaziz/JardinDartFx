@@ -1,5 +1,8 @@
-package tn.esprit.ads.Controllers;
+package tn.jardindart.controllers.Ads;
 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -17,10 +21,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
-import tn.esprit.ads.Entity.Annonces;
-import tn.esprit.ads.Entity.Categories;
-import tn.esprit.ads.Services.Sannonces;
-import tn.esprit.ads.Services.Scategories;
+import tn.jardindart.models.Annonces;
+import tn.jardindart.models.Categories;
+import tn.jardindart.services.Sannonces;
+import tn.jardindart.services.Scategories;
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,22 +71,52 @@ public class affAdsBack implements Initializable {
     private ComboBox<?> Sort;
     @FXML
     private ImageView imageuserads;
+    @FXML
+    private Label labelAdsSold;
+
+    @FXML
+    private Label labelAdsUnsold;
+
+    @FXML
+    private PieChart pieChart;
+
+    private Sannonces sannonces;
 
 
 
     private Annonces selectedAds;
 
-    private Sannonces sannonces;
+   // private Sannonces sannonces;
 
     public void initialize(URL url, ResourceBundle resourceBundle ) {
         System.out.println("Chargement des données des Annonces...");
         sannonces = new Sannonces();
         loadAdsData();
-        Image image = new Image("file:src/main/java/tn/esprit/ads/img/jimmy-fallon.png");
-        imageuserads.setImage(image);
+        updateStatistics();
 
 
     }
+    private void updateStatistics() {
+        List<Annonces> allAds = sannonces.getAllBack();
+        long adsSold = allAds.stream().filter(a -> a.getStatus() == 1).count();
+        long adsUnsold = allAds.size() - adsSold;
+
+        labelAdsSold.setText("Ads sold: " + adsSold);
+        labelAdsUnsold.setText("Ads unsold: " + adsUnsold);
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Ads sold", adsSold),
+                new PieChart.Data("Ads unsold", adsUnsold)
+        );
+
+        pieChart.setData(pieChartData);
+    }
+
+    // Méthode appelée pour rafraîchir les statistiques après une opération (par exemple, ajout ou suppression d'une annonce)
+    public void refreshStatistics() {
+        updateStatistics();
+    }
+
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
@@ -97,7 +131,7 @@ public class affAdsBack implements Initializable {
         flowPaneLads.getChildren().clear();
         for (Annonces annonce : annonces) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardAdsBack.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.jardindart/Ads/cardAdsBack.fxml"));
                 AnchorPane card = loader.load();
                 CardAdsBackController controller = loader.getController();
                 controller.initialize(annonce);
@@ -124,13 +158,12 @@ public class affAdsBack implements Initializable {
     }
 
     private void initData(Annonces selectedAds) {
-        // Implement initialization logic here
     }
 
 
     public void DeleteCatSelected(javafx.event.ActionEvent actionEvent) {
         sannonces.delete(selectedAds);
-        loadAdsData(); // Recharger les données des annonces
+        loadAdsData();
     }
 
     public void RefrecheListe(ActionEvent actionEvent) {
@@ -175,13 +208,13 @@ public class affAdsBack implements Initializable {
                     break;
             }
 
-            // Effacer les enfants existants de flowPaneLads
+
             flowPaneLads.getChildren().clear();
 
-            // Recharger les données des annonces triées
+
             for (Annonces annonce : annonces) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/cardAds.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.jardindart/Ads/cardAds.fxml"));
                     AnchorPane card = loader.load();
                     CardAdsController controller = loader.getController();
                     controller.initialize(annonce);
@@ -195,38 +228,38 @@ public class affAdsBack implements Initializable {
     @FXML
     void affCategory(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("affCategory.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("/tn.jardindart/Ads/affCategory.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(tn.esprit.ads.Controllers.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tn.jardindart.controllers.Ads.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     @FXML
     void affOrder(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("affOrder.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("/tn.jardindart/Ads/affOrder.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(tn.esprit.ads.Controllers.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tn.jardindart.controllers.Ads.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     @FXML
     void affAds(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("affAdsBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("/tn.jardindart/Ads/affAdsBack.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(tn.esprit.ads.Controllers.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tn.jardindart.controllers.Ads.AffCategoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
